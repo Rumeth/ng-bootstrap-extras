@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbxCarouselConfig } from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-carousel-config',
+  selector: 'ngbxd-carousel-config',
   templateUrl: './carousel-config.html',
-  providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
+  providers: [NgbxCarouselConfig]  // add NgbxCarouselConfig to the component providers
 })
-export class NgbdCarouselConfig {
+export class NgbxdCarouselConfig {
   images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
 
-  constructor(config: NgbCarouselConfig) {
+  constructor(config: NgbxCarouselConfig) {
     // customize default values of carousels used by this component tree
     config.interval = 10000;
     config.wrap = false;

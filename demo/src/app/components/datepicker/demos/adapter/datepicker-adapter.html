@@ -3,7 +3,7 @@ In this example we are converting from and to a JS native Date object</p>
 
 <div class="row">
   <div class="col-6">
-    <ngb-datepicker #d1 [(ngModel)]="model1" #c1="ngModel"></ngb-datepicker>
+    <ngbx-datepicker #d1 [(ngModel)]="model1" #c1="ngModel"></ngbx-datepicker>
 
     <hr/>
     <button class="btn btn-sm btn-outline-primary" (click)="model1 = today">Select Today</button>
@@ -18,7 +18,7 @@ In this example we are converting from and to a JS native Date object</p>
       <div class="form-group">
         <div class="input-group">
           <input class="form-control" placeholder="yyyy-mm-dd"
-                 name="d2" #c2="ngModel" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+                 name="d2" #c2="ngModel" [(ngModel)]="model2" ngbxDatepicker #d2="ngbxDatepicker">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
           </div>

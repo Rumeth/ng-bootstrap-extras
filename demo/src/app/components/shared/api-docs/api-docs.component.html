@@ -2,7 +2,7 @@
   <h3 class="title">
     <a
       [routerLink]=""
-      [fragment]="apiDocs.className" ngbdFragment
+      [fragment]="apiDocs.className" ngbxdFragment
       title="Anchor link to: {{apiDocs.className}}"
     >
       <img src="img/link-symbol.svg" alt="Anchor link to: {{apiDocs.className}}"/>
@@ -20,7 +20,7 @@
       <img src="img/github.svg" alt="Link to Github {{apiDocs.className}}"/>
     </a>
   </h3>
-  <ngbd-api-docs-badge [type]="apiDocs.type" [deprecated]="apiDocs.deprecated" [since]="apiDocs.since"></ngbd-api-docs-badge>
+  <ngbxd-api-docs-badge [type]="apiDocs.type" [deprecated]="apiDocs.deprecated" [since]="apiDocs.since"></ngbxd-api-docs-badge>
   <p *ngIf="apiDocs.deprecated">{{ apiDocs.deprecated.description }}</p>
   <p class="lead">
     {{apiDocs.description}}

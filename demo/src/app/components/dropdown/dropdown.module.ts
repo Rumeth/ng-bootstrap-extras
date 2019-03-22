@@ -1,52 +1,52 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgbxdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
-import { NgbdDropdownBasic } from './demos/basic/dropdown-basic';
-import { NgbdDropdownConfig } from './demos/config/dropdown-config';
-import { NgbdDropdownManual } from './demos/manual/dropdown-manual';
-import { NgbdDropdownSplit } from './demos/split/dropdown-split';
-import { NgbdDropdownForm } from './demos/form/dropdown-form';
+import { NgbxdComponentsSharedModule, NgbxdDemoList } from '../shared';
+import { NgbxdApiPage } from '../shared/api-page/api.component';
+import { NgbxdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgbxdDropdownBasic } from './demos/basic/dropdown-basic';
+import { NgbxdDropdownConfig } from './demos/config/dropdown-config';
+import { NgbxdDropdownManual } from './demos/manual/dropdown-manual';
+import { NgbxdDropdownSplit } from './demos/split/dropdown-split';
+import { NgbxdDropdownForm } from './demos/form/dropdown-form';
 
 const DEMO_DIRECTIVES = [
-  NgbdDropdownBasic,
-  NgbdDropdownConfig,
-  NgbdDropdownManual,
-  NgbdDropdownSplit,
-  NgbdDropdownForm
+  NgbxdDropdownBasic,
+  NgbxdDropdownConfig,
+  NgbxdDropdownManual,
+  NgbxdDropdownSplit,
+  NgbxdDropdownForm
 ];
 
 const DEMOS = {
   basic: {
     title: 'Dropdown',
-    type: NgbdDropdownBasic,
+    type: NgbxdDropdownBasic,
     code: require('!!raw-loader!./demos/basic/dropdown-basic'),
     markup: require('!!raw-loader!./demos/basic/dropdown-basic.html')
   },
   manual: {
     title: 'Manual and custom triggers',
-    type: NgbdDropdownManual,
+    type: NgbxdDropdownManual,
     code: require('!!raw-loader!./demos/manual/dropdown-manual'),
     markup: require('!!raw-loader!./demos/manual/dropdown-manual.html')
   },
   split: {
     title: 'Button groups and split buttons',
-    type: NgbdDropdownSplit,
+    type: NgbxdDropdownSplit,
     code: require('!!raw-loader!./demos/split/dropdown-split'),
     markup: require('!!raw-loader!./demos/split/dropdown-split.html')
   },
   form: {
     title: 'Mixed menu items and form',
-    type: NgbdDropdownForm,
+    type: NgbxdDropdownForm,
     code: require('!!raw-loader!./demos/form/dropdown-form'),
     markup: require('!!raw-loader!./demos/form/dropdown-form.html')
   },
   config: {
     title: 'Global configuration of dropdowns',
-    type: NgbdDropdownConfig,
+    type: NgbxdDropdownConfig,
     code: require('!!raw-loader!./demos/config/dropdown-config'),
     markup: require('!!raw-loader!./demos/config/dropdown-config.html')
   }
@@ -58,22 +58,22 @@ export const ROUTES = [
     path: '',
     component: ComponentWrapper,
     children: [
-      { path: 'examples', component: NgbdExamplesPage },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'examples', component: NgbxdExamplesPage },
+      { path: 'api', component: NgbxdApiPage }
     ]
   }
 ];
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
-    NgbdComponentsSharedModule
+    NgbxdSharedModule,
+    NgbxdComponentsSharedModule
   ],
   declarations: DEMO_DIRECTIVES,
   entryComponents: DEMO_DIRECTIVES
 })
-export class NgbdDropdownModule {
-  constructor(demoList: NgbdDemoList) {
+export class NgbxdDropdownModule {
+  constructor(demoList: NgbxdDemoList) {
     demoList.register('dropdown', DEMOS);
   }
 }

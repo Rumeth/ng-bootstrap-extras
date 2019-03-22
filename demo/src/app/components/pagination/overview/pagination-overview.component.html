@@ -4,7 +4,7 @@
 </p>
 
 
-<ngbd-overview-section [section]="sections['basic-usage']">
+<ngbxd-overview-section [section]="sections['basic-usage']">
   <p>
     In order to properly operate a pagination behaviour, there are 3 important notions you have to be familiar with,
     which are actually available as <code>@Input()</code> on the widget:
@@ -21,15 +21,15 @@
       rel="no-opener no-referer"><code>slice</code></a> pipe to extract (or <em>slice</em>) a sub-part of it.</p>
 
   <p>Corresponding code could be something like:</p>
-  <ngbd-code lang="html" [code]="NGFOR"></ngbd-code>
-  <p>and the associated <code>&lt;ngb-pagination&gt;</code> would be like:</p>
-  <ngbd-code lang="html" [code]="NGB_PAGINATION"></ngbd-code>
+  <ngbxd-code lang="html" [code]="NGFOR"></ngbxd-code>
+  <p>and the associated <code>&lt;ngbx-pagination&gt;</code> would be like:</p>
+  <ngbxd-code lang="html" [code]="NGB_PAGINATION"></ngbxd-code>
 
   <br />
-  <ngb-alert type="warning" [dismissible]="false">
+  <ngbx-alert type="warning" [dismissible]="false">
     Be aware that both <code>page</code> and <code>pageSize</code> have default values,
     which are respectively <code>1</code> and <code>10</code>.
-  </ngb-alert>
+  </ngbx-alert>
 
   <h4>Filtering and sorting</h4>
   <p>
@@ -40,9 +40,9 @@
     Recommendation is to move filtering and sorting logic into the component itself where some property getters could
     be exposed.
   </p>
-</ngbd-overview-section>
+</ngbxd-overview-section>
 
-<ngbd-overview-section [section]="sections['customization']">
+<ngbxd-overview-section [section]="sections['customization']">
   <p>
     It is possible to customize what exactly is displayed in each pagination link and there are several ways of doing it.
   </p>
@@ -50,7 +50,7 @@
   <p>
     You could use the Angular i18n API as all labels are translated. For instance you could replace the default
     <code>'&laquo;'</code> (previous arrow) with the <code>'Prev'</code> text by providing a different translation for the
-    <code>ngb.pagination.previous</code> key in your i18n file and <code>ngb.pagination.previous-aria</code> for the
+    <code>ngbx.pagination.previous</code> key in your i18n file and <code>ngbx.pagination.previous-aria</code> for the
     corresponding <code>aria-label</code> attribute.
   </p>
 
@@ -58,24 +58,24 @@
     You could also override the CSS to hide the default <code>span</code> and provide an alternative content.
     For example for the previous arrow:
   </p>
-  <ngbd-code lang="css" [code]="CUSTOM_CSS"></ngbd-code>
+  <ngbxd-code lang="css" [code]="CUSTOM_CSS"></ngbxd-code>
 
   <h4>
     Using templates
   </h4>
-  <ngbd-api-docs-badge [since]="{version: '4.1.0'}"></ngbd-api-docs-badge>
+  <ngbxd-api-docs-badge [since]="{version: '4.1.0'}"></ngbxd-api-docs-badge>
 
   <p>
     Sometimes you would want to display an icon, an image or any arbitrary markup instead of the page number.
     In this case since you could use the template-based API to override any pagination link:
   </p>
-  <ngbd-code lang="html" [code]="CUSTOM_TPL"></ngbd-code>
+  <ngbxd-code lang="html" [code]="CUSTOM_TPL"></ngbxd-code>
 
   <p>
     In this case we customize all pagination links, but you can pick only the ones you need of course.
-    The template <a routerLink="../api" fragment="NgbPaginationLinkContext"><code>NgbPaginationLinkContext</code></a>
+    The template <a routerLink="../api" fragment="NgbxPaginationLinkContext"><code>NgbxPaginationLinkContext</code></a>
     is available for all templates and for page numbers there is a
-    <a routerLink="../api" fragment="NgbPaginationNumberContext"><code>NgbPaginationNumberContext</code></a>
+    <a routerLink="../api" fragment="NgbxPaginationNumberContext"><code>NgbxPaginationNumberContext</code></a>
     that adds displayed number on top.
   </p>
 
@@ -83,4 +83,4 @@
     Also see the <a routerLink="../examples" fragment="customization">Customization example</a> for a
     live version.
   </p>
-</ngbd-overview-section>
+</ngbxd-overview-section>

@@ -1,7 +1,7 @@
 <p>
   Datepicker will help you with date selection.
-  It can be used either inline with <code>NgbDatepicker</code> component or as a
-  popup on any input element with <code>NgbInputDatepicker</code> directive.
+  It can be used either inline with <code>NgbxDatepicker</code> component or as a
+  popup on any input element with <code>NgbxInputDatepicker</code> directive.
   It also comes with the list of services to do date formatting, i18n and
   <a routerLink="../calendars">alternative calendars support</a>.
 </p>
@@ -13,28 +13,28 @@
   and disables weekends.
 </p>
 
-<ngbd-datepicker-demo-overview class="d-block my-4"></ngbd-datepicker-demo-overview>
+<ngbxd-datepicker-demo-overview class="d-block my-4"></ngbxd-datepicker-demo-overview>
 
 
 
 <!-- BASIC USAGE -->
-<ngbd-overview-section [section]="sections['basic-usage']">
+<ngbxd-overview-section [section]="sections['basic-usage']">
   <p>
     Datepicker can be used either inline or inside of the popup.
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.basic"></ngbd-code>
+  <ngbxd-code lang="html" [code]="snippets.basic"></ngbxd-code>
 
   <p>
     In the example above the template variable <code>#d</code> will point
-    to the instance of the <code>NgbDatepicker</code> component in the first case.
-    In the second it will point to the instance of the <code>NgbInputDatepicker</code>
+    to the instance of the <code>NgbxDatepicker</code> component in the first case.
+    In the second it will point to the instance of the <code>NgbxInputDatepicker</code>
     directive that handles the popup with inline datepicker component.
   </p>
 
   <p>
-    See the <a routerLink="../api" fragment="NgbDatepicker">NgbDatepicker API</a>
-    and the <a routerLink="../api" fragment="NgbInputDatepicker">NgbInputDatepicker API</a>
+    See the <a routerLink="../api" fragment="NgbxDatepicker">NgbxDatepicker API</a>
+    and the <a routerLink="../api" fragment="NgbxInputDatepicker">NgbxInputDatepicker API</a>
     for details on available inputs, outputs and methods.
 
     You can customize the number of displayed months, the way navigation
@@ -60,19 +60,19 @@
     <code>[container]</code> input to <code>'body'</code>
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.popup"></ngbd-code>
+  <ngbxd-code lang="html" [code]="snippets.popup"></ngbxd-code>
 
   <p>
     The popup will be closed with <code>Escape</code> key and when
     a date is selected via keyboard or mouse.
     It can stay open after date selection if you set <code>[autoClose]</code> input to <code>false</code>
   </p>
-</ngbd-overview-section>
+</ngbxd-overview-section>
 
 
 
 <!-- GETTING / SETTING A DATE -->
-<ngbd-overview-section [section]="sections['getting-date']">
+<ngbxd-overview-section [section]="sections['getting-date']">
   <p>
     You have several ways of knowing when user selects a date. The date is selected
     either by clicking on it, pressing <code>Space</code> or <code>Enter</code>,
@@ -91,7 +91,7 @@
     <a routerLink="./" [fragment]="sections['date-model'].fragment">Date Model</a> section for more info.
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.form"></ngbd-code>
+  <ngbxd-code lang="html" [code]="snippets.form"></ngbxd-code>
 
   <p>
     Alternatively you could use the <code>(dateSelect)</code> or <code>(select)</code> outputs.
@@ -99,30 +99,30 @@
     if user clicks on the same date. <code>NgModel</code> will do it only once.
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.selection"></ngbd-code>
-</ngbd-overview-section>
+  <ngbxd-code lang="html" [code]="snippets.selection"></ngbxd-code>
+</ngbxd-overview-section>
 
 
 
 <!-- DATE MODEL-->
-<ngbd-overview-section [section]="sections['date-model']">
+<ngbxd-overview-section [section]="sections['date-model']">
   <p>
-    Datepicker uses <a routerLink="../api" fragment="NgbDateStruct"><code>NgbDateStruct</code></a>
+    Datepicker uses <a routerLink="../api" fragment="NgbxDateStruct"><code>NgbxDateStruct</code></a>
     interface as a model and not the native <code>Date</code> object.
     It's a simple data structure with 3 fields, but note that months start with 1 (as in ISO 8601).
   </p>
 
-  <ngbd-code lang="typescript" [code]="snippets.dateStruct"></ngbd-code>
+  <ngbxd-code lang="typescript" [code]="snippets.dateStruct"></ngbxd-code>
 
   <p>
-    All datepicker APIs will consume <code>NgbDateStruct</code>, but will produce it's implementation
-    class <a routerLink="../api" fragment="NgbDate"><code>NgbDate</code></a> when returning dates to you.
+    All datepicker APIs will consume <code>NgbxDateStruct</code>, but will produce it's implementation
+    class <a routerLink="../api" fragment="NgbxDate"><code>NgbxDate</code></a> when returning dates to you.
     It offers additional methods for easy date comparison, and using it together with
-    <a routerLink="../api" fragment="NgbCalendar"><code>NgbCalendar</code></a> will cover most
+    <a routerLink="../api" fragment="NgbxCalendar"><code>NgbxCalendar</code></a> will cover most
     of the date-related calculations.
   </p>
 
-  <ngbd-code lang="typescript" [code]="snippets.date"></ngbd-code>
+  <ngbxd-code lang="typescript" [code]="snippets.date"></ngbxd-code>
 
   <h4>Adapters</h4>
 
@@ -130,39 +130,39 @@
     You can also tell datepicker to use the native javascript date adapter (bundled with ng-bootstrap) as in the
     <a routerLink="../examples" fragment="adapter">custom date adapter example</a>. For now
     the adapter works only for the form integration, so for instance <code>(ngModelChange)</code>
-    will return a native date object. All other APIs continue to use <code>NgbDateStruct</code>.
+    will return a native date object. All other APIs continue to use <code>NgbxDateStruct</code>.
   </p>
 
-  <ngbd-code lang="typescript" [code]="snippets.nativeAdapter"></ngbd-code>
+  <ngbxd-code lang="typescript" [code]="snippets.nativeAdapter"></ngbxd-code>
 
   <p>
     You can also create your own adapters if necessary by extending and implementing the
-    <code>NgbDateAdapter</code> methods.
+    <code>NgbxDateAdapter</code> methods.
   </p>
 
-  <ngbd-code lang="typescript" [code]="snippets.adapter"></ngbd-code>
+  <ngbxd-code lang="typescript" [code]="snippets.adapter"></ngbxd-code>
 
   <h4>Input date parsing and formatting</h4>
 
   <p>
-    In the case of the <code>NgbInputDatepicker</code> you should be able to parse
+    In the case of the <code>NgbxInputDatepicker</code> you should be able to parse
     and format the text entered in the input. This is not as easy task as it seems,
     because you have to account for various formats and locales.
     For now internally there is a service that does default formatting using ISO 8601 format.
   </p>
 
-  <ngbd-code lang="typescript" [code]="snippets.formatter"></ngbd-code>
+  <ngbxd-code lang="typescript" [code]="snippets.formatter"></ngbxd-code>
 
   <p>
     If the entered input value is invalid, the form model will contain the entered text.
   </p>
 
-</ngbd-overview-section>
+</ngbxd-overview-section>
 
 
 
 <!-- MOVING AROUND-->
-<ngbd-overview-section [section]="sections['navigation']">
+<ngbxd-overview-section [section]="sections['navigation']">
   <p>
     Date selection and navigation are two different things.
     You might have a date selected in January, but August currently displayed.
@@ -180,13 +180,13 @@
     via the <code>[startDate]</code> input or go to any month via the <code>.navigateTo()</code> method
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.navigation"></ngbd-code>
-</ngbd-overview-section>
+  <ngbxd-code lang="html" [code]="snippets.navigation"></ngbxd-code>
+</ngbxd-overview-section>
 
 
 
 <!-- DISABLING/LIMITING DATES-->
-<ngbd-overview-section [section]="sections['limiting-dates']">
+<ngbxd-overview-section [section]="sections['limiting-dates']">
   <p>
     You can limit the dates available for navigation and selection using
     <code>[minDate]</code> and <code>[maxDate]</code> inputs. If you don't specify
@@ -201,14 +201,14 @@
     between months.
   </p>
 
-  <ngbd-code style="position: relative; top: 0.25rem" lang="typescript" [code]="snippets.disablingTS"></ngbd-code>
-  <ngbd-code style="position: relative; bottom: 0.25rem" lang="html" [code]="snippets.disablingHTML"></ngbd-code>
-</ngbd-overview-section>
+  <ngbxd-code style="position: relative; top: 0.25rem" lang="typescript" [code]="snippets.disablingTS"></ngbxd-code>
+  <ngbxd-code style="position: relative; bottom: 0.25rem" lang="html" [code]="snippets.disablingHTML"></ngbxd-code>
+</ngbxd-overview-section>
 
 
 
 <!-- DAY CUSTOMIZATION-->
-<ngbd-overview-section [section]="sections['day-template']">
+<ngbxd-overview-section [section]="sections['day-template']">
   <p>
     You can completely replace how each date is rendered by providing a custom template
     and rendering anything you want inside. You'll get a date context available inside
@@ -220,101 +220,101 @@
     see the <a routerLink="../api" fragment="DayTemplateContext">DayTemplateContext API</a>
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.dayTemplate"></ngbd-code>
+  <ngbxd-code lang="html" [code]="snippets.dayTemplate"></ngbxd-code>
 
-  <ngb-alert class="mt-3" [dismissible]="false">
+  <ngbx-alert class="mt-3" [dismissible]="false">
     Note that before v3.3.0 there is no <code>$implicit</code> template property and you have to specify
     <code>let-date="date"</code> in the template.
     See <a href="https://angular.io/api/common/NgTemplateOutlet#example">$implicit example</a> in Angular documentation.
-  </ngb-alert>
+  </ngbx-alert>
 
-</ngbd-overview-section>
+</ngbxd-overview-section>
 
 
 
 <!-- TODAY'S DATE -->
-<ngbd-overview-section [section]="sections['today']">
+<ngbxd-overview-section [section]="sections['today']">
   <p>
     It is often useful to highlight a today's date in the calendar view or add a certain logic to it. Today's date
-    is the date returned by the <a routerLink="../api" fragment="NgbCalendar">NgbCalendar</a>'s <code>getToday()</code>
+    is the date returned by the <a routerLink="../api" fragment="NgbxCalendar">NgbxCalendar</a>'s <code>getToday()</code>
     method.
   </p>
 
   <p>
-    We add a custom CSS class <code>.ngb-dp-today</code> on a cell that corresponds to the today's date.
+    We add a custom CSS class <code>.ngbx-dp-today</code> on a cell that corresponds to the today's date.
     We do not add any rules to it at the moment, but you can add your own if necessary.
     You would see something like this in the resulting markup
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.todayHTML"></ngbd-code>
+  <ngbxd-code lang="html" [code]="snippets.todayHTML"></ngbxd-code>
 
   <p>
     You can also access this information from the <a routerLink="../api" fragment="DayTemplateContext">DayTemplateContext API</a>
     if you're using a custom day template. It contains a <code>today: boolean</code> flag since v4.1.0
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.todayTemplate"></ngbd-code>
+  <ngbxd-code lang="html" [code]="snippets.todayTemplate"></ngbxd-code>
 
-</ngbd-overview-section>
+</ngbxd-overview-section>
 
 
 <!-- FOOTER TEMPLATE -->
-<ngbd-overview-section [section]="sections['footer-template']">
+<ngbxd-overview-section [section]="sections['footer-template']">
   <p>
     You can insert anything you want in a datepicker footer by providing a template.
   </p>
 
-  <ngbd-code lang="html" [code]="snippets.footerTemplate"></ngbd-code>
-</ngbd-overview-section>
+  <ngbxd-code lang="html" [code]="snippets.footerTemplate"></ngbxd-code>
+</ngbxd-overview-section>
 
 
 
 <!-- RANGE SELECTION -->
-<ngbd-overview-section [section]="sections['range']">
+<ngbxd-overview-section [section]="sections['range']">
   <p>
     The datepicker model is a single date, however you still can implement range selection
     functionality. With <code>(select)</code> and <code>(dateSelect)</code> outputs you'll know
     which dates are being selected and with the <code>[dayTemplate]</code> input
     you can customize the way any particular date looks.
-    If you want to use the <code>NgbDatepickerInput</code>, you can also tell the popup
+    If you want to use the <code>NgbxDatepickerInput</code>, you can also tell the popup
     to stay open by tuning the <code>[autoClose]</code> input.
     Check the <a routerLink="../examples" fragment="range">range selection example</a>
     and the initial demo on this page for more details.
   </p>
 
   <p>
-    If you can't use the <code>NgbDatepickerInput</code> directive, you should
-    create your own popup and use <code>NgbDatepicker</code> inside of it. In this case
+    If you can't use the <code>NgbxDatepickerInput</code> directive, you should
+    create your own popup and use <code>NgbxDatepicker</code> inside of it. In this case
     we'll handle everything related to date selection and navigation for you and you can create
     a completely customized popup with any data model you want.
   </p>
-</ngbd-overview-section>
+</ngbxd-overview-section>
 
 
 
 <!-- I18N -->
-<ngbd-overview-section [section]="sections['i18n']">
+<ngbxd-overview-section [section]="sections['i18n']">
   <p>
     Since the 2.0.0 release datepicker will use the
     <a href="https://angular.io/guide/i18n#setting-up-the-locale-of-your-app">application locale</a>
     if it is present to get translations of weekdays and month names. The internal service that does
-    translation is called <code>NgbDatepickerI18n</code> and you could provide your own implementation
+    translation is called <code>NgbxDatepickerI18n</code> and you could provide your own implementation
     if necessary.
   </p>
 
-  <ngbd-code lang="typescript" [code]="snippets.i18n"></ngbd-code>
+  <ngbxd-code lang="typescript" [code]="snippets.i18n"></ngbxd-code>
 
   <p>
     The next/previous button labels can be translated using the standard Angular i18n
-    mechanism. For example, previous month label is extracted under the <code>ngb.datepicker.previous-month</code>
+    mechanism. For example, previous month label is extracted under the <code>ngbx.datepicker.previous-month</code>
     name.
   </p>
-</ngbd-overview-section>
+</ngbxd-overview-section>
 
 
 
 <!-- Keyboard -->
-<ngbd-overview-section [section]="sections['keyboard-shortcuts']">
+<ngbxd-overview-section [section]="sections['keyboard-shortcuts']">
   <table class="table mt-4">
     <tbody>
       <tr>
@@ -368,4 +368,4 @@
     </tbody>
   </table>
 
-</ngbd-overview-section>
+</ngbxd-overview-section>

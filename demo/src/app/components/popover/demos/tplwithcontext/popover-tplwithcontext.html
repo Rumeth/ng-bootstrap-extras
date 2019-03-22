@@ -6,22 +6,22 @@
 <ng-template #popTitle let-language="language">Greeting in {{language}}</ng-template>
 <button
   type="button" class="btn btn-outline-secondary mr-2"
-  [ngbPopover]="popContent" [popoverTitle]="popTitle"
-  triggers="manual" #p1="ngbPopover" (click)="toggleWithGreeting(p1, 'Bonjour', 'French')"
+  [ngbxPopover]="popContent" [popoverTitle]="popTitle"
+  triggers="manual" #p1="ngbxPopover" (click)="toggleWithGreeting(p1, 'Bonjour', 'French')"
 >
   French
 </button>
 <button
   type="button" class="btn btn-outline-secondary mr-2"
-  [ngbPopover]="popContent" [popoverTitle]="popTitle"
-  triggers="manual" #p2="ngbPopover" (click)="toggleWithGreeting(p2, 'Gutentag', 'German')"
+  [ngbxPopover]="popContent" [popoverTitle]="popTitle"
+  triggers="manual" #p2="ngbxPopover" (click)="toggleWithGreeting(p2, 'Gutentag', 'German')"
 >
   German
 </button>
 <button
   type="button" class="btn btn-outline-secondary mr-2"
-  [ngbPopover]="popContent" [popoverTitle]="popTitle"
-  triggers="manual" #p3="ngbPopover" (click)="toggleWithGreeting(p3, 'Hello', 'English')"
+  [ngbxPopover]="popContent" [popoverTitle]="popTitle"
+  triggers="manual" #p3="ngbxPopover" (click)="toggleWithGreeting(p3, 'Hello', 'English')"
 >
   English
 </button>

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { NgbdDemoList } from '../demo-list';
+import { NgbxdDemoList } from '../demo-list';
 
 @Component({
   template: `
-    <ngbd-widget-demo
+    <ngbxd-widget-demo
       *ngFor="let demo of demos"
       [id]="demo.id"
       [demoTitle]="demo.title"
@@ -14,14 +14,14 @@ import { NgbdDemoList } from '../demo-list';
       [component]="component"
     >
       <ng-template [ngComponentOutlet]="demo.type"></ng-template>
-    </ngbd-widget-demo>
+    </ngbxd-widget-demo>
   `
 })
-export class NgbdExamplesPage {
+export class NgbxdExamplesPage {
   component: string;
   demos = [];
 
-  constructor(route: ActivatedRoute, demoList: NgbdDemoList) {
+  constructor(route: ActivatedRoute, demoList: NgbxdDemoList) {
     // We go up to parent route defining /components/:widget to read the widget name
     // This route is declared in root app.routing.ts.
     const componentName = this.component = route.parent.parent.snapshot.url[1].path;

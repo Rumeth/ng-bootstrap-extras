@@ -1,14 +1,14 @@
 import { Component, Injectable } from '@angular/core';
 import {
-  NgbDateStruct, NgbCalendar, NgbCalendarIslamicUmalqura, NgbDatepickerI18n
-} from '@ng-bootstrap/ng-bootstrap';
+  NgbxDateStruct, NgbxCalendar, NgbxCalendarIslamicUmalqura, NgbxDatepickerI18n
+} from 'ng-bootstrap-extras';
 
 const WEEKDAYS = ['ن', 'ث', 'ر', 'خ', 'ج', 'س', 'ح'];
 const MONTHS = ['محرم', 'صفر', 'ربيع الأول', 'ربيع الآخر', 'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان', 'رمضان', 'شوال',
   'ذو القعدة', 'ذو الحجة'];
 
 @Injectable()
-export class IslamicI18n extends NgbDatepickerI18n {
+export class IslamicI18n extends NgbxDatepickerI18n {
 
   getWeekdayShortName(weekday: number) {
     return WEEKDAYS[weekday - 1];
@@ -22,24 +22,24 @@ export class IslamicI18n extends NgbDatepickerI18n {
     return MONTHS[month - 1];
   }
 
-  getDayAriaLabel(date: NgbDateStruct): string {
+  getDayAriaLabel(date: NgbxDateStruct): string {
     return `${date.day}-${date.month}-${date.year}`;
   }
 }
 
 @Component({
-  selector: 'ngbd-datepicker-islamicumalqura',
+  selector: 'ngbxd-datepicker-islamicumalqura',
   templateUrl: './datepicker-islamicumalqura.html',
   providers: [
-    {provide: NgbCalendar, useClass: NgbCalendarIslamicUmalqura},
-    {provide: NgbDatepickerI18n, useClass: IslamicI18n}
+    {provide: NgbxCalendar, useClass: NgbxCalendarIslamicUmalqura},
+    {provide: NgbxDatepickerI18n, useClass: IslamicI18n}
   ]
 })
-export class NgbdDatepickerIslamicumalqura {
+export class NgbxdDatepickerIslamicumalqura {
 
-  model: NgbDateStruct;
+  model: NgbxDateStruct;
 
-  constructor(private calendar: NgbCalendar) {}
+  constructor(private calendar: NgbxCalendar) {}
 
   selectToday() {
     this.model = this.calendar.getToday();

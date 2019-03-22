@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-popover-tplcontent',
+  selector: 'ngbxd-popover-tplcontent',
   templateUrl: './popover-tplcontent.html'
 })
-export class NgbdPopoverTplcontent {
+export class NgbxdPopoverTplcontent {
   name = 'World';
 }

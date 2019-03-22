@@ -2,47 +2,49 @@ import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NgbxModule } from 'ng-bootstrap-extras';
+
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { NgbdAccordionModule } from './components/accordion/accordion.module';
-import { NgbdAlertModule } from './components/alert/alert.module';
-import { NgbdButtonsModule } from './components/buttons/buttons.module';
-import { NgbdCarouselModule } from './components/carousel/carousel.module';
-import { NgbdCollapseModule } from './components/collapse/collapse.module';
-import { NgbdDatepickerModule } from './components/datepicker/datepicker.module';
-import { NgbdDropdownModule } from './components/dropdown/dropdown.module';
-import { NgbdModalModule } from './components/modal/modal.module';
-import { NgbdPaginationModule } from './components/pagination/pagination.module';
-import { NgbdPopoverModule } from './components/popover/popover.module';
-import { NgbdProgressbarModule } from './components/progressbar/progressbar.module';
-import { NgbdRatingModule } from './components/rating/rating.module';
-import { NgbdTableModule } from './components/table/table.module';
-import { NgbdTabsetModule } from './components/tabset/tabset.module';
-import { NgbdTimepickerModule } from './components/timepicker/timepicker.module';
-import { NgbdTooltipModule } from './components/tooltip/tooltip.module';
-import { NgbdTypeaheadModule } from './components/typeahead/typeahead.module';
+import { NgbxdAccordionModule } from './components/accordion/accordion.module';
+import { NgbxdAlertModule } from './components/alert/alert.module';
+import { NgbxdButtonsModule } from './components/buttons/buttons.module';
+import { NgbxdCarouselModule } from './components/carousel/carousel.module';
+import { NgbxdCollapseModule } from './components/collapse/collapse.module';
+import { NgbxdDatepickerModule } from './components/datepicker/datepicker.module';
+import { NgbxdDropdownModule } from './components/dropdown/dropdown.module';
+import { NgbxdModalModule } from './components/modal/modal.module';
+import { NgbxdPaginationModule } from './components/pagination/pagination.module';
+import { NgbxdPopoverModule } from './components/popover/popover.module';
+import { NgbxdProgressbarModule } from './components/progressbar/progressbar.module';
+import { NgbxdRatingModule } from './components/rating/rating.module';
+import { NgbxdTableModule } from './components/table/table.module';
+import { NgbxdTabsetModule } from './components/tabset/tabset.module';
+import { NgbxdTimepickerModule } from './components/timepicker/timepicker.module';
+import { NgbxdTooltipModule } from './components/tooltip/tooltip.module';
+import { NgbxdTypeaheadModule } from './components/typeahead/typeahead.module';
 import { DefaultComponent } from './default';
 import { GettingStarted } from './getting-started';
-import { NgbdSharedModule } from './shared';
+import { NgbxdSharedModule } from './shared';
 
 const DEMOS = [
-  NgbdAccordionModule,
-  NgbdAlertModule,
-  NgbdButtonsModule,
-  NgbdCarouselModule,
-  NgbdCollapseModule,
-  NgbdDatepickerModule,
-  NgbdDropdownModule,
-  NgbdModalModule,
-  NgbdPaginationModule,
-  NgbdPopoverModule,
-  NgbdProgressbarModule,
-  NgbdRatingModule,
-  NgbdTableModule,
-  NgbdTabsetModule,
-  NgbdTimepickerModule,
-  NgbdTooltipModule,
-  NgbdTypeaheadModule
+  NgbxdAccordionModule,
+  NgbxdAlertModule,
+  NgbxdButtonsModule,
+  NgbxdCarouselModule,
+  NgbxdCollapseModule,
+  NgbxdDatepickerModule,
+  NgbxdDropdownModule,
+  NgbxdModalModule,
+  NgbxdPaginationModule,
+  NgbxdPopoverModule,
+  NgbxdProgressbarModule,
+  NgbxdRatingModule,
+  NgbxdTableModule,
+  NgbxdTabsetModule,
+  NgbxdTimepickerModule,
+  NgbxdTooltipModule,
+  NgbxdTypeaheadModule
 ];
 
 @NgModule({
@@ -55,10 +57,11 @@ const DEMOS = [
     BrowserModule,
     routing,
     NgbModule,
-    NgbdSharedModule,
+    NgbxModule,
+    NgbxdSharedModule,
     ...DEMOS
   ],
   bootstrap: [AppComponent]
 })
-export class NgbdModule {
+export class NgbxdModule {
 }

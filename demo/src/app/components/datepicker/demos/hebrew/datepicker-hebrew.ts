@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
 import {
-  NgbCalendar,
-  NgbCalendarHebrew, NgbDate,
-  NgbDatepickerI18n,
-  NgbDatepickerI18nHebrew,
-  NgbDateStruct
-} from '@ng-bootstrap/ng-bootstrap';
+  NgbxCalendar,
+  NgbxCalendarHebrew, NgbxDate,
+  NgbxDatepickerI18n,
+  NgbxDatepickerI18nHebrew,
+  NgbxDateStruct
+} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-datepicker-hebrew',
+  selector: 'ngbxd-datepicker-hebrew',
   templateUrl: './datepicker-hebrew.html',
   styles: [`
     .hebrew-day {
@@ -35,21 +35,21 @@ import {
     }
   `],
   providers: [
-    {provide: NgbCalendar, useClass: NgbCalendarHebrew},
-    {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nHebrew}
+    {provide: NgbxCalendar, useClass: NgbxCalendarHebrew},
+    {provide: NgbxDatepickerI18n, useClass: NgbxDatepickerI18nHebrew}
   ]
 })
-export class NgbdDatepickerHebrew {
+export class NgbxdDatepickerHebrew {
 
-  model: NgbDateStruct;
+  model: NgbxDateStruct;
 
-  constructor(private calendar: NgbCalendar, public i18n: NgbDatepickerI18n) {
+  constructor(private calendar: NgbxCalendar, public i18n: NgbxDatepickerI18n) {
     this.dayTemplateData = this.dayTemplateData.bind(this);
   }
 
-  dayTemplateData(date: NgbDate) {
+  dayTemplateData(date: NgbxDate) {
     return {
-      gregorian: (this.calendar as NgbCalendarHebrew).toGregorian(date)
+      gregorian: (this.calendar as NgbxCalendarHebrew).toGregorian(date)
     };
   }
 

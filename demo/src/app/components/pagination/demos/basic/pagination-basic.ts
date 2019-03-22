@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-pagination-basic',
+  selector: 'ngbxd-pagination-basic',
   templateUrl: './pagination-basic.html'
 })
-export class NgbdPaginationBasic {
+export class NgbxdPaginationBasic {
   page = 4;
 }

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-accordion-toggle',
+  selector: 'ngbxd-accordion-toggle',
   templateUrl: './accordion-toggle.html'
 })
-export class NgbdAccordionToggle {
+export class NgbxdAccordionToggle {
 }

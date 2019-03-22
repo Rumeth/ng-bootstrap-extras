@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-progressbar-height',
+  selector: 'ngbxd-progressbar-height',
   templateUrl: './progressbar-height.html',
   styles: [`
-    ngb-progressbar {
+    ngbx-progressbar {
       margin-top: 5rem;
     }
   `]
 })
-export class NgbdProgressbarHeight {
+export class NgbxdProgressbarHeight {
   height = '20px';
 }

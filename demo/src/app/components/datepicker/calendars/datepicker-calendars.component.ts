@@ -1,69 +1,69 @@
 import { Component } from '@angular/core';
-import { NgbdDatepickerHebrew } from '../demos/hebrew/datepicker-hebrew';
-import { NgbdDatepickerIslamiccivil } from '../demos/islamiccivil/datepicker-islamiccivil';
-import { NgbdDatepickerIslamicumalqura } from '../demos/islamicumalqura/datepicker-islamicumalqura';
-import { NgbdDatepickerJalali } from '../demos/jalali/datepicker-jalali';
-import { NgbdExamplesPage } from '../../shared/examples-page/examples.component';
+import { NgbxdDatepickerHebrew } from '../demos/hebrew/datepicker-hebrew';
+import { NgbxdDatepickerIslamiccivil } from '../demos/islamiccivil/datepicker-islamiccivil';
+import { NgbxdDatepickerIslamicumalqura } from '../demos/islamicumalqura/datepicker-islamicumalqura';
+import { NgbxdDatepickerJalali } from '../demos/jalali/datepicker-jalali';
+import { NgbxdExamplesPage } from '../../shared/examples-page/examples.component';
 
 export const DEMO_CALENDAR_DIRECTIVES = [
-  NgbdDatepickerHebrew,
-  NgbdDatepickerJalali,
-  NgbdDatepickerIslamiccivil,
-  NgbdDatepickerIslamicumalqura,
+  NgbxdDatepickerHebrew,
+  NgbxdDatepickerJalali,
+  NgbxdDatepickerIslamiccivil,
+  NgbxdDatepickerIslamicumalqura,
 ];
 
 const DEMOS = [
   {
     id: 'hebrew',
     title: 'Hebrew',
-    type: NgbdDatepickerHebrew,
+    type: NgbxdDatepickerHebrew,
     code: require('!!raw-loader!./../demos/hebrew/datepicker-hebrew'),
     markup: require('!!raw-loader!./../demos/hebrew/datepicker-hebrew.html')
   },
   {
     id: 'jalali',
     title: 'Jalali',
-    type: NgbdDatepickerJalali,
+    type: NgbxdDatepickerJalali,
     code: require('!!raw-loader!./../demos/jalali/datepicker-jalali'),
     markup: require('!!raw-loader!./../demos/jalali/datepicker-jalali.html')
   },
   {
     id: 'islamiccivil',
     title: 'Islamic Civil',
-    type: NgbdDatepickerIslamiccivil,
+    type: NgbxdDatepickerIslamiccivil,
     code: require('!!raw-loader!./../demos/islamiccivil/datepicker-islamiccivil'),
     markup: require('!!raw-loader!./../demos/islamiccivil/datepicker-islamiccivil.html')
   },
   {
     id: 'islamicumalqura',
     title: 'Islamic Umm al-Qura',
-    type: NgbdDatepickerIslamicumalqura,
+    type: NgbxdDatepickerIslamicumalqura,
     code: require('!!raw-loader!./../demos/islamicumalqura/datepicker-islamicumalqura'),
     markup: require('!!raw-loader!./../demos/islamicumalqura/datepicker-islamicumalqura.html')
   }
 ];
 
 @Component({
-  selector: 'ngbd-datepicker-calendars',
+  selector: 'ngbxd-datepicker-calendars',
   template: `
     <p>
-      Datepicker relies on <code>NgbCalendar</code> abstract class for calendar-related calculations.
-      Default implementation is the <code>NgbCalendarGregorian</code>, but can be any
+      Datepicker relies on <code>NgbxCalendar</code> abstract class for calendar-related calculations.
+      Default implementation is the <code>NgbxCalendarGregorian</code>, but can be any
       calendar that has notion of days, months and years.
     </p>
 
     <p>For instance, other calendar implementations available are:</p>
     <ul class="list-unstyled ml-4">
-      <li><code>NgbCalendarHebrew</code> + <code>NgbDatepickerI18nHebrew</code></li>
-      <li><code>NgbCalendarPersian</code></li>
-      <li><code>NgbCalendarIslamicCivil</code></li>
-      <li><code>NgbCalendarIslamicUmalqura</code></li>
+      <li><code>NgbxCalendarHebrew</code> + <code>NgbxDatepickerI18nHebrew</code></li>
+      <li><code>NgbxCalendarPersian</code></li>
+      <li><code>NgbxCalendarIslamicCivil</code></li>
+      <li><code>NgbxCalendarIslamicUmalqura</code></li>
     </ul>
 
-    <ngb-alert [dismissible]="false">
+    <ngbx-alert [dismissible]="false">
       Please note that calendar support is experimental!
       We're not calendar experts and any community help is very much appreciated.
-    </ngb-alert>
+    </ngbx-alert>
 
     <p>
       To use any of them, simply provide a different calendar implementation.
@@ -71,7 +71,7 @@ const DEMOS = [
       to override the way day/week/year numerals and weekday/month names are displayed.
     </p>
 
-    <ngbd-code lang="typescript" [code]="snippets.calendars"></ngbd-code>
+    <ngbxd-code lang="typescript" [code]="snippets.calendars"></ngbxd-code>
 
     <br>
 
@@ -79,7 +79,7 @@ const DEMOS = [
 
     <br>
 
-    <ngbd-widget-demo *ngFor="let demo of demos"
+    <ngbxd-widget-demo *ngFor="let demo of demos"
       [id]="demo.id"
       [demoTitle]="demo.title"
       [code]="demo.code"
@@ -87,18 +87,18 @@ const DEMOS = [
       component="datepicker"
     >
       <ng-template [ngComponentOutlet]="demo.type"></ng-template>
-    </ngbd-widget-demo>
+    </ngbxd-widget-demo>
   `
 })
-export class NgbdDatepickerCalendarsComponent extends NgbdExamplesPage {
+export class NgbxdDatepickerCalendarsComponent extends NgbxdExamplesPage {
 
   demos = DEMOS;
 
   snippets = {
     calendars: `
 providers: [
-  {provide: NgbCalendar, useClass: NgbCalendarHebrew},
-  {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nHebrew}
+  {provide: NgbxCalendar, useClass: NgbxCalendarHebrew},
+  {provide: NgbxDatepickerI18n, useClass: NgbxDatepickerI18nHebrew}
 ]
 `
   };

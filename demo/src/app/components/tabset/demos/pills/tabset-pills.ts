@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tabset-pills',
+  selector: 'ngbxd-tabset-pills',
   templateUrl: './tabset-pills.html'
 })
-export class NgbdTabsetPills { }
+export class NgbxdTabsetPills { }

@@ -12,11 +12,11 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
   'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 @Component({
-  selector: 'ngbd-typeahead-basic',
+  selector: 'ngbxd-typeahead-basic',
   templateUrl: './typeahead-basic.html',
   styles: [`.form-control { width: 300px; }`]
 })
-export class NgbdTypeaheadBasic {
+export class NgbxdTypeaheadBasic {
   public model: any;
 
   search = (text$: Observable<string>) =>

@@ -1,13 +1,13 @@
 import {Component, Injectable} from '@angular/core';
-import {NgbTimeStruct, NgbTimeAdapter} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxTimeStruct, NgbxTimeAdapter} from 'ng-bootstrap-extras';
 
 /**
  * Example of a String Time adapter
  */
 @Injectable()
-export class NgbTimeStringAdapter extends NgbTimeAdapter<string> {
+export class NgbxTimeStringAdapter extends NgbxTimeAdapter<string> {
 
-  fromModel(value: string): NgbTimeStruct {
+  fromModel(value: string): NgbxTimeStruct {
     if (!value) {
       return null;
     }
@@ -19,7 +19,7 @@ export class NgbTimeStringAdapter extends NgbTimeAdapter<string> {
     };
   }
 
-  toModel(time: NgbTimeStruct): string {
+  toModel(time: NgbxTimeStruct): string {
     if (!time) {
       return null;
     }
@@ -32,12 +32,12 @@ export class NgbTimeStringAdapter extends NgbTimeAdapter<string> {
 }
 
 @Component({
-  selector: 'ngbd-timepicker-adapter',
+  selector: 'ngbxd-timepicker-adapter',
   templateUrl: './timepicker-adapter.html',
   // NOTE: For this example we are only providing current component, but probably
   // NOTE: you will want to provide your main App Module
-  providers: [{provide: NgbTimeAdapter, useClass: NgbTimeStringAdapter}]
+  providers: [{provide: NgbxTimeAdapter, useClass: NgbxTimeStringAdapter}]
 })
-export class NgbdTimepickerAdapter {
+export class NgbxdTimepickerAdapter {
   time: '13:30:00';
 }

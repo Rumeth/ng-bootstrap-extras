@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {NgbAccordionConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxAccordionConfig} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-accordion-config',
+  selector: 'ngbxd-accordion-config',
   templateUrl: './accordion-config.html',
-  providers: [NgbAccordionConfig] // add the NgbAccordionConfig to the component providers
+  providers: [NgbxAccordionConfig] // add the NgbxAccordionConfig to the component providers
 })
-export class NgbdAccordionConfig {
-  constructor(config: NgbAccordionConfig) {
+export class NgbxdAccordionConfig {
+  constructor(config: NgbxAccordionConfig) {
     // customize default values of accordions used by this component tree
     config.closeOthers = true;
     config.type = 'info';

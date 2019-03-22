@@ -1,4 +1,4 @@
-<ngbd-page-wrapper pageTitle="Introduction">
+<ngbxd-page-wrapper pageTitle="Introduction">
   <h3>
     Dependencies
   </h3>
@@ -64,16 +64,16 @@
   </h3>
   <p>After installing the above dependencies, install <code>ng-bootstrap</code> via:</p>
 
-  <ngbd-code [code]="codeInstall" lang="bash"></ngbd-code>
+  <ngbxd-code [code]="codeInstall" lang="bash"></ngbxd-code>
 
   <p>Once installed you need to import our main module.</p>
 
-  <ngbd-code [code]="codeRoot" lang="typescript"></ngbd-code>
+  <ngbxd-code [code]="codeRoot" lang="typescript"></ngbxd-code>
 
   <p>Alternatively you could only import modules with components you need, ex. pagination and alert.
     The resulting bundle will be smaller in this case.</p>
 
-  <ngbd-code [code]="codeOther" lang="typescript"></ngbd-code>
+  <ngbxd-code [code]="codeOther" lang="typescript"></ngbxd-code>
   <br>
 
   <h4>
@@ -86,7 +86,7 @@
     In your SystemJS config file, <code>map</code> needs to tell the System loader where to look for <code>ng-bootstrap</code>:
   </p>
 
-  <ngbd-code [code]="codeSystem" lang="typescript"></ngbd-code>
+  <ngbxd-code [code]="codeSystem" lang="typescript"></ngbxd-code>
   <br>
 
   <h3>
@@ -105,7 +105,7 @@
   </p>
   <p>
     So, if you execute `ng xi18n` on your project, you will also find the ng-bootstrap messages to translate in the
-    generated messages file. All our messages are identified by an ID of the form <code>ngb.[widget].[message]</code>
+    generated messages file. All our messages are identified by an ID of the form <code>ngbx.[widget].[message]</code>
   </p>
 
   <h3>
@@ -144,4 +144,4 @@
     Please take a moment to read our
     <a href="https://github.com/ng-bootstrap/ng-bootstrap/blob/master/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a>.
   </p>
-</ngbd-page-wrapper>
+</ngbxd-page-wrapper>

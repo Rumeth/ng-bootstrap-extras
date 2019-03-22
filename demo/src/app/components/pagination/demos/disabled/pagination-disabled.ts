@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxPaginationConfig} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-pagination-disabled',
+  selector: 'ngbxd-pagination-disabled',
   templateUrl: './pagination-disabled.html'
 })
-export class NgbdPaginationDisabled {
+export class NgbxdPaginationDisabled {
   page = 3;
   isDisabled = true;
 

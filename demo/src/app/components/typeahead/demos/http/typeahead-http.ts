@@ -29,12 +29,12 @@ export class WikipediaService {
 }
 
 @Component({
-  selector: 'ngbd-typeahead-http',
+  selector: 'ngbxd-typeahead-http',
   templateUrl: './typeahead-http.html',
   providers: [WikipediaService],
   styles: [`.form-control { width: 300px; display: inline; }`]
 })
-export class NgbdTypeaheadHttp {
+export class NgbxdTypeaheadHttp {
   model: any;
   searching = false;
   searchFailed = false;

@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Analytics } from '../../../shared/analytics/analytics';
 
 @Component({
-  selector: 'ngbd-widget-demo',
+  selector: 'ngbxd-widget-demo',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './demo.component.html'
 })
-export class NgbdWidgetDemoComponent {
+export class NgbxdWidgetDemoComponent {
   @Input() demoTitle: string;
   @Input() component: string;
   @Input() id: string;

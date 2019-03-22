@@ -7,7 +7,7 @@ export const componentsList = [
 ];
 
 @Component({
-  selector: 'ngbd-side-nav',
+  selector: 'ngbxd-side-nav',
   templateUrl: './side-nav.component.html',
 })
 export class SideNavComponent {

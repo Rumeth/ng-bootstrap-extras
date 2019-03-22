@@ -1,35 +1,35 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgbxdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
-import { NgbdDatepickerAdapter } from './demos/adapter/datepicker-adapter';
-import { NgbdDatepickerBasic } from './demos/basic/datepicker-basic';
-import { DEMO_CALENDAR_DIRECTIVES, NgbdDatepickerCalendarsComponent } from './calendars/datepicker-calendars.component';
-import { NgbdDatepickerConfig } from './demos/config/datepicker-config';
-import { NgbdDatepickerCustomday } from './demos/customday/datepicker-customday';
-import { NgbdDatepickerFootertemplate } from './demos/footertemplate/datepicker-footertemplate';
-import { NgbdDatepickerDisabled } from './demos/disabled/datepicker-disabled';
-import { NgbdDatepickerI18n } from './demos/i18n/datepicker-i18n';
-import { NgbdDatepickerMultiple } from './demos/multiple/datepicker-multiple';
-import { NgbdDatepickerPopup } from './demos/popup/datepicker-popup';
-import { NgbdDatepickerRange } from './demos/range/datepicker-range';
-import { NgbdDatepickerOverviewComponent } from './overview/datepicker-overview.component';
-import { NgbdDatepickerOverviewDemoComponent } from './overview/demo/datepicker-overview-demo.component';
+import { NgbxdComponentsSharedModule, NgbxdDemoList } from '../shared';
+import { NgbxdApiPage } from '../shared/api-page/api.component';
+import { NgbxdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgbxdDatepickerAdapter } from './demos/adapter/datepicker-adapter';
+import { NgbxdDatepickerBasic } from './demos/basic/datepicker-basic';
+import { DEMO_CALENDAR_DIRECTIVES, NgbxdDatepickerCalendarsComponent } from './calendars/datepicker-calendars.component';
+import { NgbxdDatepickerConfig } from './demos/config/datepicker-config';
+import { NgbxdDatepickerCustomday } from './demos/customday/datepicker-customday';
+import { NgbxdDatepickerFootertemplate } from './demos/footertemplate/datepicker-footertemplate';
+import { NgbxdDatepickerDisabled } from './demos/disabled/datepicker-disabled';
+import { NgbxdDatepickerI18n } from './demos/i18n/datepicker-i18n';
+import { NgbxdDatepickerMultiple } from './demos/multiple/datepicker-multiple';
+import { NgbxdDatepickerPopup } from './demos/popup/datepicker-popup';
+import { NgbxdDatepickerRange } from './demos/range/datepicker-range';
+import { NgbxdDatepickerOverviewComponent } from './overview/datepicker-overview.component';
+import { NgbxdDatepickerOverviewDemoComponent } from './overview/demo/datepicker-overview-demo.component';
 
 const DEMO_DIRECTIVES = [
-  NgbdDatepickerBasic,
-  NgbdDatepickerPopup,
-  NgbdDatepickerDisabled,
-  NgbdDatepickerI18n,
-  NgbdDatepickerCustomday,
-  NgbdDatepickerFootertemplate,
-  NgbdDatepickerConfig,
-  NgbdDatepickerMultiple,
-  NgbdDatepickerRange,
-  NgbdDatepickerAdapter
+  NgbxdDatepickerBasic,
+  NgbxdDatepickerPopup,
+  NgbxdDatepickerDisabled,
+  NgbxdDatepickerI18n,
+  NgbxdDatepickerCustomday,
+  NgbxdDatepickerFootertemplate,
+  NgbxdDatepickerConfig,
+  NgbxdDatepickerMultiple,
+  NgbxdDatepickerRange,
+  NgbxdDatepickerAdapter
 ];
 
 const OVERVIEW = {
@@ -49,61 +49,61 @@ const OVERVIEW = {
 const DEMOS = {
   basic: {
     title: 'Basic datepicker',
-    type: NgbdDatepickerBasic,
+    type: NgbxdDatepickerBasic,
     code: require('!!raw-loader!./demos/basic/datepicker-basic'),
     markup: require('!!raw-loader!./demos/basic/datepicker-basic.html')
   },
   popup: {
     title: 'Datepicker in a popup',
-    type: NgbdDatepickerPopup,
+    type: NgbxdDatepickerPopup,
     code: require('!!raw-loader!./demos/popup/datepicker-popup'),
     markup: require('!!raw-loader!./demos/popup/datepicker-popup.html')
   },
   multiple: {
     title: 'Multiple months',
-    type: NgbdDatepickerMultiple,
+    type: NgbxdDatepickerMultiple,
     code: require('!!raw-loader!./demos/multiple/datepicker-multiple'),
     markup: require('!!raw-loader!./demos/multiple/datepicker-multiple.html')
   },
   range: {
     title: 'Range selection',
-    type: NgbdDatepickerRange,
+    type: NgbxdDatepickerRange,
     code: require('!!raw-loader!./demos/range/datepicker-range'),
     markup: require('!!raw-loader!./demos/range/datepicker-range.html')
   },
   disabled: {
     title: 'Disabled datepicker',
-    type: NgbdDatepickerDisabled,
+    type: NgbxdDatepickerDisabled,
     code: require('!!raw-loader!./demos/disabled/datepicker-disabled'),
     markup: require('!!raw-loader!./demos/disabled/datepicker-disabled.html')
   },
   adapter: {
     title: 'Custom date adapter',
-    type: NgbdDatepickerAdapter,
+    type: NgbxdDatepickerAdapter,
     code: require('!!raw-loader!./demos/adapter/datepicker-adapter'),
     markup: require('!!raw-loader!./demos/adapter/datepicker-adapter.html')
   },
   i18n: {
     title: 'Internationalization of datepickers',
-    type: NgbdDatepickerI18n,
+    type: NgbxdDatepickerI18n,
     code: require('!!raw-loader!./demos/i18n/datepicker-i18n'),
     markup: require('!!raw-loader!./demos/i18n/datepicker-i18n.html')
   },
   customday: {
     title: 'Custom day view',
-    type: NgbdDatepickerCustomday,
+    type: NgbxdDatepickerCustomday,
     code: require('!!raw-loader!./demos/customday/datepicker-customday'),
     markup: require('!!raw-loader!./demos/customday/datepicker-customday.html')
   },
   footertemplate: {
     title: 'Footer template',
-    type: NgbdDatepickerFootertemplate,
+    type: NgbxdDatepickerFootertemplate,
     code: require('!!raw-loader!./demos/footertemplate/datepicker-footertemplate'),
     markup: require('!!raw-loader!./demos/footertemplate/datepicker-footertemplate.html')
   },
   config: {
     title: 'Global configuration of datepickers',
-    type: NgbdDatepickerConfig,
+    type: NgbxdDatepickerConfig,
     code: require('!!raw-loader!./demos/config/datepicker-config'),
     markup: require('!!raw-loader!./demos/config/datepicker-config.html')
   }
@@ -116,30 +116,30 @@ export const ROUTES = [
     component: ComponentWrapper,
     data: { OVERVIEW },
     children: [
-      { path: 'overview', component: NgbdDatepickerOverviewComponent },
-      { path: 'examples', component: NgbdExamplesPage },
-      { path: 'calendars', component: NgbdDatepickerCalendarsComponent },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'overview', component: NgbxdDatepickerOverviewComponent },
+      { path: 'examples', component: NgbxdExamplesPage },
+      { path: 'calendars', component: NgbxdDatepickerCalendarsComponent },
+      { path: 'api', component: NgbxdApiPage }
     ]
   }
 ];
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
-    NgbdComponentsSharedModule
+    NgbxdSharedModule,
+    NgbxdComponentsSharedModule
   ],
   declarations: [
     ...DEMO_DIRECTIVES,
     ...DEMO_CALENDAR_DIRECTIVES,
-    NgbdDatepickerCalendarsComponent,
-    NgbdDatepickerOverviewComponent,
-    NgbdDatepickerOverviewDemoComponent
+    NgbxdDatepickerCalendarsComponent,
+    NgbxdDatepickerOverviewComponent,
+    NgbxdDatepickerOverviewDemoComponent
   ],
   entryComponents: [...DEMO_DIRECTIVES, ...DEMO_CALENDAR_DIRECTIVES]
 })
-export class NgbdDatepickerModule {
-  constructor(demoList: NgbdDemoList) {
+export class NgbxdDatepickerModule {
+  constructor(demoList: NgbxdDemoList) {
     demoList.register('datepicker', DEMOS, OVERVIEW);
   }
 }

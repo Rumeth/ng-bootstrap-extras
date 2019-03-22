@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxTypeahead} from 'ng-bootstrap-extras';
 import {Observable, Subject, merge} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
 
@@ -13,14 +13,14 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
   'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 @Component({
-  selector: 'ngbd-typeahead-focus',
+  selector: 'ngbxd-typeahead-focus',
   templateUrl: './typeahead-focus.html',
   styles: [`.form-control { width: 300px; }`]
 })
-export class NgbdTypeaheadFocus {
+export class NgbxdTypeaheadFocus {
   model: any;
 
-  @ViewChild('instance') instance: NgbTypeahead;
+  @ViewChild('instance') instance: NgbxTypeahead;
   focus$ = new Subject<string>();
   click$ = new Subject<string>();
 

@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxCalendar, NgbxDateStruct} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-datepicker-disabled',
+  selector: 'ngbxd-datepicker-disabled',
   templateUrl: './datepicker-disabled.html'
 })
-export class NgbdDatepickerDisabled {
+export class NgbxdDatepickerDisabled {
 
-  model: NgbDateStruct;
+  model: NgbxDateStruct;
   disabled = true;
 
-  constructor(calendar: NgbCalendar) {
+  constructor(calendar: NgbxCalendar) {
     this.model = calendar.getToday();
   }
 }

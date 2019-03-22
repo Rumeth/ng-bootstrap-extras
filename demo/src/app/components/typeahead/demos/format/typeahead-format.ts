@@ -12,11 +12,11 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
   'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 @Component({
-  selector: 'ngbd-typeahead-format',
+  selector: 'ngbxd-typeahead-format',
   templateUrl: './typeahead-format.html',
   styles: [`.form-control { width: 300px; }`]
 })
-export class NgbdTypeaheadFormat {
+export class NgbxdTypeaheadFormat {
   public model: any;
 
   formatter = (result: string) => result.toUpperCase();

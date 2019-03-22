@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngbd-accordion-basic',
+  selector: 'ngbxd-accordion-basic',
   templateUrl: './accordion-basic.html'
 })
-export class NgbdAccordionBasic {
+export class NgbxdAccordionBasic {
 }

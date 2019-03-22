@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbxActiveModal, NgbxModal } from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-modal-confirm',
+  selector: 'ngbxd-modal-confirm',
   template: `
   <div class="modal-header">
     <h4 class="modal-title" id="modal-title">Profile deletion</h4>
@@ -22,12 +22,12 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   </div>
   `
 })
-export class NgbdModalConfirm {
-  constructor(public modal: NgbActiveModal) {}
+export class NgbxdModalConfirm {
+  constructor(public modal: NgbxActiveModal) {}
 }
 
 @Component({
-  selector: 'ngbd-modal-confirm-autofocus',
+  selector: 'ngbxd-modal-confirm-autofocus',
   template: `
   <div class="modal-header">
     <h4 class="modal-title" id="modal-title">Profile deletion</h4>
@@ -43,28 +43,28 @@ export class NgbdModalConfirm {
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-    <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+    <button type="button" ngbxAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
   </div>
   `
 })
-export class NgbdModalConfirmAutofocus {
-  constructor(public modal: NgbActiveModal) {}
+export class NgbxdModalConfirmAutofocus {
+  constructor(public modal: NgbxActiveModal) {}
 }
 
 const MODALS = {
-  focusFirst: NgbdModalConfirm,
-  autofocus: NgbdModalConfirmAutofocus
+  focusFirst: NgbxdModalConfirm,
+  autofocus: NgbxdModalConfirmAutofocus
 };
 
 @Component({
-  selector: 'ngbd-modal-focus',
+  selector: 'ngbxd-modal-focus',
   templateUrl: './modal-focus.html'
 })
-export class NgbdModalFocus {
-  withAutofocus = `<button type="button" ngbAutofocus class="btn btn-danger"
+export class NgbxdModalFocus {
+  withAutofocus = `<button type="button" ngbxAutofocus class="btn btn-danger"
       (click)="modal.close('Ok click')">Ok</button>`;
 
-  constructor(private _modalService: NgbModal) {}
+  constructor(private _modalService: NgbxModal) {}
 
   open(name: string) {
     this._modalService.open(MODALS[name]);

@@ -8,7 +8,7 @@ interface Country {
 }
 
 @Component({
-  selector: 'ngbd-table-overview-demo',
+  selector: 'ngbxd-table-overview-demo',
   template: `
     <table class="table table-striped">
       <thead>
@@ -33,7 +33,7 @@ interface Country {
     </table>
   `
 })
-export class NgbdTableOverviewDemo {
+export class NgbxdTableOverviewDemo {
 
   countries: Country[] = [
     {

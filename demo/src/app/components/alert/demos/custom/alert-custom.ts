@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngbd-alert-custom',
+  selector: 'ngbxd-alert-custom',
   templateUrl: './alert-custom.html',
   styles: [`
     :host >>> .alert-custom {
@@ -11,4 +11,4 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class NgbdAlertCustom {}
+export class NgbxdAlertCustom {}

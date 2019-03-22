@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-datepicker-multiple',
+  selector: 'ngbxd-datepicker-multiple',
   templateUrl: './datepicker-multiple.html',
   styles: [`
     select.custom-select {
@@ -10,7 +10,7 @@ import {Component} from '@angular/core';
     }
   `]
 })
-export class NgbdDatepickerMultiple {
+export class NgbxdDatepickerMultiple {
 
   displayMonths = 2;
   navigation = 'select';

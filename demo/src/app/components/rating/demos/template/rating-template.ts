@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-rating-template',
+  selector: 'ngbxd-rating-template',
   templateUrl: './rating-template.html',
   styles: [`
     .star {
@@ -19,6 +19,6 @@ import {Component} from '@angular/core';
     }
   `]
 })
-export class NgbdRatingTemplate {
+export class NgbxdRatingTemplate {
   currentRate = 6;
 }

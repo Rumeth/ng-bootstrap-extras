@@ -1,28 +1,28 @@
 import {Component} from '@angular/core';
 
-import {NgbdDemoList} from '../../shared';
-import {NgbdOverview} from '../../shared/overview';
+import {NgbxdDemoList} from '../../shared';
+import {NgbxdOverview} from '../../shared/overview';
 
 
 @Component({
-  selector: 'ngbd-pagination-overview',
+  selector: 'ngbxd-pagination-overview',
   templateUrl: './pagination-overview.component.html',
   host: {'[class.overview]': 'true'}
 })
-export class NgbdPaginationOverviewComponent {
+export class NgbxdPaginationOverviewComponent {
   NGFOR = `<table>
   <tr *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
     <!-- content here -->
   </tr>
 </table>`;
 
-  NGB_PAGINATION = `<ngb-pagination
+  NGB_PAGINATION = `<ngbx-pagination
   [(page)]="page"
   [pageSize]="pageSize"
-  [collectionSize]="items.length"></ngb-pagination>`;
+  [collectionSize]="items.length"></ngbx-pagination>`;
 
   CUSTOM_CSS = `
-ngb-pagination li {
+ngbx-pagination li {
   &:first-child a {
     span {
       display: none;
@@ -35,19 +35,19 @@ ngb-pagination li {
 `;
 
   CUSTOM_TPL = `
-<ngb-pagination>
-  <ng-template ngbPaginationFirst>First</ng-template>
-  <ng-template ngbPaginationLast>Last</ng-template>
-  <ng-template ngbPaginationPrevious>Prev</ng-template>
-  <ng-template ngbPaginationNext>Next</ng-template>
-  <ng-template ngbPaginationEllipsis>...</ng-template>
-  <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
-</ngb-pagination>
+<ngbx-pagination>
+  <ng-template ngbxPaginationFirst>First</ng-template>
+  <ng-template ngbxPaginationLast>Last</ng-template>
+  <ng-template ngbxPaginationPrevious>Prev</ng-template>
+  <ng-template ngbxPaginationNext>Next</ng-template>
+  <ng-template ngbxPaginationEllipsis>...</ng-template>
+  <ng-template ngbxPaginationNumber let-page>{{ page }}</ng-template>
+</ngbx-pagination>
 `;
 
-  sections: NgbdOverview = {};
+  sections: NgbxdOverview = {};
 
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgbxdDemoList) {
     this.sections = demoList.getOverviewSections('pagination');
   }
 }

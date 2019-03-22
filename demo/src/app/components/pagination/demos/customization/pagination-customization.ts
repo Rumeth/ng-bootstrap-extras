@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-pagination-customization',
+  selector: 'ngbxd-pagination-customization',
   templateUrl: './pagination-customization.html'
 })
-export class NgbdPaginationCustomization {
+export class NgbxdPaginationCustomization {
   page = 4;
 
   getPageSymbol(current: number) {

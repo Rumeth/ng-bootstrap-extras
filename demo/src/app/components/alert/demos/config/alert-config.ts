@@ -1,16 +1,16 @@
 import {Component, Input} from '@angular/core';
-import {NgbAlertConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxAlertConfig} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-alert-config',
+  selector: 'ngbxd-alert-config',
   templateUrl: './alert-config.html',
-  // add NgbAlertConfig  to the component providers
-  providers: [NgbAlertConfig]
+  // add NgbxAlertConfig  to the component providers
+  providers: [NgbxAlertConfig]
 })
-export class NgbdAlertConfig {
+export class NgbxdAlertConfig {
   @Input() public alerts: Array<string> = [];
 
-  constructor(alertConfig: NgbAlertConfig) {
+  constructor(alertConfig: NgbxAlertConfig) {
     // customize default values of alerts used by this component tree
     alertConfig.type = 'success';
     alertConfig.dismissible = false;

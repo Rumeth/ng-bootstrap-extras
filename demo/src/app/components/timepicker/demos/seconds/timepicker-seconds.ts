@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {NgbTimeStruct} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxTimeStruct} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-timepicker-seconds',
+  selector: 'ngbxd-timepicker-seconds',
   templateUrl: './timepicker-seconds.html'
 })
-export class NgbdTimepickerSeconds {
-  time: NgbTimeStruct = {hour: 13, minute: 30, second: 30};
+export class NgbxdTimepickerSeconds {
+  time: NgbxTimeStruct = {hour: 13, minute: 30, second: 30};
   seconds = true;
 
   toggleSeconds() {

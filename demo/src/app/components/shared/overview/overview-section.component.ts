@@ -1,16 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { NgbdOverviewSection } from './overview';
+import { NgbxdOverviewSection } from './overview';
 
 @Component({
-  selector: 'ngbd-overview-section',
+  selector: 'ngbxd-overview-section',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'class': 'd-block'
   },
   template: `
     <h2>
-      <a class="title-fragment" [routerLink]="" [fragment]="section.fragment" ngbdFragment>
+      <a class="title-fragment" [routerLink]="" [fragment]="section.fragment" ngbxdFragment>
         <img src="img/link-symbol.svg" />
       </a>
       {{ section.title }}
@@ -19,6 +19,6 @@ import { NgbdOverviewSection } from './overview';
     <ng-content></ng-content>
   `
 })
-export class NgbdOverviewSectionComponent {
-  @Input() section: NgbdOverviewSection;
+export class NgbxdOverviewSectionComponent {
+  @Input() section: NgbxdOverviewSection;
 }

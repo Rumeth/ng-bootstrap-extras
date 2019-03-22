@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-popover-tplwithcontext',
+  selector: 'ngbxd-popover-tplwithcontext',
   templateUrl: './popover-tplwithcontext.html'
 })
-export class NgbdPopoverTplwithcontext {
+export class NgbxdPopoverTplwithcontext {
   name = 'World';
 
   toggleWithGreeting(popover, greeting: string, language: string) {

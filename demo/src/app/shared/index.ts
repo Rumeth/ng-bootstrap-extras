@@ -3,11 +3,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbxModule } from 'ng-bootstrap-extras';
 
 import { Analytics } from './analytics/analytics';
 import { CodeHighlightService } from './code/code-highlight.service';
-import { NgbdCodeComponent } from './code/code.component';
+import { NgbxdCodeComponent } from './code/code.component';
 import { ComponentWrapper } from './component-wrapper/component-wrapper.component';
 import { PageWrapper } from './page-wrapper/page-wrapper.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -15,15 +15,15 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 export {componentsList} from './side-nav/side-nav.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule],
+  imports: [CommonModule, RouterModule, NgbxModule],
   exports: [
     CommonModule,
     RouterModule,
     ComponentWrapper,
     PageWrapper,
     SideNavComponent,
-    NgbdCodeComponent,
-    NgbModule,
+    NgbxdCodeComponent,
+    NgbxModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -32,9 +32,9 @@ export {componentsList} from './side-nav/side-nav.component';
     ComponentWrapper,
     PageWrapper,
     SideNavComponent,
-    NgbdCodeComponent,
+    NgbxdCodeComponent,
   ],
   providers: [Analytics, CodeHighlightService]
 })
-export class NgbdSharedModule {
+export class NgbxdSharedModule {
 }

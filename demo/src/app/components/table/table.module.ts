@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgbxdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
-import { NgbdTableBasic } from './demos/basic/table-basic';
-import { NgbdSortableHeader as NgbdSortableHeader1, NgbdTableSortable } from './demos/sortable/table-sortable';
-import { NgbdTableFiltering } from './demos/filtering/table-filtering';
-import { NgbdTablePagination } from './demos/pagination/table-pagination';
-import { NgbdTableComplete } from './demos/complete/table-complete';
-import { NgbdSortableHeader as NgbdSortableHeader2 } from './demos/complete/sortable.directive';
-import { NgbdTableOverviewComponent } from './overview/table-overview.component';
-import { NgbdTableOverviewDemo } from './overview/demo/table-overview-demo.component';
+import { NgbxdComponentsSharedModule, NgbxdDemoList } from '../shared';
+import { NgbxdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgbxdTableBasic } from './demos/basic/table-basic';
+import { NgbxdSortableHeader as NgbxdSortableHeader1, NgbxdTableSortable } from './demos/sortable/table-sortable';
+import { NgbxdTableFiltering } from './demos/filtering/table-filtering';
+import { NgbxdTablePagination } from './demos/pagination/table-pagination';
+import { NgbxdTableComplete } from './demos/complete/table-complete';
+import { NgbxdSortableHeader as NgbxdSortableHeader2 } from './demos/complete/sortable.directive';
+import { NgbxdTableOverviewComponent } from './overview/table-overview.component';
+import { NgbxdTableOverviewDemo } from './overview/demo/table-overview-demo.component';
 
 const DEMO_DIRECTIVES = [
-  NgbdTableBasic, NgbdTableSortable, NgbdTableFiltering, NgbdTablePagination, NgbdTableComplete
+  NgbxdTableBasic, NgbxdTableSortable, NgbxdTableFiltering, NgbxdTablePagination, NgbxdTableComplete
 ];
 
 const OVERVIEW = {
@@ -25,31 +25,31 @@ const OVERVIEW = {
 const DEMOS = {
   basic: {
     title: 'Basic table',
-    type: NgbdTableBasic,
+    type: NgbxdTableBasic,
     code: require('!!raw-loader!./demos/basic/table-basic'),
     markup: require('!!raw-loader!./demos/basic/table-basic.html')
   },
   sortable: {
     title: 'Sortable table',
-    type: NgbdTableSortable,
+    type: NgbxdTableSortable,
     code: require('!!raw-loader!./demos/sortable/table-sortable'),
     markup: require('!!raw-loader!./demos/sortable/table-sortable.html')
   },
   filtering: {
     title: 'Search and filtering',
-    type: NgbdTableFiltering,
+    type: NgbxdTableFiltering,
     code: require('!!raw-loader!./demos/filtering/table-filtering'),
     markup: require('!!raw-loader!./demos/filtering/table-filtering.html')
   },
   pagination: {
     title: 'Pagination',
-    type: NgbdTablePagination,
+    type: NgbxdTablePagination,
     code: require('!!raw-loader!./demos/pagination/table-pagination'),
     markup: require('!!raw-loader!./demos/pagination/table-pagination.html')
   },
   complete: {
     title: 'Complete example',
-    type: NgbdTableComplete,
+    type: NgbxdTableComplete,
     code: require('!!raw-loader!./demos/complete/table-complete'),
     markup: require('!!raw-loader!./demos/complete/table-complete.html')
   }
@@ -62,28 +62,28 @@ export const ROUTES = [
     component: ComponentWrapper,
     data: { OVERVIEW },
     children: [
-      { path: 'overview', component: NgbdTableOverviewComponent },
-      { path: 'examples', component: NgbdExamplesPage }
+      { path: 'overview', component: NgbxdTableOverviewComponent },
+      { path: 'examples', component: NgbxdExamplesPage }
     ]
   }
 ];
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
-    NgbdComponentsSharedModule
+    NgbxdSharedModule,
+    NgbxdComponentsSharedModule
   ],
   declarations: [
     DEMO_DIRECTIVES,
-    NgbdSortableHeader1,
-    NgbdSortableHeader2,
-    NgbdTableOverviewComponent,
-    NgbdTableOverviewDemo
+    NgbxdSortableHeader1,
+    NgbxdSortableHeader2,
+    NgbxdTableOverviewComponent,
+    NgbxdTableOverviewDemo
   ],
   entryComponents: DEMO_DIRECTIVES
 })
-export class NgbdTableModule {
-  constructor(demoList: NgbdDemoList) {
+export class NgbxdTableModule {
+  constructor(demoList: NgbxdDemoList) {
     demoList.register('table', DEMOS, OVERVIEW);
   }
 }

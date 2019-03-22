@@ -1,7 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tooltip-customclass',
+  selector: 'ngbxd-tooltip-customclass',
   templateUrl: './tooltip-customclass.html',
   encapsulation: ViewEncapsulation.None,
   styles: [`
@@ -14,5 +14,5 @@ import {Component, ViewEncapsulation} from '@angular/core';
     }
   `]
 })
-export class NgbdTooltipCustomclass {
+export class NgbxdTooltipCustomclass {
 }

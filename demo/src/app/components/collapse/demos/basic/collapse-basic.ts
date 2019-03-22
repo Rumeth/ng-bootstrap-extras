@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngbd-collapse-basic',
+  selector: 'ngbxd-collapse-basic',
   templateUrl: './collapse-basic.html'
 })
-export class NgbdCollapseBasic {
+export class NgbxdCollapseBasic {
   public isCollapsed = false;
 }

@@ -1,15 +1,15 @@
 import {Component} from '@angular/core';
-import {NgbPaginationConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxPaginationConfig} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-pagination-config',
+  selector: 'ngbxd-pagination-config',
   templateUrl: './pagination-config.html',
-  providers: [NgbPaginationConfig] // add NgbPaginationConfig to the component providers
+  providers: [NgbxPaginationConfig] // add NgbxPaginationConfig to the component providers
 })
-export class NgbdPaginationConfig {
+export class NgbxdPaginationConfig {
   page = 4;
 
-  constructor(config: NgbPaginationConfig) {
+  constructor(config: NgbxPaginationConfig) {
     // customize default values of paginations used by this component tree
     config.size = 'sm';
     config.boundaryLinks = true;

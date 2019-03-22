@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxDateStruct, NgbxCalendar} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-datepicker-basic',
+  selector: 'ngbxd-datepicker-basic',
   templateUrl: './datepicker-basic.html'
 })
-export class NgbdDatepickerBasic {
+export class NgbxdDatepickerBasic {
 
-  model: NgbDateStruct;
+  model: NgbxDateStruct;
   date: {year: number, month: number};
 
-  constructor(private calendar: NgbCalendar) {
+  constructor(private calendar: NgbxCalendar) {
   }
 
   selectToday() {

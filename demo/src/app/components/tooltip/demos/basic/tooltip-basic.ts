@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tooltip-basic',
+  selector: 'ngbxd-tooltip-basic',
   templateUrl: './tooltip-basic.html'
 })
-export class NgbdTooltipBasic {
+export class NgbxdTooltipBasic {
 }

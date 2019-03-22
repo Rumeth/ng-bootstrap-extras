@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({
-  selector: 'ngbd-timepicker-validation',
+  selector: 'ngbxd-timepicker-validation',
   templateUrl: './timepicker-validation.html'
 })
-export class NgbdTimepickerValidation {
+export class NgbxdTimepickerValidation {
 
   ctrl = new FormControl('', (control: FormControl) => {
     const value = control.value;

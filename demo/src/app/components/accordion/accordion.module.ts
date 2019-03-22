@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgbxdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
-import { NgbdAccordionBasic } from './demos/basic/accordion-basic';
-import { NgbdAccordionConfig } from './demos/config/accordion-config';
-import { NgbdAccordionPreventchange } from './demos/preventchange/accordion-preventchange';
-import { NgbdAccordionStatic } from './demos/static/accordion-static';
-import { NgbdAccordionToggle } from './demos/toggle/accordion-toggle';
-import { NgbdAccordionHeader } from './demos/header/accordion-header';
+import { NgbxdComponentsSharedModule, NgbxdDemoList } from '../shared';
+import { NgbxdApiPage } from '../shared/api-page/api.component';
+import { NgbxdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgbxdAccordionBasic } from './demos/basic/accordion-basic';
+import { NgbxdAccordionConfig } from './demos/config/accordion-config';
+import { NgbxdAccordionPreventchange } from './demos/preventchange/accordion-preventchange';
+import { NgbxdAccordionStatic } from './demos/static/accordion-static';
+import { NgbxdAccordionToggle } from './demos/toggle/accordion-toggle';
+import { NgbxdAccordionHeader } from './demos/header/accordion-header';
 
 const DEMO_DIRECTIVES = [
-  NgbdAccordionBasic, NgbdAccordionPreventchange, NgbdAccordionStatic, NgbdAccordionToggle, NgbdAccordionConfig, NgbdAccordionHeader
+  NgbxdAccordionBasic, NgbxdAccordionPreventchange, NgbxdAccordionStatic, NgbxdAccordionToggle, NgbxdAccordionConfig, NgbxdAccordionHeader
 ];
 
 const DEMOS = {
@@ -21,37 +21,37 @@ const DEMOS = {
     title: 'Accordion',
     code: require('!raw-loader!./demos/basic/accordion-basic'),
     markup: require('!raw-loader!./demos/basic/accordion-basic.html'),
-    type: NgbdAccordionBasic
+    type: NgbxdAccordionBasic
   },
   static: {
     title: 'One open panel at a time',
     code: require('!!raw-loader!./demos/static/accordion-static'),
     markup: require('!!raw-loader!./demos/static/accordion-static.html'),
-    type: NgbdAccordionStatic
+    type: NgbxdAccordionStatic
   },
   toggle: {
     title: 'Toggle panels',
     code: require('!!raw-loader!./demos/toggle/accordion-toggle'),
     markup: require('!!raw-loader!./demos/toggle/accordion-toggle.html'),
-    type: NgbdAccordionToggle
+    type: NgbxdAccordionToggle
   },
   header: {
     title: 'Custom header',
     code: require('!!raw-loader!./demos/header/accordion-header'),
     markup: require('!!raw-loader!./demos/header/accordion-header.html'),
-    type: NgbdAccordionHeader
+    type: NgbxdAccordionHeader
   },
   preventchange: {
     title: 'Prevent panel toggle',
     code: require('!!raw-loader!./demos/preventchange/accordion-preventchange'),
     markup: require('!!raw-loader!./demos/preventchange/accordion-preventchange.html'),
-    type: NgbdAccordionPreventchange
+    type: NgbxdAccordionPreventchange
   },
   config: {
     title: 'Global configuration of accordions',
     code: require('!!raw-loader!./demos/config/accordion-config'),
     markup: require('!!raw-loader!./demos/config/accordion-config.html'),
-    type: NgbdAccordionConfig
+    type: NgbxdAccordionConfig
   }
 };
 
@@ -60,19 +60,19 @@ export const ROUTES = [
   { path: '',
     component: ComponentWrapper,
     children: [
-      { path: 'examples', component: NgbdExamplesPage },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'examples', component: NgbxdExamplesPage },
+      { path: 'api', component: NgbxdApiPage }
     ]
   }
 ];
 
 @NgModule({
-  imports: [NgbdSharedModule, NgbdComponentsSharedModule],
+  imports: [NgbxdSharedModule, NgbxdComponentsSharedModule],
   declarations: DEMO_DIRECTIVES,
   entryComponents: DEMO_DIRECTIVES
 })
-export class NgbdAccordionModule {
-  constructor(demoList: NgbdDemoList) {
+export class NgbxdAccordionModule {
+  constructor(demoList: NgbxdDemoList) {
     demoList.register('accordion', DEMOS);
   }
 }

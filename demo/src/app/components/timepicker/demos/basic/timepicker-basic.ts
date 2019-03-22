@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-timepicker-basic',
+  selector: 'ngbxd-timepicker-basic',
   templateUrl: './timepicker-basic.html'
 })
-export class NgbdTimepickerBasic {
+export class NgbxdTimepickerBasic {
   time = {hour: 13, minute: 30};
 }

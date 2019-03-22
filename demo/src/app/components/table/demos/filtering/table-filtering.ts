@@ -49,11 +49,11 @@ function search(text: string, pipe: PipeTransform): Country[] {
 }
 
 @Component({
-  selector: 'ngbd-table-filtering',
+  selector: 'ngbxd-table-filtering',
   templateUrl: './table-filtering.html',
   providers: [DecimalPipe]
 })
-export class NgbdTableFiltering {
+export class NgbxdTableFiltering {
 
   countries$: Observable<Country[]>;
   filter = new FormControl('');

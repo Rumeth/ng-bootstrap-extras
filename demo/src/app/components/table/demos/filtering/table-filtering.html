@@ -1,4 +1,4 @@
-<p>You can do filter table data, in this case with observables and our <code>NgbHighlight</code> component used in Typeahead</p>
+<p>You can do filter table data, in this case with observables and our <code>NgbxHighlight</code> component used in Typeahead</p>
 
 <form>
   <div class="form-group form-inline">
@@ -20,10 +20,10 @@
     <th scope="row">{{ i + 1 }}</th>
     <td>
       <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
-      <ngb-highlight [result]="country.name" [term]="filter.value"></ngb-highlight>
+      <ngbx-highlight [result]="country.name" [term]="filter.value"></ngbx-highlight>
     </td>
-    <td><ngb-highlight [result]="country.area | number" [term]="filter.value"></ngb-highlight></td>
-    <td><ngb-highlight [result]="country.population | number" [term]="filter.value"></ngb-highlight></td>
+    <td><ngbx-highlight [result]="country.area | number" [term]="filter.value"></ngbx-highlight></td>
+    <td><ngbx-highlight [result]="country.population | number" [term]="filter.value"></ngbx-highlight></td>
   </tr>
   </tbody>
 </table>

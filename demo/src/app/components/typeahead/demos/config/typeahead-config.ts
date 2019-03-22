@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
-import {NgbTypeaheadConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxTypeaheadConfig} from 'ng-bootstrap-extras';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
@@ -13,15 +13,15 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
   'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 @Component({
-  selector: 'ngbd-typeahead-config',
+  selector: 'ngbxd-typeahead-config',
   templateUrl: './typeahead-config.html',
   styles: [`.form-control { width: 300px; }`],
-  providers: [NgbTypeaheadConfig] // add NgbTypeaheadConfig to the component providers
+  providers: [NgbxTypeaheadConfig] // add NgbxTypeaheadConfig to the component providers
 })
-export class NgbdTypeaheadConfig {
+export class NgbxdTypeaheadConfig {
   public model: any;
 
-  constructor(config: NgbTypeaheadConfig) {
+  constructor(config: NgbxTypeaheadConfig) {
     // customize default values of typeaheads used by this component tree
     config.showHint = true;
   }

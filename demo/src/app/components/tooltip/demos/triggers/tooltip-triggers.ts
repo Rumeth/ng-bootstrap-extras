@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tooltip-triggers',
+  selector: 'ngbxd-tooltip-triggers',
   templateUrl: './tooltip-triggers.html'
 })
-export class NgbdTooltipTriggers {
+export class NgbxdTooltipTriggers {
 }

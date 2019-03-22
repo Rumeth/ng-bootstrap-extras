@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-popover-basic',
+  selector: 'ngbxd-popover-basic',
   templateUrl: './popover-basic.html'
 })
-export class NgbdPopoverBasic {
+export class NgbxdPopoverBasic {
 }

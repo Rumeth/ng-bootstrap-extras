@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 
 
 @Component({
-  selector: 'ngbd-tooltip-autoclose',
+  selector: 'ngbxd-tooltip-autoclose',
   templateUrl: './tooltip-autoclose.html'
 })
-export class NgbdTooltipAutoclose {}
+export class NgbxdTooltipAutoclose {}

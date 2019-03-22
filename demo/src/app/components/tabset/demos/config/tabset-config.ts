@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {NgbTabsetConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxTabsetConfig} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-tabset-config',
+  selector: 'ngbxd-tabset-config',
   templateUrl: './tabset-config.html',
-  providers: [NgbTabsetConfig] // add NgbTabsetConfig to the component providers
+  providers: [NgbxTabsetConfig] // add NgbxTabsetConfig to the component providers
 })
-export class NgbdTabsetConfig {
-  constructor(config: NgbTabsetConfig) {
+export class NgbxdTabsetConfig {
+  constructor(config: NgbxTabsetConfig) {
     // customize default values of tabsets used by this component tree
     config.justify = 'center';
     config.type = 'pills';

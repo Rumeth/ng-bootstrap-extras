@@ -35,10 +35,10 @@ const COUNTRIES: Country[] = [
 ];
 
 @Component({
-  selector: 'ngbd-table-basic',
+  selector: 'ngbxd-table-basic',
   templateUrl: './table-basic.html'
 })
-export class NgbdTableBasic {
+export class NgbxdTableBasic {
 
   countries = COUNTRIES;
 }

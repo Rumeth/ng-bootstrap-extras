@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-dropdown-split',
+  selector: 'ngbxd-dropdown-split',
   templateUrl: './dropdown-split.html'
 })
-export class NgbdDropdownSplit {
+export class NgbxdDropdownSplit {
 }

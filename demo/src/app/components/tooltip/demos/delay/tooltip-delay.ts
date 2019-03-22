@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tooltip-delay',
+  selector: 'ngbxd-tooltip-delay',
   templateUrl: './tooltip-delay.html'
 })
-export class NgbdTooltipDelay {
+export class NgbxdTooltipDelay {
 }

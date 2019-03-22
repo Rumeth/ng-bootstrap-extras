@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-popover-delay',
+  selector: 'ngbxd-popover-delay',
   templateUrl: './popover-delay.html'
 })
-export class NgbdPopoverDelay {
+export class NgbxdPopoverDelay {
 }

@@ -7,7 +7,7 @@ import { componentsList } from './shared';
 import { Analytics } from './shared/analytics/analytics';
 
 @Component({
-  selector: 'ngbd-app',
+  selector: 'ngbxd-app',
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {

@@ -1,40 +1,40 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
-import { NgbdApiDocs, NgbdApiDocsBadge, NgbdApiDocsClass, NgbdApiDocsConfig } from './api-docs';
-import { NgbdApiPage } from './api-page/api.component';
-import { NgbdWidgetDemoComponent } from './examples-page/demo.component';
-import { NgbdExamplesPage } from './examples-page/examples.component';
-import { NgbdFragment } from './fragment';
-import { NgbdOverviewDirective, NgbdOverviewSectionComponent } from './overview';
+import { NgbxdSharedModule } from '../../shared';
+import { NgbxdApiDocs, NgbxdApiDocsBadge, NgbxdApiDocsClass, NgbxdApiDocsConfig } from './api-docs';
+import { NgbxdApiPage } from './api-page/api.component';
+import { NgbxdWidgetDemoComponent } from './examples-page/demo.component';
+import { NgbxdExamplesPage } from './examples-page/examples.component';
+import { NgbxdFragment } from './fragment';
+import { NgbxdOverviewDirective, NgbxdOverviewSectionComponent } from './overview';
 
 export * from './demo-list';
 
 @NgModule({
-  imports: [NgbdSharedModule],
+  imports: [NgbxdSharedModule],
   declarations: [
-    NgbdApiDocsBadge,
-    NgbdApiDocs,
-    NgbdApiDocsClass,
-    NgbdApiDocsConfig,
-    NgbdFragment,
-    NgbdOverviewDirective,
-    NgbdOverviewSectionComponent,
-    NgbdExamplesPage,
-    NgbdApiPage,
-    NgbdWidgetDemoComponent
+    NgbxdApiDocsBadge,
+    NgbxdApiDocs,
+    NgbxdApiDocsClass,
+    NgbxdApiDocsConfig,
+    NgbxdFragment,
+    NgbxdOverviewDirective,
+    NgbxdOverviewSectionComponent,
+    NgbxdExamplesPage,
+    NgbxdApiPage,
+    NgbxdWidgetDemoComponent
   ],
   exports: [
-    NgbdApiDocsBadge,
-    NgbdApiDocs,
-    NgbdApiDocsClass,
-    NgbdApiDocsConfig,
-    NgbdFragment,
-    NgbdOverviewDirective,
-    NgbdOverviewSectionComponent,
-    NgbdExamplesPage,
-    NgbdApiPage,
-    NgbdWidgetDemoComponent
+    NgbxdApiDocsBadge,
+    NgbxdApiDocs,
+    NgbxdApiDocsClass,
+    NgbxdApiDocsConfig,
+    NgbxdFragment,
+    NgbxdOverviewDirective,
+    NgbxdOverviewSectionComponent,
+    NgbxdExamplesPage,
+    NgbxdApiPage,
+    NgbxdWidgetDemoComponent
   ]
 })
-export class NgbdComponentsSharedModule {}
+export class NgbxdComponentsSharedModule {}

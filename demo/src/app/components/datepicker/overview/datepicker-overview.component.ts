@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { NgbdDemoList } from '../../shared';
-import { NgbdOverview } from '../../shared/overview';
+import { NgbxdDemoList } from '../../shared';
+import { NgbxdOverview } from '../../shared/overview';
 
 @Component({
-  selector: 'ngbd-datepicker-overview',
+  selector: 'ngbxd-datepicker-overview',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './datepicker-overview.component.html',
   host: {
@@ -12,79 +12,79 @@ import { NgbdOverview } from '../../shared/overview';
   }
 })
 
-export class NgbdDatepickerOverviewComponent {
+export class NgbxdDatepickerOverviewComponent {
 
   snippets = {
     basic: `
 <!-- 1. inline datepicker -->
-<ngb-datepicker #d></ngb-datepicker>
+<ngbx-datepicker #d></ngbx-datepicker>
 
 <!-- 2. datepicker in the popup -->
-<input type="text" ngbDatepicker #d="ngbDatepicker"/>
+<input type="text" ngbxDatepicker #d="ngbxDatepicker"/>
 `,
     popup: `
-<input type="text" ngbDatepicker #d="ngbDatepicker"/>
+<input type="text" ngbxDatepicker #d="ngbxDatepicker"/>
 <button (click)="d.toggle()">Toggle</button>
 `,
     form: `
-<input type="text" ngbDatepicker [(ngModel)]="date"/>
+<input type="text" ngbxDatepicker [(ngModel)]="date"/>
 `,
     selection: `
 <!-- inline -->
-<ngb-datepicker (select)="onDateSelect($event)"></ngb-datepicker>
+<ngbx-datepicker (select)="onDateSelect($event)"></ngbx-datepicker>
 
 <!-- in the popup -->
-<input type="text" ngbDatepicker (dateSelect)="onDateSelect($event)"/>
+<input type="text" ngbxDatepicker (dateSelect)="onDateSelect($event)"/>
 `,
     navigation: `
-<ngb-datepicker #d [startDate]="{year: 1789, month: 7}"></ngb-datepicker>
+<ngbx-datepicker #d [startDate]="{year: 1789, month: 7}"></ngbx-datepicker>
 <button (click)="d.navigateTo({year: 2048, month: 1})">Goto JAN 2048</button>
 `,
     dateStruct: `
-const date: NgbDateStruct = { year: 1789, month: 7, day: 14 }; // July, 14 1789
+const date: NgbxDateStruct = { year: 1789, month: 7, day: 14 }; // July, 14 1789
 `,
 date: `
-const date: NgbDate = new NgbDate(1789, 7, 14);                // July, 14 1789
+const date: NgbxDate = new NgbxDate(1789, 7, 14);                // July, 14 1789
 
 date.before({ year: 1789, month: 7, day: 14 });                // compare to a structure
-date.equals(NgbDate.from({ year: 1789, month: 7, day: 14 }));  // or to another date object
+date.equals(NgbxDate.from({ year: 1789, month: 7, day: 14 }));  // or to another date object
 `,
     nativeAdapter: `
 // native adapter is bundled with library
-providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
+providers: [{provide: NgbxDateAdapter, useClass: NgbxDateNativeAdapter}]
 
 // or another native adapter that works with UTC dates
-providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeUTCAdapter}]
+providers: [{provide: NgbxDateAdapter, useClass: NgbxDateNativeUTCAdapter}]
 `,
     adapter: `
 @Injectable()
-export abstract class NgbDateAdapter<D> {
-  abstract fromModel(value: D): NgbDateStruct; // from your model -> internal model
-  abstract toModel(date: NgbDateStruct): D; // from internal model -> your mode
+export abstract class NgbxDateAdapter<D> {
+  abstract fromModel(value: D): NgbxDateStruct; // from your model -> internal model
+  abstract toModel(date: NgbxDateStruct): D; // from internal model -> your mode
 }
 
 // create your own if necessary
-providers: [{provide: NgbDateAdapter, useClass: YourOwnDateAdapter}]
+providers: [{provide: NgbxDateAdapter, useClass: YourOwnDateAdapter}]
 `,
     formatter: `
 @Injectable()
-export abstract class NgbDateParserFormatter {
-  abstract parse(value: string): NgbDateStruct; // from input -> internal model
-  abstract format(date: NgbDateStruct): string; // from internal model -> string
+export abstract class NgbxDateParserFormatter {
+  abstract parse(value: string): NgbxDateStruct; // from input -> internal model
+  abstract format(date: NgbxDateStruct): string; // from internal model -> string
 }
 
 // create your own if necessary
-providers: [{provide: NgbDateParserFormatter, useClass: YourOwnParserFormatter}]
+providers: [{provide: NgbxDateParserFormatter, useClass: YourOwnParserFormatter}]
 `,
     dayTemplate: `
 <ng-template #t let-date>
 	{{ date.day }}
 </ng-template>
 
-<ngbDatepicker [dayTemplate]=“t”/>
+<ngbxDatepicker [dayTemplate]=“t”/>
 `,
     todayHTML: `
-<div class="ngb-dp-day ngb-dp-today">
+<div class="ngbx-dp-day ngbx-dp-today">
   <!-- day cell content omitted -->
 </div>
 `,
@@ -93,42 +93,42 @@ providers: [{provide: NgbDateParserFormatter, useClass: YourOwnParserFormatter}]
   <span *ngIf="today">...</span>
 </ng-template>
 
-<ngbDatepicker [dayTemplate]=“t”/>
+<ngbxDatepicker [dayTemplate]=“t”/>
 `,
     footerTemplate: `
 <ng-template #t>
   <button (click)="model = today">Today</button>
 </ng-template>
 
-<ngbDatepicker [footerTemplate]=“t”/>
+<ngbxDatepicker [footerTemplate]=“t”/>
 `,
   disablingTS: `
 // disable the 13th of each month
-const isDisabled = (date: NgbDate, current: {month: number}) => date.day === 13;
+const isDisabled = (date: NgbxDate, current: {month: number}) => date.day === 13;
 `,
   disablingHTML: `
-<ngb-datepicker [minDate]="{year: 2010, month: 1, day: 1}"
+<ngbx-datepicker [minDate]="{year: 2010, month: 1, day: 1}"
                 [maxDate]="{year: 2048, month: 12, day: 31}"
                 [markDisabled]="isDisabled">
-</ngb-datepicker>
+</ngbx-datepicker>
 `,
   i18n: `
 @Injectable()
-export abstract class NgbDatepickerI18n {
+export abstract class NgbxDatepickerI18n {
   abstract getWeekdayShortName(weekday: number): string;
   abstract getMonthShortName(month: number): string;
   abstract getMonthFullName(month: number): string;
-  abstract getDayAriaLabel(date: NgbDateStruct): string;
+  abstract getDayAriaLabel(date: NgbxDateStruct): string;
 }
 
 // provide your own if necessary
-providers: [{provide: NgbDatepickerI18n, useClass: YourOwnDatepickerI18n}]
+providers: [{provide: NgbxDatepickerI18n, useClass: YourOwnDatepickerI18n}]
 `
   };
 
-  sections: NgbdOverview = {};
+  sections: NgbxdOverview = {};
 
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgbxdDemoList) {
     this.sections = demoList.getOverviewSections('datepicker');
   }
 }

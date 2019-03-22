@@ -1,46 +1,46 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgbxdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
-import { NgbdAlertBasic } from './demos/basic/alert-basic';
-import { NgbdAlertCloseable } from './demos/closeable/alert-closeable';
-import { NgbdAlertConfig } from './demos/config/alert-config';
-import { NgbdAlertCustom } from './demos/custom/alert-custom';
-import { NgbdAlertSelfclosing } from './demos/selfclosing/alert-selfclosing';
+import { NgbxdComponentsSharedModule, NgbxdDemoList } from '../shared';
+import { NgbxdApiPage } from '../shared/api-page/api.component';
+import { NgbxdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgbxdAlertBasic } from './demos/basic/alert-basic';
+import { NgbxdAlertCloseable } from './demos/closeable/alert-closeable';
+import { NgbxdAlertConfig } from './demos/config/alert-config';
+import { NgbxdAlertCustom } from './demos/custom/alert-custom';
+import { NgbxdAlertSelfclosing } from './demos/selfclosing/alert-selfclosing';
 
-const DEMO_DIRECTIVES = [NgbdAlertBasic, NgbdAlertCloseable, NgbdAlertSelfclosing, NgbdAlertCustom, NgbdAlertConfig];
+const DEMO_DIRECTIVES = [NgbxdAlertBasic, NgbxdAlertCloseable, NgbxdAlertSelfclosing, NgbxdAlertCustom, NgbxdAlertConfig];
 
 const DEMOS = {
   basic: {
     title: 'Basic Alert',
-    type: NgbdAlertBasic,
+    type: NgbxdAlertBasic,
     code: require('!!raw-loader!./demos/basic/alert-basic'),
     markup: require('!!raw-loader!./demos/basic/alert-basic.html')
   },
   closeable: {
     title: 'Closable Alert',
-    type: NgbdAlertCloseable,
+    type: NgbxdAlertCloseable,
     code: require('!!raw-loader!./demos/closeable/alert-closeable'),
     markup: require('!!raw-loader!./demos/closeable/alert-closeable.html')
   },
   selfclosing: {
     title: 'Self closing alert',
-    type: NgbdAlertSelfclosing,
+    type: NgbxdAlertSelfclosing,
     code: require('!!raw-loader!./demos/selfclosing/alert-selfclosing'),
     markup: require('!!raw-loader!./demos/selfclosing/alert-selfclosing.html')
   },
   custom: {
     title: 'Custom alert',
-    type: NgbdAlertCustom,
+    type: NgbxdAlertCustom,
     code: require('!!raw-loader!./demos/custom/alert-custom'),
     markup: require('!!raw-loader!./demos/custom/alert-custom.html')
   },
   config: {
     title: 'Global configuration of alerts',
-    type: NgbdAlertConfig,
+    type: NgbxdAlertConfig,
     code: require('!!raw-loader!./demos/config/alert-config'),
     markup: require('!!raw-loader!./demos/config/alert-config.html')
   }
@@ -51,19 +51,19 @@ export const ROUTES = [
   { path: '',
     component: ComponentWrapper,
     children: [
-      { path: 'examples', component: NgbdExamplesPage },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'examples', component: NgbxdExamplesPage },
+      { path: 'api', component: NgbxdApiPage }
     ]
   }
 ];
 
 @NgModule({
-  imports: [NgbdSharedModule, NgbdComponentsSharedModule ],
+  imports: [NgbxdSharedModule, NgbxdComponentsSharedModule ],
   declarations: DEMO_DIRECTIVES,
   entryComponents: DEMO_DIRECTIVES
 })
-export class NgbdAlertModule {
-  constructor(demoList: NgbdDemoList) {
+export class NgbxdAlertModule {
+  constructor(demoList: NgbxdDemoList) {
     demoList.register('alert', DEMOS);
   }
 }

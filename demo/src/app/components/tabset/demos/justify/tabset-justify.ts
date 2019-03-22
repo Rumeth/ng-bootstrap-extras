@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tabset-justify',
+  selector: 'ngbxd-tabset-justify',
   templateUrl: './tabset-justify.html'
 })
-export class NgbdTabsetJustify {
+export class NgbxdTabsetJustify {
   currentJustify = 'start';
  }

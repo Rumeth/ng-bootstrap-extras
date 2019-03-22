@@ -14,10 +14,10 @@ In this simple example, a search is done no matter the content of the input:
   type="text"
   class="form-control"
   [(ngModel)]="model"
-  [ngbTypeahead]="search"
+  [ngbxTypeahead]="search"
   (focus)="focus$.next($event.target.value)"
   (click)="click$.next($event.target.value)"
-  #instance="ngbTypeahead"
+  #instance="ngbxTypeahead"
 />
 <hr>
 <pre>Model: {{ model | json }}</pre>

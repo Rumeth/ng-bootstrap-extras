@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbxActiveModal, NgbxModal } from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-modal-content',
+  selector: 'ngbxd-modal-content',
   template: `
     <div class="modal-header">
       <h4 class="modal-title">Hi there!</h4>
@@ -18,21 +18,21 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </div>
   `
 })
-export class NgbdModalContent {
+export class NgbxdModalContent {
   @Input() name;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbxActiveModal) {}
 }
 
 @Component({
-  selector: 'ngbd-modal-component',
+  selector: 'ngbxd-modal-component',
   templateUrl: './modal-component.html'
 })
-export class NgbdModalComponent {
-  constructor(private modalService: NgbModal) {}
+export class NgbxdModalComponent {
+  constructor(private modalService: NgbxModal) {}
 
   open() {
-    const modalRef = this.modalService.open(NgbdModalContent);
+    const modalRef = this.modalService.open(NgbxdModalContent);
     modalRef.componentInstance.name = 'World';
   }
 }

@@ -56,7 +56,7 @@ export interface SortEvent {
     '(click)': 'rotate()'
   }
 })
-export class NgbdSortableHeader {
+export class NgbxdSortableHeader {
 
   @Input() sortable: string;
   @Input() direction: SortDirection = '';
@@ -69,14 +69,14 @@ export class NgbdSortableHeader {
 }
 
 @Component({
-  selector: 'ngbd-table-sortable',
+  selector: 'ngbxd-table-sortable',
   templateUrl: './table-sortable.html'
 })
-export class NgbdTableSortable {
+export class NgbxdTableSortable {
 
   countries = COUNTRIES;
 
-  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
+  @ViewChildren(NgbxdSortableHeader) headers: QueryList<NgbxdSortableHeader>;
 
   onSort({column, direction}: SortEvent) {
 

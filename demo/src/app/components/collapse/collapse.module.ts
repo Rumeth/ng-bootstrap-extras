@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 
-import { NgbdSharedModule } from '../../shared';
+import { NgbxdSharedModule } from '../../shared';
 import { ComponentWrapper } from '../../shared/component-wrapper/component-wrapper.component';
-import { NgbdComponentsSharedModule, NgbdDemoList } from '../shared';
-import { NgbdApiPage } from '../shared/api-page/api.component';
-import { NgbdExamplesPage } from '../shared/examples-page/examples.component';
-import { NgbdCollapseBasic } from './demos/basic/collapse-basic';
+import { NgbxdComponentsSharedModule, NgbxdDemoList } from '../shared';
+import { NgbxdApiPage } from '../shared/api-page/api.component';
+import { NgbxdExamplesPage } from '../shared/examples-page/examples.component';
+import { NgbxdCollapseBasic } from './demos/basic/collapse-basic';
 
-const DEMO_DIRECTIVES = [NgbdCollapseBasic];
+const DEMO_DIRECTIVES = [NgbxdCollapseBasic];
 
 const DEMOS = {
   basic: {
     title: 'Collapse',
-    type: NgbdCollapseBasic,
+    type: NgbxdCollapseBasic,
     code: require('!!raw-loader!./demos/basic/collapse-basic'),
     markup: require('!!raw-loader!./demos/basic/collapse-basic.html')
   }
@@ -23,19 +23,19 @@ export const ROUTES = [
   { path: '',
     component: ComponentWrapper,
     children: [
-      { path: 'examples', component: NgbdExamplesPage },
-      { path: 'api', component: NgbdApiPage }
+      { path: 'examples', component: NgbxdExamplesPage },
+      { path: 'api', component: NgbxdApiPage }
     ]
   }
 ];
 
 @NgModule({
-  imports: [NgbdSharedModule, NgbdComponentsSharedModule ],
+  imports: [NgbxdSharedModule, NgbxdComponentsSharedModule ],
   declarations: DEMO_DIRECTIVES,
   entryComponents: DEMO_DIRECTIVES
 })
-export class NgbdCollapseModule {
-  constructor(demoList: NgbdDemoList) {
+export class NgbxdCollapseModule {
+  constructor(demoList: NgbxdDemoList) {
     demoList.register('collapse', DEMOS);
   }
 }

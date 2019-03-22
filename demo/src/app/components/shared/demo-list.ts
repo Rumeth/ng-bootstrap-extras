@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
 
-export interface NgbdDemoConfig {
+export interface NgbxdDemoConfig {
   title: string;
   code: string;
   markup: string;
   type: any;
 }
 
-export interface NgbdDemoListConfig {
-  [demo: string]: NgbdDemoConfig;
+export interface NgbxdDemoListConfig {
+  [demo: string]: NgbxdDemoConfig;
 }
 
-export interface NgbdDemoOverviewConfig {
+export interface NgbxdDemoOverviewConfig {
   [anchor: string]: string;
 }
 
 @Injectable({providedIn: 'root'})
-export class NgbdDemoList {
+export class NgbxdDemoList {
   private _demos: {
-    [widget: string]: NgbdDemoListConfig
+    [widget: string]: NgbxdDemoListConfig
   } = {};
 
   private _overviews: {
-    [widget: string]: NgbdDemoOverviewConfig
+    [widget: string]: NgbxdDemoOverviewConfig
   } = {};
 
 
-  register(widget: string, list: NgbdDemoListConfig, overview?: NgbdDemoOverviewConfig) {
+  register(widget: string, list: NgbxdDemoListConfig, overview?: NgbxdDemoOverviewConfig) {
     this._demos[widget] = list;
     if (overview) {
       this._overviews[widget] = overview;

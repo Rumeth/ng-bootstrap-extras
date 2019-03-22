@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tooltip-tplwithcontext',
+  selector: 'ngbxd-tooltip-tplwithcontext',
   templateUrl: './tooltip-tplwithcontext.html'
 })
-export class NgbdTooltipTplwithcontext {
+export class NgbxdTooltipTplwithcontext {
   name = 'World';
 
   toggleWithGreeting(tooltip, greeting: string) {

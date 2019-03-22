@@ -59,11 +59,11 @@ const statesWithFlags: {name: string, flag: string}[] = [
 ];
 
 @Component({
-  selector: 'ngbd-typeahead-template',
+  selector: 'ngbxd-typeahead-template',
   templateUrl: './typeahead-template.html',
   styles: [`.form-control { width: 300px; }`]
 })
-export class NgbdTypeaheadTemplate {
+export class NgbxdTypeaheadTemplate {
   public model: any;
 
   search = (text$: Observable<string>) =>

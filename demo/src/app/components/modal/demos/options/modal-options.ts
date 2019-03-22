@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbxModal } from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-modal-options',
+  selector: 'ngbxd-modal-options',
   templateUrl: './modal-options.html',
   encapsulation: ViewEncapsulation.None,
   styles: [`
@@ -18,10 +18,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
     }
   `]
 })
-export class NgbdModalOptions {
+export class NgbxdModalOptions {
   closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbxModal) {}
 
   openBackDropCustomClass(content) {
     this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});

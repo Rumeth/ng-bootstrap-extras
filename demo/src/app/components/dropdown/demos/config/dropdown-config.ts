@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxDropdownConfig} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-dropdown-config',
+  selector: 'ngbxd-dropdown-config',
   templateUrl: './dropdown-config.html',
-  providers: [NgbDropdownConfig] // add NgbDropdownConfig to the component providers
+  providers: [NgbxDropdownConfig] // add NgbxDropdownConfig to the component providers
 })
-export class NgbdDropdownConfig {
-  constructor(config: NgbDropdownConfig) {
+export class NgbxdDropdownConfig {
+  constructor(config: NgbxDropdownConfig) {
     // customize default values of dropdowns used by this component tree
     config.placement = 'top-left';
     config.autoClose = false;

@@ -7,14 +7,14 @@ declare const ga: any;
 
 /**
  * Simple Google Analytics service. Note that all its methods don't do anything unless the app
- * is deployed on ng-bootstrap.github.io. This avoids sending events and page views during development.
+ * is deployed on ng-bootstrap-extras.github.io. This avoids sending events and page views during development.
  */
 @Injectable()
 export class Analytics {
   private _enabled: boolean;
 
   constructor(private _location: Location, private _router: Router) {
-    this._enabled = window.location.href.indexOf('ng-bootstrap.github.io') >= 0;
+    this._enabled = window.location.href.indexOf('ng-bootstrap-extras.github.io') >= 0;
   }
 
   /**

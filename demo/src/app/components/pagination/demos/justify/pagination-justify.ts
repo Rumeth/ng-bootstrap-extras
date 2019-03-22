@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-pagination-justify',
+  selector: 'ngbxd-pagination-justify',
   templateUrl: './pagination-justify.html'
 })
-export class NgbdPaginationJustify {
+export class NgbxdPaginationJustify {
   page = 4;
 }

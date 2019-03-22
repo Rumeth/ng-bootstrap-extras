@@ -2,8 +2,8 @@ import { Component, NgZone } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-import { NgbdApiPage } from '../../components/shared/api-page/api.component';
-import { NgbdExamplesPage } from '../../components/shared/examples-page/examples.component';
+import { NgbxdApiPage } from '../../components/shared/api-page/api.component';
+import { NgbxdExamplesPage } from '../../components/shared/examples-page/examples.component';
 
 
 @Component({
@@ -58,14 +58,14 @@ export class ComponentWrapper {
       }));
     };
     this.tableOfContent = [];
-    if (component instanceof NgbdExamplesPage) {
+    if (component instanceof NgbxdExamplesPage) {
       this.tableOfContent = component.demos.map(demo => {
         return {
           fragment: demo.id,
           title: demo.title
         };
       });
-    } else if (component instanceof NgbdApiPage) {
+    } else if (component instanceof NgbxdApiPage) {
       let toc = [
         ...getLinks(component.components)
       ];

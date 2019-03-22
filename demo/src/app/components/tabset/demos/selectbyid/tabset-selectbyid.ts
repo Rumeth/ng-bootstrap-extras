@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tabset-selectbyid',
+  selector: 'ngbxd-tabset-selectbyid',
   templateUrl: './tabset-selectbyid.html'
 })
-export class NgbdTabsetSelectbyid {
+export class NgbxdTabsetSelectbyid {
 }

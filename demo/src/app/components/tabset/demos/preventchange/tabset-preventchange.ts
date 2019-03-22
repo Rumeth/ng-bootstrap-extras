@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxTabChangeEvent} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-tabset-preventchange',
+  selector: 'ngbxd-tabset-preventchange',
   templateUrl: './tabset-preventchange.html'
 })
-export class NgbdTabsetPreventchange {
-    public beforeChange($event: NgbTabChangeEvent) {
+export class NgbxdTabsetPreventchange {
+    public beforeChange($event: NgbxTabChangeEvent) {
       if ($event.nextId === 'tab-preventchange2') {
         $event.preventDefault();
       }

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-tooltip-tplcontent',
+  selector: 'ngbxd-tooltip-tplcontent',
   templateUrl: './tooltip-tplcontent.html'
 })
-export class NgbdTooltipTplcontent {
+export class NgbxdTooltipTplcontent {
   name = 'World';
 }

@@ -201,7 +201,7 @@ div.api-doc-component, .overview {
     }
   }
 
-  section, ngbd-overview-section {
+  section, ngbxd-overview-section {
     margin-top: 3rem;
     h4 {
       margin-top: 2rem;
@@ -292,9 +292,9 @@ div.component-demo {
   font-size: 80%;
 }
 
-ngbd-api-docs,
-ngbd-api-docs-class,
-ngbd-api-docs-config {
+ngbxd-api-docs,
+ngbxd-api-docs-class,
+ngbxd-api-docs-config {
   display: block;
 
   &:not(:first-child) {
@@ -316,38 +316,38 @@ span.token.tag {
 }
 
 // Right-To-Left layout for the Islamic Calendars
-ngb-datepicker.rtl {
+ngbx-datepicker.rtl {
   direction: rtl;
 }
 
-ngb-datepicker.rtl ngb-datepicker-navigation-select select.custom-select {
+ngbx-datepicker.rtl ngbx-datepicker-navigation-select select.custom-select {
   background-position: left 0.25rem center;
 }
 
-ngb-datepicker.rtl .ngb-dp-arrow.right .ngb-dp-navigation-chevron {
+ngbx-datepicker.rtl .ngbx-dp-arrow.right .ngbx-dp-navigation-chevron {
   transform: rotate(-135deg);
   margin: 0 0 0 0.25rem;
 }
 
-ngb-datepicker.rtl .ngb-dp-navigation-chevron {
+ngbx-datepicker.rtl .ngbx-dp-navigation-chevron {
   transform: rotate(45deg);
   margin: 0 0.25rem 0 0;
 }
 
-ngb-datepicker.hebrew {
+ngbx-datepicker.hebrew {
 
-  .ngb-dp-day {
+  .ngbx-dp-day {
     width: 2.75rem;
     height: 2.75rem;
     line-height: 1rem;
   }
 
-  .ngb-dp-weekday {
+  .ngbx-dp-weekday {
     width: 2.75rem;
   }
 }
 
-ngb-carousel {
+ngbx-carousel {
   .carousel-item img {
     width: 100%;
   }

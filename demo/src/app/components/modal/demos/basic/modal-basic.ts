@@ -1,15 +1,15 @@
 import {Component} from '@angular/core';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxModal, ModalDismissReasons} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-modal-basic',
+  selector: 'ngbxd-modal-basic',
   templateUrl: './modal-basic.html'
 })
-export class NgbdModalBasic {
+export class NgbxdModalBasic {
   closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbxModal) {}
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

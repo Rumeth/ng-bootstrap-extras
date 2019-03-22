@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {NgbPanelChangeEvent} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxPanelChangeEvent} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-accordion-preventchange',
+  selector: 'ngbxd-accordion-preventchange',
   templateUrl: './accordion-preventchange.html',
 })
-export class NgbdAccordionPreventchange {
-  public beforeChange($event: NgbPanelChangeEvent) {
+export class NgbxdAccordionPreventchange {
+  public beforeChange($event: NgbxPanelChangeEvent) {
 
     if ($event.panelId === 'preventchange-2') {
       $event.preventDefault();

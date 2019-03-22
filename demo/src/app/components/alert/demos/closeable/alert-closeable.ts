@@ -33,10 +33,10 @@ const ALERTS: Alert[] = [{
 ];
 
 @Component({
-  selector: 'ngbd-alert-closeable',
+  selector: 'ngbxd-alert-closeable',
   templateUrl: './alert-closeable.html'
 })
-export class NgbdAlertCloseable {
+export class NgbxdAlertCloseable {
 
   alerts: Alert[];
 

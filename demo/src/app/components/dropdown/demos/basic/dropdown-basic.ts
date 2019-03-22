@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-dropdown-basic',
+  selector: 'ngbxd-dropdown-basic',
   templateUrl: './dropdown-basic.html'
 })
-export class NgbdDropdownBasic {
+export class NgbxdDropdownBasic {
 }

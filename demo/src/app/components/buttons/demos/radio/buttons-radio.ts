@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-buttons-radio',
+  selector: 'ngbxd-buttons-radio',
   templateUrl: './buttons-radio.html'
 })
-export class NgbdButtonsRadio {
+export class NgbxdButtonsRadio {
   model = 1;
 }

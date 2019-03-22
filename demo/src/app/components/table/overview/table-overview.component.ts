@@ -2,24 +2,24 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { environment } from '../../../../environments/environment';
 
-import { NgbdDemoList } from '../../shared';
-import { NgbdOverview } from '../../shared/overview';
+import { NgbxdDemoList } from '../../shared';
+import { NgbxdOverview } from '../../shared/overview';
 
 @Component({
-  selector: 'ngbd-table-overview',
+  selector: 'ngbxd-table-overview',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './table-overview.component.html',
   host: {
     '[class.overview]': 'true'
   }
 })
-export class NgbdTableOverviewComponent {
+export class NgbxdTableOverviewComponent {
 
   bootstrapVersion = environment.bootstrap;
 
-  sections: NgbdOverview = {};
+  sections: NgbxdOverview = {};
 
-  constructor(demoList: NgbdDemoList) {
+  constructor(demoList: NgbxdDemoList) {
     this.sections = demoList.getOverviewSections('table');
   }
 }

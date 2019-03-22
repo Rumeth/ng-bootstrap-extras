@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxProgressbarConfig} from 'ng-bootstrap-extras';
 
 @Component({
-  selector: 'ngbd-progressbar-config',
+  selector: 'ngbxd-progressbar-config',
   templateUrl: './progressbar-config.html',
-  providers: [NgbProgressbarConfig] // add the NgbProgressbarConfig to the component providers
+  providers: [NgbxProgressbarConfig] // add the NgbxProgressbarConfig to the component providers
 })
-export class NgbdProgressbarConfig {
-  constructor(config: NgbProgressbarConfig) {
+export class NgbxdProgressbarConfig {
+  constructor(config: NgbxProgressbarConfig) {
     // customize default values of progress bars used by this component tree
     config.max = 1000;
     config.striped = true;

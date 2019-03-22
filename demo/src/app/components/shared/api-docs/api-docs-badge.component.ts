@@ -10,7 +10,7 @@ const BADGES = {
 };
 
 @Component({
-  selector: 'ngbd-api-docs-badge',
+  selector: 'ngbxd-api-docs-badge',
   template: `
     <h5>
       <span *ngIf="deprecated" class="badge badge-secondary" >Deprecated {{ deprecated.version }}</span>&ngsp;
@@ -20,7 +20,7 @@ const BADGES = {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgbdApiDocsBadge {
+export class NgbxdApiDocsBadge {
 
   badgeClass;
   text;

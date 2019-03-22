@@ -34,12 +34,12 @@ export function getApis(component) {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ngbd-api-docs *ngFor="let component of components" [directive]="component"></ngbd-api-docs>
-    <ngbd-api-docs-class *ngFor="let klass of classes" [type]="klass"></ngbd-api-docs-class>
-    <ngbd-api-docs-config *ngFor="let config of configs" [type]="config"></ngbd-api-docs-config>
+    <ngbxd-api-docs *ngFor="let component of components" [directive]="component"></ngbxd-api-docs>
+    <ngbxd-api-docs-class *ngFor="let klass of classes" [type]="klass"></ngbxd-api-docs-class>
+    <ngbxd-api-docs-config *ngFor="let config of configs" [type]="config"></ngbxd-api-docs-config>
   `
 })
-export class NgbdApiPage {
+export class NgbxdApiPage {
   classes: string[];
   components: string[];
   configs: string[];
