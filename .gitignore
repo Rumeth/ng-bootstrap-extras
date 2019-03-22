@@ -17,4 +17,4 @@ demo/src/public/**/stackblitz.html
 local.docs.json
 yarn-error.log
 .ng_pkg_build
-src/ng-bootstrap.metadata.json
+src/ng-bootstrap-extras.metadata.json

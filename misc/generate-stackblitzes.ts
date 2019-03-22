@@ -6,7 +6,7 @@ import * as he from 'he';
 const stackblitzUrl = 'https://run.stackblitz.com/api/angular/v1/';
 
 const packageJson = JSON.parse(fs.readFileSync('package.json').toString());
-const ngBootstrap = JSON.parse(fs.readFileSync('src/package.json').toString()).version;
+const ngBootstrapExtras = JSON.parse(fs.readFileSync('src/package.json').toString()).version;
 const versions = getVersions();
 
 function capitalize(string) {
@@ -112,6 +112,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbxModule } from 'ng-bootstrap-extras';
 import { AppComponent } from './app.component';
 import { ${demoImports} } from '${demoImport}';
 
@@ -138,6 +139,7 @@ function generateDependencies() {
     '@angular/router': versions.angular,
     '@angular/forms': versions.angular,
     '@ng-bootstrap/ng-bootstrap': versions.ngBootstrap,
+    'ng-bootstrap-extras': versions.ngBootstrapExtras,
     'core-js': versions.coreJs,
     'rxjs': versions.rxjs,
     'zone.js': versions.zoneJs,
@@ -148,7 +150,9 @@ function getVersions() {
   return {
     angular: getVersion('@angular/core'),
     typescript: getVersion('typescript'),
-    rxjs: getVersion('rxjs'), ngBootstrap,
+    rxjs: getVersion('rxjs'),
+    ngBootstrap: getVersion('@ng-bootstrap/ng-bootstrap'),
+    ngBootstrapExtras,
     zoneJs: getVersion('zone.js'),
     coreJs: getVersion('core-js'),
     reflectMetadata: getVersion(
