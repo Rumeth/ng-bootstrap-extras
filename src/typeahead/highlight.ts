@@ -6,7 +6,7 @@ import {regExpEscape, toString} from '../util/util';
  * result
  */
 @Component({
-  selector: 'ngb-highlight',
+  selector: 'ngbx-highlight',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `<ng-template ngFor [ngForOf]="parts" let-part let-isOdd="odd">` +
@@ -14,13 +14,13 @@ import {regExpEscape, toString} from '../util/util';
       `</ng-template>`,  // template needs to be formatted in a certain way so we don't add empty text nodes
   styleUrls: ['./highlight.scss']
 })
-export class NgbHighlight implements OnChanges {
+export class NgbxHighlight implements OnChanges {
   parts: string[];
 
   /**
    * The CSS class of the span elements wrapping the term inside the result
    */
-  @Input() highlightClass = 'ngb-highlight';
+  @Input() highlightClass = 'ngbx-highlight';
 
   /**
    * The result text to display. If the term is found inside this text, it's highlighted

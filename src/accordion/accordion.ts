@@ -16,16 +16,16 @@ import {
 
 import {isString} from '../util/util';
 
-import {NgbAccordionConfig} from './accordion-config';
+import {NgbxAccordionConfig} from './accordion-config';
 
 let nextId = 0;
 
 /**
- * A context for the `NgbPanelHeader` template
+ * A context for the `NgbxPanelHeader` template
  *
  * @since 4.1.0
  */
-export interface NgbPanelHeaderContext {
+export interface NgbxPanelHeaderContext {
   /**
    * True if current panel is opened
    */
@@ -34,12 +34,12 @@ export interface NgbPanelHeaderContext {
 
 /**
  * A directive to put on a button that toggles panel opening and closing.
- * To be used inside the `NgbPanelHeader`
+ * To be used inside the `NgbxPanelHeader`
  *
  * @since 4.1.0
  */
 @Directive({
-  selector: 'button[ngbPanelToggle]',
+  selector: 'button[ngbxPanelToggle]',
   host: {
     'type': 'button',
     '[disabled]': 'panel.disabled',
@@ -49,51 +49,51 @@ export interface NgbPanelHeaderContext {
     '(click)': 'accordion.toggle(panel.id)'
   }
 })
-export class NgbPanelToggle {
+export class NgbxPanelToggle {
   @Input()
-  set ngbPanelToggle(panel: NgbPanel) {
+  set ngbxPanelToggle(panel: NgbxPanel) {
     if (panel) {
       this.panel = panel;
     }
   }
 
   constructor(
-      @Inject(forwardRef(() => NgbAccordion)) public accordion: NgbAccordion,
-      @Optional() @Host() @Inject(forwardRef(() => NgbPanel)) public panel: NgbPanel) {}
+      @Inject(forwardRef(() => NgbxAccordion)) public accordion: NgbxAccordion,
+      @Optional() @Host() @Inject(forwardRef(() => NgbxPanel)) public panel: NgbxPanel) {}
 }
 
 /**
- * A directive to wrap an accordion panel header to contain any HTML markup and a toggling button with `NgbPanelToggle`
+ * A directive to wrap an accordion panel header to contain any HTML markup and a toggling button with `NgbxPanelToggle`
  *
  * @since 4.1.0
  */
-@Directive({selector: 'ng-template[ngbPanelHeader]'})
-export class NgbPanelHeader {
+@Directive({selector: 'ng-template[ngbxPanelHeader]'})
+export class NgbxPanelHeader {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
 /**
  * This directive should be used to wrap accordion panel titles that need to contain HTML markup or other directives.
  */
-@Directive({selector: 'ng-template[ngbPanelTitle]'})
-export class NgbPanelTitle {
+@Directive({selector: 'ng-template[ngbxPanelTitle]'})
+export class NgbxPanelTitle {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
 /**
  * This directive must be used to wrap accordion panel content.
  */
-@Directive({selector: 'ng-template[ngbPanelContent]'})
-export class NgbPanelContent {
+@Directive({selector: 'ng-template[ngbxPanelContent]'})
+export class NgbxPanelContent {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
 /**
- * The NgbPanel directive represents an individual panel with the title and collapsible
+ * The NgbxPanel directive represents an individual panel with the title and collapsible
  * content
  */
-@Directive({selector: 'ngb-panel'})
-export class NgbPanel implements AfterContentChecked {
+@Directive({selector: 'ngbx-panel'})
+export class NgbxPanel implements AfterContentChecked {
   /**
    *  A flag determining whether the panel is disabled or not.
    *  When disabled, the panel cannot be toggled.
@@ -104,7 +104,7 @@ export class NgbPanel implements AfterContentChecked {
    *  An optional id for the panel. The id should be unique.
    *  If not provided, it will be auto-generated.
    */
-  @Input() id = `ngb-panel-${nextId++}`;
+  @Input() id = `ngbx-panel-${nextId++}`;
 
   /**
    * A flag telling if the panel is currently open
@@ -123,19 +123,19 @@ export class NgbPanel implements AfterContentChecked {
    */
   @Input() type: string;
 
-  titleTpl: NgbPanelTitle | null;
-  headerTpl: NgbPanelHeader | null;
-  contentTpl: NgbPanelContent | null;
+  titleTpl: NgbxPanelTitle | null;
+  headerTpl: NgbxPanelHeader | null;
+  contentTpl: NgbxPanelContent | null;
 
-  @ContentChildren(NgbPanelTitle, {descendants: false}) titleTpls: QueryList<NgbPanelTitle>;
-  @ContentChildren(NgbPanelHeader, {descendants: false}) headerTpls: QueryList<NgbPanelHeader>;
-  @ContentChildren(NgbPanelContent, {descendants: false}) contentTpls: QueryList<NgbPanelContent>;
+  @ContentChildren(NgbxPanelTitle, {descendants: false}) titleTpls: QueryList<NgbxPanelTitle>;
+  @ContentChildren(NgbxPanelHeader, {descendants: false}) headerTpls: QueryList<NgbxPanelHeader>;
+  @ContentChildren(NgbxPanelContent, {descendants: false}) contentTpls: QueryList<NgbxPanelContent>;
 
   ngAfterContentChecked() {
     // We are using @ContentChildren instead of @ContentChild as in the Angular version being used
     // only @ContentChildren allows us to specify the {descendants: false} option.
     // Without {descendants: false} we are hitting bugs described in:
-    // https://github.com/ng-bootstrap/ng-bootstrap/issues/2240
+    // https://github.com/rumeth/ng-bootstrap-extras/issues/2240
     this.titleTpl = this.titleTpls.first;
     this.headerTpl = this.headerTpls.first;
     this.contentTpl = this.contentTpls.first;
@@ -145,7 +145,7 @@ export class NgbPanel implements AfterContentChecked {
 /**
  * The payload of the change event fired right before toggling an accordion panel
  */
-export interface NgbPanelChangeEvent {
+export interface NgbxPanelChangeEvent {
   /**
    * Id of the accordion panel that is toggled
    */
@@ -163,16 +163,16 @@ export interface NgbPanelChangeEvent {
 }
 
 /**
- * The NgbAccordion directive is a collection of panels.
+ * The NgbxAccordion directive is a collection of panels.
  * It can assure that only one panel can be opened at a time.
  */
 @Component({
-  selector: 'ngb-accordion',
-  exportAs: 'ngbAccordion',
+  selector: 'ngbx-accordion',
+  exportAs: 'ngbxAccordion',
   host: {'class': 'accordion', 'role': 'tablist', '[attr.aria-multiselectable]': '!closeOtherPanels'},
   template: `
-    <ng-template #t ngbPanelHeader let-panel>
-      <button class="btn btn-link" [ngbPanelToggle]="panel">
+    <ng-template #t ngbxPanelHeader let-panel>
+      <button class="btn btn-link" [ngbxPanelToggle]="panel">
         {{panel.title}}<ng-template [ngTemplateOutlet]="panel.titleTpl?.templateRef"></ng-template>
       </button>
     </ng-template>
@@ -192,8 +192,8 @@ export interface NgbPanelChangeEvent {
     </ng-template>
   `
 })
-export class NgbAccordion implements AfterContentChecked {
-  @ContentChildren(NgbPanel) panels: QueryList<NgbPanel>;
+export class NgbxAccordion implements AfterContentChecked {
+  @ContentChildren(NgbxPanel) panels: QueryList<NgbxPanel>;
 
   /**
    * An array or comma separated strings of panel identifiers that should be opened
@@ -218,11 +218,11 @@ export class NgbAccordion implements AfterContentChecked {
   @Input() type: string;
 
   /**
-   * A panel change event fired right before the panel toggle happens. See NgbPanelChangeEvent for payload details
+   * A panel change event fired right before the panel toggle happens. See NgbxPanelChangeEvent for payload details
    */
-  @Output() panelChange = new EventEmitter<NgbPanelChangeEvent>();
+  @Output() panelChange = new EventEmitter<NgbxPanelChangeEvent>();
 
-  constructor(config: NgbAccordionConfig) {
+  constructor(config: NgbxAccordionConfig) {
     this.type = config.type;
     this.closeOtherPanels = config.closeOthers;
   }
@@ -289,7 +289,7 @@ export class NgbAccordion implements AfterContentChecked {
     }
   }
 
-  private _changeOpenState(panel: NgbPanel, nextState: boolean) {
+  private _changeOpenState(panel: NgbxPanel, nextState: boolean) {
     if (panel && !panel.disabled && panel.isOpen !== nextState) {
       let defaultPrevented = false;
 
@@ -315,7 +315,7 @@ export class NgbAccordion implements AfterContentChecked {
     });
   }
 
-  private _findPanelById(panelId: string): NgbPanel | null { return this.panels.find(p => p.id === panelId); }
+  private _findPanelById(panelId: string): NgbxPanel | null { return this.panels.find(p => p.id === panelId); }
 
   private _updateActiveIds() {
     this.activeIds = this.panels.filter(panel => panel.isOpen && !panel.disabled).map(panel => panel.id);

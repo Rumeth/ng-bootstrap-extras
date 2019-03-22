@@ -20,10 +20,10 @@ import {DOCUMENT} from '@angular/common';
 import {Subject, Subscription} from 'rxjs';
 
 import {Placement, PlacementArray, positionElements} from '../util/positioning';
-import {ngbAutoClose} from '../util/autoclose';
+import {ngbxAutoClose} from '../util/autoclose';
 import {Key} from '../util/key';
 
-import {NgbDropdownConfig} from './dropdown-config';
+import {NgbxDropdownConfig} from './dropdown-config';
 
 /**
  * A directive you should put put on a dropdown item to enable keyboard navigation.
@@ -31,8 +31,8 @@ import {NgbDropdownConfig} from './dropdown-config';
  *
  * @since 4.1.0
  */
-@Directive({selector: '[ngbDropdownItem]', host: {'class': 'dropdown-item', '[class.disabled]': 'disabled'}})
-export class NgbDropdownItem {
+@Directive({selector: '[ngbxDropdownItem]', host: {'class': 'dropdown-item', '[class.disabled]': 'disabled'}})
+export class NgbxDropdownItem {
   private _disabled = false;
 
   @Input()
@@ -48,17 +48,17 @@ export class NgbDropdownItem {
 /**
  */
 @Directive({
-  selector: '[ngbDropdownMenu]',
+  selector: '[ngbxDropdownMenu]',
   host: {'[class.dropdown-menu]': 'true', '[class.show]': 'dropdown.isOpen()', '[attr.x-placement]': 'placement'}
 })
-export class NgbDropdownMenu {
+export class NgbxDropdownMenu {
   placement: Placement = 'bottom';
   isOpen = false;
 
-  @ContentChildren(NgbDropdownItem) menuItems: QueryList<NgbDropdownItem>;
+  @ContentChildren(NgbxDropdownItem) menuItems: QueryList<NgbxDropdownItem>;
 
   constructor(
-      @Inject(forwardRef(() => NgbDropdown)) public dropdown, private _elementRef: ElementRef<HTMLElement>,
+      @Inject(forwardRef(() => NgbxDropdown)) public dropdown, private _elementRef: ElementRef<HTMLElement>,
       private _renderer: Renderer2) {}
 
   getNativeElement() { return this._elementRef.nativeElement; }
@@ -86,20 +86,20 @@ export class NgbDropdownMenu {
 
 /**
  * Marks an element to which dropdown menu will be anchored. This is a simple version
- * of the NgbDropdownToggle directive. It plays the same role as NgbDropdownToggle but
+ * of the NgbxDropdownToggle directive. It plays the same role as NgbxDropdownToggle but
  * doesn't listen to click events to toggle dropdown menu thus enabling support for
  * events other than click.
  *
  * @since 1.1.0
  */
 @Directive({
-  selector: '[ngbDropdownAnchor]',
+  selector: '[ngbxDropdownAnchor]',
   host: {'class': 'dropdown-toggle', 'aria-haspopup': 'true', '[attr.aria-expanded]': 'dropdown.isOpen()'}
 })
-export class NgbDropdownAnchor {
+export class NgbxDropdownAnchor {
   anchorEl;
 
-  constructor(@Inject(forwardRef(() => NgbDropdown)) public dropdown, private _elementRef: ElementRef<HTMLElement>) {
+  constructor(@Inject(forwardRef(() => NgbxDropdown)) public dropdown, private _elementRef: ElementRef<HTMLElement>) {
     this.anchorEl = _elementRef.nativeElement;
   }
 
@@ -107,21 +107,21 @@ export class NgbDropdownAnchor {
 }
 
 /**
- * Allows the dropdown to be toggled via click. This directive is optional: you can use NgbDropdownAnchor as an
+ * Allows the dropdown to be toggled via click. This directive is optional: you can use NgbxDropdownAnchor as an
  * alternative.
  */
 @Directive({
-  selector: '[ngbDropdownToggle]',
+  selector: '[ngbxDropdownToggle]',
   host: {
     'class': 'dropdown-toggle',
     'aria-haspopup': 'true',
     '[attr.aria-expanded]': 'dropdown.isOpen()',
     '(click)': 'toggleOpen()'
   },
-  providers: [{provide: NgbDropdownAnchor, useExisting: forwardRef(() => NgbDropdownToggle)}]
+  providers: [{provide: NgbxDropdownAnchor, useExisting: forwardRef(() => NgbxDropdownToggle)}]
 })
-export class NgbDropdownToggle extends NgbDropdownAnchor {
-  constructor(@Inject(forwardRef(() => NgbDropdown)) dropdown, elementRef: ElementRef<HTMLElement>) {
+export class NgbxDropdownToggle extends NgbxDropdownAnchor {
+  constructor(@Inject(forwardRef(() => NgbxDropdown)) dropdown, elementRef: ElementRef<HTMLElement>) {
     super(dropdown, elementRef);
   }
 
@@ -132,8 +132,8 @@ export class NgbDropdownToggle extends NgbDropdownAnchor {
  * Transforms a node into a dropdown.
  */
 @Directive({
-  selector: '[ngbDropdown]',
-  exportAs: 'ngbDropdown',
+  selector: '[ngbxDropdown]',
+  exportAs: 'ngbxDropdown',
   host: {
     '[class.show]': 'isOpen()',
     '(keydown.ArrowUp)': 'onKeyDown($event)',
@@ -142,16 +142,16 @@ export class NgbDropdownToggle extends NgbDropdownAnchor {
     '(keydown.End)': 'onKeyDown($event)'
   }
 })
-export class NgbDropdown implements OnInit,
+export class NgbxDropdown implements OnInit,
     OnDestroy {
   private _closed$ = new Subject<void>();
   private _zoneSubscription: Subscription;
   private _bodyContainer: HTMLElement;
 
-  @ContentChild(NgbDropdownMenu) private _menu: NgbDropdownMenu;
-  @ContentChild(NgbDropdownMenu, {read: ElementRef}) private _menuElement: ElementRef;
+  @ContentChild(NgbxDropdownMenu) private _menu: NgbxDropdownMenu;
+  @ContentChild(NgbxDropdownMenu, {read: ElementRef}) private _menuElement: ElementRef;
 
-  @ContentChild(NgbDropdownAnchor) private _anchor: NgbDropdownAnchor;
+  @ContentChild(NgbxDropdownAnchor) private _anchor: NgbxDropdownAnchor;
 
   /**
    * Indicates that dropdown should be closed when selecting one of dropdown items (click) or pressing ESC.
@@ -190,7 +190,7 @@ export class NgbDropdown implements OnInit,
   @Output() openChange = new EventEmitter();
 
   constructor(
-      private _changeDetector: ChangeDetectorRef, config: NgbDropdownConfig, @Inject(DOCUMENT) private _document: any,
+      private _changeDetector: ChangeDetectorRef, config: NgbxDropdownConfig, @Inject(DOCUMENT) private _document: any,
       private _ngZone: NgZone, private _elementRef: ElementRef<HTMLElement>, private _renderer: Renderer2) {
     this.placement = config.placement;
     this.container = config.container;
@@ -234,7 +234,7 @@ export class NgbDropdown implements OnInit,
   }
 
   private _setCloseHandlers() {
-    ngbAutoClose(
+    ngbxAutoClose(
         this._ngZone, this._document, this.autoClose, () => this.close(), this._closed$,
         this._menu ? [this._menu.getNativeElement()] : [], this._anchor ? [this._anchor.getNativeElement()] : []);
   }

@@ -1,10 +1,10 @@
-import {NgbDate} from '../ngb-date';
-import {NgbPeriod, NgbCalendar} from '../ngb-calendar';
+import {NgbxDate} from '../ngbx-date';
+import {NgbxPeriod, NgbxCalendar} from '../ngbx-calendar';
 import {Injectable} from '@angular/core';
 import {isNumber} from '../../util/util';
 
 @Injectable()
-export abstract class NgbCalendarHijri extends NgbCalendar {
+export abstract class NgbxCalendarHijri extends NgbxCalendar {
   /**
    * Returns the number of days in a specific Hijri month.
    * `month` is 1 for Muharram, 2 for Safar, etc.
@@ -16,12 +16,12 @@ export abstract class NgbCalendarHijri extends NgbCalendar {
    * Returns the equivalent Hijri date value for a give input Gregorian date.
    * `gDate` is s JS Date to be converted to Hijri.
    */
-  abstract fromGregorian(gDate: Date): NgbDate;
+  abstract fromGregorian(gDate: Date): NgbxDate;
 
   /**
    * Converts the current Hijri date to Gregorian.
    */
-  abstract toGregorian(hDate: NgbDate): Date;
+  abstract toGregorian(hDate: NgbxDate): Date;
 
   getDaysPerWeek() { return 7; }
 
@@ -29,8 +29,8 @@ export abstract class NgbCalendarHijri extends NgbCalendar {
 
   getWeeksPerMonth() { return 6; }
 
-  getNext(date: NgbDate, period: NgbPeriod = 'd', number = 1) {
-    date = new NgbDate(date.year, date.month, date.day);
+  getNext(date: NgbxDate, period: NgbxPeriod = 'd', number = 1) {
+    date = new NgbxDate(date.year, date.month, date.day);
 
     switch (period) {
       case 'y':
@@ -49,15 +49,15 @@ export abstract class NgbCalendarHijri extends NgbCalendar {
     }
   }
 
-  getPrev(date: NgbDate, period: NgbPeriod = 'd', number = 1) { return this.getNext(date, period, -number); }
+  getPrev(date: NgbxDate, period: NgbxPeriod = 'd', number = 1) { return this.getNext(date, period, -number); }
 
-  getWeekday(date: NgbDate) {
+  getWeekday(date: NgbxDate) {
     const day = this.toGregorian(date).getDay();
     // in JS Date Sun=0, in ISO 8601 Sun=7
     return day === 0 ? 7 : day;
   }
 
-  getWeekNumber(week: NgbDate[], firstDayOfWeek: number) {
+  getWeekNumber(week: NgbxDate[], firstDayOfWeek: number) {
     // in JS Date Sun=0, in ISO 8601 Sun=7
     if (firstDayOfWeek === 7) {
       firstDayOfWeek = 0;
@@ -69,19 +69,19 @@ export abstract class NgbCalendarHijri extends NgbCalendar {
     const jsDate = this.toGregorian(date);
     jsDate.setDate(jsDate.getDate() + 4 - (jsDate.getDay() || 7));  // Thursday
     const time = jsDate.getTime();
-    const MuhDate = this.toGregorian(new NgbDate(date.year, 1, 1));  // Compare with Muharram 1
+    const MuhDate = this.toGregorian(new NgbxDate(date.year, 1, 1));  // Compare with Muharram 1
     return Math.floor(Math.round((time - MuhDate.getTime()) / 86400000) / 7) + 1;
   }
 
-  getToday(): NgbDate { return this.fromGregorian(new Date()); }
+  getToday(): NgbxDate { return this.fromGregorian(new Date()); }
 
 
-  isValid(date: NgbDate): boolean {
+  isValid(date: NgbxDate): boolean {
     return date && isNumber(date.year) && isNumber(date.month) && isNumber(date.day) &&
         !isNaN(this.toGregorian(date).getTime());
   }
 
-  private _setDay(date: NgbDate, day: number): NgbDate {
+  private _setDay(date: NgbxDate, day: number): NgbxDate {
     day = +day;
     let mDays = this.getDaysPerMonth(date.month, date.year);
     if (day <= 0) {
@@ -101,14 +101,14 @@ export abstract class NgbCalendarHijri extends NgbCalendar {
     return date;
   }
 
-  private _setMonth(date: NgbDate, month: number): NgbDate {
+  private _setMonth(date: NgbxDate, month: number): NgbxDate {
     month = +month;
     date.year = date.year + Math.floor((month - 1) / 12);
     date.month = Math.floor(((month - 1) % 12 + 12) % 12) + 1;
     return date;
   }
 
-  private _setYear(date: NgbDate, year: number): NgbDate {
+  private _setYear(date: NgbxDate, year: number): NgbxDate {
     date.year = +year;
     return date;
   }

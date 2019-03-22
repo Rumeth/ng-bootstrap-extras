@@ -1,5 +1,5 @@
-import {NgbDate} from '../ngb-date';
-import {NgbDateStruct} from '../ngb-date-struct';
+import {NgbxDate} from '../ngbx-date';
+import {NgbxDateStruct} from '../ngbx-date-struct';
 
 const PARTS_PER_HOUR = 1080;
 const PARTS_PER_DAY = 24 * PARTS_PER_HOUR;
@@ -78,7 +78,7 @@ export function getDaysInHebrewMonth(month: number, year: number): number {
   return daysInMonth[month - 1];
 }
 
-export function getDayNumberInHebrewYear(date: NgbDate): number {
+export function getDayNumberInHebrewYear(date: NgbxDate): number {
   let numberOfDay = 0;
   for (let i = 1; i < date.month; i++) {
     numberOfDay += getDaysInHebrewMonth(i, date.year);
@@ -86,7 +86,7 @@ export function getDayNumberInHebrewYear(date: NgbDate): number {
   return numberOfDay + date.day;
 }
 
-export function setHebrewMonth(date: NgbDate, val: number): NgbDate {
+export function setHebrewMonth(date: NgbxDate, val: number): NgbxDate {
   let after = val >= 0;
   if (!after) {
     val = -val;
@@ -115,7 +115,7 @@ export function setHebrewMonth(date: NgbDate, val: number): NgbDate {
   return date;
 }
 
-export function setHebrewDay(date: NgbDate, val: number): NgbDate {
+export function setHebrewDay(date: NgbxDate, val: number): NgbxDate {
   let after = val >= 0;
   if (!after) {
     val = -val;
@@ -157,7 +157,7 @@ export function setHebrewDay(date: NgbDate, val: number): NgbDate {
  * Returns the equivalent Hebrew date value for a give input Gregorian date.
  * `gdate` is a JS Date to be converted to Hebrew date.
  */
-export function fromGregorian(gdate: Date): NgbDate {
+export function fromGregorian(gdate: Date): NgbxDate {
   const date = new Date(gdate);
   const gYear = date.getFullYear(), gMonth = date.getMonth(), gDay = date.getDate();
   let julianDay = GREGORIAN_EPOCH - 1 + 365 * (gYear - 1) + Math.floor((gYear - 1) / 4) -
@@ -180,14 +180,14 @@ export function fromGregorian(gdate: Date): NgbDate {
     hDay -= getDaysInHebrewMonth(hMonth, hYear);
     hMonth++;
   }
-  return new NgbDate(hYear, hMonth, hDay);
+  return new NgbxDate(hYear, hMonth, hDay);
 }
 
 /**
  * Returns the equivalent JS date value for a given Hebrew date.
  * `hebrewDate` is an Hebrew date to be converted to Gregorian.
  */
-export function toGregorian(hebrewDate: NgbDateStruct | NgbDate): Date {
+export function toGregorian(hebrewDate: NgbxDateStruct | NgbxDate): Date {
   const hYear = hebrewDate.year;
   const hMonth = hebrewDate.month;
   const hDay = hebrewDate.day;

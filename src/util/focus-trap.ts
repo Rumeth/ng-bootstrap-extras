@@ -30,7 +30,7 @@ export function getFocusableBoundaryElements(element: HTMLElement): HTMLElement[
  * @param refocusOnClick Put the focus back to the last focused element whenever a click occurs on element (default to
  * false)
  */
-export const ngbFocusTrap = (element: HTMLElement, stopFocusTrap$: Observable<any>, refocusOnClick = false) => {
+export const ngbxFocusTrap = (element: HTMLElement, stopFocusTrap$: Observable<any>, refocusOnClick = false) => {
   // last focused element
   const lastFocusedElement$ =
       fromEvent<FocusEvent>(element, 'focusin').pipe(takeUntil(stopFocusTrap$), map(e => e.target));

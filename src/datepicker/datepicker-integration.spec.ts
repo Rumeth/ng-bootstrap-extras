@@ -1,26 +1,26 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {NgbDatepickerModule, NgbDateStruct} from './datepicker.module';
-import {NgbCalendar, NgbCalendarGregorian} from './ngb-calendar';
-import {NgbDate} from './ngb-date';
+import {NgbxDatepickerModule, NgbxDateStruct} from './datepicker.module';
+import {NgbxCalendar, NgbxCalendarGregorian} from './ngbx-calendar';
+import {NgbxDate} from './ngbx-date';
 import {getMonthSelect, getYearSelect} from '../test/datepicker/common';
-import {NgbDatepickerI18n, NgbDatepickerI18nDefault} from './datepicker-i18n';
+import {NgbxDatepickerI18n, NgbxDatepickerI18nDefault} from './datepicker-i18n';
 
-describe('ngb-datepicker integration', () => {
+describe('ngbx-datepicker integration', () => {
 
   beforeEach(
-      () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbDatepickerModule]}); });
+      () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxDatepickerModule]}); });
 
   it('should allow overriding datepicker calendar', () => {
 
-    class FixedTodayCalendar extends NgbCalendarGregorian {
-      getToday() { return new NgbDate(2000, 7, 1); }
+    class FixedTodayCalendar extends NgbxCalendarGregorian {
+      getToday() { return new NgbxDate(2000, 7, 1); }
     }
 
     TestBed.overrideComponent(TestComponent, {
       set: {
-        template: `<ngb-datepicker></ngb-datepicker>`,
-        providers: [{provide: NgbCalendar, useClass: FixedTodayCalendar}]
+        template: `<ngbx-datepicker></ngbx-datepicker>`,
+        providers: [{provide: NgbxCalendar, useClass: FixedTodayCalendar}]
       }
     });
     const fixture = TestBed.createComponent(TestComponent);
@@ -34,7 +34,7 @@ describe('ngb-datepicker integration', () => {
 
     const ALPHABET = 'ABCDEFGHIJKLMNOPRSTQUVWXYZ';
 
-    class CustomI18n extends NgbDatepickerI18nDefault {
+    class CustomI18n extends NgbxDatepickerI18nDefault {
       // alphabetic months: Jan -> A, Feb -> B, etc
       getMonthShortName(month: number) { return ALPHABET[month - 1]; }
 
@@ -42,7 +42,7 @@ describe('ngb-datepicker integration', () => {
       getMonthFullName(month: number) { return ALPHABET[month - 1]; }
 
       // alphabetic days: 1 -> A, 2 -> B, etc
-      getDayNumerals(date: NgbDateStruct) { return ALPHABET[date.day - 1]; }
+      getDayNumerals(date: NgbxDateStruct) { return ALPHABET[date.day - 1]; }
 
       // alphabetic week numbers: 1 -> A, 2 -> B, etc
       getWeekNumerals(week: number) { return ALPHABET[week - 1]; }
@@ -57,13 +57,13 @@ describe('ngb-datepicker integration', () => {
       TestBed.overrideComponent(TestComponent, {
         set: {
           template: `
-            <ngb-datepicker [startDate]="{year: 2018, month: 1}"
+            <ngbx-datepicker [startDate]="{year: 2018, month: 1}"
                             [minDate]="{year: 2017, month: 1, day: 1}"
                             [maxDate]="{year: 2019, month: 12, day: 31}"
                             [showWeekNumbers]="true"
                             [displayMonths]="2"
-            ></ngb-datepicker>`,
-          providers: [{provide: NgbDatepickerI18n, useClass: CustomI18n}]
+            ></ngbx-datepicker>`,
+          providers: [{provide: NgbxDatepickerI18n, useClass: CustomI18n}]
         }
       });
 
@@ -79,14 +79,14 @@ describe('ngb-datepicker integration', () => {
 
     it('should allow overriding week number numerals', () => {
       // month view that displays JAN 2018 starts directly with week 01
-      const weekNumberElements = fixture.nativeElement.querySelectorAll('.ngb-dp-week-number');
+      const weekNumberElements = fixture.nativeElement.querySelectorAll('.ngbx-dp-week-number');
       const weekNumbers = Array.from(weekNumberElements).map((o: HTMLElement) => o.innerHTML);
       expect(weekNumbers.slice(0, 6).join('')).toEqual(ALPHABET.slice(0, 6));
     });
 
     it('should allow overriding day numerals', () => {
       // month view that displays JAN 2018 starts directly with 01 JAN
-      const daysElements = fixture.nativeElement.querySelectorAll('.ngb-dp-day > div');
+      const daysElements = fixture.nativeElement.querySelectorAll('.ngbx-dp-day > div');
       const days = Array.from(daysElements).map((o: HTMLElement) => o.innerHTML);
       expect(days.slice(0, 26).join('')).toEqual(ALPHABET);
     });
@@ -100,7 +100,7 @@ describe('ngb-datepicker integration', () => {
 
     it('should allow overriding year and month numerals for multiple months', () => {
       // we have JAN 2018 and FEB 2018 -> A 8102 and B 8102
-      const monthNameElements = fixture.nativeElement.querySelectorAll('.ngb-dp-month-name');
+      const monthNameElements = fixture.nativeElement.querySelectorAll('.ngbx-dp-month-name');
       const monthNames = Array.from(monthNameElements).map((o: HTMLElement) => o.innerText.trim());
       expect(monthNames).toEqual(['A 8102', 'B 8102']);
     });

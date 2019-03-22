@@ -15,7 +15,7 @@ import {getFocusableBoundaryElements} from '../util/focus-trap';
 import {ModalDismissReasons} from './modal-dismiss-reasons';
 
 @Component({
-  selector: 'ngb-modal-window',
+  selector: 'ngbx-modal-window',
   host: {
     '[class]': '"modal fade show d-block" + (windowClass ? " " + windowClass : "")',
     'role': 'dialog',
@@ -31,7 +31,7 @@ import {ModalDismissReasons} from './modal-dismiss-reasons';
     </div>
     `
 })
-export class NgbModalWindow implements OnInit,
+export class NgbxModalWindow implements OnInit,
     AfterViewInit, OnDestroy {
   private _elWithFocus: Element;  // element that is focused prior to modal opening
 
@@ -64,7 +64,7 @@ export class NgbModalWindow implements OnInit,
 
   ngAfterViewInit() {
     if (!this._elRef.nativeElement.contains(document.activeElement)) {
-      const autoFocusable = this._elRef.nativeElement.querySelector(`[ngbAutofocus]`) as HTMLElement;
+      const autoFocusable = this._elRef.nativeElement.querySelector(`[ngbxAutofocus]`) as HTMLElement;
       const firstFocusable = getFocusableBoundaryElements(this._elRef.nativeElement)[0];
 
       const elementToFocus = autoFocusable || firstFocusable || this._elRef.nativeElement;

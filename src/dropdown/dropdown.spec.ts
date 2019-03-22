@@ -4,19 +4,19 @@ import {Key} from '../util/key';
 
 import {ChangeDetectionStrategy, Component, DebugElement} from '@angular/core';
 
-import {NgbDropdown, NgbDropdownModule} from './dropdown.module';
-import {NgbDropdownConfig} from './dropdown-config';
+import {NgbxDropdown, NgbxDropdownModule} from './dropdown.module';
+import {NgbxDropdownConfig} from './dropdown-config';
 import {By} from '@angular/platform-browser';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
 function getDropdownEl(tc) {
-  return tc.querySelector(`[ngbDropdown]`);
+  return tc.querySelector(`[ngbxDropdown]`);
 }
 
 function getMenuEl(tc) {
-  return tc.querySelector(`[ngbDropdownMenu]`);
+  return tc.querySelector(`[ngbxDropdownMenu]`);
 }
 
 function createFakeEscapeKeyUpEvent(): Event {
@@ -49,11 +49,11 @@ function triggerKeyDownEvent(element: DebugElement, key: number, target?: HTMLEl
 }
 
 function getDebugInput(element: DebugElement): DebugElement {
-  return element.query(By.directive(NgbDropdown));
+  return element.query(By.directive(NgbxDropdown));
 }
 
 function getDebugInputs(element: DebugElement): DebugElement[] {
-  return element.queryAll(By.directive(NgbDropdown));
+  return element.queryAll(By.directive(NgbxDropdown));
 }
 
 const jasmineMatchers = {
@@ -83,18 +83,18 @@ const jasmineMatchers = {
   }
 };
 
-describe('ngb-dropdown', () => {
+describe('ngbx-dropdown', () => {
 
   beforeEach(() => {
     jasmine.addMatchers(jasmineMatchers);
-    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbDropdownModule]});
+    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxDropdownModule]});
   });
 
   it('should be closed and down by default', () => {
     const html = `
-      <div ngbDropdown>
-          <button ngbDropdownAnchor></button>
-          <div ngbDropdownMenu>
+      <div ngbxDropdown>
+          <button ngbxDropdownAnchor></button>
+          <div ngbxDropdownMenu>
             <a class="dropdown-item">dropDown item</a>
             <a class="dropdown-item">dropDown item</a>
           </div>
@@ -108,9 +108,9 @@ describe('ngb-dropdown', () => {
 
   it('should have dropup CSS class if placed on top', () => {
     const html = `
-      <div ngbDropdown placement="top">
-          <button ngbDropdownAnchor></button>
-          <div ngbDropdownMenu>
+      <div ngbxDropdown placement="top">
+          <button ngbxDropdownAnchor></button>
+          <div ngbxDropdownMenu>
             <a class="dropdown-item">dropDown item</a>
             <a class="dropdown-item">dropDown item</a>
           </div>
@@ -124,9 +124,9 @@ describe('ngb-dropdown', () => {
 
   it('should have dropdown CSS class if placement is other than top', () => {
     const html = `
-      <div ngbDropdown placement="bottom">
-          <button ngbDropdownAnchor></button>
-          <div ngbDropdownMenu>
+      <div ngbxDropdown placement="bottom">
+          <button ngbxDropdownAnchor></button>
+          <div ngbxDropdownMenu>
             <a class="dropdown-item">dropDown item</a>
             <a class="dropdown-item">dropDown item</a>
           </div>
@@ -140,9 +140,9 @@ describe('ngb-dropdown', () => {
 
   it('should have x-placement attribute reflecting placement', () => {
     const html = `
-      <div ngbDropdown placement="bottom-right">
-          <button ngbDropdownAnchor></button>
-          <div ngbDropdownMenu>
+      <div ngbxDropdown placement="bottom-right">
+          <button ngbxDropdownAnchor></button>
+          <div ngbxDropdownMenu>
             <a class="dropdown-item">dropDown item</a>
             <a class="dropdown-item">dropDown item</a>
           </div>
@@ -156,9 +156,9 @@ describe('ngb-dropdown', () => {
 
   it('should be open initially if open expression is true', () => {
     const html = `
-      <div ngbDropdown [open]="true">
-          <button ngbDropdownAnchor></button>
-          <div ngbDropdownMenu>
+      <div ngbxDropdown [open]="true">
+          <button ngbxDropdownAnchor></button>
+          <div ngbxDropdownMenu>
             <a class="dropdown-item">dropDown item</a>
             <a class="dropdown-item">dropDown item</a>
           </div>
@@ -172,9 +172,9 @@ describe('ngb-dropdown', () => {
 
   it('should toggle open on "open" binding change', () => {
     const html = `
-      <div ngbDropdown [open]="isOpen">
-        <button ngbDropdownAnchor></button>
-        <div ngbDropdownMenu></div>
+      <div ngbxDropdown [open]="isOpen">
+        <button ngbxDropdownAnchor></button>
+        <div ngbxDropdownMenu></div>
       </div>`;
 
     const fixture = createTestComponent(html);
@@ -196,9 +196,9 @@ describe('ngb-dropdown', () => {
       <button (click)="drop.open(); $event.stopPropagation()">Open</button>
       <button (click)="drop.close(); $event.stopPropagation()">Close</button>
       <button (click)="drop.toggle(); $event.stopPropagation()">Toggle</button>
-      <div ngbDropdown #drop="ngbDropdown">
-        <button ngbDropdownAnchor></button>
-        <div ngbDropdownMenu></div>
+      <div ngbxDropdown #drop="ngbxDropdown">
+        <button ngbxDropdownAnchor></button>
+        <div ngbxDropdownMenu></div>
       </div>`;
 
     const fixture = createTestComponent(html);
@@ -225,7 +225,7 @@ describe('ngb-dropdown', () => {
   it('should allow binding to open output', () => {
     const html = `
       <button (click)="drop.toggle(); $event.stopPropagation()">Toggle</button>
-      <div ngbDropdown [(open)]="isOpen" #drop="ngbDropdown"></div>`;
+      <div ngbxDropdown [(open)]="isOpen" #drop="ngbxDropdown"></div>`;
 
     const fixture = createTestComponent(html);
     const compiled = fixture.nativeElement;
@@ -248,7 +248,7 @@ describe('ngb-dropdown', () => {
     const html = `
       <button (click)="drop.open(); $event.stopPropagation()">Open</button>
       <button (click)="drop.close(); $event.stopPropagation()">Close</button>
-      <div ngbDropdown (openChange)="recordStateChange($event)" #drop="ngbDropdown"></div>`;
+      <div ngbxDropdown (openChange)="recordStateChange($event)" #drop="ngbxDropdown"></div>`;
 
     const fixture = createTestComponent(html);
     const compiled = fixture.nativeElement;
@@ -281,15 +281,15 @@ describe('ngb-dropdown', () => {
   describe('Arrow Key Navigation', () => {
     it('should select the first element on ArrowDown if focus is not on any element in list', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem>Action 1</button>
-        <button ngbDropdownItem>Action 2</button>
+          `<div ngbxDropdown id="ngbxDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem>Action 1</button>
+        <button ngbxDropdownItem>Action 2</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
-      const target = compiled.querySelector('button[ngbDropdownToggle]');
+      const target = compiled.querySelector('button[ngbxDropdownToggle]');
       fixture.componentInstance.isOpen = true;
       const elms = compiled.querySelectorAll('.dropdown-item');
       spyOn(elms[0], 'focus');
@@ -300,15 +300,15 @@ describe('ngb-dropdown', () => {
 
     it('should select the bottom element of the dropup on ArrowUp if focus is not on any element in list', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" placement="top" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem>Action 1</button>
-        <button ngbDropdownItem>Action 2</button>
+          `<div ngbxDropdown id="ngbxDropdown" placement="top" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem>Action 1</button>
+        <button ngbxDropdownItem>Action 2</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
-      const target = compiled.querySelector('button[ngbDropdownToggle]');
+      const target = compiled.querySelector('button[ngbxDropdownToggle]');
       fixture.componentInstance.isOpen = true;
       const elms = compiled.querySelectorAll('.dropdown-item');
       spyOn(elms[1], 'focus');
@@ -319,11 +319,11 @@ describe('ngb-dropdown', () => {
 
     it('should select the next element on ArrowDown if is on a element in list', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem>Action 1</button>
-        <button ngbDropdownItem>Action 2</button>
+          `<div ngbxDropdown id="ngbxDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem>Action 1</button>
+        <button ngbxDropdownItem>Action 2</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
@@ -338,10 +338,10 @@ describe('ngb-dropdown', () => {
 
     it('should select the next element on ArrowDown when the next element in the list is added later', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem *ngFor="let item of items">{{item}}</button>
+          `<div ngbxDropdown id="ngbxDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem *ngFor="let item of items">{{item}}</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
@@ -358,11 +358,11 @@ describe('ngb-dropdown', () => {
 
     it('should select the previous element on ArrowUp', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem>Action 1</button>
-        <button ngbDropdownItem>Action 2</button>
+          `<div ngbxDropdown id="ngbxDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem>Action 1</button>
+        <button ngbxDropdownItem>Action 2</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
@@ -377,11 +377,11 @@ describe('ngb-dropdown', () => {
 
     it('should stay on the same element on ArrowDown if the last element of the list is selected', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem>Action 1</button>
-        <button ngbDropdownItem>Action 2</button>
+          `<div ngbxDropdown id="ngbxDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem>Action 1</button>
+        <button ngbxDropdownItem>Action 2</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
@@ -396,12 +396,12 @@ describe('ngb-dropdown', () => {
 
     it('should skip disabled elements on ArrowDown if is on a element in list', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem>Action 1</button>
-        <button ngbDropdownItem [disabled]="true">Action 2</button>
-        <button ngbDropdownItem>Action 3</button>
+          `<div ngbxDropdown id="ngbxDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem>Action 1</button>
+        <button ngbxDropdownItem [disabled]="true">Action 2</button>
+        <button ngbxDropdownItem>Action 3</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
@@ -416,12 +416,12 @@ describe('ngb-dropdown', () => {
 
     it('should select the first element on Home if there are elements in the list', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem>Action 1</button>
-        <button ngbDropdownItem>Action 2</button>
-        <button ngbDropdownItem>Action 3</button>
+          `<div ngbxDropdown id="ngbxDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem>Action 1</button>
+        <button ngbxDropdownItem>Action 2</button>
+        <button ngbxDropdownItem>Action 3</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
@@ -436,12 +436,12 @@ describe('ngb-dropdown', () => {
 
     it('should select the last element on End if there are elements in the list', () => {
       const fixture = createTestComponent(
-          `<div ngbDropdown id="ngbDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <button ngbDropdownItem>Action 1</button>
-        <button ngbDropdownItem>Action 2</button>
-        <button ngbDropdownItem>Action 3</button>
+          `<div ngbxDropdown id="ngbxDropdown" (openChange)="recordStateChange($event)" [open]="isOpen">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <button ngbxDropdownItem>Action 1</button>
+        <button ngbxDropdownItem>Action 2</button>
+        <button ngbxDropdownItem>Action 3</button>
       </div>
     </div>`);
       const compiled = fixture.nativeElement;
@@ -455,15 +455,15 @@ describe('ngb-dropdown', () => {
     });
 
     it('should select the first element on ArrowDown in a nested dropdown', () => {
-      const fixture = createTestComponent(`<div ngbDropdown id="ngbDropdown" [open]="true">
-      <button ngbDropdownToggle>Toggle dropdown 1</button>
-      <div ngbDropdownMenu>
-        <div ngbDropdown id="nestedDropdown" [open]="isOpen">
-          <input ngbDropdownAnchor/>
-          <div ngbDropdownMenu>
-            <button ngbDropdownItem>Action 1</button>
-            <button ngbDropdownItem>Action 2</button>
-            <button ngbDropdownItem>Action 3</button>
+      const fixture = createTestComponent(`<div ngbxDropdown id="ngbxDropdown" [open]="true">
+      <button ngbxDropdownToggle>Toggle dropdown 1</button>
+      <div ngbxDropdownMenu>
+        <div ngbxDropdown id="nestedDropdown" [open]="isOpen">
+          <input ngbxDropdownAnchor/>
+          <div ngbxDropdownMenu>
+            <button ngbxDropdownItem>Action 1</button>
+            <button ngbxDropdownItem>Action 2</button>
+            <button ngbxDropdownItem>Action 3</button>
           </div>
         </div>
       </div>
@@ -472,7 +472,7 @@ describe('ngb-dropdown', () => {
 
       const compiled = fixture.nativeElement;
       fixture.componentInstance.isOpen = true;
-      const input = compiled.querySelector('input[ngbDropdownAnchor]');
+      const input = compiled.querySelector('input[ngbxDropdownAnchor]');
       const elms = compiled.querySelectorAll('#nestedDropdown .dropdown-item');
       spyOn(elms[0], 'focus');
       spyOn(elms[1], 'focus');
@@ -492,17 +492,17 @@ describe('ngb-dropdown', () => {
   });
 });
 
-describe('ngb-dropdown-toggle', () => {
+describe('ngbx-dropdown-toggle', () => {
   beforeEach(() => {
     jasmine.addMatchers(jasmineMatchers);
-    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbDropdownModule]});
+    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxDropdownModule]});
   });
 
   it('should toggle dropdown on click', () => {
     const html = `
-      <div ngbDropdown>
-          <button ngbDropdownToggle>Toggle dropdown</button>
-          <div ngbDropdownMenu></div>
+      <div ngbxDropdown>
+          <button ngbxDropdownToggle>Toggle dropdown</button>
+          <div ngbxDropdownMenu></div>
       </div>`;
 
     const fixture = createTestComponent(html);
@@ -527,11 +527,11 @@ describe('ngb-dropdown-toggle', () => {
 
   it('should toggle dropdown on click of child of toggle', () => {
     const html = `
-      <div ngbDropdown>
-          <button ngbDropdownToggle>
+      <div ngbxDropdown>
+          <button ngbxDropdownToggle>
             <span class="toggle">Toggle dropdown</span>
           </button>
-          <div ngbDropdownMenu></div>
+          <div ngbxDropdownMenu></div>
       </div>`;
 
     const fixture = createTestComponent(html);
@@ -551,18 +551,18 @@ describe('ngb-dropdown-toggle', () => {
 
   it('should be appended to body', () => {
     const html = `
-      <div ngbDropdown container="body">
-          <button ngbDropdownToggle>
+      <div ngbxDropdown container="body">
+          <button ngbxDropdownToggle>
             <span class="toggle">Toggle dropdown</span>
           </button>
-          <div ngbDropdownMenu></div>
+          <div ngbxDropdownMenu></div>
       </div>`;
 
     const fixture = createTestComponent(html);
     const compiled = fixture.nativeElement;
-    const dropdown = fixture.debugElement.query(By.directive(NgbDropdown)).injector.get(NgbDropdown);
+    const dropdown = fixture.debugElement.query(By.directive(NgbxDropdown)).injector.get(NgbxDropdown);
     dropdown.open();
-    const dropdownElement = document.querySelector('div[ngbDropdownMenu]');
+    const dropdownElement = document.querySelector('div[ngbxDropdownMenu]');
     const parentContainer = dropdownElement.parentNode;
     expect(parentContainer).toHaveCssClass('dropdown');
     expect(parentContainer.parentNode).toBe(document.body, 'The dropdown should be attached to the body');
@@ -570,24 +570,24 @@ describe('ngb-dropdown-toggle', () => {
   });
 
   describe('Custom config', () => {
-    let config: NgbDropdownConfig;
+    let config: NgbxDropdownConfig;
 
     beforeEach(() => {
-      TestBed.configureTestingModule({imports: [NgbDropdownModule]});
+      TestBed.configureTestingModule({imports: [NgbxDropdownModule]});
       TestBed.overrideComponent(TestComponent, {
         set: {
           template: `
-      <div ngbDropdown>
-          <div ngbDropdownMenu>
-            <a ngbDropdownItem>dropDown item</a>
-            <a ngbDropdownItem>dropDown item</a>
+      <div ngbxDropdown>
+          <div ngbxDropdownMenu>
+            <a ngbxDropdownItem>dropDown item</a>
+            <a ngbxDropdownItem>dropDown item</a>
           </div>
       </div>`
         }
       });
     });
 
-    beforeEach(inject([NgbDropdownConfig], (c: NgbDropdownConfig) => {
+    beforeEach(inject([NgbxDropdownConfig], (c: NgbxDropdownConfig) => {
       config = c;
       config.placement = 'top-right';
     }));
@@ -603,20 +603,20 @@ describe('ngb-dropdown-toggle', () => {
   });
 
   describe('Custom config as provider', () => {
-    let config = new NgbDropdownConfig();
+    let config = new NgbxDropdownConfig();
     config.placement = 'top-right';
 
     beforeEach(() => {
       TestBed.configureTestingModule(
-          {imports: [NgbDropdownModule], providers: [{provide: NgbDropdownConfig, useValue: config}]});
+          {imports: [NgbxDropdownModule], providers: [{provide: NgbxDropdownConfig, useValue: config}]});
     });
 
     it('should initialize inputs with provided config as provider', () => {
       const fixture = createTestComponent(`
-      <div ngbDropdown>
-          <div ngbDropdownMenu>
-            <a ngbDropdownItem>dropup item</a>
-            <a ngbDropdownItem>dropup item</a>
+      <div ngbxDropdown>
+          <div ngbxDropdownMenu>
+            <a ngbxDropdownItem>dropup item</a>
+            <a ngbxDropdownItem>dropup item</a>
           </div>
       </div>`);
       fixture.detectChanges();

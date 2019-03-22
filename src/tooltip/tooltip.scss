@@ -1,7 +1,7 @@
 
 $arrow-size: 0.8rem;
 
-ngb-tooltip-window {
+ngbx-tooltip-window {
   &.bs-tooltip-top .arrow,
   &.bs-tooltip-bottom .arrow {
     left: calc(50% - #{$arrow-size / 2});

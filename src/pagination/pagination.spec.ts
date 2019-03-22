@@ -3,9 +3,9 @@ import {createGenericTestComponent} from '../test/common';
 
 import {Component} from '@angular/core';
 
-import {NgbPaginationModule} from './pagination.module';
-import {NgbPagination} from './pagination';
-import {NgbPaginationConfig} from './pagination-config';
+import {NgbxPaginationModule} from './pagination.module';
+import {NgbxPagination} from './pagination';
+import {NgbxPaginationConfig} from './pagination-config';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -57,7 +57,7 @@ function normalizeText(txt: string): string {
   return txt.trim().replace(/\s+/g, ' ');
 }
 
-function expectSameValues(pagination: NgbPagination, config: NgbPaginationConfig) {
+function expectSameValues(pagination: NgbxPagination, config: NgbxPaginationConfig) {
   expect(pagination.disabled).toBe(config.disabled);
   expect(pagination.boundaryLinks).toBe(config.boundaryLinks);
   expect(pagination.directionLinks).toBe(config.directionLinks);
@@ -68,15 +68,15 @@ function expectSameValues(pagination: NgbPagination, config: NgbPaginationConfig
   expect(pagination.size).toBe(config.size);
 }
 
-describe('ngb-pagination', () => {
+describe('ngbx-pagination', () => {
   describe('business logic', () => {
 
-    let pagination: NgbPagination;
+    let pagination: NgbxPagination;
 
-    beforeEach(() => { pagination = new NgbPagination(new NgbPaginationConfig()); });
+    beforeEach(() => { pagination = new NgbxPagination(new NgbxPaginationConfig()); });
 
     it('should initialize inputs with default values', () => {
-      const defaultConfig = new NgbPaginationConfig();
+      const defaultConfig = new NgbxPaginationConfig();
       expectSameValues(pagination, defaultConfig);
     });
 
@@ -141,10 +141,10 @@ describe('ngb-pagination', () => {
   describe('UI logic', () => {
 
     beforeEach(
-        () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbPaginationModule]}); });
+        () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxPaginationModule]}); });
 
     it('should render and respond to collectionSize change', () => {
-      const html = '<ngb-pagination [collectionSize]="collectionSize" [page]="1"></ngb-pagination>';
+      const html = '<ngbx-pagination [collectionSize]="collectionSize" [page]="1"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.collectionSize = 30;
@@ -158,7 +158,7 @@ describe('ngb-pagination', () => {
 
     it('should render and respond to pageSize change', () => {
       const html =
-          '<ngb-pagination [collectionSize]="collectionSize" [page]="1" [pageSize]="pageSize"></ngb-pagination>';
+          '<ngbx-pagination [collectionSize]="collectionSize" [page]="1" [pageSize]="pageSize"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.collectionSize = 30;
@@ -172,7 +172,7 @@ describe('ngb-pagination', () => {
     });
 
     it('should render and respond to active page change', () => {
-      const html = '<ngb-pagination [collectionSize]="collectionSize" [page]="page"></ngb-pagination>';
+      const html = '<ngbx-pagination [collectionSize]="collectionSize" [page]="page"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.collectionSize = 30;
@@ -186,7 +186,7 @@ describe('ngb-pagination', () => {
     });
 
     it('should update selected page model on page no click', () => {
-      const html = '<ngb-pagination [collectionSize]="collectionSize" [page]="page"></ngb-pagination>';
+      const html = '<ngbx-pagination [collectionSize]="collectionSize" [page]="page"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.collectionSize = 30;
@@ -206,7 +206,7 @@ describe('ngb-pagination', () => {
 
     it('should update selected page model on prev / next click', () => {
       const html =
-          '<ngb-pagination [collectionSize]="collectionSize" [page]="page" [directionLinks]="directionLinks"></ngb-pagination>';
+          '<ngbx-pagination [collectionSize]="collectionSize" [page]="page" [directionLinks]="directionLinks"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.collectionSize = 30;
@@ -235,8 +235,8 @@ describe('ngb-pagination', () => {
     });
 
     it('should update selected page model on first / last click', () => {
-      const html = `<ngb-pagination [collectionSize]="collectionSize" [page]="page" [maxSize]="maxSize"
-              [boundaryLinks]="boundaryLinks"></ngb-pagination>`;
+      const html = `<ngbx-pagination [collectionSize]="collectionSize" [page]="page" [maxSize]="maxSize"
+              [boundaryLinks]="boundaryLinks"></ngbx-pagination>`;
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.collectionSize = 30;
@@ -280,7 +280,7 @@ describe('ngb-pagination', () => {
 
     it('should update page when it becomes out of range', fakeAsync(() => {
          const html =
-             '<ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [size]="size"></ngb-pagination>';
+             '<ngbx-pagination [collectionSize]="collectionSize" [(page)]="page" [size]="size"></ngbx-pagination>';
          const fixture = createTestComponent(html);
 
          fixture.componentInstance.collectionSize = 30;
@@ -301,7 +301,7 @@ describe('ngb-pagination', () => {
        }));
 
     it('should render and respond to size change', () => {
-      const html = '<ngb-pagination [collectionSize]="20" [page]="1" [size]="size"></ngb-pagination>';
+      const html = '<ngbx-pagination [collectionSize]="20" [page]="1" [size]="size"></ngbx-pagination>';
 
       const fixture = createTestComponent(html);
       const listEl = getList(fixture.nativeElement);
@@ -331,7 +331,7 @@ describe('ngb-pagination', () => {
 
     it('should render and respond to maxSize change correctly', () => {
       const html =
-          '<ngb-pagination [collectionSize]="70" [page]="page" [maxSize]="maxSize" [ellipses]="ellipses"></ngb-pagination>';
+          '<ngbx-pagination [collectionSize]="70" [page]="page" [maxSize]="maxSize" [ellipses]="ellipses"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       expectPages(fixture.nativeElement, ['-«', '+1', '2', '3', '4', '5', '6', '7', '»']);
@@ -363,8 +363,8 @@ describe('ngb-pagination', () => {
     });
 
     it('should render and rotate pages correctly', () => {
-      const html = `<ngb-pagination [collectionSize]="70" [page]="page" [maxSize]="maxSize" [rotate]="rotate"
-        [ellipses]="ellipses"></ngb-pagination>`;
+      const html = `<ngbx-pagination [collectionSize]="70" [page]="page" [maxSize]="maxSize" [rotate]="rotate"
+        [ellipses]="ellipses"></ngbx-pagination>`;
       const fixture = createTestComponent(html);
 
       expectPages(fixture.nativeElement, ['-«', '+1', '2', '3', '4', '5', '6', '7', '»']);
@@ -405,8 +405,8 @@ describe('ngb-pagination', () => {
     });
 
     it('should display ellipsis correctly', () => {
-      const html = `<ngb-pagination [collectionSize]="70" [page]="page"
-        [maxSize]="maxSize" [rotate]="rotate" [ellipses]="ellipses"></ngb-pagination>`;
+      const html = `<ngbx-pagination [collectionSize]="70" [page]="page"
+        [maxSize]="maxSize" [rotate]="rotate" [ellipses]="ellipses"></ngbx-pagination>`;
       const fixture = createTestComponent(html);
 
       expectPages(fixture.nativeElement, ['-«', '+1', '2', '3', '4', '5', '6', '7', '»']);
@@ -462,7 +462,7 @@ describe('ngb-pagination', () => {
     });
 
     it('should handle edge "maxSize" values', () => {
-      const html = '<ngb-pagination [collectionSize]="50" [maxSize]="maxSize"></ngb-pagination>';
+      const html = '<ngbx-pagination [collectionSize]="50" [maxSize]="maxSize"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.maxSize = 2;
@@ -487,7 +487,7 @@ describe('ngb-pagination', () => {
     });
 
     it('should handle edge "collectionSize" values', () => {
-      const html = '<ngb-pagination [collectionSize]="collectionSize"></ngb-pagination>';
+      const html = '<ngbx-pagination [collectionSize]="collectionSize"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.collectionSize = 0;
@@ -504,7 +504,7 @@ describe('ngb-pagination', () => {
     });
 
     it('should handle edge "pageSize" values', () => {
-      const html = '<ngb-pagination [collectionSize]="50" [pageSize]="pageSize"></ngb-pagination>';
+      const html = '<ngbx-pagination [collectionSize]="50" [pageSize]="pageSize"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.pageSize = 0;
@@ -521,7 +521,7 @@ describe('ngb-pagination', () => {
     });
 
     it('should handle edge "page" values', () => {
-      const html = '<ngb-pagination [collectionSize]="20" [page]="page"></ngb-pagination>';
+      const html = '<ngbx-pagination [collectionSize]="20" [page]="page"></ngbx-pagination>';
       const fixture = createTestComponent(html);
 
       fixture.componentInstance.page = 0;
@@ -540,8 +540,8 @@ describe('ngb-pagination', () => {
     });
 
     it('should not emit "pageChange" for incorrect input values', fakeAsync(() => {
-         const html = `<ngb-pagination [collectionSize]="collectionSize" [pageSize]="pageSize" [maxSize]="maxSize"
-        (pageChange)="onPageChange($event)"></ngb-pagination>`;
+         const html = `<ngbx-pagination [collectionSize]="collectionSize" [pageSize]="pageSize" [maxSize]="maxSize"
+        (pageChange)="onPageChange($event)"></ngbx-pagination>`;
          const fixture = createTestComponent(html);
          tick();
 
@@ -563,7 +563,7 @@ describe('ngb-pagination', () => {
        }));
 
     it('should not emit "pageChange" when collection size is not set', fakeAsync(() => {
-         const html = `<ngb-pagination [page]="page" (pageChange)="onPageChange($event)"></ngb-pagination>`;
+         const html = `<ngbx-pagination [page]="page" (pageChange)="onPageChange($event)"></ngbx-pagination>`;
          const fixture = createTestComponent(html);
          tick();
 
@@ -577,8 +577,8 @@ describe('ngb-pagination', () => {
        }));
 
     it('should set classes correctly for disabled state', fakeAsync(() => {
-         const html = `<ngb-pagination [collectionSize]="collectionSize" [pageSize]="pageSize" [maxSize]="maxSize"
-         [disabled]=true></ngb-pagination>`;
+         const html = `<ngbx-pagination [collectionSize]="collectionSize" [pageSize]="pageSize" [maxSize]="maxSize"
+         [disabled]=true></ngbx-pagination>`;
          const fixture = createTestComponent(html);
          tick();
 
@@ -592,21 +592,21 @@ describe('ngb-pagination', () => {
   describe('Customization', () => {
 
     beforeEach(
-        () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbPaginationModule]}); });
+        () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxPaginationModule]}); });
 
     it('should allow overriding link templates', () => {
       const fixture = createTestComponent(`
-        <ngb-pagination [collectionSize]="50" [page]="1" [boundaryLinks]="true" [ellipses]="true" [maxSize]="2">
-          <ng-template ngbPaginationFirst>F</ng-template>
-          <ng-template ngbPaginationLast>L</ng-template>
-          <ng-template ngbPaginationPrevious>P</ng-template>
-          <ng-template ngbPaginationNext>N</ng-template>
-          <ng-template ngbPaginationEllipsis>E</ng-template>
-          <ng-template ngbPaginationNumber let-page let-currentPage="currentPage">
+        <ngbx-pagination [collectionSize]="50" [page]="1" [boundaryLinks]="true" [ellipses]="true" [maxSize]="2">
+          <ng-template ngbxPaginationFirst>F</ng-template>
+          <ng-template ngbxPaginationLast>L</ng-template>
+          <ng-template ngbxPaginationPrevious>P</ng-template>
+          <ng-template ngbxPaginationNext>N</ng-template>
+          <ng-template ngbxPaginationEllipsis>E</ng-template>
+          <ng-template ngbxPaginationNumber let-page let-currentPage="currentPage">
             {{ page }}!
             <span *ngIf="page === currentPage" class="sr-only">(current)</span>
           </ng-template>
-        </ngb-pagination>
+        </ngbx-pagination>
       `);
 
       expectPages(fixture.nativeElement, ['-F', '-P', '+1!', '2!', '-E', '5!', 'N', 'L'], 'E');
@@ -614,16 +614,16 @@ describe('ngb-pagination', () => {
 
     it('should pass disabled value to custom link templates', () => {
       const fixture = createTestComponent(`
-        <ngb-pagination [collectionSize]="30" [(page)]="page" [boundaryLinks]="true" [disabled]="disabled">
-          <ng-template ngbPaginationFirst let-disabled="disabled">{{ disabled ? 'dF' : 'F' }}</ng-template>
-          <ng-template ngbPaginationLast let-disabled="disabled">{{ disabled ? 'dL' : 'L' }}</ng-template>
-          <ng-template ngbPaginationPrevious let-disabled="disabled">{{ disabled ? 'dP' : 'P' }}</ng-template>
-          <ng-template ngbPaginationNext let-disabled="disabled">{{ disabled ? 'dN' : 'N' }}</ng-template>
-          <ng-template ngbPaginationNumber let-page let-currentPage="currentPage" let-disabled="disabled">
+        <ngbx-pagination [collectionSize]="30" [(page)]="page" [boundaryLinks]="true" [disabled]="disabled">
+          <ng-template ngbxPaginationFirst let-disabled="disabled">{{ disabled ? 'dF' : 'F' }}</ng-template>
+          <ng-template ngbxPaginationLast let-disabled="disabled">{{ disabled ? 'dL' : 'L' }}</ng-template>
+          <ng-template ngbxPaginationPrevious let-disabled="disabled">{{ disabled ? 'dP' : 'P' }}</ng-template>
+          <ng-template ngbxPaginationNext let-disabled="disabled">{{ disabled ? 'dN' : 'N' }}</ng-template>
+          <ng-template ngbxPaginationNumber let-page let-currentPage="currentPage" let-disabled="disabled">
             {{ disabled ? 'd'+page : page }}
             <span *ngIf="page === currentPage" class="sr-only">(current)</span>
           </ng-template>
-        </ngb-pagination>
+        </ngbx-pagination>
       `);
 
       expectPages(fixture.nativeElement, ['-dF', '-dP', '+1', '2', '3', 'N', 'L']);
@@ -641,11 +641,11 @@ describe('ngb-pagination', () => {
   });
 
   describe('Custom config', () => {
-    let config: NgbPaginationConfig;
+    let config: NgbxPaginationConfig;
 
-    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbPaginationModule]}); });
+    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbxPaginationModule]}); });
 
-    beforeEach(inject([NgbPaginationConfig], (c: NgbPaginationConfig) => {
+    beforeEach(inject([NgbxPaginationConfig], (c: NgbxPaginationConfig) => {
       config = c;
       config.boundaryLinks = true;
       config.directionLinks = false;
@@ -657,7 +657,7 @@ describe('ngb-pagination', () => {
     }));
 
     it('should initialize inputs with provided config', () => {
-      const fixture = TestBed.createComponent(NgbPagination);
+      const fixture = TestBed.createComponent(NgbxPagination);
       fixture.detectChanges();
 
       let pagination = fixture.componentInstance;
@@ -666,7 +666,7 @@ describe('ngb-pagination', () => {
   });
 
   describe('Custom config as provider', () => {
-    let config = new NgbPaginationConfig();
+    let config = new NgbxPaginationConfig();
     config.disabled = true;
     config.boundaryLinks = true;
     config.directionLinks = false;
@@ -678,11 +678,11 @@ describe('ngb-pagination', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule(
-          {imports: [NgbPaginationModule], providers: [{provide: NgbPaginationConfig, useValue: config}]});
+          {imports: [NgbxPaginationModule], providers: [{provide: NgbxPaginationConfig, useValue: config}]});
     });
 
     it('should initialize inputs with provided config as provider', () => {
-      const fixture = TestBed.createComponent(NgbPagination);
+      const fixture = TestBed.createComponent(NgbxPagination);
       fixture.detectChanges();
 
       let pagination = fixture.componentInstance;

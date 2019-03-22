@@ -1,8 +1,8 @@
-import {NgbRatingConfig} from './rating-config';
+import {NgbxRatingConfig} from './rating-config';
 
-describe('ngb-rating-config', () => {
+describe('ngbx-rating-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbRatingConfig();
+    const config = new NgbxRatingConfig();
 
     expect(config.max).toBe(10);
     expect(config.readonly).toBe(false);

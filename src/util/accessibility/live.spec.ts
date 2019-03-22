@@ -6,7 +6,7 @@ import {Live, ARIA_LIVE_DELAY} from './live';
 
 
 function getLiveElement(): Element | null {
-  return document.body.querySelector('#ngb-live');
+  return document.body.querySelector('#ngbx-live');
 }
 
 
@@ -32,7 +32,7 @@ describe('LiveAnnouncer', () => {
       say();
       const liveElement = getLiveElement();
       expect(liveElement.textContent).toBe('test');
-      expect(liveElement.id).toBe('ngb-live');
+      expect(liveElement.id).toBe('ngbx-live');
     });
 
     it('should remove the used element from the DOM on destroy', () => {

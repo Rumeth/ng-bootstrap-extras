@@ -67,7 +67,7 @@ module.exports = function (config) {
     sauceLabs: {
       build: `TRAVIS #${process.env.TRAVIS_BUILD_NUMBER} (${process.env.TRAVIS_BUILD_ID})`,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-      testName: 'ng-bootstrap',
+      testName: 'ng-bootstrap-extras',
       retryLimit: 3,
       startConnect: false,
       recordVideo: false,

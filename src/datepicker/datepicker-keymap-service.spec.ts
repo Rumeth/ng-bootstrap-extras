@@ -1,33 +1,33 @@
-import {NgbDatepickerKeyMapService} from './datepicker-keymap-service';
-import {NgbCalendar, NgbCalendarGregorian} from './ngb-calendar';
-import {NgbDatepickerService} from './datepicker-service';
+import {NgbxDatepickerKeyMapService} from './datepicker-keymap-service';
+import {NgbxCalendar, NgbxCalendarGregorian} from './ngbx-calendar';
+import {NgbxDatepickerService} from './datepicker-service';
 import {TestBed} from '@angular/core/testing';
 import {Subject} from 'rxjs';
-import {NgbDate} from './ngb-date';
+import {NgbxDate} from './ngbx-date';
 import {Key} from '../util/key';
 
 const event = (keyCode: number, shift = false) =>
     <any>({which: keyCode, shiftKey: shift, preventDefault: () => {}, stopPropagation: () => {}});
 
-describe('ngb-datepicker-keymap-service', () => {
+describe('ngbx-datepicker-keymap-service', () => {
 
-  let service: NgbDatepickerKeyMapService;
-  let calendar: NgbCalendar;
+  let service: NgbxDatepickerKeyMapService;
+  let calendar: NgbxCalendar;
   let mock: {focus, focusMove, focusSelect, model$};
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        NgbDatepickerKeyMapService, {provide: NgbCalendar, useClass: NgbCalendarGregorian}, {
-          provide: NgbDatepickerService,
+        NgbxDatepickerKeyMapService, {provide: NgbxCalendar, useClass: NgbxCalendarGregorian}, {
+          provide: NgbxDatepickerService,
           useValue: {focus: () => {}, focusMove: () => {}, focusSelect: () => {}, model$: new Subject()}
         }
       ]
     });
 
-    calendar = TestBed.get(NgbCalendar);
-    service = TestBed.get(NgbDatepickerKeyMapService);
-    mock = TestBed.get(NgbDatepickerService);
+    calendar = TestBed.get(NgbxCalendar);
+    service = TestBed.get(NgbxDatepickerKeyMapService);
+    mock = TestBed.get(NgbxDatepickerService);
 
     spyOn(mock, 'focus');
     spyOn(mock, 'focusMove');
@@ -81,13 +81,13 @@ describe('ngb-datepicker-keymap-service', () => {
     service.processKey(event(Key.End));
     expect(mock.focus).toHaveBeenCalledWith(undefined);
 
-    mock.model$.next({firstDate: new NgbDate(2017, 1, 1), lastDate: new NgbDate(2017, 12, 1)});
+    mock.model$.next({firstDate: new NgbxDate(2017, 1, 1), lastDate: new NgbxDate(2017, 12, 1)});
 
     service.processKey(event(Key.Home));
-    expect(mock.focus).toHaveBeenCalledWith(new NgbDate(2017, 1, 1));
+    expect(mock.focus).toHaveBeenCalledWith(new NgbxDate(2017, 1, 1));
 
     service.processKey(event(Key.End));
-    expect(mock.focus).toHaveBeenCalledWith(new NgbDate(2017, 12, 1));
+    expect(mock.focus).toHaveBeenCalledWith(new NgbxDate(2017, 12, 1));
 
     expect(mock.focus).toHaveBeenCalledTimes(4);
   });
@@ -99,13 +99,13 @@ describe('ngb-datepicker-keymap-service', () => {
     service.processKey(event(Key.End, true));
     expect(mock.focus).toHaveBeenCalledWith(undefined);
 
-    mock.model$.next({minDate: new NgbDate(2017, 1, 1), maxDate: new NgbDate(2017, 12, 1), months: []});
+    mock.model$.next({minDate: new NgbxDate(2017, 1, 1), maxDate: new NgbxDate(2017, 12, 1), months: []});
 
     service.processKey(event(Key.Home, true));
-    expect(mock.focus).toHaveBeenCalledWith(new NgbDate(2017, 1, 1));
+    expect(mock.focus).toHaveBeenCalledWith(new NgbxDate(2017, 1, 1));
 
     service.processKey(event(Key.End, true));
-    expect(mock.focus).toHaveBeenCalledWith(new NgbDate(2017, 12, 1));
+    expect(mock.focus).toHaveBeenCalledWith(new NgbxDate(2017, 12, 1));
 
     expect(mock.focus).toHaveBeenCalledTimes(4);
   });

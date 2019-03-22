@@ -1,5 +1,5 @@
-import {NgbCalendarHijri} from './ngb-calendar-hijri';
-import {NgbDate} from '../ngb-date';
+import {NgbxCalendarHijri} from './ngbx-calendar-hijri';
+import {NgbxDate} from '../ngbx-date';
 import {Injectable} from '@angular/core';
 
 /**
@@ -51,12 +51,12 @@ const GREGORIAN_EPOCH = 1721425.5;
 const ISLAMIC_EPOCH = 1948439.5;
 
 @Injectable()
-export class NgbCalendarIslamicCivil extends NgbCalendarHijri {
+export class NgbxCalendarIslamicCivil extends NgbxCalendarHijri {
   /**
    * Returns the equivalent islamic(civil) date value for a give input Gregorian date.
    * `gDate` is a JS Date to be converted to Hijri.
    */
-  fromGregorian(gDate: Date): NgbDate {
+  fromGregorian(gDate: Date): NgbxDate {
     const gYear = gDate.getFullYear(), gMonth = gDate.getMonth(), gDay = gDate.getDate();
 
     let julianDay = GREGORIAN_EPOCH - 1 + 365 * (gYear - 1) + Math.floor((gYear - 1) / 4) +
@@ -70,14 +70,14 @@ export class NgbCalendarIslamicCivil extends NgbCalendarHijri {
     let hMonth = Math.ceil((days - 29 - getIslamicYearStart(hYear)) / 29.5);
     hMonth = Math.min(hMonth, 11);
     const hDay = Math.ceil(days - getIslamicMonthStart(hYear, hMonth)) + 1;
-    return new NgbDate(hYear, hMonth + 1, hDay);
+    return new NgbxDate(hYear, hMonth + 1, hDay);
   }
 
   /**
    * Returns the equivalent JS date value for a give input islamic(civil) date.
    * `hDate` is an islamic(civil) date to be converted to Gregorian.
    */
-  toGregorian(hDate: NgbDate): Date {
+  toGregorian(hDate: NgbxDate): Date {
     const hYear = hDate.year;
     const hMonth = hDate.month - 1;
     const hDay = hDate.day;

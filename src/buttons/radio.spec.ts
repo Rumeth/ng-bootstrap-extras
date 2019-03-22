@@ -4,7 +4,7 @@ import {FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Valid
 import {By} from '@angular/platform-browser';
 
 import {createGenericTestComponent} from '../test/common';
-import {NgbButtonsModule} from './buttons.module';
+import {NgbxButtonsModule} from './buttons.module';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -32,7 +32,7 @@ function expectNameOnAllInputs(element: HTMLElement, name: string) {
 }
 
 function getGroupElement(nativeEl: HTMLElement): HTMLDivElement {
-  return <HTMLDivElement>nativeEl.querySelector('div[ngbRadioGroup]');
+  return <HTMLDivElement>nativeEl.querySelector('div[ngbxRadioGroup]');
 }
 
 function getInput(nativeEl: HTMLElement, idx: number): HTMLInputElement {
@@ -43,20 +43,20 @@ function getLabel(nativeEl: HTMLElement, idx: number): HTMLElement {
   return <HTMLElement>nativeEl.querySelectorAll('label')[idx];
 }
 
-describe('ngbRadioGroup', () => {
-  const defaultHtml = `<div [(ngModel)]="model" ngbRadioGroup>
-      <label ngbButtonLabel>
-        <input ngbButton type="radio" name="radio" [value]="values[0]"/> {{ values[0] }}
+describe('ngbxRadioGroup', () => {
+  const defaultHtml = `<div [(ngModel)]="model" ngbxRadioGroup>
+      <label ngbxButtonLabel>
+        <input ngbxButton type="radio" name="radio" [value]="values[0]"/> {{ values[0] }}
       </label>
-      <label ngbButtonLabel>
-        <input ngbButton type="radio" name="radio" [value]="values[1]"/> {{ values[1] }}
+      <label ngbxButtonLabel>
+        <input ngbxButton type="radio" name="radio" [value]="values[1]"/> {{ values[1] }}
       </label>
     </div>`;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, TestComponentOnPush],
-      imports: [NgbButtonsModule, FormsModule, ReactiveFormsModule]
+      imports: [NgbxButtonsModule, FormsModule, ReactiveFormsModule]
     });
     TestBed.overrideComponent(TestComponent, {set: {template: defaultHtml}});
     TestBed.overrideComponent(TestComponentOnPush, {set: {template: defaultHtml}});
@@ -195,9 +195,9 @@ describe('ngbRadioGroup', () => {
 
   it('can be used with ngFor', async(() => {
 
-       const forHtml = `<div [(ngModel)]="model" ngbRadioGroup>
-          <label *ngFor="let v of values" ngbButtonLabel>
-            <input ngbButton type="radio" name="radio" [value]="v"/> {{ v }}
+       const forHtml = `<div [(ngModel)]="model" ngbxRadioGroup>
+          <label *ngFor="let v of values" ngbxButtonLabel>
+            <input ngbxButton type="radio" name="radio" [value]="v"/> {{ v }}
           </label>
         </div>`;
 
@@ -216,12 +216,12 @@ describe('ngbRadioGroup', () => {
 
   it('cleans up the model when radio inputs are added / removed', async(() => {
 
-       const ifHtml = `<div [(ngModel)]="model" ngbRadioGroup>
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" name="radio" [value]="values[0]"/> {{ values[0] }}
+       const ifHtml = `<div [(ngModel)]="model" ngbxRadioGroup>
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" name="radio" [value]="values[0]"/> {{ values[0] }}
         </label>
-        <label *ngIf="shown" ngbButtonLabel>
-          <input ngbButton type="radio" name="radio" [value]="values[1]"/> {{ values[1] }}
+        <label *ngIf="shown" ngbxButtonLabel>
+          <input ngbxButton type="radio" name="radio" [value]="values[1]"/> {{ values[1] }}
         </label>
       </div>`;
        const fixture = createTestComponent(ifHtml);
@@ -263,9 +263,9 @@ describe('ngbRadioGroup', () => {
   it('should work with template-driven form validation', async(() => {
        const html = `
         <form>
-          <div ngbRadioGroup [(ngModel)]="model" name="control" required>
-            <label ngbButtonLabel>
-              <input ngbButton type="radio" value="foo"/>
+          <div ngbxRadioGroup [(ngModel)]="model" name="control" required>
+            <label ngbxButtonLabel>
+              <input ngbxButton type="radio" value="foo"/>
             </label>
           </div>
         </form>`;
@@ -287,9 +287,9 @@ describe('ngbRadioGroup', () => {
   it('should work with model-driven form validation', () => {
     const html = `
         <form [formGroup]="form">
-          <div ngbRadioGroup formControlName="control">
-            <label ngbButtonLabel>
-              <input ngbButton type="radio" value="foo"/>
+          <div ngbxRadioGroup formControlName="control">
+            <label ngbxButtonLabel>
+              <input ngbxButton type="radio" value="foo"/>
             </label>
           </div>
         </form>`;
@@ -308,9 +308,9 @@ describe('ngbRadioGroup', () => {
   it('should disable label and input when it is disabled using reactive forms', () => {
     const html = `
       <form [formGroup]="disabledForm">
-        <div ngbRadioGroup formControlName="control">
-          <label ngbButtonLabel>
-            <input ngbButton type="radio" value="foo"/>
+        <div ngbxRadioGroup formControlName="control">
+          <label ngbxButtonLabel>
+            <input ngbxButton type="radio" value="foo"/>
           </label>
         </div>
       </form>`;
@@ -329,9 +329,9 @@ describe('ngbRadioGroup', () => {
   it('should disable label and input when added dynamically in reactive forms', () => {
     const forHtml = `
       <form [formGroup]="disabledForm">
-        <div ngbRadioGroup formControlName="control">
-          <label ngbButtonLabel *ngIf="shown">
-            <input ngbButton type="radio" name="radio" [value]="'one'"/> One
+        <div ngbxRadioGroup formControlName="control">
+          <label ngbxButtonLabel *ngIf="shown">
+            <input ngbxButton type="radio" name="radio" [value]="'one'"/> One
           </label>
         </div>
       </form>
@@ -351,9 +351,9 @@ describe('ngbRadioGroup', () => {
   it('should disable label and input when it is disabled using template-driven forms', async(() => {
        const html = `
       <form>
-        <div ngbRadioGroup [(ngModel)]="model" name="control" [disabled]="disabled">
-          <label ngbButtonLabel>
-            <input ngbButton type="radio" value="foo"/>
+        <div ngbxRadioGroup [(ngModel)]="model" name="control" [disabled]="disabled">
+          <label ngbxButtonLabel>
+            <input ngbxButton type="radio" value="foo"/>
           </label>
         </div>
       </form>`;
@@ -380,9 +380,9 @@ describe('ngbRadioGroup', () => {
   it('should disable individual label and input using template-driven forms', async(() => {
        const html = `
       <form>
-        <div ngbRadioGroup [(ngModel)]="model" name="control">
-          <label ngbButtonLabel>
-            <input ngbButton type="radio" value="foo" [disabled]="disabled"/>
+        <div ngbxRadioGroup [(ngModel)]="model" name="control">
+          <label ngbxButtonLabel>
+            <input ngbxButton type="radio" value="foo" [disabled]="disabled"/>
           </label>
         </div>
       </form>`;
@@ -410,9 +410,9 @@ describe('ngbRadioGroup', () => {
   it('disable all radio buttons when group is disabled regardless of button disabled state', async(() => {
        const html = `
       <form>
-        <div ngbRadioGroup [(ngModel)]="model" name="control" [disabled]="groupDisabled">
-          <label ngbButtonLabel>
-            <input ngbButton type="radio" value="foo" [disabled]="disabled"/>
+        <div ngbxRadioGroup [(ngModel)]="model" name="control" [disabled]="groupDisabled">
+          <label ngbxButtonLabel>
+            <input ngbxButton type="radio" value="foo" [disabled]="disabled"/>
           </label>
         </div>
       </form>`;
@@ -438,9 +438,9 @@ describe('ngbRadioGroup', () => {
   it('button stays disabled when group is enabled', async(() => {
        const html = `
       <form>
-        <div ngbRadioGroup [(ngModel)]="model" name="control" [disabled]="groupDisabled">
-          <label ngbButtonLabel>
-            <input ngbButton type="radio" value="foo" [disabled]="disabled"/>
+        <div ngbxRadioGroup [(ngModel)]="model" name="control" [disabled]="groupDisabled">
+          <label ngbxButtonLabel>
+            <input ngbxButton type="radio" value="foo" [disabled]="disabled"/>
           </label>
         </div>
       </form>`;
@@ -466,12 +466,12 @@ describe('ngbRadioGroup', () => {
 
   it('should add / remove "focus" class on labels', () => {
     const fixture = createTestComponent(`
-      <div [(ngModel)]="model" ngbRadioGroup>
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" name="radio" [value]="values[0]"/> {{ values[0] }}
+      <div [(ngModel)]="model" ngbxRadioGroup>
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" name="radio" [value]="values[0]"/> {{ values[0] }}
         </label>
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" name="radio" [value]="values[1]"/> {{ values[1] }}
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" name="radio" [value]="values[1]"/> {{ values[1] }}
         </label>
       </div>
     `);
@@ -493,12 +493,12 @@ describe('ngbRadioGroup', () => {
 
   it('should mark form control as touched when label loses focus', () => {
     const fixture = createTestComponent(`
-      <div [(ngModel)]="model" ngbRadioGroup>
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" name="radio" [value]="values[0]"/> {{ values[0] }}
+      <div [(ngModel)]="model" ngbxRadioGroup>
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" name="radio" [value]="values[0]"/> {{ values[0] }}
         </label>
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" name="radio" [value]="values[1]"/> {{ values[1] }}
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" name="radio" [value]="values[1]"/> {{ values[1] }}
         </label>
       </div>
     `);
@@ -518,12 +518,12 @@ describe('ngbRadioGroup', () => {
 
   it('should generate input names automatically if no name specified anywhere', () => {
     const fixture = createTestComponent(`
-      <div [(ngModel)]="model" ngbRadioGroup>
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" [value]="values[0]"/> {{ values[0] }}
+      <div [(ngModel)]="model" ngbxRadioGroup>
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" [value]="values[0]"/> {{ values[0] }}
         </label>
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" [value]="values[1]"/> {{ values[1] }}
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" [value]="values[1]"/> {{ values[1] }}
         </label>
       </div>
     `);
@@ -535,17 +535,17 @@ describe('ngbRadioGroup', () => {
       distinctNames.add(inputs[i].getAttribute('name'));
     }
     expect(distinctNames.size).toBe(1);
-    expect(distinctNames.values().next().value).toMatch(/ngb-radio-\d+/);
+    expect(distinctNames.values().next().value).toMatch(/ngbx-radio-\d+/);
   });
 
   it('should set input names from group name if inputs don\'t have a name', () => {
     const fixture = createTestComponent(`
-      <div [(ngModel)]="model" ngbRadioGroup name="foo">
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" [value]="values[0]"/> {{ values[0] }}
+      <div [(ngModel)]="model" ngbxRadioGroup name="foo">
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" [value]="values[0]"/> {{ values[0] }}
         </label>
-        <label ngbButtonLabel>
-          <input ngbButton type="radio" [value]="values[1]"/> {{ values[1] }}
+        <label ngbxButtonLabel>
+          <input ngbxButton type="radio" [value]="values[1]"/> {{ values[1] }}
         </label>
       </div>
     `);
@@ -557,12 +557,12 @@ describe('ngbRadioGroup', () => {
 
   it('should honor the input names if specified', () => {
     const fixture = createTestComponent(`
-      <div [(ngModel)]="model" ngbRadioGroup name="foo">
-        <label ngbButtonLabel>
-          <input ngbButton name="bar" type="radio" [value]="values[0]"/> {{ values[0] }}
+      <div [(ngModel)]="model" ngbxRadioGroup name="foo">
+        <label ngbxButtonLabel>
+          <input ngbxButton name="bar" type="radio" [value]="values[0]"/> {{ values[0] }}
         </label>
-        <label ngbButtonLabel>
-          <input ngbButton [name]="'bar'" type="radio" [value]="values[1]"/> {{ values[1] }}
+        <label ngbxButtonLabel>
+          <input ngbxButton [name]="'bar'" type="radio" [value]="values[1]"/> {{ values[1] }}
         </label>
       </div>
     `);

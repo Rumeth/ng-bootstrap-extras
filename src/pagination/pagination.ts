@@ -11,7 +11,7 @@ import {
   TemplateRef
 } from '@angular/core';
 import {getValueInRange, isNumber} from '../util/util';
-import {NgbPaginationConfig} from './pagination-config';
+import {NgbxPaginationConfig} from './pagination-config';
 
 /**
  * Context for the pagination 'first', 'previous', 'next', 'last' or 'ellipsis' cell
@@ -19,7 +19,7 @@ import {NgbPaginationConfig} from './pagination-config';
  *
  * @since 4.1.0
  */
-export interface NgbPaginationLinkContext {
+export interface NgbxPaginationLinkContext {
   /**
    * Page number currently selected
    */
@@ -33,11 +33,11 @@ export interface NgbPaginationLinkContext {
 
 /**
  * Context for the pagination 'number' cell in case you want to override one.
- * Extends 'NgbPaginationLinkContext'
+ * Extends 'NgbxPaginationLinkContext'
  *
  * @since 4.1.0
  */
-export interface NgbPaginationNumberContext extends NgbPaginationLinkContext {
+export interface NgbxPaginationNumberContext extends NgbxPaginationLinkContext {
   /**
    * Page number displayed by the current cell
    */
@@ -49,9 +49,9 @@ export interface NgbPaginationNumberContext extends NgbPaginationLinkContext {
  *
  * @since 4.1.0
  */
-@Directive({selector: 'ng-template[ngbPaginationEllipsis]'})
-export class NgbPaginationEllipsis {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
+@Directive({selector: 'ng-template[ngbxPaginationEllipsis]'})
+export class NgbxPaginationEllipsis {
+  constructor(public templateRef: TemplateRef<NgbxPaginationLinkContext>) {}
 }
 
 /**
@@ -59,9 +59,9 @@ export class NgbPaginationEllipsis {
  *
  * @since 4.1.0
  */
-@Directive({selector: 'ng-template[ngbPaginationFirst]'})
-export class NgbPaginationFirst {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
+@Directive({selector: 'ng-template[ngbxPaginationFirst]'})
+export class NgbxPaginationFirst {
+  constructor(public templateRef: TemplateRef<NgbxPaginationLinkContext>) {}
 }
 
 /**
@@ -69,9 +69,9 @@ export class NgbPaginationFirst {
  *
  * @since 4.1.0
  */
-@Directive({selector: 'ng-template[ngbPaginationLast]'})
-export class NgbPaginationLast {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
+@Directive({selector: 'ng-template[ngbxPaginationLast]'})
+export class NgbxPaginationLast {
+  constructor(public templateRef: TemplateRef<NgbxPaginationLinkContext>) {}
 }
 
 /**
@@ -79,9 +79,9 @@ export class NgbPaginationLast {
  *
  * @since 4.1.0
  */
-@Directive({selector: 'ng-template[ngbPaginationNext]'})
-export class NgbPaginationNext {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
+@Directive({selector: 'ng-template[ngbxPaginationNext]'})
+export class NgbxPaginationNext {
+  constructor(public templateRef: TemplateRef<NgbxPaginationLinkContext>) {}
 }
 
 /**
@@ -89,9 +89,9 @@ export class NgbPaginationNext {
  *
  * @since 4.1.0
  */
-@Directive({selector: 'ng-template[ngbPaginationNumber]'})
-export class NgbPaginationNumber {
-  constructor(public templateRef: TemplateRef<NgbPaginationNumberContext>) {}
+@Directive({selector: 'ng-template[ngbxPaginationNumber]'})
+export class NgbxPaginationNumber {
+  constructor(public templateRef: TemplateRef<NgbxPaginationNumberContext>) {}
 }
 
 /**
@@ -99,23 +99,23 @@ export class NgbPaginationNumber {
  *
  * @since 4.1.0
  */
-@Directive({selector: 'ng-template[ngbPaginationPrevious]'})
-export class NgbPaginationPrevious {
-  constructor(public templateRef: TemplateRef<NgbPaginationLinkContext>) {}
+@Directive({selector: 'ng-template[ngbxPaginationPrevious]'})
+export class NgbxPaginationPrevious {
+  constructor(public templateRef: TemplateRef<NgbxPaginationLinkContext>) {}
 }
 
 /**
  * A component that displays page numbers and allows to customize them in several ways
  */
 @Component({
-  selector: 'ngb-pagination',
+  selector: 'ngbx-pagination',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {'role': 'navigation'},
   template: `
-    <ng-template #first><span aria-hidden="true" i18n="@@ngb.pagination.first">&laquo;&laquo;</span></ng-template>
-    <ng-template #previous><span aria-hidden="true" i18n="@@ngb.pagination.previous">&laquo;</span></ng-template>
-    <ng-template #next><span aria-hidden="true" i18n="@@ngb.pagination.next">&raquo;</span></ng-template>
-    <ng-template #last><span aria-hidden="true" i18n="@@ngb.pagination.last">&raquo;&raquo;</span></ng-template>
+    <ng-template #first><span aria-hidden="true" i18n="@@ngbx.pagination.first">&laquo;&laquo;</span></ng-template>
+    <ng-template #previous><span aria-hidden="true" i18n="@@ngbx.pagination.previous">&laquo;</span></ng-template>
+    <ng-template #next><span aria-hidden="true" i18n="@@ngbx.pagination.next">&raquo;</span></ng-template>
+    <ng-template #last><span aria-hidden="true" i18n="@@ngbx.pagination.last">&raquo;&raquo;</span></ng-template>
     <ng-template #ellipsis>...</ng-template>
     <ng-template #defaultNumber let-page let-currentPage="currentPage">
       {{ page }}
@@ -124,7 +124,7 @@ export class NgbPaginationPrevious {
     <ul [class]="'pagination' + (size ? ' pagination-' + size : '')">
       <li *ngIf="boundaryLinks" class="page-item"
         [class.disabled]="previousDisabled()">
-        <a aria-label="First" i18n-aria-label="@@ngb.pagination.first-aria" class="page-link" href
+        <a aria-label="First" i18n-aria-label="@@ngbx.pagination.first-aria" class="page-link" href
           (click)="selectPage(1); $event.preventDefault()" [attr.tabindex]="(hasPrevious() ? null : '-1')">
           <ng-template [ngTemplateOutlet]="tplFirst?.templateRef || first"
                        [ngTemplateOutletContext]="{disabled: previousDisabled(), currentPage: page}"></ng-template>
@@ -133,7 +133,7 @@ export class NgbPaginationPrevious {
 
       <li *ngIf="directionLinks" class="page-item"
         [class.disabled]="previousDisabled()">
-        <a aria-label="Previous" i18n-aria-label="@@ngb.pagination.previous-aria" class="page-link" href
+        <a aria-label="Previous" i18n-aria-label="@@ngbx.pagination.previous-aria" class="page-link" href
           (click)="selectPage(page-1); $event.preventDefault()" [attr.tabindex]="(hasPrevious() ? null : '-1')">
           <ng-template [ngTemplateOutlet]="tplPrevious?.templateRef || previous"
                        [ngTemplateOutletContext]="{disabled: previousDisabled()}"></ng-template>
@@ -151,7 +151,7 @@ export class NgbPaginationPrevious {
         </a>
       </li>
       <li *ngIf="directionLinks" class="page-item" [class.disabled]="nextDisabled()">
-        <a aria-label="Next" i18n-aria-label="@@ngb.pagination.next-aria" class="page-link" href
+        <a aria-label="Next" i18n-aria-label="@@ngbx.pagination.next-aria" class="page-link" href
           (click)="selectPage(page+1); $event.preventDefault()" [attr.tabindex]="(hasNext() ? null : '-1')">
           <ng-template [ngTemplateOutlet]="tplNext?.templateRef || next"
                        [ngTemplateOutletContext]="{disabled: nextDisabled(), currentPage: page}"></ng-template>
@@ -159,7 +159,7 @@ export class NgbPaginationPrevious {
       </li>
 
       <li *ngIf="boundaryLinks" class="page-item" [class.disabled]="nextDisabled()">
-        <a aria-label="Last" i18n-aria-label="@@ngb.pagination.last-aria" class="page-link" href
+        <a aria-label="Last" i18n-aria-label="@@ngbx.pagination.last-aria" class="page-link" href
           (click)="selectPage(pageCount); $event.preventDefault()" [attr.tabindex]="(hasNext() ? null : '-1')">
           <ng-template [ngTemplateOutlet]="tplLast?.templateRef || last"
                        [ngTemplateOutletContext]="{disabled: nextDisabled(), currentPage: page}"></ng-template>
@@ -168,16 +168,16 @@ export class NgbPaginationPrevious {
     </ul>
   `
 })
-export class NgbPagination implements OnChanges {
+export class NgbxPagination implements OnChanges {
   pageCount = 0;
   pages: number[] = [];
 
-  @ContentChild(NgbPaginationEllipsis) tplEllipsis: NgbPaginationEllipsis;
-  @ContentChild(NgbPaginationFirst) tplFirst: NgbPaginationFirst;
-  @ContentChild(NgbPaginationLast) tplLast: NgbPaginationLast;
-  @ContentChild(NgbPaginationNext) tplNext: NgbPaginationNext;
-  @ContentChild(NgbPaginationNumber) tplNumber: NgbPaginationNumber;
-  @ContentChild(NgbPaginationPrevious) tplPrevious: NgbPaginationPrevious;
+  @ContentChild(NgbxPaginationEllipsis) tplEllipsis: NgbxPaginationEllipsis;
+  @ContentChild(NgbxPaginationFirst) tplFirst: NgbxPaginationFirst;
+  @ContentChild(NgbxPaginationLast) tplLast: NgbxPaginationLast;
+  @ContentChild(NgbxPaginationNext) tplNext: NgbxPaginationNext;
+  @ContentChild(NgbxPaginationNumber) tplNumber: NgbxPaginationNumber;
+  @ContentChild(NgbxPaginationPrevious) tplPrevious: NgbxPaginationPrevious;
 
   /**
    * Whether to disable buttons from user input
@@ -238,7 +238,7 @@ export class NgbPagination implements OnChanges {
    */
   @Input() size: 'sm' | 'lg';
 
-  constructor(config: NgbPaginationConfig) {
+  constructor(config: NgbxPaginationConfig) {
     this.disabled = config.disabled;
     this.boundaryLinks = config.boundaryLinks;
     this.directionLinks = config.directionLinks;

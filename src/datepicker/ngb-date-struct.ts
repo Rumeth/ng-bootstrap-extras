@@ -1,7 +1,7 @@
 /**
- * Interface of the model of the NgbDatepicker and NgbInputDatepicker directives
+ * Interface of the model of the NgbxDatepicker and NgbxInputDatepicker directives
  */
-export interface NgbDateStruct {
+export interface NgbxDateStruct {
   /**
    * The year, for example 2016
    */

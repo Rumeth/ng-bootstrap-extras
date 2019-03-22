@@ -1,30 +1,30 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {NgbAccordion, NgbPanel, NgbPanelTitle, NgbPanelContent, NgbPanelHeader, NgbPanelToggle} from './accordion';
+import {NgbxAccordion, NgbxPanel, NgbxPanelTitle, NgbxPanelContent, NgbxPanelHeader, NgbxPanelToggle} from './accordion';
 
 export {
-  NgbAccordion,
-  NgbPanel,
-  NgbPanelTitle,
-  NgbPanelContent,
-  NgbPanelChangeEvent,
-  NgbPanelHeader,
-  NgbPanelHeaderContext,
-  NgbPanelToggle
+  NgbxAccordion,
+  NgbxPanel,
+  NgbxPanelTitle,
+  NgbxPanelContent,
+  NgbxPanelChangeEvent,
+  NgbxPanelHeader,
+  NgbxPanelHeaderContext,
+  NgbxPanelToggle
 } from './accordion';
-export {NgbAccordionConfig} from './accordion-config';
+export {NgbxAccordionConfig} from './accordion-config';
 
 const NGB_ACCORDION_DIRECTIVES =
-    [NgbAccordion, NgbPanel, NgbPanelTitle, NgbPanelContent, NgbPanelHeader, NgbPanelToggle];
+    [NgbxAccordion, NgbxPanel, NgbxPanelTitle, NgbxPanelContent, NgbxPanelHeader, NgbxPanelToggle];
 
 @NgModule({declarations: NGB_ACCORDION_DIRECTIVES, exports: NGB_ACCORDION_DIRECTIVES, imports: [CommonModule]})
-export class NgbAccordionModule {
+export class NgbxAccordionModule {
   /**
    * Importing with '.forRoot()' is no longer necessary, you can simply import the module.
    * Will be removed in 4.0.0.
    *
    * @deprecated 3.0.0
    */
-  static forRoot(): ModuleWithProviders { return {ngModule: NgbAccordionModule}; }
+  static forRoot(): ModuleWithProviders { return {ngModule: NgbxAccordionModule}; }
 }

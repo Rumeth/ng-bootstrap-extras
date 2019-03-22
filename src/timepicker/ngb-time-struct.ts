@@ -1,7 +1,7 @@
 /**
- * Interface of the model of the NgbTimepicker directive
+ * Interface of the model of the NgbxTimepicker directive
  */
-export interface NgbTimeStruct {
+export interface NgbxTimeStruct {
   /**
    * The hour, going from 0 to 23
    */

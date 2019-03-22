@@ -1,8 +1,8 @@
-import {NgbAccordionConfig} from './accordion-config';
+import {NgbxAccordionConfig} from './accordion-config';
 
-describe('ngb-accordion-config', () => {
+describe('ngbx-accordion-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbAccordionConfig();
+    const config = new NgbxAccordionConfig();
 
     expect(config.closeOthers).toBe(false);
     expect(config.type).toBeUndefined();

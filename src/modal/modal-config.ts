@@ -3,7 +3,7 @@ import {Injectable, Injector} from '@angular/core';
 /**
  * Represent options available when opening new modal windows.
  */
-export interface NgbModalOptions {
+export interface NgbxModalOptions {
   /**
    * Sets the aria attribute aria-labelledby to a modal window.
    *
@@ -65,14 +65,14 @@ export interface NgbModalOptions {
 }
 
 /**
-* Configuration object token for the NgbModal service.
+* Configuration object token for the NgbxModal service.
 * You can provide this configuration, typically in your root module in order to provide default option values for every
 * modal.
 *
 * @since 3.1.0
 */
 @Injectable({providedIn: 'root'})
-export class NgbModalConfig implements NgbModalOptions {
+export class NgbxModalConfig implements NgbxModalOptions {
   backdrop: boolean | 'static' = true;
   keyboard = true;
 }

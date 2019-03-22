@@ -1,7 +1,7 @@
-import {NgbCalendar, NgbPeriod} from './ngb-calendar';
-import {NgbDate} from './ngb-date';
-import {NgbDateStruct} from './ngb-date-struct';
-import {DatepickerViewModel, NgbDayTemplateData, NgbMarkDisabled} from './datepicker-view-model';
+import {NgbxCalendar, NgbxPeriod} from './ngbx-calendar';
+import {NgbxDate} from './ngbx-date';
+import {NgbxDateStruct} from './ngbx-date-struct';
+import {DatepickerViewModel, NgbxDayTemplateData, NgbxMarkDisabled} from './datepicker-view-model';
 import {Injectable} from '@angular/core';
 import {isInteger, toInteger} from '../util/util';
 import {Observable, Subject} from 'rxjs';
@@ -18,13 +18,13 @@ import {
 } from './datepicker-tools';
 
 import {filter} from 'rxjs/operators';
-import {NgbDatepickerI18n} from './datepicker-i18n';
+import {NgbxDatepickerI18n} from './datepicker-i18n';
 
 @Injectable()
-export class NgbDatepickerService {
+export class NgbxDatepickerService {
   private _model$ = new Subject<DatepickerViewModel>();
 
-  private _select$ = new Subject<NgbDate>();
+  private _select$ = new Subject<NgbxDate>();
 
   private _state: DatepickerViewModel = {
     disabled: false,
@@ -42,9 +42,9 @@ export class NgbDatepickerService {
 
   get model$(): Observable<DatepickerViewModel> { return this._model$.pipe(filter(model => model.months.length > 0)); }
 
-  get select$(): Observable<NgbDate> { return this._select$.pipe(filter(date => date !== null)); }
+  get select$(): Observable<NgbxDate> { return this._select$.pipe(filter(date => date !== null)); }
 
-  set dayTemplateData(dayTemplateData: NgbDayTemplateData) {
+  set dayTemplateData(dayTemplateData: NgbxDayTemplateData) {
     if (this._state.dayTemplateData !== dayTemplateData) {
       this._nextState({dayTemplateData});
     }
@@ -76,20 +76,20 @@ export class NgbDatepickerService {
     }
   }
 
-  set maxDate(date: NgbDate) {
+  set maxDate(date: NgbxDate) {
     const maxDate = this.toValidDate(date, null);
     if (isChangedDate(this._state.maxDate, maxDate)) {
       this._nextState({maxDate});
     }
   }
 
-  set markDisabled(markDisabled: NgbMarkDisabled) {
+  set markDisabled(markDisabled: NgbxMarkDisabled) {
     if (this._state.markDisabled !== markDisabled) {
       this._nextState({markDisabled});
     }
   }
 
-  set minDate(date: NgbDate) {
+  set minDate(date: NgbxDate) {
     const minDate = this.toValidDate(date, null);
     if (isChangedDate(this._state.minDate, minDate)) {
       this._nextState({minDate});
@@ -108,15 +108,15 @@ export class NgbDatepickerService {
     }
   }
 
-  constructor(private _calendar: NgbCalendar, private _i18n: NgbDatepickerI18n) {}
+  constructor(private _calendar: NgbxCalendar, private _i18n: NgbxDatepickerI18n) {}
 
-  focus(date: NgbDate) {
+  focus(date: NgbxDate) {
     if (!this._state.disabled && this._calendar.isValid(date) && isChangedDate(this._state.focusDate, date)) {
       this._nextState({focusDate: date});
     }
   }
 
-  focusMove(period?: NgbPeriod, number?: number) {
+  focusMove(period?: NgbxPeriod, number?: number) {
     this.focus(this._calendar.getNext(this._state.focusDate, period, number));
   }
 
@@ -126,7 +126,7 @@ export class NgbDatepickerService {
     }
   }
 
-  open(date: NgbDate) {
+  open(date: NgbxDate) {
     const firstDate = this.toValidDate(date, this._calendar.getToday());
     if (!this._state.disabled) {
       this._nextState({firstDate});
@@ -135,7 +135,7 @@ export class NgbDatepickerService {
 
   reset(state: DatepickerViewModel) { this._state = state; }
 
-  select(date: NgbDate, options: {emitEvent?: boolean} = {}) {
+  select(date: NgbxDate, options: {emitEvent?: boolean} = {}) {
     const selectedDate = this.toValidDate(date, null);
     if (!this._state.disabled) {
       if (isChangedDate(this._state.selectedDate, selectedDate)) {
@@ -148,12 +148,12 @@ export class NgbDatepickerService {
     }
   }
 
-  toValidDate(date: NgbDateStruct, defaultValue?: NgbDate): NgbDate {
-    const ngbDate = NgbDate.from(date);
+  toValidDate(date: NgbxDateStruct, defaultValue?: NgbxDate): NgbxDate {
+    const ngbxDate = NgbxDate.from(date);
     if (defaultValue === undefined) {
       defaultValue = this._calendar.getToday();
     }
-    return this._calendar.isValid(ngbDate) ? ngbDate : defaultValue;
+    return this._calendar.isValid(ngbxDate) ? ngbxDate : defaultValue;
   }
 
   private _nextState(patch: Partial<DatepickerViewModel>) {

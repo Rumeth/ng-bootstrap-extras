@@ -1,17 +1,17 @@
 import {Injectable} from '@angular/core';
-import {NgbDatepickerService} from './datepicker-service';
-import {NgbCalendar} from './ngb-calendar';
+import {NgbxDatepickerService} from './datepicker-service';
+import {NgbxCalendar} from './ngbx-calendar';
 import {Key} from '../util/key';
-import {NgbDate} from './ngb-date';
+import {NgbxDate} from './ngbx-date';
 
 @Injectable()
-export class NgbDatepickerKeyMapService {
-  private _minDate: NgbDate;
-  private _maxDate: NgbDate;
-  private _firstViewDate: NgbDate;
-  private _lastViewDate: NgbDate;
+export class NgbxDatepickerKeyMapService {
+  private _minDate: NgbxDate;
+  private _maxDate: NgbxDate;
+  private _firstViewDate: NgbxDate;
+  private _lastViewDate: NgbxDate;
 
-  constructor(private _service: NgbDatepickerService, private _calendar: NgbCalendar) {
+  constructor(private _service: NgbxDatepickerService, private _calendar: NgbxCalendar) {
     _service.model$.subscribe(model => {
       this._minDate = model.minDate;
       this._maxDate = model.maxDate;

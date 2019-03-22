@@ -1,7 +1,7 @@
 import {ComponentRef} from '@angular/core';
 
-import {NgbModalBackdrop} from './modal-backdrop';
-import {NgbModalWindow} from './modal-window';
+import {NgbxModalBackdrop} from './modal-backdrop';
+import {NgbxModalWindow} from './modal-window';
 
 import {ContentRef} from '../util/popup';
 
@@ -9,24 +9,24 @@ import {ContentRef} from '../util/popup';
  * A reference to an active (currently opened) modal. Instances of this class
  * can be injected into components passed as modal content.
  */
-export class NgbActiveModal {
+export class NgbxActiveModal {
   /**
    * Closes the modal with an optional 'result' value.
-   * The 'NgbMobalRef.result' promise will be resolved with provided value.
+   * The 'NgbxMobalRef.result' promise will be resolved with provided value.
    */
   close(result?: any): void {}
 
   /**
    * Dismisses the modal with an optional 'reason' value.
-   * The 'NgbModalRef.result' promise will be rejected with provided value.
+   * The 'NgbxModalRef.result' promise will be rejected with provided value.
    */
   dismiss(reason?: any): void {}
 }
 
 /**
- * A reference to a newly opened modal returned by the 'NgbModal.open()' method.
+ * A reference to a newly opened modal returned by the 'NgbxModal.open()' method.
  */
-export class NgbModalRef {
+export class NgbxModalRef {
   private _resolve: (result?: any) => void;
   private _reject: (reason?: any) => void;
 
@@ -46,8 +46,8 @@ export class NgbModalRef {
   result: Promise<any>;
 
   constructor(
-      private _windowCmptRef: ComponentRef<NgbModalWindow>, private _contentRef: ContentRef,
-      private _backdropCmptRef?: ComponentRef<NgbModalBackdrop>, private _beforeDismiss?: Function) {
+      private _windowCmptRef: ComponentRef<NgbxModalWindow>, private _contentRef: ContentRef,
+      private _backdropCmptRef?: ComponentRef<NgbxModalBackdrop>, private _beforeDismiss?: Function) {
     _windowCmptRef.instance.dismissEvent.subscribe((reason: any) => { this.dismiss(reason); });
 
     this.result = new Promise((resolve, reject) => {
@@ -59,7 +59,7 @@ export class NgbModalRef {
 
   /**
    * Closes the modal with an optional 'result' value.
-   * The 'NgbMobalRef.result' promise will be resolved with provided value.
+   * The 'NgbxMobalRef.result' promise will be resolved with provided value.
    */
   close(result?: any): void {
     if (this._windowCmptRef) {
@@ -75,7 +75,7 @@ export class NgbModalRef {
 
   /**
    * Dismisses the modal with an optional 'reason' value.
-   * The 'NgbModalRef.result' promise will be rejected with provided value.
+   * The 'NgbxModalRef.result' promise will be rejected with provided value.
    */
   dismiss(reason?: any): void {
     if (this._windowCmptRef) {

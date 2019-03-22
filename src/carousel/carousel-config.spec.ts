@@ -1,8 +1,8 @@
-import {NgbCarouselConfig} from './carousel-config';
+import {NgbxCarouselConfig} from './carousel-config';
 
-describe('ngb-carousel-config', () => {
+describe('ngbx-carousel-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbCarouselConfig();
+    const config = new NgbxCarouselConfig();
 
     expect(config.interval).toBe(5000);
     expect(config.keyboard).toBe(true);

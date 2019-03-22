@@ -1,19 +1,19 @@
 import {Inject, Injectable, LOCALE_ID} from '@angular/core';
 import {FormStyle, getLocaleDayNames, getLocaleMonthNames, TranslationWidth, formatDate} from '@angular/common';
-import {NgbDateStruct} from './ngb-date-struct';
+import {NgbxDateStruct} from './ngbx-date-struct';
 
 export function NGB_DATEPICKER_18N_FACTORY(locale) {
-  return new NgbDatepickerI18nDefault(locale);
+  return new NgbxDatepickerI18nDefault(locale);
 }
 
 /**
- * Type of the service supplying month and weekday names to to NgbDatepicker component.
+ * Type of the service supplying month and weekday names to to NgbxDatepicker component.
  * The default implementation of this service honors the Angular locale, and uses the registered locale data,
  * as explained in the Angular i18n guide.
  * See the i18n demo for how to extend this class and define a custom provider for i18n.
  */
 @Injectable({providedIn: 'root', useFactory: NGB_DATEPICKER_18N_FACTORY, deps: [LOCALE_ID]})
-export abstract class NgbDatepickerI18n {
+export abstract class NgbxDatepickerI18n {
   /**
    * Returns the short weekday name to display in the heading of the month view.
    * With default calendar we use ISO 8601: 'weekday' is 1=Mon ... 7=Sun
@@ -37,14 +37,14 @@ export abstract class NgbDatepickerI18n {
    *
    * @since 2.0.0
    */
-  abstract getDayAriaLabel(date: NgbDateStruct): string;
+  abstract getDayAriaLabel(date: NgbxDateStruct): string;
 
   /**
    * Returns the textual representation of a day that is rendered in a day cell
    *
    * @since 3.0.0
    */
-  getDayNumerals(date: NgbDateStruct): string { return `${date.day}`; }
+  getDayNumerals(date: NgbxDateStruct): string { return `${date.day}`; }
 
   /**
    * Returns the textual representation of a week number rendered by date picker
@@ -63,7 +63,7 @@ export abstract class NgbDatepickerI18n {
 }
 
 @Injectable()
-export class NgbDatepickerI18nDefault extends NgbDatepickerI18n {
+export class NgbxDatepickerI18nDefault extends NgbxDatepickerI18n {
   private _weekdaysShort: Array<string>;
   private _monthsShort: Array<string>;
   private _monthsFull: Array<string>;
@@ -84,7 +84,7 @@ export class NgbDatepickerI18nDefault extends NgbDatepickerI18n {
 
   getMonthFullName(month: number): string { return this._monthsFull[month - 1]; }
 
-  getDayAriaLabel(date: NgbDateStruct): string {
+  getDayAriaLabel(date: NgbxDateStruct): string {
     const jsDate = new Date(date.year, date.month - 1, date.day);
     return formatDate(jsDate, 'fullDate', this._locale);
   }

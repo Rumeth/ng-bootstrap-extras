@@ -1,7 +1,7 @@
-import {NgbCalendarIslamicUmalqura} from './ngb-calendar-islamic-umalqura';
-import {NgbDate} from '../ngb-date';
+import {NgbxCalendarIslamicUmalqura} from './ngbx-calendar-islamic-umalqura';
+import {NgbxDate} from '../ngbx-date';
 
-describe('ngb-calendar-islamic-umalqura', () => {
+describe('ngbx-calendar-islamic-umalqura', () => {
   const DATE_TABLE = [
     [1882, 10, 12, 1300, 1, 1],   [1882, 10, 14, 1300, 1, 3],   [1883, 5, 20, 1300, 8, 14],
     [1883, 5, 22, 1300, 8, 16],   [1884, 0, 26, 1301, 3, 27],   [1884, 0, 28, 1301, 3, 29],
@@ -846,11 +846,11 @@ describe('ngb-calendar-islamic-umalqura', () => {
     [1599, 11, 29], [1599, 12, 30], [1600, 1, 29],  [1600, 2, 29],  [1600, 3, 30],  [1600, 4, 29],  [1600, 5, 30],
     [1600, 6, 29],  [1600, 7, 29],  [1600, 8, 30],  [1600, 9, 30],  [1600, 10, 30], [1600, 11, 29], [1600, 12, 30]
   ];
-  const calendar = new NgbCalendarIslamicUmalqura();
+  const calendar = new NgbxCalendarIslamicUmalqura();
   describe('toGregorian', () => {
     it('should convert correctly from Hijri to Gregorian', () => {
       DATE_TABLE.forEach(element => {
-        const iDate = new NgbDate(element[3], element[4], element[5]);
+        const iDate = new NgbxDate(element[3], element[4], element[5]);
         const gDate = new Date(element[0], element[1], element[2]);
         expect(calendar.toGregorian(iDate).getTime())
             .toEqual(gDate.getTime(), `Hijri ${iDate.year}-${iDate.month}-${iDate.day} should be Gregorian ${gDate}`);
@@ -861,7 +861,7 @@ describe('ngb-calendar-islamic-umalqura', () => {
   describe('fromGregorian', () => {
     it('should convert correctly from Gregorian to Hijri', () => {
       DATE_TABLE.forEach(element => {
-        const iDate = new NgbDate(element[3], element[4], element[5]);
+        const iDate = new NgbxDate(element[3], element[4], element[5]);
         const gDate = new Date(element[0], element[1], element[2]);
         const iDate2 = calendar.fromGregorian(gDate);
         expect(iDate2.equals(iDate))
@@ -888,110 +888,110 @@ describe('ngb-calendar-islamic-umalqura', () => {
   });
 
   it('should return day of week', () => {
-    expect(calendar.getWeekday(new NgbDate(1438, 7, 6))).toEqual(1);
-    expect(calendar.getWeekday(new NgbDate(1438, 7, 7))).toEqual(2);
-    expect(calendar.getWeekday(new NgbDate(1438, 7, 8))).toEqual(3);
-    expect(calendar.getWeekday(new NgbDate(1438, 7, 9))).toEqual(4);
-    expect(calendar.getWeekday(new NgbDate(1438, 7, 10))).toEqual(5);
-    expect(calendar.getWeekday(new NgbDate(1438, 7, 11))).toEqual(6);
-    expect(calendar.getWeekday(new NgbDate(1438, 7, 12))).toEqual(7);
-    expect(calendar.getWeekday(new NgbDate(1420, 1, 12))).toEqual(3);
-    expect(calendar.getWeekday(new NgbDate(1420, 2, 9))).toEqual(1);
+    expect(calendar.getWeekday(new NgbxDate(1438, 7, 6))).toEqual(1);
+    expect(calendar.getWeekday(new NgbxDate(1438, 7, 7))).toEqual(2);
+    expect(calendar.getWeekday(new NgbxDate(1438, 7, 8))).toEqual(3);
+    expect(calendar.getWeekday(new NgbxDate(1438, 7, 9))).toEqual(4);
+    expect(calendar.getWeekday(new NgbxDate(1438, 7, 10))).toEqual(5);
+    expect(calendar.getWeekday(new NgbxDate(1438, 7, 11))).toEqual(6);
+    expect(calendar.getWeekday(new NgbxDate(1438, 7, 12))).toEqual(7);
+    expect(calendar.getWeekday(new NgbxDate(1420, 1, 12))).toEqual(3);
+    expect(calendar.getWeekday(new NgbxDate(1420, 2, 9))).toEqual(1);
   });
 
   it('should add days to date', () => {
-    expect(calendar.getNext(new NgbDate(1431, 1, 29))).toEqual(new NgbDate(1431, 2, 1));
-    expect(calendar.getNext(new NgbDate(1437, 2, 28))).toEqual(new NgbDate(1437, 2, 29));
-    expect(calendar.getNext(new NgbDate(1437, 2, 29))).toEqual(new NgbDate(1437, 3, 1));
+    expect(calendar.getNext(new NgbxDate(1431, 1, 29))).toEqual(new NgbxDate(1431, 2, 1));
+    expect(calendar.getNext(new NgbxDate(1437, 2, 28))).toEqual(new NgbxDate(1437, 2, 29));
+    expect(calendar.getNext(new NgbxDate(1437, 2, 29))).toEqual(new NgbxDate(1437, 3, 1));
   });
 
   it('should subtract days from date', () => {
-    expect(calendar.getPrev(new NgbDate(1431, 2, 1))).toEqual(new NgbDate(1431, 1, 29));
-    expect(calendar.getPrev(new NgbDate(1431, 3, 1))).toEqual(new NgbDate(1431, 2, 30));
-    expect(calendar.getPrev(new NgbDate(1437, 3, 5))).toEqual(new NgbDate(1437, 3, 4));
+    expect(calendar.getPrev(new NgbxDate(1431, 2, 1))).toEqual(new NgbxDate(1431, 1, 29));
+    expect(calendar.getPrev(new NgbxDate(1431, 3, 1))).toEqual(new NgbxDate(1431, 2, 30));
+    expect(calendar.getPrev(new NgbxDate(1437, 3, 5))).toEqual(new NgbxDate(1437, 3, 4));
   });
 
   it('should add months to date', () => {
-    expect(calendar.getNext(new NgbDate(1437, 8, 22), 'm')).toEqual(new NgbDate(1437, 9, 1));
-    expect(calendar.getNext(new NgbDate(1437, 8, 1), 'm')).toEqual(new NgbDate(1437, 9, 1));
-    expect(calendar.getNext(new NgbDate(1437, 12, 22), 'm')).toEqual(new NgbDate(1438, 1, 1));
+    expect(calendar.getNext(new NgbxDate(1437, 8, 22), 'm')).toEqual(new NgbxDate(1437, 9, 1));
+    expect(calendar.getNext(new NgbxDate(1437, 8, 1), 'm')).toEqual(new NgbxDate(1437, 9, 1));
+    expect(calendar.getNext(new NgbxDate(1437, 12, 22), 'm')).toEqual(new NgbxDate(1438, 1, 1));
   });
 
   it('should subtract months from date', () => {
-    expect(calendar.getPrev(new NgbDate(1437, 8, 22), 'm')).toEqual(new NgbDate(1437, 7, 1));
-    expect(calendar.getPrev(new NgbDate(1437, 9, 1), 'm')).toEqual(new NgbDate(1437, 8, 1));
-    expect(calendar.getPrev(new NgbDate(1437, 1, 22), 'm')).toEqual(new NgbDate(1436, 12, 1));
+    expect(calendar.getPrev(new NgbxDate(1437, 8, 22), 'm')).toEqual(new NgbxDate(1437, 7, 1));
+    expect(calendar.getPrev(new NgbxDate(1437, 9, 1), 'm')).toEqual(new NgbxDate(1437, 8, 1));
+    expect(calendar.getPrev(new NgbxDate(1437, 1, 22), 'm')).toEqual(new NgbxDate(1436, 12, 1));
   });
 
   it('should add years to date', () => {
-    expect(calendar.getNext(new NgbDate(1437, 2, 22), 'y')).toEqual(new NgbDate(1438, 1, 1));
-    expect(calendar.getNext(new NgbDate(1438, 12, 22), 'y')).toEqual(new NgbDate(1439, 1, 1));
+    expect(calendar.getNext(new NgbxDate(1437, 2, 22), 'y')).toEqual(new NgbxDate(1438, 1, 1));
+    expect(calendar.getNext(new NgbxDate(1438, 12, 22), 'y')).toEqual(new NgbxDate(1439, 1, 1));
   });
 
   it('should subtract years from date', () => {
-    expect(calendar.getPrev(new NgbDate(1437, 12, 22), 'y')).toEqual(new NgbDate(1436, 1, 1));
-    expect(calendar.getPrev(new NgbDate(1438, 2, 22), 'y')).toEqual(new NgbDate(1437, 1, 1));
+    expect(calendar.getPrev(new NgbxDate(1437, 12, 22), 'y')).toEqual(new NgbxDate(1436, 1, 1));
+    expect(calendar.getPrev(new NgbxDate(1438, 2, 22), 'y')).toEqual(new NgbxDate(1437, 1, 1));
   });
 
   it('should return week number', () => {
     let week = [
-      new NgbDate(1437, 1, 4), new NgbDate(1437, 1, 5), new NgbDate(1437, 1, 6), new NgbDate(1437, 1, 7),
-      new NgbDate(1437, 1, 8), new NgbDate(1437, 1, 9), new NgbDate(1437, 1, 10)
+      new NgbxDate(1437, 1, 4), new NgbxDate(1437, 1, 5), new NgbxDate(1437, 1, 6), new NgbxDate(1437, 1, 7),
+      new NgbxDate(1437, 1, 8), new NgbxDate(1437, 1, 9), new NgbxDate(1437, 1, 10)
     ];
     expect(calendar.getWeekNumber(week, 7)).toEqual(2);
     week = [
-      new NgbDate(1437, 12, 15), new NgbDate(1437, 12, 16), new NgbDate(1437, 12, 17), new NgbDate(1437, 12, 18),
-      new NgbDate(1437, 12, 19), new NgbDate(1437, 12, 20), new NgbDate(1437, 12, 21)
+      new NgbxDate(1437, 12, 15), new NgbxDate(1437, 12, 16), new NgbxDate(1437, 12, 17), new NgbxDate(1437, 12, 18),
+      new NgbxDate(1437, 12, 19), new NgbxDate(1437, 12, 20), new NgbxDate(1437, 12, 21)
     ];
     expect(calendar.getWeekNumber(week, 7)).toEqual(50);
     week = [
-      new NgbDate(1437, 12, 22), new NgbDate(1437, 12, 23), new NgbDate(1437, 12, 24), new NgbDate(1437, 12, 25),
-      new NgbDate(1437, 12, 26), new NgbDate(1437, 12, 27), new NgbDate(1437, 12, 28)
+      new NgbxDate(1437, 12, 22), new NgbxDate(1437, 12, 23), new NgbxDate(1437, 12, 24), new NgbxDate(1437, 12, 25),
+      new NgbxDate(1437, 12, 26), new NgbxDate(1437, 12, 27), new NgbxDate(1437, 12, 28)
     ];
     expect(calendar.getWeekNumber(week, 7)).toEqual(51);
   });
 
   describe('setDay', () => {
     it('should return correct value of day', () => {
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'd', 10).day).toEqual(11);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'd', 0).day).toEqual(1);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'd', 30).day).toEqual(2);
-      expect(calendar.getNext(new NgbDate(1437, 1, 1), 'd', 60).day).toEqual(2);
-      expect(calendar.getNext(new NgbDate(1431, 2, 1), 'd', -1).day).toEqual(29);
-      expect(calendar.getNext(new NgbDate(1431, 2, 1), 'd', -2).day).toEqual(28);
-      expect(calendar.getNext(new NgbDate(1431, 2, 1), 'd', -3).day).toEqual(27);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'd', 10).day).toEqual(11);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'd', 0).day).toEqual(1);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'd', 30).day).toEqual(2);
+      expect(calendar.getNext(new NgbxDate(1437, 1, 1), 'd', 60).day).toEqual(2);
+      expect(calendar.getNext(new NgbxDate(1431, 2, 1), 'd', -1).day).toEqual(29);
+      expect(calendar.getNext(new NgbxDate(1431, 2, 1), 'd', -2).day).toEqual(28);
+      expect(calendar.getNext(new NgbxDate(1431, 2, 1), 'd', -3).day).toEqual(27);
     });
   });
 
   describe('setMonth', () => {
     it('should return correct value of month', () => {
-      expect(calendar.getNext(new NgbDate(1202, 1, 1), 'm', 8).month).toEqual(9);
-      expect(calendar.getNext(new NgbDate(1202, 1, 19), 'm', 7).month).toEqual(8);
-      expect(calendar.getNext(new NgbDate(1431, 2, 30), 'm', -1).month).toEqual(1);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'm', -1).month).toEqual(12);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'm', -2).month).toEqual(11);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'm', 11).month).toEqual(12);
-      expect(calendar.getNext(new NgbDate(1420, 1, 1), 'm', 23).month).toEqual(12);
-      expect(calendar.getNext(new NgbDate(1431, 1, 2), 'm', -25).month).toEqual(12);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'm', 12).month).toEqual(1);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'd', 29).month).toEqual(2);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'd', 30).month).toEqual(2);
-      expect(calendar.getNext(new NgbDate(1437, 1, 1), 'd', 60).month).toEqual(3);
-      expect(calendar.getNext(new NgbDate(1431, 2, 1), 'd', -2).month).toEqual(1);
-      expect(calendar.getNext(new NgbDate(1431, 2, 1), 'd', -31).month).toEqual(12);
+      expect(calendar.getNext(new NgbxDate(1202, 1, 1), 'm', 8).month).toEqual(9);
+      expect(calendar.getNext(new NgbxDate(1202, 1, 19), 'm', 7).month).toEqual(8);
+      expect(calendar.getNext(new NgbxDate(1431, 2, 30), 'm', -1).month).toEqual(1);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'm', -1).month).toEqual(12);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'm', -2).month).toEqual(11);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'm', 11).month).toEqual(12);
+      expect(calendar.getNext(new NgbxDate(1420, 1, 1), 'm', 23).month).toEqual(12);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 2), 'm', -25).month).toEqual(12);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'm', 12).month).toEqual(1);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'd', 29).month).toEqual(2);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'd', 30).month).toEqual(2);
+      expect(calendar.getNext(new NgbxDate(1437, 1, 1), 'd', 60).month).toEqual(3);
+      expect(calendar.getNext(new NgbxDate(1431, 2, 1), 'd', -2).month).toEqual(1);
+      expect(calendar.getNext(new NgbxDate(1431, 2, 1), 'd', -31).month).toEqual(12);
     });
   });
 
   describe('setYear', () => {
     it('should return correct value of yar', () => {
-      expect(calendar.getNext(new NgbDate(1200, 8, 19), 'y', 2).year).toEqual(1202);
-      expect(calendar.getNext(new NgbDate(1400, 11, 30), 'y', 31).year).toEqual(1431);
-      expect(calendar.getNext(new NgbDate(1431, 12, 1), 'd', 32).year).toEqual(1432);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'd', -2).year).toEqual(1430);
-      expect(calendar.getNext(new NgbDate(1431, 12, 1), 'm', 12).year).toEqual(1432);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'm', 24).year).toEqual(1433);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'm', -2).year).toEqual(1430);
-      expect(calendar.getNext(new NgbDate(1431, 1, 1), 'm', -14).year).toEqual(1429);
+      expect(calendar.getNext(new NgbxDate(1200, 8, 19), 'y', 2).year).toEqual(1202);
+      expect(calendar.getNext(new NgbxDate(1400, 11, 30), 'y', 31).year).toEqual(1431);
+      expect(calendar.getNext(new NgbxDate(1431, 12, 1), 'd', 32).year).toEqual(1432);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'd', -2).year).toEqual(1430);
+      expect(calendar.getNext(new NgbxDate(1431, 12, 1), 'm', 12).year).toEqual(1432);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'm', 24).year).toEqual(1433);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'm', -2).year).toEqual(1430);
+      expect(calendar.getNext(new NgbxDate(1431, 1, 1), 'm', -14).year).toEqual(1429);
     });
   });
 });

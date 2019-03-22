@@ -1,33 +1,33 @@
 import {Injectable} from '@angular/core';
-import {NgbDateAdapter} from './ngb-date-adapter';
-import {NgbDateStruct} from '../ngb-date-struct';
+import {NgbxDateAdapter} from './ngbx-date-adapter';
+import {NgbxDateStruct} from '../ngbx-date-struct';
 import {isInteger} from '../../util/util';
 
 /**
-* NgbDateAdapter implementation that allows using native javascript date as a user date model.
+* NgbxDateAdapter implementation that allows using native javascript date as a user date model.
  */
 @Injectable()
-export class NgbDateNativeAdapter extends NgbDateAdapter<Date> {
+export class NgbxDateNativeAdapter extends NgbxDateAdapter<Date> {
   /**
-   * Converts native date to a NgbDateStruct
+   * Converts native date to a NgbxDateStruct
    */
-  fromModel(date: Date): NgbDateStruct {
+  fromModel(date: Date): NgbxDateStruct {
     return (date instanceof Date && !isNaN(date.getTime())) ? this._fromNativeDate(date) : null;
   }
 
   /**
-   * Converts a NgbDateStruct to a native date
+   * Converts a NgbxDateStruct to a native date
    */
-  toModel(date: NgbDateStruct): Date {
+  toModel(date: NgbxDateStruct): Date {
     return date && isInteger(date.year) && isInteger(date.month) && isInteger(date.day) ? this._toNativeDate(date) :
                                                                                           null;
   }
 
-  protected _fromNativeDate(date: Date): NgbDateStruct {
+  protected _fromNativeDate(date: Date): NgbxDateStruct {
     return {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()};
   }
 
-  protected _toNativeDate(date: NgbDateStruct): Date {
+  protected _toNativeDate(date: NgbxDateStruct): Date {
     const jsDate = new Date(date.year, date.month - 1, date.day, 12);
     // avoid 30 -> 1930 conversion
     jsDate.setFullYear(date.year);

@@ -1,6 +1,6 @@
 import {isNumber, toInteger} from '../util/util';
 
-export class NgbTime {
+export class NgbxTime {
   hour: number;
   minute: number;
   second: number;

@@ -1,24 +1,24 @@
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {getValueInRange} from '../util/util';
-import {NgbProgressbarConfig} from './progressbar-config';
+import {NgbxProgressbarConfig} from './progressbar-config';
 
 /**
  * Directive that can be used to provide feedback on the progress of a workflow or an action.
  */
 @Component({
-  selector: 'ngb-progressbar',
+  selector: 'ngbx-progressbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="progress" [style.height]="height">
       <div class="progress-bar{{type ? ' bg-' + type : ''}}{{animated ? ' progress-bar-animated' : ''}}{{striped ?
     ' progress-bar-striped' : ''}}" role="progressbar" [style.width.%]="getPercentValue()"
     [attr.aria-valuenow]="getValue()" aria-valuemin="0" [attr.aria-valuemax]="max">
-        <span *ngIf="showValue" i18n="@@ngb.progressbar.value">{{getPercentValue()}}%</span><ng-content></ng-content>
+        <span *ngIf="showValue" i18n="@@ngbx.progressbar.value">{{getPercentValue()}}%</span><ng-content></ng-content>
       </div>
     </div>
   `
 })
-export class NgbProgressbar {
+export class NgbxProgressbar {
   /**
    * Maximal value to be displayed in the progressbar.
    */
@@ -55,7 +55,7 @@ export class NgbProgressbar {
    */
   @Input() height: string;
 
-  constructor(config: NgbProgressbarConfig) {
+  constructor(config: NgbxProgressbarConfig) {
     this.max = config.max;
     this.animated = config.animated;
     this.striped = config.striped;

@@ -21,28 +21,28 @@ import {DOCUMENT} from '@angular/common';
 import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator} from '@angular/forms';
 import {Subject} from 'rxjs';
 
-import {ngbAutoClose} from '../util/autoclose';
-import {ngbFocusTrap} from '../util/focus-trap';
+import {ngbxAutoClose} from '../util/autoclose';
+import {ngbxFocusTrap} from '../util/focus-trap';
 import {PlacementArray, positionElements} from '../util/positioning';
 
-import {NgbDateAdapter} from './adapters/ngb-date-adapter';
-import {NgbDatepicker, NgbDatepickerNavigateEvent} from './datepicker';
+import {NgbxDateAdapter} from './adapters/ngbx-date-adapter';
+import {NgbxDatepicker, NgbxDatepickerNavigateEvent} from './datepicker';
 import {DayTemplateContext} from './datepicker-day-template-context';
-import {NgbDatepickerService} from './datepicker-service';
-import {NgbCalendar} from './ngb-calendar';
-import {NgbDate} from './ngb-date';
-import {NgbDateParserFormatter} from './ngb-date-parser-formatter';
-import {NgbDateStruct} from './ngb-date-struct';
+import {NgbxDatepickerService} from './datepicker-service';
+import {NgbxCalendar} from './ngbx-calendar';
+import {NgbxDate} from './ngbx-date';
+import {NgbxDateParserFormatter} from './ngbx-date-parser-formatter';
+import {NgbxDateStruct} from './ngbx-date-struct';
 
 const NGB_DATEPICKER_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbInputDatepicker),
+  useExisting: forwardRef(() => NgbxInputDatepicker),
   multi: true
 };
 
 const NGB_DATEPICKER_VALIDATOR = {
   provide: NG_VALIDATORS,
-  useExisting: forwardRef(() => NgbInputDatepicker),
+  useExisting: forwardRef(() => NgbxInputDatepicker),
   multi: true
 };
 
@@ -51,22 +51,22 @@ const NGB_DATEPICKER_VALIDATOR = {
  * Manages integration with the input field itself (data entry) and ngModel (validation etc.).
  */
 @Directive({
-  selector: 'input[ngbDatepicker]',
-  exportAs: 'ngbDatepicker',
+  selector: 'input[ngbxDatepicker]',
+  exportAs: 'ngbxDatepicker',
   host: {
     '(input)': 'manualDateChange($event.target.value)',
     '(change)': 'manualDateChange($event.target.value, true)',
     '(blur)': 'onBlur()',
     '[disabled]': 'disabled'
   },
-  providers: [NGB_DATEPICKER_VALUE_ACCESSOR, NGB_DATEPICKER_VALIDATOR, NgbDatepickerService]
+  providers: [NGB_DATEPICKER_VALUE_ACCESSOR, NGB_DATEPICKER_VALIDATOR, NgbxDatepickerService]
 })
-export class NgbInputDatepicker implements OnChanges,
+export class NgbxInputDatepicker implements OnChanges,
     OnDestroy, ControlValueAccessor, Validator {
   private _closed$ = new Subject();
-  private _cRef: ComponentRef<NgbDatepicker> = null;
+  private _cRef: ComponentRef<NgbxDatepicker> = null;
   private _disabled = false;
-  private _model: NgbDate;
+  private _model: NgbxDate;
   private _inputValue: string;
   private _zoneSubscription: any;
 
@@ -92,7 +92,7 @@ export class NgbInputDatepicker implements OnChanges,
    *
    * @since 3.3.0
    */
-  @Input() dayTemplateData: (date: NgbDate, current: {year: number, month: number}) => any;
+  @Input() dayTemplateData: (date: NgbxDate, current: {year: number, month: number}) => any;
 
   /**
    * Number of months to display
@@ -115,17 +115,17 @@ export class NgbInputDatepicker implements OnChanges,
    * Callback to mark a given date as disabled.
    * 'Current' contains the month that will be displayed in the view
    */
-  @Input() markDisabled: (date: NgbDate, current: {year: number, month: number}) => boolean;
+  @Input() markDisabled: (date: NgbxDate, current: {year: number, month: number}) => boolean;
 
   /**
    * Min date for the navigation. If not provided will be 10 years before today or `startDate`
    */
-  @Input() minDate: NgbDateStruct;
+  @Input() minDate: NgbxDateStruct;
 
   /**
    * Max date for the navigation. If not provided will be 10 years from today or `startDate`
    */
-  @Input() maxDate: NgbDateStruct;
+  @Input() maxDate: NgbxDateStruct;
 
   /**
    * Navigation type: `select` (default with select boxes for month and year), `arrows`
@@ -173,17 +173,17 @@ export class NgbInputDatepicker implements OnChanges,
 
   /**
    * An event fired when user selects a date using keyboard or mouse.
-   * The payload of the event is currently selected NgbDate.
+   * The payload of the event is currently selected NgbxDate.
    *
    * @since 1.1.1
    */
-  @Output() dateSelect = new EventEmitter<NgbDate>();
+  @Output() dateSelect = new EventEmitter<NgbxDate>();
 
   /**
    * An event fired when navigation happens and currently displayed month changes.
-   * See NgbDatepickerNavigateEvent for the payload info.
+   * See NgbxDatepickerNavigateEvent for the payload info.
    */
-  @Output() navigate = new EventEmitter<NgbDatepickerNavigateEvent>();
+  @Output() navigate = new EventEmitter<NgbxDatepickerNavigateEvent>();
 
   @Input()
   get disabled() {
@@ -203,10 +203,10 @@ export class NgbInputDatepicker implements OnChanges,
 
 
   constructor(
-      private _parserFormatter: NgbDateParserFormatter, private _elRef: ElementRef<HTMLInputElement>,
+      private _parserFormatter: NgbxDateParserFormatter, private _elRef: ElementRef<HTMLInputElement>,
       private _vcRef: ViewContainerRef, private _renderer: Renderer2, private _cfr: ComponentFactoryResolver,
-      private _ngZone: NgZone, private _service: NgbDatepickerService, private _calendar: NgbCalendar,
-      private _dateAdapter: NgbDateAdapter<any>, @Inject(DOCUMENT) private _document: any,
+      private _ngZone: NgZone, private _service: NgbxDatepickerService, private _calendar: NgbxCalendar,
+      private _dateAdapter: NgbxDateAdapter<any>, @Inject(DOCUMENT) private _document: any,
       private _changeDetector: ChangeDetectorRef) {
     this._zoneSubscription = _ngZone.onStable.subscribe(() => {
       if (this._cRef) {
@@ -231,18 +231,18 @@ export class NgbInputDatepicker implements OnChanges,
       return null;
     }
 
-    const ngbDate = this._fromDateStruct(this._dateAdapter.fromModel(value));
+    const ngbxDate = this._fromDateStruct(this._dateAdapter.fromModel(value));
 
-    if (!this._calendar.isValid(ngbDate)) {
-      return {'ngbDate': {invalid: c.value}};
+    if (!this._calendar.isValid(ngbxDate)) {
+      return {'ngbxDate': {invalid: c.value}};
     }
 
-    if (this.minDate && ngbDate.before(NgbDate.from(this.minDate))) {
-      return {'ngbDate': {requiredBefore: this.minDate}};
+    if (this.minDate && ngbxDate.before(NgbxDate.from(this.minDate))) {
+      return {'ngbxDate': {requiredBefore: this.minDate}};
     }
 
-    if (this.maxDate && ngbDate.after(NgbDate.from(this.maxDate))) {
-      return {'ngbDate': {requiredAfter: this.maxDate}};
+    if (this.maxDate && ngbxDate.after(NgbxDate.from(this.maxDate))) {
+      return {'ngbxDate': {requiredAfter: this.maxDate}};
     }
   }
 
@@ -272,7 +272,7 @@ export class NgbInputDatepicker implements OnChanges,
    */
   open() {
     if (!this.isOpen()) {
-      const cf = this._cfr.resolveComponentFactory(NgbDatepicker);
+      const cf = this._cfr.resolveComponentFactory(NgbxDatepicker);
       this._cRef = this._vcRef.createComponent(cf);
 
       this._applyPopupStyling(this._cRef.location.nativeElement);
@@ -297,10 +297,10 @@ export class NgbInputDatepicker implements OnChanges,
       }
 
       // focus handling
-      ngbFocusTrap(this._cRef.location.nativeElement, this._closed$, true);
+      ngbxFocusTrap(this._cRef.location.nativeElement, this._closed$, true);
       this._cRef.instance.focus();
 
-      ngbAutoClose(
+      ngbxAutoClose(
           this._ngZone, this._document, this.autoClose, () => this.close(), this._closed$, [],
           [this._elRef.nativeElement, this._cRef.location.nativeElement]);
     }
@@ -354,7 +354,7 @@ export class NgbInputDatepicker implements OnChanges,
     this._zoneSubscription.unsubscribe();
   }
 
-  private _applyDatepickerInputs(datepickerInstance: NgbDatepicker): void {
+  private _applyDatepickerInputs(datepickerInstance: NgbxDatepicker): void {
     ['dayTemplate', 'dayTemplateData', 'displayMonths', 'firstDayOfWeek', 'footerTemplate', 'markDisabled', 'minDate',
      'maxDate', 'navigation', 'outsideDays', 'showNavigation', 'showWeekdays', 'showWeekNumbers']
         .forEach((optionName: string) => {
@@ -371,7 +371,7 @@ export class NgbInputDatepicker implements OnChanges,
     this._renderer.addClass(nativeElement, 'show');
   }
 
-  private _subscribeForDatepickerOutputs(datepickerInstance: NgbDatepicker) {
+  private _subscribeForDatepickerOutputs(datepickerInstance: NgbxDatepicker) {
     datepickerInstance.navigate.subscribe(navigateEvent => this.navigate.emit(navigateEvent));
     datepickerInstance.select.subscribe(date => {
       this.dateSelect.emit(date);
@@ -381,7 +381,7 @@ export class NgbInputDatepicker implements OnChanges,
     });
   }
 
-  private _writeModelValue(model: NgbDate) {
+  private _writeModelValue(model: NgbxDate) {
     const value = this._parserFormatter.format(model);
     this._inputValue = value;
     this._renderer.setProperty(this._elRef.nativeElement, 'value', value);
@@ -391,8 +391,8 @@ export class NgbInputDatepicker implements OnChanges,
     }
   }
 
-  private _fromDateStruct(date: NgbDateStruct): NgbDate {
-    const ngbDate = date ? new NgbDate(date.year, date.month, date.day) : null;
-    return this._calendar.isValid(ngbDate) ? ngbDate : null;
+  private _fromDateStruct(date: NgbxDateStruct): NgbxDate {
+    const ngbxDate = date ? new NgbxDate(date.year, date.month, date.day) : null;
+    return this._calendar.isValid(ngbxDate) ? ngbxDate : null;
   }
 }

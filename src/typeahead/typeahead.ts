@@ -23,26 +23,26 @@ import {BehaviorSubject, fromEvent, Observable, Subject, Subscription} from 'rxj
 import {map, switchMap, tap} from 'rxjs/operators';
 
 import {Live} from '../util/accessibility/live';
-import {ngbAutoClose} from '../util/autoclose';
+import {ngbxAutoClose} from '../util/autoclose';
 import {Key} from '../util/key';
 import {PopupService} from '../util/popup';
 import {PlacementArray, positionElements} from '../util/positioning';
 import {isDefined, toString} from '../util/util';
 
-import {NgbTypeaheadConfig} from './typeahead-config';
-import {NgbTypeaheadWindow, ResultTemplateContext} from './typeahead-window';
+import {NgbxTypeaheadConfig} from './typeahead-config';
+import {NgbxTypeaheadWindow, ResultTemplateContext} from './typeahead-window';
 
 
 const NGB_TYPEAHEAD_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbTypeahead),
+  useExisting: forwardRef(() => NgbxTypeahead),
   multi: true
 };
 
 /**
  * Payload of the selectItem event.
  */
-export interface NgbTypeaheadSelectItemEvent {
+export interface NgbxTypeaheadSelectItemEvent {
   /**
    * An item about to be selected
    */
@@ -57,11 +57,11 @@ export interface NgbTypeaheadSelectItemEvent {
 let nextWindowId = 0;
 
 /**
- * NgbTypeahead directive provides a simple way of creating powerful typeaheads from any text input
+ * NgbxTypeahead directive provides a simple way of creating powerful typeaheads from any text input
  */
 @Directive({
-  selector: 'input[ngbTypeahead]',
-  exportAs: 'ngbTypeahead',
+  selector: 'input[ngbxTypeahead]',
+  exportAs: 'ngbxTypeahead',
   host: {
     '(blur)': 'handleBlur()',
     '[class.open]': 'isPopupOpen()',
@@ -78,15 +78,15 @@ let nextWindowId = 0;
   },
   providers: [NGB_TYPEAHEAD_VALUE_ACCESSOR]
 })
-export class NgbTypeahead implements ControlValueAccessor,
+export class NgbxTypeahead implements ControlValueAccessor,
     OnInit, OnDestroy {
-  private _popupService: PopupService<NgbTypeaheadWindow>;
+  private _popupService: PopupService<NgbxTypeaheadWindow>;
   private _subscription: Subscription;
   private _closed$ = new Subject();
   private _inputValueBackup: string;
   private _valueChanges: Observable<string>;
   private _resubscribeTypeahead: BehaviorSubject<any>;
-  private _windowRef: ComponentRef<NgbTypeaheadWindow>;
+  private _windowRef: ComponentRef<NgbxTypeaheadWindow>;
   private _zoneSubscription: any;
 
   /**
@@ -123,7 +123,7 @@ export class NgbTypeahead implements ControlValueAccessor,
    * A function to transform the provided observable text into the array of results.  Note that the "this" argument
    * is undefined so you need to explicitly bind it to a desired "this" target.
    */
-  @Input() ngbTypeahead: (text: Observable<string>) => Observable<any[]>;
+  @Input() ngbxTypeahead: (text: Observable<string>) => Observable<any[]>;
 
   /**
    * A function to format a given result before display. This function should return a formatted string without any
@@ -149,12 +149,12 @@ export class NgbTypeahead implements ControlValueAccessor,
   @Input() placement: PlacementArray = 'bottom-left';
 
   /**
-   * An event emitted when a match is selected. Event payload is of type NgbTypeaheadSelectItemEvent.
+   * An event emitted when a match is selected. Event payload is of type NgbxTypeaheadSelectItemEvent.
    */
-  @Output() selectItem = new EventEmitter<NgbTypeaheadSelectItemEvent>();
+  @Output() selectItem = new EventEmitter<NgbxTypeaheadSelectItemEvent>();
 
   activeDescendant: string;
-  popupId = `ngb-typeahead-${nextWindowId++}`;
+  popupId = `ngbx-typeahead-${nextWindowId++}`;
 
   private _onTouched = () => {};
   private _onChange = (_: any) => {};
@@ -162,7 +162,7 @@ export class NgbTypeahead implements ControlValueAccessor,
   constructor(
       private _elementRef: ElementRef<HTMLInputElement>, private _viewContainerRef: ViewContainerRef,
       private _renderer: Renderer2, private _injector: Injector, componentFactoryResolver: ComponentFactoryResolver,
-      config: NgbTypeaheadConfig, ngZone: NgZone, private _live: Live, @Inject(DOCUMENT) private _document: any,
+      config: NgbxTypeaheadConfig, ngZone: NgZone, private _live: Live, @Inject(DOCUMENT) private _document: any,
       private _ngZone: NgZone, private _changeDetector: ChangeDetectorRef) {
     this.container = config.container;
     this.editable = config.editable;
@@ -175,8 +175,8 @@ export class NgbTypeahead implements ControlValueAccessor,
 
     this._resubscribeTypeahead = new BehaviorSubject(null);
 
-    this._popupService = new PopupService<NgbTypeaheadWindow>(
-        NgbTypeaheadWindow, _injector, _viewContainerRef, _renderer, componentFactoryResolver);
+    this._popupService = new PopupService<NgbxTypeaheadWindow>(
+        NgbxTypeaheadWindow, _injector, _viewContainerRef, _renderer, componentFactoryResolver);
 
     this._zoneSubscription = ngZone.onStable.subscribe(() => {
       if (this.isPopupOpen()) {
@@ -194,7 +194,7 @@ export class NgbTypeahead implements ControlValueAccessor,
         this._onChange(value);
       }
     }));
-    const results$ = inputValues$.pipe(this.ngbTypeahead);
+    const results$ = inputValues$.pipe(this.ngbxTypeahead);
     const processedResults$ = results$.pipe(tap(() => {
       if (!this.editable) {
         this._onChange(undefined);
@@ -293,7 +293,7 @@ export class NgbTypeahead implements ControlValueAccessor,
 
       this._changeDetector.markForCheck();
 
-      ngbAutoClose(
+      ngbxAutoClose(
           this._ngZone, this._document, 'outside', () => this.dismissPopup(), this._closed$,
           [this._elementRef.nativeElement, this._windowRef.location.nativeElement]);
     }

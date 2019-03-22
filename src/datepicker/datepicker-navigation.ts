@@ -1,49 +1,49 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
 import {NavigationEvent, MonthViewModel} from './datepicker-view-model';
-import {NgbDate} from './ngb-date';
-import {NgbDatepickerI18n} from './datepicker-i18n';
+import {NgbxDate} from './ngbx-date';
+import {NgbxDatepickerI18n} from './datepicker-i18n';
 
 @Component({
-  selector: 'ngb-datepicker-navigation',
+  selector: 'ngbx-datepicker-navigation',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./datepicker-navigation.scss'],
   template: `
-    <div class="ngb-dp-arrow">
-      <button type="button" class="btn btn-link ngb-dp-arrow-btn" (click)="navigate.emit(navigation.PREV)" [disabled]="prevDisabled"
-              i18n-aria-label="@@ngb.datepicker.previous-month" aria-label="Previous month"
-              i18n-title="@@ngb.datepicker.previous-month" title="Previous month">
-        <span class="ngb-dp-navigation-chevron"></span>
+    <div class="ngbx-dp-arrow">
+      <button type="button" class="btn btn-link ngbx-dp-arrow-btn" (click)="navigate.emit(navigation.PREV)" [disabled]="prevDisabled"
+              i18n-aria-label="@@ngbx.datepicker.previous-month" aria-label="Previous month"
+              i18n-title="@@ngbx.datepicker.previous-month" title="Previous month">
+        <span class="ngbx-dp-navigation-chevron"></span>
       </button>
     </div>
-    <ngb-datepicker-navigation-select *ngIf="showSelect" class="ngb-dp-navigation-select"
+    <ngbx-datepicker-navigation-select *ngIf="showSelect" class="ngbx-dp-navigation-select"
       [date]="date"
       [disabled] = "disabled"
       [months]="selectBoxes.months"
       [years]="selectBoxes.years"
       (select)="select.emit($event)">
-    </ngb-datepicker-navigation-select>
+    </ngbx-datepicker-navigation-select>
 
     <ng-template *ngIf="!showSelect" ngFor let-month [ngForOf]="months" let-i="index">
-      <div class="ngb-dp-arrow" *ngIf="i > 0"></div>
-      <div class="ngb-dp-month-name">
+      <div class="ngbx-dp-arrow" *ngIf="i > 0"></div>
+      <div class="ngbx-dp-month-name">
         {{ i18n.getMonthFullName(month.number, month.year) }} {{ i18n.getYearNumerals(month.year) }}
       </div>
-      <div class="ngb-dp-arrow" *ngIf="i !== months.length - 1"></div>
+      <div class="ngbx-dp-arrow" *ngIf="i !== months.length - 1"></div>
     </ng-template>
-    <div class="ngb-dp-arrow right">
-      <button type="button" class="btn btn-link ngb-dp-arrow-btn" (click)="navigate.emit(navigation.NEXT)" [disabled]="nextDisabled"
-              i18n-aria-label="@@ngb.datepicker.next-month" aria-label="Next month"
-              i18n-title="@@ngb.datepicker.next-month" title="Next month">
-        <span class="ngb-dp-navigation-chevron"></span>
+    <div class="ngbx-dp-arrow right">
+      <button type="button" class="btn btn-link ngbx-dp-arrow-btn" (click)="navigate.emit(navigation.NEXT)" [disabled]="nextDisabled"
+              i18n-aria-label="@@ngbx.datepicker.next-month" aria-label="Next month"
+              i18n-title="@@ngbx.datepicker.next-month" title="Next month">
+        <span class="ngbx-dp-navigation-chevron"></span>
       </button>
     </div>
     `
 })
-export class NgbDatepickerNavigation {
+export class NgbxDatepickerNavigation {
   navigation = NavigationEvent;
 
-  @Input() date: NgbDate;
+  @Input() date: NgbxDate;
   @Input() disabled: boolean;
   @Input() months: MonthViewModel[] = [];
   @Input() showSelect: boolean;
@@ -52,7 +52,7 @@ export class NgbDatepickerNavigation {
   @Input() selectBoxes: {years: number[], months: number[]};
 
   @Output() navigate = new EventEmitter<NavigationEvent>();
-  @Output() select = new EventEmitter<NgbDate>();
+  @Output() select = new EventEmitter<NgbxDate>();
 
-  constructor(public i18n: NgbDatepickerI18n) {}
+  constructor(public i18n: NgbxDatepickerI18n) {}
 }

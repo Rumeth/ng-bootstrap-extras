@@ -1,4 +1,4 @@
-import {NgbDateStruct} from './ngb-date-struct';
+import {NgbxDateStruct} from './ngbx-date-struct';
 import {isInteger} from '../util/util';
 
 /**
@@ -6,7 +6,7 @@ import {isInteger} from '../util/util';
  *
  * @since 3.0.0
  */
-export class NgbDate implements NgbDateStruct {
+export class NgbxDate implements NgbxDateStruct {
   /**
    * The year, for example 2016
    */
@@ -23,14 +23,14 @@ export class NgbDate implements NgbDateStruct {
   day: number;
 
   /**
-   * Static method. Creates a new date object from the NgbDateStruct, ex. NgbDate.from({year: 2000,
-   * month: 5, day: 1}). If the 'date' is already of NgbDate, the method will return the same object
+   * Static method. Creates a new date object from the NgbxDateStruct, ex. NgbxDate.from({year: 2000,
+   * month: 5, day: 1}). If the 'date' is already of NgbxDate, the method will return the same object
    */
-  static from(date: NgbDateStruct): NgbDate {
-    if (date instanceof NgbDate) {
+  static from(date: NgbxDateStruct): NgbxDate {
+    if (date instanceof NgbxDate) {
       return date;
     }
-    return date ? new NgbDate(date.year, date.month, date.day) : null;
+    return date ? new NgbxDate(date.year, date.month, date.day) : null;
   }
 
   constructor(year: number, month: number, day: number) {
@@ -42,14 +42,14 @@ export class NgbDate implements NgbDateStruct {
   /**
    * Checks if current date is equal to another date
    */
-  equals(other: NgbDateStruct): boolean {
+  equals(other: NgbxDateStruct): boolean {
     return other && this.year === other.year && this.month === other.month && this.day === other.day;
   }
 
   /**
    * Checks if current date is before another date
    */
-  before(other: NgbDateStruct): boolean {
+  before(other: NgbxDateStruct): boolean {
     if (!other) {
       return false;
     }
@@ -68,7 +68,7 @@ export class NgbDate implements NgbDateStruct {
   /**
    * Checks if current date is after another date
    */
-  after(other: NgbDateStruct): boolean {
+  after(other: NgbxDateStruct): boolean {
     if (!other) {
       return false;
     }

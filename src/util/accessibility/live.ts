@@ -14,12 +14,12 @@ export function ARIA_LIVE_DELAY_FACTORY(): number {
 
 
 function getLiveElement(document: any, lazyCreate = false): HTMLElement | null {
-  let element = document.body.querySelector('#ngb-live') as HTMLElement;
+  let element = document.body.querySelector('#ngbx-live') as HTMLElement;
 
   if (element == null && lazyCreate) {
     element = document.createElement('div');
 
-    element.setAttribute('id', 'ngb-live');
+    element.setAttribute('id', 'ngbx-live');
     element.setAttribute('aria-live', 'polite');
     element.setAttribute('aria-atomic', 'true');
 

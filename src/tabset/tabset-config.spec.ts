@@ -1,8 +1,8 @@
-import {NgbTabsetConfig} from './tabset-config';
+import {NgbxTabsetConfig} from './tabset-config';
 
-describe('ngb-tabset-config', () => {
+describe('ngbx-tabset-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbTabsetConfig();
+    const config = new NgbxTabsetConfig();
 
     expect(config.type).toBe('tabs');
     expect(config.justify).toBe('start');

@@ -1,49 +1,49 @@
-ngb-datepicker {
+ngbx-datepicker {
   border: 1px solid #dfdfdf;
   border-radius: 0.25rem;
   display: inline-block;
 }
 
-.ngb-dp-month {
+.ngbx-dp-month {
   pointer-events: none;
 }
-.ngb-dp-header {
+.ngbx-dp-header {
   border-bottom: 0;
   border-radius: 0.25rem 0.25rem 0 0;
   padding-top: 0.25rem;
 }
-ngb-datepicker-month-view {
+ngbx-datepicker-month-view {
   pointer-events: auto;
 }
-.ngb-dp-month-name {
+.ngbx-dp-month-name {
   font-size: larger;
   height: 2rem;
   line-height: 2rem;
   text-align: center;
 }
 
-.ngb-dp-month {
-  & + .ngb-dp-month > ngb-datepicker-month-view > .ngb-dp-week {
+.ngbx-dp-month {
+  & + .ngbx-dp-month > ngbx-datepicker-month-view > .ngbx-dp-week {
     padding-left: 1rem;
   }
 
-  & + .ngb-dp-month > .ngb-dp-month-name {
+  & + .ngbx-dp-month > .ngbx-dp-month-name {
     padding-left: 1rem;
   }
 
-  &:last-child .ngb-dp-week {
+  &:last-child .ngbx-dp-week {
     padding-right: .25rem;
   }
 
-  &:first-child .ngb-dp-week {
+  &:first-child .ngbx-dp-week {
     padding-left: .25rem;
   }
 
-  & > ngb-datepicker-month-view > .ngb-dp-week:last-child {
+  & > ngbx-datepicker-month-view > .ngbx-dp-week:last-child {
     padding-bottom: .25rem;
   }
 }
 
-.ngb-dp-months {
+.ngbx-dp-months {
   display: flex;
 }

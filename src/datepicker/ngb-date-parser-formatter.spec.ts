@@ -1,9 +1,9 @@
-import {NgbDateISOParserFormatter} from './ngb-date-parser-formatter';
+import {NgbxDateISOParserFormatter} from './ngbx-date-parser-formatter';
 
-describe('ngb-date parsing and formatting', () => {
-  let pf: NgbDateISOParserFormatter;
+describe('ngbx-date parsing and formatting', () => {
+  let pf: NgbxDateISOParserFormatter;
 
-  beforeEach(() => { pf = new NgbDateISOParserFormatter(); });
+  beforeEach(() => { pf = new NgbxDateISOParserFormatter(); });
 
   describe('parsing', () => {
 

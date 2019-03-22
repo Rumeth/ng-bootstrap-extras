@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {NgbModalConfig} from './modal-config';
-import {NgbActiveModal, NgbModal, NgbModalModule, NgbModalRef} from './modal.module';
+import {NgbxModalConfig} from './modal-config';
+import {NgbxActiveModal, NgbxModal, NgbxModalModule, NgbxModalRef} from './modal.module';
 
 
 const NOOP = () => {};
@@ -27,7 +27,7 @@ class CustomSpyService {
   called = false;
 }
 
-describe('ngb-modal', () => {
+describe('ngbx-modal', () => {
 
   let fixture: ComponentFixture<TestComponent>;
 
@@ -54,7 +54,7 @@ describe('ngb-modal', () => {
             return {pass: pass, message: `Expected ${actual.outerHTML} to have ${errMsg}`};
           },
           negativeCompare: function(actual) {
-            const allOpenModals = actual.querySelectorAll('ngb-modal-window');
+            const allOpenModals = actual.querySelectorAll('ngbx-modal-window');
 
             return {
               pass: allOpenModals.length === 0,
@@ -70,12 +70,12 @@ describe('ngb-modal', () => {
         return {
           compare: function(actual) {
             return {
-              pass: document.querySelectorAll('ngb-modal-backdrop').length === 1,
+              pass: document.querySelectorAll('ngbx-modal-backdrop').length === 1,
               message: `Expected ${actual.outerHTML} to have exactly one backdrop element`
             };
           },
           negativeCompare: function(actual) {
-            const allOpenModals = document.querySelectorAll('ngb-modal-backdrop');
+            const allOpenModals = document.querySelectorAll('ngbx-modal-backdrop');
 
             return {
               pass: allOpenModals.length === 0,
@@ -90,12 +90,12 @@ describe('ngb-modal', () => {
   afterEach(() => {
     // detect left-over modals and report errors when found
 
-    const remainingModalWindows = document.querySelectorAll('ngb-modal-window');
+    const remainingModalWindows = document.querySelectorAll('ngbx-modal-window');
     if (remainingModalWindows.length) {
       fail(`${remainingModalWindows.length} modal windows were left in the DOM.`);
     }
 
-    const remainingModalBackdrops = document.querySelectorAll('ngb-modal-backdrop');
+    const remainingModalBackdrops = document.querySelectorAll('ngbx-modal-backdrop');
     if (remainingModalBackdrops.length) {
       fail(`${remainingModalBackdrops.length} modal backdrops were left in the DOM.`);
     }
@@ -104,7 +104,7 @@ describe('ngb-modal', () => {
   describe('default configuration', () => {
 
     beforeEach(() => {
-      TestBed.configureTestingModule({imports: [NgbModalTestModule]});
+      TestBed.configureTestingModule({imports: [NgbxModalTestModule]});
       fixture = TestBed.createComponent(TestComponent);
     });
 
@@ -346,16 +346,16 @@ describe('ngb-modal', () => {
       it('should dismiss modals on ESC in correct order', () => {
         fixture.componentInstance.open('foo').result.catch(NOOP);
         fixture.componentInstance.open('bar').result.catch(NOOP);
-        const ngbModalWindow1 = document.querySelectorAll('ngb-modal-window')[0];
-        const ngbModalWindow2 = document.querySelectorAll('ngb-modal-window')[1];
+        const ngbxModalWindow1 = document.querySelectorAll('ngbx-modal-window')[0];
+        const ngbxModalWindow2 = document.querySelectorAll('ngbx-modal-window')[1];
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal(['foo', 'bar']);
-        expect(document.activeElement).toBe(ngbModalWindow2);
+        expect(document.activeElement).toBe(ngbxModalWindow2);
 
         (<DebugElement>getDebugNode(document.activeElement)).triggerEventHandler('keyup.esc', {});
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal(['foo']);
-        expect(document.activeElement).toBe(ngbModalWindow1);
+        expect(document.activeElement).toBe(ngbxModalWindow1);
 
         (<DebugElement>getDebugNode(document.activeElement)).triggerEventHandler('keyup.esc', {});
         fixture.detectChanges();
@@ -415,7 +415,7 @@ describe('ngb-modal', () => {
         expect(fixture.nativeElement).toHaveModal('foo');
         expect(fixture.nativeElement).toHaveBackdrop();
 
-        (<HTMLElement>document.querySelector('ngb-modal-window')).click();
+        (<HTMLElement>document.querySelector('ngbx-modal-window')).click();
         fixture.detectChanges();
 
         expect(fixture.nativeElement).not.toHaveModal();
@@ -429,7 +429,7 @@ describe('ngb-modal', () => {
         expect(fixture.nativeElement).toHaveModal('foo');
         expect(fixture.nativeElement).toHaveBackdrop();
 
-        (<HTMLElement>document.querySelector('ngb-modal-window')).click();
+        (<HTMLElement>document.querySelector('ngbx-modal-window')).click();
         fixture.detectChanges();
 
         expect(fixture.nativeElement).toHaveModal();
@@ -445,7 +445,7 @@ describe('ngb-modal', () => {
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('foo');
 
-        (<HTMLElement>document.querySelector('ngb-modal-window')).click();
+        (<HTMLElement>document.querySelector('ngbx-modal-window')).click();
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal();
 
@@ -577,7 +577,7 @@ describe('ngb-modal', () => {
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('foo');
 
-        (<DebugElement>getDebugNode(document.querySelector('ngb-modal-window'))).triggerEventHandler('keyup.esc', {});
+        (<DebugElement>getDebugNode(document.querySelector('ngbx-modal-window'))).triggerEventHandler('keyup.esc', {});
         fixture.detectChanges();
         expect(fixture.nativeElement).not.toHaveModal();
       });
@@ -587,7 +587,7 @@ describe('ngb-modal', () => {
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('foo');
 
-        (<DebugElement>getDebugNode(document.querySelector('ngb-modal-window'))).triggerEventHandler('keyup.esc', {});
+        (<DebugElement>getDebugNode(document.querySelector('ngbx-modal-window'))).triggerEventHandler('keyup.esc', {});
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal();
 
@@ -601,7 +601,7 @@ describe('ngb-modal', () => {
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('foo');
 
-        (<DebugElement>getDebugNode(document.querySelector('ngb-modal-window'))).triggerEventHandler('keyup.esc', {
+        (<DebugElement>getDebugNode(document.querySelector('ngbx-modal-window'))).triggerEventHandler('keyup.esc', {
           defaultPrevented: true
         });
         fixture.detectChanges();
@@ -634,7 +634,7 @@ describe('ngb-modal', () => {
         const modalInstance = fixture.componentInstance.open('foo', {windowClass: 'bar'});
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('foo');
-        expect(document.querySelector('ngb-modal-window')).toHaveCssClass('bar');
+        expect(document.querySelector('ngbx-modal-window')).toHaveCssClass('bar');
 
         modalInstance.close();
         fixture.detectChanges();
@@ -649,7 +649,7 @@ describe('ngb-modal', () => {
         const modalInstance = fixture.componentInstance.open('foo', {backdropClass: 'my-fancy-backdrop'});
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('foo');
-        expect(document.querySelector('ngb-modal-backdrop')).toHaveCssClass('my-fancy-backdrop');
+        expect(document.querySelector('ngbx-modal-backdrop')).toHaveCssClass('my-fancy-backdrop');
 
         modalInstance.close();
         fixture.detectChanges();
@@ -694,7 +694,7 @@ describe('ngb-modal', () => {
         const modalInstance = fixture.componentInstance.open('foo');
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('foo');
-        expect(document.activeElement).toBe(document.querySelector('ngb-modal-window'));
+        expect(document.activeElement).toBe(document.querySelector('ngbx-modal-window'));
 
         modalInstance.close('ok!');
         expect(document.activeElement).toBe(document.body);
@@ -707,7 +707,7 @@ describe('ngb-modal', () => {
         openElement.click();
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('from non focusable element');
-        expect(document.activeElement).toBe(document.querySelector('ngb-modal-window'));
+        expect(document.activeElement).toBe(document.querySelector('ngbx-modal-window'));
 
         fixture.componentInstance.close();
         expect(fixture.nativeElement).not.toHaveModal();
@@ -721,7 +721,7 @@ describe('ngb-modal', () => {
         openElement.click();
         fixture.detectChanges();
         expect(fixture.nativeElement).toHaveModal('from non focusable element but stored as activeElement on IE');
-        expect(document.activeElement).toBe(document.querySelector('ngb-modal-window'));
+        expect(document.activeElement).toBe(document.querySelector('ngbx-modal-window'));
 
         fixture.componentInstance.close();
         expect(fixture.nativeElement).not.toHaveModal();
@@ -729,16 +729,16 @@ describe('ngb-modal', () => {
       });
 
       describe('initial focus', () => {
-        it('should focus the proper specified element when [ngbAutofocus] is used', () => {
+        it('should focus the proper specified element when [ngbxAutofocus] is used', () => {
           fixture.detectChanges();
           const modal = fixture.componentInstance.openCmpt(WithAutofocusModalCmpt);
           fixture.detectChanges();
 
-          expect(document.activeElement).toBe(document.querySelector('button.withNgbAutofocus'));
+          expect(document.activeElement).toBe(document.querySelector('button.withNgbxAutofocus'));
           modal.close();
         });
 
-        it('should focus the first focusable element when [ngbAutofocus] is not used', () => {
+        it('should focus the first focusable element when [ngbxAutofocus] is not used', () => {
           fixture.detectChanges();
           const modal = fixture.componentInstance.openCmpt(WithFirstFocusableModalCmpt);
           fixture.detectChanges();
@@ -763,7 +763,7 @@ describe('ngb-modal', () => {
           const modal = fixture.componentInstance.open('content');
           fixture.detectChanges();
 
-          expect(document.activeElement).toBe(document.querySelector('ngb-modal-window'));
+          expect(document.activeElement).toBe(document.querySelector('ngbx-modal-window'));
           modal.close();
           fixture.detectChanges();
         });
@@ -778,7 +778,7 @@ describe('ngb-modal', () => {
         const modalInstance2 = fixture.componentInstance.open('bar', {windowClass: 'window-2'});
         fixture.detectChanges();
 
-        let windows = document.querySelectorAll('ngb-modal-window');
+        let windows = document.querySelectorAll('ngbx-modal-window');
         expect(windows.length).toBe(2);
         expect(windows[0]).toHaveCssClass('window-1');
         expect(windows[1]).toHaveCssClass('window-2');
@@ -811,7 +811,7 @@ describe('ngb-modal', () => {
         const modalInstance = fixture.componentInstance.open('foo', {ariaLabelledBy: id});
         fixture.detectChanges();
 
-        const modalElement = <HTMLElement>document.querySelector('ngb-modal-window');
+        const modalElement = <HTMLElement>document.querySelector('ngbx-modal-window');
         expect(modalElement.getAttribute('aria-labelledby')).toBe(id);
 
         modalInstance.close('some result');
@@ -824,7 +824,7 @@ describe('ngb-modal', () => {
         const modalInstance = a11yFixture.componentInstance.open();
         a11yFixture.detectChanges();
 
-        const modalElement = <HTMLElement>document.querySelector('ngb-modal-window');
+        const modalElement = <HTMLElement>document.querySelector('ngbx-modal-window');
         expect(modalElement.getAttribute('aria-modal')).toBe('true');
 
         modalInstance.close();
@@ -837,8 +837,8 @@ describe('ngb-modal', () => {
            const modalInstance = a11yFixture.componentInstance.open();
            a11yFixture.detectChanges();
 
-           const modal = document.querySelector('ngb-modal-window');
-           const backdrop = document.querySelector('ngb-modal-backdrop');
+           const modal = document.querySelector('ngbx-modal-window');
+           const backdrop = document.querySelector('ngbx-modal-backdrop');
            const application = document.querySelector('div[ng-version]');
            let ariaHidden = document.querySelectorAll('[aria-hidden]');
 
@@ -863,8 +863,8 @@ describe('ngb-modal', () => {
            const modalInstance = a11yFixture.componentInstance.open({container: '#container'});
            a11yFixture.detectChanges();
 
-           const modal = document.querySelector('ngb-modal-window');
-           const backdrop = document.querySelector('ngb-modal-backdrop');
+           const modal = document.querySelector('ngbx-modal-window');
+           const backdrop = document.querySelector('ngbx-modal-backdrop');
            const application = document.querySelector('div[ng-version]');
            const ariaRestoreTrue = document.querySelector('.to-restore-true');
            const ariaRestoreFalse = document.querySelector('.to-restore-false');
@@ -902,8 +902,8 @@ describe('ngb-modal', () => {
            const secondModalInstance = a11yFixture.componentInstance.open();
            a11yFixture.detectChanges();
 
-           let modals = document.querySelectorAll('ngb-modal-window');
-           let backdrops = document.querySelectorAll('ngb-modal-backdrop');
+           let modals = document.querySelectorAll('ngbx-modal-window');
+           let backdrops = document.querySelectorAll('ngbx-modal-backdrop');
            let ariaHidden = document.querySelectorAll('[aria-hidden]');
 
            const hiddenElements = ariaHidden.length;
@@ -923,8 +923,8 @@ describe('ngb-modal', () => {
            await a11yFixture.whenStable();
 
            ariaHidden = document.querySelectorAll('[aria-hidden]');
-           expect(document.querySelectorAll('ngb-modal-window').length).toBe(1);
-           expect(document.querySelectorAll('ngb-modal-backdrop').length).toBe(1);
+           expect(document.querySelectorAll('ngbx-modal-window').length).toBe(1);
+           expect(document.querySelectorAll('ngbx-modal-backdrop').length).toBe(1);
 
            expect(ariaHidden.length).toBe(hiddenElements - 2);
 
@@ -948,11 +948,11 @@ describe('ngb-modal', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule(
-          {imports: [NgbModalTestModule], providers: [{provide: NgbModalConfig, useValue: {size: 'sm'}}]});
+          {imports: [NgbxModalTestModule], providers: [{provide: NgbxModalConfig, useValue: {size: 'sm'}}]});
       fixture = TestBed.createComponent(TestComponent);
     });
 
-    it('should accept global configuration under the NgbModalConfig token', () => {
+    it('should accept global configuration under the NgbxModalConfig token', () => {
       const modalInstance = fixture.componentInstance.open('foo');
       fixture.detectChanges();
 
@@ -996,13 +996,13 @@ export class DestroyableCmpt implements OnDestroy {
 @Component(
     {selector: 'modal-content-cmpt', template: '<button class="closeFromInside" (click)="close()">Close</button>'})
 export class WithActiveModalCmpt {
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbxActiveModal) {}
 
   close() { this.activeModal.close('from inside'); }
 }
 
 @Component(
-    {selector: 'modal-autofocus-cmpt', template: `<button class="withNgbAutofocus" ngbAutofocus>Click Me</button>`})
+    {selector: 'modal-autofocus-cmpt', template: `<button class="withNgbxAutofocus" ngbxAutofocus>Click Me</button>`})
 export class WithAutofocusModalCmpt {
 }
 
@@ -1058,7 +1058,7 @@ export class WithSkipTabindexFirstFocusableModalCmpt {
 })
 class TestComponent {
   name = 'World';
-  openedModal: NgbModalRef;
+  openedModal: NgbxModalRef;
   show = true;
   @ViewChild('content') tplContent;
   @ViewChild('destroyableContent') tplDestroyableContent;
@@ -1067,7 +1067,7 @@ class TestComponent {
   @ViewChild('contentWithImplicitContext') tplContentWithImplicitContext;
   @ViewChild('contentWithIf') tplContentWithIf;
 
-  constructor(public modalService: NgbModal) {}
+  constructor(public modalService: NgbxModal) {}
 
   open(content: string, options?: Object) {
     this.openedModal = this.modalService.open(content, options);
@@ -1113,7 +1113,7 @@ class TestComponent {
   `
 })
 class TestA11yComponent {
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbxModal) {}
 
   open(options?: any) { return this.modalService.open('foo', options); }
 }
@@ -1124,12 +1124,12 @@ class TestA11yComponent {
     WithFirstFocusableModalCmpt, WithSkipTabindexFirstFocusableModalCmpt, TestA11yComponent
   ],
   exports: [TestComponent, DestroyableCmpt],
-  imports: [CommonModule, NgbModalModule],
+  imports: [CommonModule, NgbxModalModule],
   entryComponents: [
     CustomInjectorCmpt, DestroyableCmpt, WithActiveModalCmpt, WithAutofocusModalCmpt, WithFirstFocusableModalCmpt,
     WithSkipTabindexFirstFocusableModalCmpt
   ],
   providers: [SpyService]
 })
-class NgbModalTestModule {
+class NgbxModalTestModule {
 }

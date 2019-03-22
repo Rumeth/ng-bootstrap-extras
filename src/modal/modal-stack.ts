@@ -11,22 +11,22 @@ import {
 } from '@angular/core';
 import {Subject} from 'rxjs';
 
-import {ngbFocusTrap} from '../util/focus-trap';
+import {ngbxFocusTrap} from '../util/focus-trap';
 import {ContentRef} from '../util/popup';
 import {ScrollBar} from '../util/scrollbar';
 import {isDefined, isString} from '../util/util';
-import {NgbModalBackdrop} from './modal-backdrop';
-import {NgbActiveModal, NgbModalRef} from './modal-ref';
-import {NgbModalWindow} from './modal-window';
+import {NgbxModalBackdrop} from './modal-backdrop';
+import {NgbxActiveModal, NgbxModalRef} from './modal-ref';
+import {NgbxModalWindow} from './modal-window';
 
 @Injectable({providedIn: 'root'})
-export class NgbModalStack {
+export class NgbxModalStack {
   private _activeWindowCmptHasChanged = new Subject();
   private _ariaHiddenValues: Map<Element, string> = new Map();
   private _backdropAttributes = ['backdropClass'];
-  private _modalRefs: NgbModalRef[] = [];
+  private _modalRefs: NgbxModalRef[] = [];
   private _windowAttributes = ['ariaLabelledBy', 'backdrop', 'centered', 'keyboard', 'size', 'windowClass'];
-  private _windowCmpts: ComponentRef<NgbModalWindow>[] = [];
+  private _windowCmpts: ComponentRef<NgbxModalWindow>[] = [];
 
   constructor(
       private _applicationRef: ApplicationRef, private _injector: Injector, @Inject(DOCUMENT) private _document: any,
@@ -35,14 +35,14 @@ export class NgbModalStack {
     this._activeWindowCmptHasChanged.subscribe(() => {
       if (this._windowCmpts.length) {
         const activeWindowCmpt = this._windowCmpts[this._windowCmpts.length - 1];
-        ngbFocusTrap(activeWindowCmpt.location.nativeElement, this._activeWindowCmptHasChanged);
+        ngbxFocusTrap(activeWindowCmpt.location.nativeElement, this._activeWindowCmptHasChanged);
         this._revertAriaHidden();
         this._setAriaHidden(activeWindowCmpt.location.nativeElement);
       }
     });
   }
 
-  open(moduleCFR: ComponentFactoryResolver, contentInjector: Injector, content: any, options): NgbModalRef {
+  open(moduleCFR: ComponentFactoryResolver, contentInjector: Injector, content: any, options): NgbxModalRef {
     const containerEl =
         isDefined(options.container) ? this._document.querySelector(options.container) : this._document.body;
     const renderer = this._rendererFactory.createRenderer(null, null);
@@ -59,20 +59,20 @@ export class NgbModalStack {
       throw new Error(`The specified modal container "${options.container || 'body'}" was not found in the DOM.`);
     }
 
-    const activeModal = new NgbActiveModal();
+    const activeModal = new NgbxActiveModal();
     const contentRef = this._getContentRef(moduleCFR, options.injector || contentInjector, content, activeModal);
 
-    let backdropCmptRef: ComponentRef<NgbModalBackdrop> =
+    let backdropCmptRef: ComponentRef<NgbxModalBackdrop> =
         options.backdrop !== false ? this._attachBackdrop(moduleCFR, containerEl) : null;
-    let windowCmptRef: ComponentRef<NgbModalWindow> = this._attachWindowComponent(moduleCFR, containerEl, contentRef);
-    let ngbModalRef: NgbModalRef = new NgbModalRef(windowCmptRef, contentRef, backdropCmptRef, options.beforeDismiss);
+    let windowCmptRef: ComponentRef<NgbxModalWindow> = this._attachWindowComponent(moduleCFR, containerEl, contentRef);
+    let ngbxModalRef: NgbxModalRef = new NgbxModalRef(windowCmptRef, contentRef, backdropCmptRef, options.beforeDismiss);
 
-    this._registerModalRef(ngbModalRef);
+    this._registerModalRef(ngbxModalRef);
     this._registerWindowCmpt(windowCmptRef);
-    ngbModalRef.result.then(revertPaddingForScrollBar, revertPaddingForScrollBar);
-    ngbModalRef.result.then(removeBodyClass, removeBodyClass);
-    activeModal.close = (result: any) => { ngbModalRef.close(result); };
-    activeModal.dismiss = (reason: any) => { ngbModalRef.dismiss(reason); };
+    ngbxModalRef.result.then(revertPaddingForScrollBar, revertPaddingForScrollBar);
+    ngbxModalRef.result.then(removeBodyClass, removeBodyClass);
+    activeModal.close = (result: any) => { ngbxModalRef.close(result); };
+    activeModal.dismiss = (reason: any) => { ngbxModalRef.dismiss(reason); };
 
     this._applyWindowOptions(windowCmptRef.instance, options);
     if (this._modalRefs.length === 1) {
@@ -82,15 +82,15 @@ export class NgbModalStack {
     if (backdropCmptRef && backdropCmptRef.instance) {
       this._applyBackdropOptions(backdropCmptRef.instance, options);
     }
-    return ngbModalRef;
+    return ngbxModalRef;
   }
 
-  dismissAll(reason?: any) { this._modalRefs.forEach(ngbModalRef => ngbModalRef.dismiss(reason)); }
+  dismissAll(reason?: any) { this._modalRefs.forEach(ngbxModalRef => ngbxModalRef.dismiss(reason)); }
 
   hasOpenModals(): boolean { return this._modalRefs.length > 0; }
 
-  private _attachBackdrop(moduleCFR: ComponentFactoryResolver, containerEl: any): ComponentRef<NgbModalBackdrop> {
-    let backdropFactory = moduleCFR.resolveComponentFactory(NgbModalBackdrop);
+  private _attachBackdrop(moduleCFR: ComponentFactoryResolver, containerEl: any): ComponentRef<NgbxModalBackdrop> {
+    let backdropFactory = moduleCFR.resolveComponentFactory(NgbxModalBackdrop);
     let backdropCmptRef = backdropFactory.create(this._injector);
     this._applicationRef.attachView(backdropCmptRef.hostView);
     containerEl.appendChild(backdropCmptRef.location.nativeElement);
@@ -98,15 +98,15 @@ export class NgbModalStack {
   }
 
   private _attachWindowComponent(moduleCFR: ComponentFactoryResolver, containerEl: any, contentRef: any):
-      ComponentRef<NgbModalWindow> {
-    let windowFactory = moduleCFR.resolveComponentFactory(NgbModalWindow);
+      ComponentRef<NgbxModalWindow> {
+    let windowFactory = moduleCFR.resolveComponentFactory(NgbxModalWindow);
     let windowCmptRef = windowFactory.create(this._injector, contentRef.nodes);
     this._applicationRef.attachView(windowCmptRef.hostView);
     containerEl.appendChild(windowCmptRef.location.nativeElement);
     return windowCmptRef;
   }
 
-  private _applyWindowOptions(windowInstance: NgbModalWindow, options: Object): void {
+  private _applyWindowOptions(windowInstance: NgbxModalWindow, options: Object): void {
     this._windowAttributes.forEach((optionName: string) => {
       if (isDefined(options[optionName])) {
         windowInstance[optionName] = options[optionName];
@@ -114,7 +114,7 @@ export class NgbModalStack {
     });
   }
 
-  private _applyBackdropOptions(backdropInstance: NgbModalBackdrop, options: Object): void {
+  private _applyBackdropOptions(backdropInstance: NgbxModalBackdrop, options: Object): void {
     this._backdropAttributes.forEach((optionName: string) => {
       if (isDefined(options[optionName])) {
         backdropInstance[optionName] = options[optionName];
@@ -124,7 +124,7 @@ export class NgbModalStack {
 
   private _getContentRef(
       moduleCFR: ComponentFactoryResolver, contentInjector: Injector, content: any,
-      activeModal: NgbActiveModal): ContentRef {
+      activeModal: NgbxActiveModal): ContentRef {
     if (!content) {
       return new ContentRef([]);
     } else if (content instanceof TemplateRef) {
@@ -136,7 +136,7 @@ export class NgbModalStack {
     }
   }
 
-  private _createFromTemplateRef(content: TemplateRef<any>, activeModal: NgbActiveModal): ContentRef {
+  private _createFromTemplateRef(content: TemplateRef<any>, activeModal: NgbxActiveModal): ContentRef {
     const context = {
       $implicit: activeModal,
       close(result) { activeModal.close(result); },
@@ -154,10 +154,10 @@ export class NgbModalStack {
 
   private _createFromComponent(
       moduleCFR: ComponentFactoryResolver, contentInjector: Injector, content: any,
-      context: NgbActiveModal): ContentRef {
+      context: NgbxActiveModal): ContentRef {
     const contentCmptFactory = moduleCFR.resolveComponentFactory(content);
     const modalContentInjector =
-        Injector.create({providers: [{provide: NgbActiveModal, useValue: context}], parent: contentInjector});
+        Injector.create({providers: [{provide: NgbxActiveModal, useValue: context}], parent: contentInjector});
     const componentRef = contentCmptFactory.create(modalContentInjector);
     this._applicationRef.attachView(componentRef.hostView);
     return new ContentRef([[componentRef.location.nativeElement]], componentRef.hostView, componentRef);
@@ -188,23 +188,23 @@ export class NgbModalStack {
     this._ariaHiddenValues.clear();
   }
 
-  private _registerModalRef(ngbModalRef: NgbModalRef) {
+  private _registerModalRef(ngbxModalRef: NgbxModalRef) {
     const unregisterModalRef = () => {
-      const index = this._modalRefs.indexOf(ngbModalRef);
+      const index = this._modalRefs.indexOf(ngbxModalRef);
       if (index > -1) {
         this._modalRefs.splice(index, 1);
       }
     };
-    this._modalRefs.push(ngbModalRef);
-    ngbModalRef.result.then(unregisterModalRef, unregisterModalRef);
+    this._modalRefs.push(ngbxModalRef);
+    ngbxModalRef.result.then(unregisterModalRef, unregisterModalRef);
   }
 
-  private _registerWindowCmpt(ngbWindowCmpt: ComponentRef<NgbModalWindow>) {
-    this._windowCmpts.push(ngbWindowCmpt);
+  private _registerWindowCmpt(ngbxWindowCmpt: ComponentRef<NgbxModalWindow>) {
+    this._windowCmpts.push(ngbxWindowCmpt);
     this._activeWindowCmptHasChanged.next();
 
-    ngbWindowCmpt.onDestroy(() => {
-      const index = this._windowCmpts.indexOf(ngbWindowCmpt);
+    ngbxWindowCmpt.onDestroy(() => {
+      const index = this._windowCmpts.indexOf(ngbxWindowCmpt);
       if (index > -1) {
         this._windowCmpts.splice(index, 1);
         this._activeWindowCmptHasChanged.next();

@@ -12,7 +12,7 @@ import {
   forwardRef,
   ChangeDetectorRef
 } from '@angular/core';
-import {NgbRatingConfig} from './rating-config';
+import {NgbxRatingConfig} from './rating-config';
 import {getValueInRange} from '../util/util';
 import {Key} from '../util/key';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
@@ -34,7 +34,7 @@ export interface StarTemplateContext {
 
 const NGB_RATING_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbRating),
+  useExisting: forwardRef(() => NgbxRating),
   multi: true
 };
 
@@ -42,7 +42,7 @@ const NGB_RATING_VALUE_ACCESSOR = {
  * Rating directive that will take care of visualising a star rating bar.
  */
 @Component({
-  selector: 'ngb-rating',
+  selector: 'ngbx-rating',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'class': 'd-inline-flex',
@@ -69,7 +69,7 @@ const NGB_RATING_VALUE_ACCESSOR = {
   `,
   providers: [NGB_RATING_VALUE_ACCESSOR]
 })
-export class NgbRating implements ControlValueAccessor,
+export class NgbxRating implements ControlValueAccessor,
     OnInit, OnChanges {
   contexts: StarTemplateContext[] = [];
   disabled = false;
@@ -98,7 +98,7 @@ export class NgbRating implements ControlValueAccessor,
 
   /**
    * A template to override star display.
-   * Alternatively put a <ng-template> as the only child of <ngb-rating> element
+   * Alternatively put a <ng-template> as the only child of <ngbx-rating> element
    */
   @Input() starTemplate: TemplateRef<StarTemplateContext>;
   @ContentChild(TemplateRef) starTemplateFromContent: TemplateRef<StarTemplateContext>;
@@ -124,7 +124,7 @@ export class NgbRating implements ControlValueAccessor,
   onChange = (_: any) => {};
   onTouched = () => {};
 
-  constructor(config: NgbRatingConfig, private _changeDetectorRef: ChangeDetectorRef) {
+  constructor(config: NgbxRatingConfig, private _changeDetectorRef: ChangeDetectorRef) {
     this.max = config.max;
     this.readonly = config.readonly;
   }

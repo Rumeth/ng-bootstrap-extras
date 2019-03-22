@@ -5,8 +5,8 @@ import {createGenericTestComponent} from '../test/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {NgbButtonsModule} from './buttons.module';
-import {NgbCheckBox} from './checkbox';
+import {NgbxButtonsModule} from './buttons.module';
+import {NgbxCheckBox} from './checkbox';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -22,12 +22,12 @@ function getInput(nativeEl: HTMLElement): HTMLInputElement {
   return <HTMLInputElement>nativeEl.querySelector('input');
 }
 
-describe('NgbCheckBox', () => {
+describe('NgbxCheckBox', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, TestComponentOnPush],
-      imports: [NgbButtonsModule, FormsModule, ReactiveFormsModule]
+      imports: [NgbxButtonsModule, FormsModule, ReactiveFormsModule]
     });
   });
 
@@ -35,7 +35,7 @@ describe('NgbCheckBox', () => {
 
     it('should mark input as checked / unchecked based on model change (default values)', fakeAsync(() => {
          const fixture =
-             createTestComponent(`<label ngbButtonLabel><input type="checkbox" ngbButton [ngModel]="model"></label>`);
+             createTestComponent(`<label ngbxButtonLabel><input type="checkbox" ngbxButton [ngModel]="model"></label>`);
 
          fixture.componentInstance.model = true;
          fixture.detectChanges();
@@ -55,8 +55,8 @@ describe('NgbCheckBox', () => {
 
     it('should mark input as checked / unchecked based on model change (custom values)', fakeAsync(() => {
          const fixture = createTestComponent(`
-        <label ngbButtonLabel>
-          <input type="checkbox" ngbButton [ngModel]="model" [valueChecked]="'foo'">
+        <label ngbxButtonLabel>
+          <input type="checkbox" ngbxButton [ngModel]="model" [valueChecked]="'foo'">
         </label>
       `);
 
@@ -77,8 +77,8 @@ describe('NgbCheckBox', () => {
 
     it('should mark input as disabled / enabled based on binding change', fakeAsync(() => {
          const fixture = createTestComponent(`
-        <label ngbButtonLabel>
-          <input type="checkbox" ngbButton [ngModel]="model" [disabled]="disabled">
+        <label ngbxButtonLabel>
+          <input type="checkbox" ngbxButton [ngModel]="model" [disabled]="disabled">
         </label>
       `);
 
@@ -102,12 +102,12 @@ describe('NgbCheckBox', () => {
 
     it('should bind model value on change (default values)', fakeAsync(() => {
          const fixture = createTestComponent(`
-        <label ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="model">
+        <label ngbxButtonLabel>
+          <input type="checkbox" ngbxButton [(ngModel)]="model">
         </label>
       `);
 
-         const inputDebugEl = fixture.debugElement.query(By.directive(NgbCheckBox));
+         const inputDebugEl = fixture.debugElement.query(By.directive(NgbxCheckBox));
 
          inputDebugEl.triggerEventHandler('change', {target: {checked: true}});
          tick();
@@ -120,12 +120,12 @@ describe('NgbCheckBox', () => {
 
     it('should bind model value on change (custom values)', fakeAsync(() => {
          const fixture = createTestComponent(`
-        <label ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="model" [valueChecked]="'foo'" [valueUnChecked]="'bar'">
+        <label ngbxButtonLabel>
+          <input type="checkbox" ngbxButton [(ngModel)]="model" [valueChecked]="'foo'" [valueUnChecked]="'bar'">
         </label>
       `);
 
-         const inputDebugEl = fixture.debugElement.query(By.directive(NgbCheckBox));
+         const inputDebugEl = fixture.debugElement.query(By.directive(NgbxCheckBox));
 
          inputDebugEl.triggerEventHandler('change', {target: {checked: true}});
          tick();
@@ -138,12 +138,12 @@ describe('NgbCheckBox', () => {
 
     it('should mark label as focused based on input focus', () => {
       const fixture = createTestComponent(`
-        <label ngbButtonLabel>
-          <input type="checkbox" ngbButton>
+        <label ngbxButtonLabel>
+          <input type="checkbox" ngbxButton>
         </label>
       `);
 
-      const inputDebugEl = fixture.debugElement.query(By.directive(NgbCheckBox));
+      const inputDebugEl = fixture.debugElement.query(By.directive(NgbxCheckBox));
 
       inputDebugEl.triggerEventHandler('focus', {});
       fixture.detectChanges();
@@ -159,8 +159,8 @@ describe('NgbCheckBox', () => {
   describe('on push', () => {
     it('should set initial model value', fakeAsync(() => {
          const fixture = createOnPushTestComponent(`
-        <label ngbButtonLabel>
-          <input type="checkbox" ngbButton [ngModel]="true">
+        <label ngbxButtonLabel>
+          <input type="checkbox" ngbxButton [ngModel]="true">
         </label>
       `);
 

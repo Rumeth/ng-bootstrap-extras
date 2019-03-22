@@ -1,4 +1,4 @@
-import {NgbDate} from '../ngb-date';
+import {NgbxDate} from '../ngbx-date';
 import {fromGregorian, hebrewNumerals, toGregorian} from './hebrew';
 
 const DATE_TABLE = [
@@ -32,12 +32,12 @@ describe('hebrew', () => {
 
   describe('toGregorian', () => {
     DATE_TABLE.forEach(element => {
-      let hDate = new NgbDate(element[0], element[1], element[2]);
+      let hDate = new NgbxDate(element[0], element[1], element[2]);
       let gDate = toGregorian(hDate);
       it('should convert correctly from Hebrew to Gregorian', () => {
         expect(
-            new NgbDate(gDate.getFullYear(), gDate.getMonth() + 1, gDate.getDate())
-                .equals(new NgbDate(element[3], element[4], element[5])))
+            new NgbxDate(gDate.getFullYear(), gDate.getMonth() + 1, gDate.getDate())
+                .equals(new NgbxDate(element[3], element[4], element[5])))
             .toBeTruthy();
       });
     });
@@ -48,7 +48,7 @@ describe('hebrew', () => {
       const gDate = new Date(element[3], element[4] - 1, element[5]);
       let hDate = fromGregorian(gDate);
       it('should convert correctly from Gregorian to Hebrew',
-         () => { expect(new NgbDate(element[0], element[1], element[2]).equals(hDate)).toBeTruthy(); });
+         () => { expect(new NgbxDate(element[0], element[1], element[2]).equals(hDate)).toBeTruthy(); });
     });
   });
 

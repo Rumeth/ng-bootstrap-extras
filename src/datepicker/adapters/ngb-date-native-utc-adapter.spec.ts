@@ -1,9 +1,9 @@
-import {NgbDateNativeUTCAdapter} from './ngb-date-native-utc-adapter';
+import {NgbxDateNativeUTCAdapter} from './ngbx-date-native-utc-adapter';
 
-describe('ngb-date-native-utc model adapter', () => {
-  let adapter: NgbDateNativeUTCAdapter;
+describe('ngbx-date-native-utc model adapter', () => {
+  let adapter: NgbxDateNativeUTCAdapter;
 
-  beforeEach(() => { adapter = new NgbDateNativeUTCAdapter(); });
+  beforeEach(() => { adapter = new NgbxDateNativeUTCAdapter(); });
 
   describe('fromModel', () => {
 

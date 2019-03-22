@@ -1,14 +1,14 @@
-import {NgbTime} from './ngb-time';
+import {NgbxTime} from './ngbx-time';
 
-describe('NgbTime', () => {
+describe('NgbxTime', () => {
 
   it('should allow constructing new objects', () => {
-    expect(new NgbTime(undefined, undefined).toString()).toBe('0:0:0');
-    expect(new NgbTime(12, 31, 45).toString()).toBe('12:31:45');
+    expect(new NgbxTime(undefined, undefined).toString()).toBe('0:0:0');
+    expect(new NgbxTime(12, 31, 45).toString()).toBe('12:31:45');
   });
 
   it('should allow changing hours', () => {
-    const t = new NgbTime(10, 30);
+    const t = new NgbxTime(10, 30);
     expect(t.toString()).toBe('10:30:0');
 
     t.changeHour(1);
@@ -22,14 +22,14 @@ describe('NgbTime', () => {
   });
 
   it('should properly change undefined hours', () => {
-    const t = new NgbTime(undefined, 30);
+    const t = new NgbxTime(undefined, 30);
 
     t.changeHour(1);
     expect(t.toString()).toBe('1:30:0');
   });
 
   it('should allow changing hours with rolling', () => {
-    const t = new NgbTime(23, 30);
+    const t = new NgbxTime(23, 30);
     expect(t.toString()).toBe('23:30:0');
 
     t.changeHour(1);
@@ -46,7 +46,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow changing hours with rolling around 0', () => {
-    const t = new NgbTime(0, 30);
+    const t = new NgbxTime(0, 30);
     expect(t.toString()).toBe('0:30:0');
 
     t.changeHour(-48);
@@ -54,7 +54,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow changing minutes', () => {
-    const t = new NgbTime(10, 30);
+    const t = new NgbxTime(10, 30);
     expect(t.toString()).toBe('10:30:0');
 
     t.changeMinute(1);
@@ -68,14 +68,14 @@ describe('NgbTime', () => {
   });
 
   it('should properly change undefined minutes', () => {
-    const t = new NgbTime(1, undefined);
+    const t = new NgbxTime(1, undefined);
 
     t.changeMinute(0);
     expect(t.toString()).toBe('1:0:0');
   });
 
   it('should allow changing minutes with rolling', () => {
-    const t = new NgbTime(10, 30);
+    const t = new NgbxTime(10, 30);
     expect(t.toString()).toBe('10:30:0');
 
     t.changeMinute(41);
@@ -89,7 +89,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow changing minutes with rolling around zero boundaries', () => {
-    const t = new NgbTime(0, 30);
+    const t = new NgbxTime(0, 30);
     expect(t.toString()).toBe('0:30:0');
 
     t.changeMinute(-40);
@@ -106,7 +106,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow changing seconds', () => {
-    const t = new NgbTime(10, 30, 30);
+    const t = new NgbxTime(10, 30, 30);
     expect(t.toString()).toBe('10:30:30');
 
     t.changeSecond(1);
@@ -120,14 +120,14 @@ describe('NgbTime', () => {
   });
 
   it('should properly change undefined minutes', () => {
-    const t = new NgbTime(1, 20, undefined);
+    const t = new NgbxTime(1, 20, undefined);
 
     t.changeSecond(30);
     expect(t.toString()).toBe('1:20:30');
   });
 
   it('should allow changing seconds with rolling', () => {
-    const t = new NgbTime(10, 30, 30);
+    const t = new NgbxTime(10, 30, 30);
     expect(t.toString()).toBe('10:30:30');
 
     t.changeSecond(60);
@@ -141,7 +141,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow changing seconds with rolling around zero boundaries', () => {
-    const t = new NgbTime(0, 0, 30);
+    const t = new NgbxTime(0, 0, 30);
     expect(t.toString()).toBe('0:0:30');
 
     t.changeSecond(-40);
@@ -158,7 +158,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow updating hours', () => {
-    const t = new NgbTime(0, 0, 30);
+    const t = new NgbxTime(0, 0, 30);
     expect(t.toString()).toBe('0:0:30');
 
     t.updateHour(11);
@@ -166,7 +166,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow updating hours with rolling', () => {
-    const t = new NgbTime(0, 0, 30);
+    const t = new NgbxTime(0, 0, 30);
     expect(t.toString()).toBe('0:0:30');
 
     t.updateHour(25);
@@ -174,7 +174,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow updating minutes', () => {
-    const t = new NgbTime(11, 0, 30);
+    const t = new NgbxTime(11, 0, 30);
     expect(t.toString()).toBe('11:0:30');
 
     t.updateMinute(40);
@@ -182,7 +182,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow updating minutes with rolling', () => {
-    const t = new NgbTime(11, 30, 30);
+    const t = new NgbxTime(11, 30, 30);
     expect(t.toString()).toBe('11:30:30');
 
     t.updateMinute(90);
@@ -193,7 +193,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow updating seconds', () => {
-    const t = new NgbTime(11, 0, 30);
+    const t = new NgbxTime(11, 0, 30);
     expect(t.toString()).toBe('11:0:30');
 
     t.updateSecond(40);
@@ -201,7 +201,7 @@ describe('NgbTime', () => {
   });
 
   it('should allow updating seconds with rolling', () => {
-    const t = new NgbTime(11, 0, 30);
+    const t = new NgbxTime(11, 0, 30);
     expect(t.toString()).toBe('11:0:30');
 
     t.updateSecond(70);
@@ -209,14 +209,14 @@ describe('NgbTime', () => {
   });
 
   it('should have a validity flag', () => {
-    expect(new NgbTime(11, 0, 30).isValid()).toBeTruthy();
-    expect(new NgbTime(null, 0, 30).isValid()).toBeFalsy();
-    expect(new NgbTime(11, null, 30).isValid()).toBeFalsy();
-    expect(new NgbTime(11, 0, null).isValid()).toBeFalsy();
-    expect(new NgbTime(null, 0, null).isValid()).toBeFalsy();
-    expect(new NgbTime(null, null, null).isValid()).toBeFalsy();
+    expect(new NgbxTime(11, 0, 30).isValid()).toBeTruthy();
+    expect(new NgbxTime(null, 0, 30).isValid()).toBeFalsy();
+    expect(new NgbxTime(11, null, 30).isValid()).toBeFalsy();
+    expect(new NgbxTime(11, 0, null).isValid()).toBeFalsy();
+    expect(new NgbxTime(null, 0, null).isValid()).toBeFalsy();
+    expect(new NgbxTime(null, null, null).isValid()).toBeFalsy();
   });
 
   it('should have a validity flag with optional seconds checking',
-     () => { expect(new NgbTime(11, 0).isValid(false)).toBeTruthy(); });
+     () => { expect(new NgbxTime(11, 0).isValid(false)).toBeTruthy(); });
 });

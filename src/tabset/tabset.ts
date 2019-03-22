@@ -10,37 +10,37 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import {NgbTabsetConfig} from './tabset-config';
+import {NgbxTabsetConfig} from './tabset-config';
 
 let nextId = 0;
 
 /**
  * This directive should be used to wrap tab titles that need to contain HTML markup or other directives.
  */
-@Directive({selector: 'ng-template[ngbTabTitle]'})
-export class NgbTabTitle {
+@Directive({selector: 'ng-template[ngbxTabTitle]'})
+export class NgbxTabTitle {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
 /**
  * This directive must be used to wrap content to be displayed in a tab.
  */
-@Directive({selector: 'ng-template[ngbTabContent]'})
-export class NgbTabContent {
+@Directive({selector: 'ng-template[ngbxTabContent]'})
+export class NgbxTabContent {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
 /**
  * A directive representing an individual tab.
  */
-@Directive({selector: 'ngb-tab'})
-export class NgbTab {
+@Directive({selector: 'ngbx-tab'})
+export class NgbxTab {
   /**
    * Unique tab identifier. Must be unique for the entire document for proper accessibility support.
    */
-  @Input() id = `ngb-tab-${nextId++}`;
+  @Input() id = `ngbx-tab-${nextId++}`;
   /**
-   * Simple (string only) title. Use the "NgbTabTitle" directive for more complex use-cases.
+   * Simple (string only) title. Use the "NgbxTabTitle" directive for more complex use-cases.
    */
   @Input() title: string;
   /**
@@ -48,17 +48,17 @@ export class NgbTab {
    */
   @Input() disabled = false;
 
-  titleTpl: NgbTabTitle | null;
-  contentTpl: NgbTabContent | null;
+  titleTpl: NgbxTabTitle | null;
+  contentTpl: NgbxTabContent | null;
 
-  @ContentChildren(NgbTabTitle, {descendants: false}) titleTpls: QueryList<NgbTabTitle>;
-  @ContentChildren(NgbTabContent, {descendants: false}) contentTpls: QueryList<NgbTabContent>;
+  @ContentChildren(NgbxTabTitle, {descendants: false}) titleTpls: QueryList<NgbxTabTitle>;
+  @ContentChildren(NgbxTabContent, {descendants: false}) contentTpls: QueryList<NgbxTabContent>;
 
   ngAfterContentChecked() {
     // We are using @ContentChildren instead of @ContentChild as in the Angular version being used
     // only @ContentChildren allows us to specify the {descendants: false} option.
     // Without {descendants: false} we are hitting bugs described in:
-    // https://github.com/ng-bootstrap/ng-bootstrap/issues/2240
+    // https://github.com/rumeth/ng-bootstrap-extras/issues/2240
     this.titleTpl = this.titleTpls.first;
     this.contentTpl = this.contentTpls.first;
   }
@@ -67,7 +67,7 @@ export class NgbTab {
 /**
  * The payload of the change event fired right before the tab change
  */
-export interface NgbTabChangeEvent {
+export interface NgbxTabChangeEvent {
   /**
    * Id of the currently active tab
    */
@@ -88,8 +88,8 @@ export interface NgbTabChangeEvent {
  * A component that makes it easy to create tabbed interface.
  */
 @Component({
-  selector: 'ngb-tabset',
-  exportAs: 'ngbTabset',
+  selector: 'ngbx-tabset',
+  exportAs: 'ngbxTabset',
   template: `
     <ul [class]="'nav nav-' + type + (orientation == 'horizontal'?  ' ' + justifyClass : ' flex-column')" role="tablist">
       <li class="nav-item" *ngFor="let tab of tabs">
@@ -115,10 +115,10 @@ export interface NgbTabChangeEvent {
     </div>
   `
 })
-export class NgbTabset implements AfterContentChecked {
+export class NgbxTabset implements AfterContentChecked {
   justifyClass: string;
 
-  @ContentChildren(NgbTab) tabs: QueryList<NgbTab>;
+  @ContentChildren(NgbxTab) tabs: QueryList<NgbxTab>;
 
   /**
    * An identifier of an initially selected (active) tab. Use the "select" method to switch a tab programmatically.
@@ -157,11 +157,11 @@ export class NgbTabset implements AfterContentChecked {
   @Input() type: 'tabs' | 'pills' | string;
 
   /**
-   * A tab change event fired right before the tab selection happens. See NgbTabChangeEvent for payload details
+   * A tab change event fired right before the tab selection happens. See NgbxTabChangeEvent for payload details
    */
-  @Output() tabChange = new EventEmitter<NgbTabChangeEvent>();
+  @Output() tabChange = new EventEmitter<NgbxTabChangeEvent>();
 
-  constructor(config: NgbTabsetConfig) {
+  constructor(config: NgbxTabsetConfig) {
     this.type = config.type;
     this.justify = config.justify;
     this.orientation = config.orientation;
@@ -191,8 +191,8 @@ export class NgbTabset implements AfterContentChecked {
     this.activeId = activeTab ? activeTab.id : (this.tabs.length ? this.tabs.first.id : null);
   }
 
-  private _getTabById(id: string): NgbTab {
-    let tabsWithId: NgbTab[] = this.tabs.filter(tab => tab.id === id);
+  private _getTabById(id: string): NgbxTab {
+    let tabsWithId: NgbxTab[] = this.tabs.filter(tab => tab.id === id);
     return tabsWithId.length ? tabsWithId[0] : null;
   }
 }

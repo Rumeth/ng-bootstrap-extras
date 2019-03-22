@@ -3,9 +3,9 @@ import {createGenericTestComponent} from '../test/common';
 
 import {Component} from '@angular/core';
 
-import {NgbAlertModule} from './alert.module';
-import {NgbAlert} from './alert';
-import {NgbAlertConfig} from './alert-config';
+import {NgbxAlertModule} from './alert.module';
+import {NgbxAlert} from './alert';
+import {NgbxAlertConfig} from './alert-config';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -22,19 +22,19 @@ function getCloseButtonIcon(element: HTMLElement): HTMLSpanElement {
   return <HTMLSpanElement>element.querySelector('button > span');
 }
 
-describe('ngb-alert', () => {
+describe('ngbx-alert', () => {
 
-  beforeEach(() => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbAlertModule]}); });
+  beforeEach(() => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxAlertModule]}); });
 
   it('should initialize inputs with default values', () => {
-    const defaultConfig = new NgbAlertConfig();
-    const alertCmp = TestBed.createComponent(NgbAlert).componentInstance;
+    const defaultConfig = new NgbxAlertConfig();
+    const alertCmp = TestBed.createComponent(NgbxAlert).componentInstance;
     expect(alertCmp.dismissible).toBe(defaultConfig.dismissible);
     expect(alertCmp.type).toBe(defaultConfig.type);
   });
 
   it('should apply those default values to the template', () => {
-    const fixture = createTestComponent('<ngb-alert>Cool!</ngb-alert>');
+    const fixture = createTestComponent('<ngbx-alert>Cool!</ngbx-alert>');
     const alertEl = getAlertElement(fixture.nativeElement);
 
     expect(alertEl.getAttribute('role')).toEqual('alert');
@@ -43,7 +43,7 @@ describe('ngb-alert', () => {
   });
 
   it('should allow specifying alert type', () => {
-    const fixture = createTestComponent('<ngb-alert type="success">Cool!</ngb-alert>');
+    const fixture = createTestComponent('<ngbx-alert type="success">Cool!</ngbx-alert>');
     const alertEl = getAlertElement(fixture.nativeElement);
 
     expect(alertEl.getAttribute('role')).toEqual('alert');
@@ -51,7 +51,7 @@ describe('ngb-alert', () => {
   });
 
   it('should allow changing alert type', () => {
-    const fixture = createTestComponent('<ngb-alert [type]="type">Cool!</ngb-alert>');
+    const fixture = createTestComponent('<ngbx-alert [type]="type">Cool!</ngbx-alert>');
     const alertEl = getAlertElement(fixture.nativeElement);
 
     expect(alertEl).toHaveCssClass('alert-success');
@@ -64,7 +64,7 @@ describe('ngb-alert', () => {
   });
 
   it('should allow adding custom CSS classes', () => {
-    const fixture = createTestComponent('<ngb-alert type="success" class="myClass">Cool!</ngb-alert>');
+    const fixture = createTestComponent('<ngbx-alert type="success" class="myClass">Cool!</ngbx-alert>');
     const alertEl = getAlertElement(fixture.nativeElement);
 
     expect(alertEl).toHaveCssClass('alert');
@@ -73,7 +73,7 @@ describe('ngb-alert', () => {
   });
 
   it('should render close button when dismissible', () => {
-    const fixture = createTestComponent('<ngb-alert [dismissible]="true">Watch out!</ngb-alert>');
+    const fixture = createTestComponent('<ngbx-alert [dismissible]="true">Watch out!</ngbx-alert>');
     const alertEl = getAlertElement(fixture.nativeElement);
     const buttonEl = getCloseButton(alertEl);
     const buttonIconEl = getCloseButtonIcon(alertEl);
@@ -87,7 +87,7 @@ describe('ngb-alert', () => {
   });
 
   it('should not render the close button if it is not dismissible', () => {
-    const fixture = createTestComponent(`<ngb-alert [dismissible]="false">Don't close!</ngb-alert>`);
+    const fixture = createTestComponent(`<ngbx-alert [dismissible]="false">Don't close!</ngbx-alert>`);
     const alertEl = getAlertElement(fixture.nativeElement);
 
     expect(alertEl).not.toHaveCssClass('alert-dismissible');
@@ -96,7 +96,7 @@ describe('ngb-alert', () => {
 
   it('should fire an event after closing a dismissible alert', () => {
     const fixture =
-        createTestComponent('<ngb-alert [dismissible]="true" (close)="closed = true">Watch out!</ngb-alert>');
+        createTestComponent('<ngbx-alert [dismissible]="true" (close)="closed = true">Watch out!</ngbx-alert>');
     const alertEl = getAlertElement(fixture.nativeElement);
     const buttonEl = getCloseButton(alertEl);
 
@@ -106,25 +106,25 @@ describe('ngb-alert', () => {
   });
 
   it('should project the content given into the component', () => {
-    const fixture = createTestComponent('<ngb-alert>Cool!</ngb-alert>');
+    const fixture = createTestComponent('<ngbx-alert>Cool!</ngbx-alert>');
     const alertEl = getAlertElement(fixture.nativeElement);
 
     expect(alertEl.textContent).toContain('Cool!');
   });
 
   describe('Custom config', () => {
-    let config: NgbAlertConfig;
+    let config: NgbxAlertConfig;
 
-    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbAlertModule]}); });
+    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbxAlertModule]}); });
 
-    beforeEach(inject([NgbAlertConfig], (c: NgbAlertConfig) => {
+    beforeEach(inject([NgbxAlertConfig], (c: NgbxAlertConfig) => {
       config = c;
       config.dismissible = false;
       config.type = 'success';
     }));
 
     it('should initialize inputs with provided config', () => {
-      const fixture = TestBed.createComponent(NgbAlert);
+      const fixture = TestBed.createComponent(NgbxAlert);
       fixture.detectChanges();
 
       const alert = fixture.componentInstance;
@@ -134,17 +134,17 @@ describe('ngb-alert', () => {
   });
 
   describe('Custom config as provider', () => {
-    let config = new NgbAlertConfig();
+    let config = new NgbxAlertConfig();
     config.dismissible = false;
     config.type = 'success';
 
     beforeEach(() => {
       TestBed.configureTestingModule(
-          {imports: [NgbAlertModule], providers: [{provide: NgbAlertConfig, useValue: config}]});
+          {imports: [NgbxAlertModule], providers: [{provide: NgbxAlertConfig, useValue: config}]});
     });
 
     it('should initialize inputs with provided config as provider', () => {
-      const fixture = TestBed.createComponent(NgbAlert);
+      const fixture = TestBed.createComponent(NgbxAlert);
       fixture.detectChanges();
 
       const alert = fixture.componentInstance;
@@ -154,7 +154,7 @@ describe('ngb-alert', () => {
   });
 });
 
-@Component({selector: 'test-cmp', template: '', entryComponents: [NgbAlert]})
+@Component({selector: 'test-cmp', template: '', entryComponents: [NgbxAlert]})
 class TestComponent {
   name = 'World';
   closed = false;

@@ -1,5 +1,5 @@
-import {NgbCalendarIslamicCivil} from './ngb-calendar-islamic-civil';
-import {NgbDate} from '../ngb-date';
+import {NgbxCalendarIslamicCivil} from './ngbx-calendar-islamic-civil';
+import {NgbxDate} from '../ngbx-date';
 import {Injectable} from '@angular/core';
 
 /**
@@ -146,12 +146,12 @@ function getDaysDiff(date1: Date, date2: Date): number {
 }
 
 @Injectable()
-export class NgbCalendarIslamicUmalqura extends NgbCalendarIslamicCivil {
+export class NgbxCalendarIslamicUmalqura extends NgbxCalendarIslamicCivil {
   /**
   * Returns the equivalent islamic(Umalqura) date value for a give input Gregorian date.
   * `gdate` is s JS Date to be converted to Hijri.
   */
-  fromGregorian(gDate: Date): NgbDate {
+  fromGregorian(gDate: Date): NgbxDate {
     let hDay = 1, hMonth = 0, hYear = 1300;
     let daysDiff = getDaysDiff(gDate, GREGORIAN_FIRST_DATE);
     if (gDate.getTime() - GREGORIAN_FIRST_DATE.getTime() >= 0 && gDate.getTime() - GREGORIAN_LAST_DATE.getTime() <= 0) {
@@ -171,7 +171,7 @@ export class NgbCalendarIslamicUmalqura extends NgbCalendarIslamicCivil {
             }
             hMonth = j;
             hYear = year;
-            return new NgbDate(hYear, hMonth + 1, hDay);
+            return new NgbxDate(hYear, hMonth + 1, hDay);
           }
           daysDiff = daysDiff - numOfDays;
         }
@@ -183,7 +183,7 @@ export class NgbCalendarIslamicUmalqura extends NgbCalendarIslamicCivil {
   /**
   * Converts the current Hijri date to Gregorian.
   */
-  toGregorian(hDate: NgbDate): Date {
+  toGregorian(hDate: NgbxDate): Date {
     const hYear = hDate.year;
     const hMonth = hDate.month - 1;
     const hDay = hDate.day;

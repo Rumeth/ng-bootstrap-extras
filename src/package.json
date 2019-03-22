@@ -1,6 +1,6 @@
 {
-  "name": "@ng-bootstrap/ng-bootstrap",
-  "version": "4.1.0",
+  "name": "ng-bootstrap-extras",
+  "version": "0.1.0",
   "description": "Angular powered Bootstrap",
   "keywords": [
     "angular",
@@ -24,16 +24,16 @@
     "tooltip",
     "typeahead"
   ],
-  "author": "https://github.com/ng-bootstrap/ng-bootstrap/graphs/contributors",
+  "author": "https://github.com/rumeth/ng-bootstrap-extras/graphs/contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ng-bootstrap/ng-bootstrap.git"
+    "url": "git+https://github.com/rumeth/ng-bootstrap-extras.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ng-bootstrap/ng-bootstrap/issues"
+    "url": "https://github.com/rumeth/ng-bootstrap-extras/issues"
   },
-  "homepage": "https://github.com/ng-bootstrap/ng-bootstrap#readme",
+  "homepage": "https://github.com/rumeth/ng-bootstrap-extras#readme",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",

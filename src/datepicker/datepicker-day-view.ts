@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
-import {NgbDate} from './ngb-date';
-import {NgbDatepickerI18n} from './datepicker-i18n';
+import {NgbxDate} from './ngbx-date';
+import {NgbxDatepickerI18n} from './datepicker-i18n';
 
 @Component({
-  selector: '[ngbDatepickerDayView]',
+  selector: '[ngbxDatepickerDayView]',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./datepicker-day-view.scss'],
@@ -17,14 +17,14 @@ import {NgbDatepickerI18n} from './datepicker-i18n';
   },
   template: `{{ i18n.getDayNumerals(date) }}`
 })
-export class NgbDatepickerDayView {
+export class NgbxDatepickerDayView {
   @Input() currentMonth: number;
-  @Input() date: NgbDate;
+  @Input() date: NgbxDate;
   @Input() disabled: boolean;
   @Input() focused: boolean;
   @Input() selected: boolean;
 
-  constructor(public i18n: NgbDatepickerI18n) {}
+  constructor(public i18n: NgbxDatepickerI18n) {}
 
   isMuted() { return !this.selected && (this.date.month !== this.currentMonth || this.disabled); }
 }

@@ -1,8 +1,8 @@
-import {NgbDatepickerConfig} from './datepicker-config';
+import {NgbxDatepickerConfig} from './datepicker-config';
 
-describe('ngb-datepicker-config', () => {
+describe('ngbx-datepicker-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbDatepickerConfig();
+    const config = new NgbxDatepickerConfig();
 
     expect(config.dayTemplate).toBeUndefined();
     expect(config.displayMonths).toBe(1);

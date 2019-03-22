@@ -1,5 +1,5 @@
-import {NgbDatepickerI18n} from '../datepicker-i18n';
-import {NgbDateStruct} from '../../index';
+import {NgbxDatepickerI18n} from '../datepicker-i18n';
+import {NgbxDateStruct} from '../../index';
 import {hebrewNumerals, isHebrewLeapYear} from './hebrew';
 import {Injectable} from '@angular/core';
 
@@ -13,7 +13,7 @@ const MONTHS_LEAP =
  * @since 3.2.0
  */
 @Injectable()
-export class NgbDatepickerI18nHebrew extends NgbDatepickerI18n {
+export class NgbxDatepickerI18nHebrew extends NgbxDatepickerI18n {
   getMonthShortName(month: number, year?: number): string { return this.getMonthFullName(month, year); }
 
   getMonthFullName(month: number, year?: number): string {
@@ -22,11 +22,11 @@ export class NgbDatepickerI18nHebrew extends NgbDatepickerI18n {
 
   getWeekdayShortName(weekday: number): string { return WEEKDAYS[weekday - 1]; }
 
-  getDayAriaLabel(date: NgbDateStruct): string {
+  getDayAriaLabel(date: NgbxDateStruct): string {
     return `${hebrewNumerals(date.day)} ${this.getMonthFullName(date.month, date.year)} ${hebrewNumerals(date.year)}`;
   }
 
-  getDayNumerals(date: NgbDateStruct): string { return hebrewNumerals(date.day); }
+  getDayNumerals(date: NgbxDateStruct): string { return hebrewNumerals(date.day); }
 
   getWeekNumerals(weekNumber: number): string { return hebrewNumerals(weekNumber); }
 

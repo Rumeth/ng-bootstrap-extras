@@ -1,10 +1,10 @@
-import {NgbDate} from '../ngb-date';
+import {NgbxDate} from '../ngbx-date';
 
 /**
  * Returns the equivalent JS date value for a give input Jalali date.
  * `jalaliDate` is an Jalali date to be converted to Gregorian.
  */
-export function toGregorian(jalaliDate: NgbDate): Date {
+export function toGregorian(jalaliDate: NgbxDate): Date {
   let jdn = jalaliToJulian(jalaliDate.year, jalaliDate.month, jalaliDate.day);
   let date = julianToGregorian(jdn);
   date.setHours(6, 30, 3, 200);
@@ -16,24 +16,24 @@ export function toGregorian(jalaliDate: NgbDate): Date {
  * `gdate` is a JS Date to be converted to jalali.
  * utc to local
  */
-export function fromGregorian(gdate: Date): NgbDate {
+export function fromGregorian(gdate: Date): NgbxDate {
   let g2d = gregorianToJulian(gdate.getFullYear(), gdate.getMonth() + 1, gdate.getDate());
   return julianToJalali(g2d);
 }
 
-export function setJalaliYear(date: NgbDate, yearValue: number): NgbDate {
+export function setJalaliYear(date: NgbxDate, yearValue: number): NgbxDate {
   date.year = +yearValue;
   return date;
 }
 
-export function setJalaliMonth(date: NgbDate, month: number): NgbDate {
+export function setJalaliMonth(date: NgbxDate, month: number): NgbxDate {
   month = +month;
   date.year = date.year + Math.floor((month - 1) / 12);
   date.month = Math.floor(((month - 1) % 12 + 12) % 12) + 1;
   return date;
 }
 
-export function setJalaliDay(date: NgbDate, day: number): NgbDate {
+export function setJalaliDay(date: NgbxDate, day: number): NgbxDate {
   let mDays = getDaysPerMonth(date.month, date.year);
   if (day <= 0) {
     while (day <= 0) {
@@ -179,7 +179,7 @@ function julianToJalali(julianDayNumber: number) {
       // The first 6 months.
       jalaliMonth = 1 + div(numberOfDays, 31);
       jalaliDay = mod(numberOfDays, 31) + 1;
-      return new NgbDate(jalaliYear, jalaliMonth, jalaliDay);
+      return new NgbxDate(jalaliYear, jalaliMonth, jalaliDay);
     } else {
       // The remaining months.
       numberOfDays -= 186;
@@ -195,7 +195,7 @@ function julianToJalali(julianDayNumber: number) {
   jalaliMonth = 7 + div(numberOfDays, 30);
   jalaliDay = mod(numberOfDays, 30) + 1;
 
-  return new NgbDate(jalaliYear, jalaliMonth, jalaliDay);
+  return new NgbxDate(jalaliYear, jalaliMonth, jalaliDay);
 }
 
 /*

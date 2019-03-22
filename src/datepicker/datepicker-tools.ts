@@ -1,24 +1,24 @@
-import {NgbDate} from './ngb-date';
+import {NgbxDate} from './ngbx-date';
 import {DatepickerViewModel, DayViewModel, MonthViewModel} from './datepicker-view-model';
-import {NgbCalendar} from './ngb-calendar';
+import {NgbxCalendar} from './ngbx-calendar';
 import {isDefined} from '../util/util';
-import {NgbDatepickerI18n} from './datepicker-i18n';
+import {NgbxDatepickerI18n} from './datepicker-i18n';
 
-export function isChangedDate(prev: NgbDate, next: NgbDate) {
+export function isChangedDate(prev: NgbxDate, next: NgbxDate) {
   return !dateComparator(prev, next);
 }
 
-export function dateComparator(prev: NgbDate, next: NgbDate) {
+export function dateComparator(prev: NgbxDate, next: NgbxDate) {
   return (!prev && !next) || (!!prev && !!next && prev.equals(next));
 }
 
-export function checkMinBeforeMax(minDate: NgbDate, maxDate: NgbDate) {
+export function checkMinBeforeMax(minDate: NgbxDate, maxDate: NgbxDate) {
   if (maxDate && minDate && maxDate.before(minDate)) {
     throw new Error(`'maxDate' ${maxDate} should be greater than 'minDate' ${minDate}`);
   }
 }
 
-export function checkDateInRange(date: NgbDate, minDate: NgbDate, maxDate: NgbDate): NgbDate {
+export function checkDateInRange(date: NgbxDate, minDate: NgbxDate, maxDate: NgbxDate): NgbxDate {
   if (date && minDate && date.before(minDate)) {
     return minDate;
   }
@@ -29,7 +29,7 @@ export function checkDateInRange(date: NgbDate, minDate: NgbDate, maxDate: NgbDa
   return date;
 }
 
-export function isDateSelectable(date: NgbDate, state: DatepickerViewModel) {
+export function isDateSelectable(date: NgbxDate, state: DatepickerViewModel) {
   const {minDate, maxDate, disabled, markDisabled} = state;
   // clang-format off
   return !(
@@ -42,7 +42,7 @@ export function isDateSelectable(date: NgbDate, state: DatepickerViewModel) {
   // clang-format on
 }
 
-export function generateSelectBoxMonths(calendar: NgbCalendar, date: NgbDate, minDate: NgbDate, maxDate: NgbDate) {
+export function generateSelectBoxMonths(calendar: NgbxCalendar, date: NgbxDate, minDate: NgbxDate, maxDate: NgbxDate) {
   if (!date) {
     return [];
   }
@@ -62,7 +62,7 @@ export function generateSelectBoxMonths(calendar: NgbCalendar, date: NgbDate, mi
   return months;
 }
 
-export function generateSelectBoxYears(date: NgbDate, minDate: NgbDate, maxDate: NgbDate) {
+export function generateSelectBoxYears(date: NgbxDate, minDate: NgbxDate, maxDate: NgbxDate) {
   if (!date) {
     return [];
   }
@@ -73,18 +73,18 @@ export function generateSelectBoxYears(date: NgbDate, minDate: NgbDate, maxDate:
   return Array.from({length: end - start + 1}, (e, i) => start + i);
 }
 
-export function nextMonthDisabled(calendar: NgbCalendar, date: NgbDate, maxDate: NgbDate) {
+export function nextMonthDisabled(calendar: NgbxCalendar, date: NgbxDate, maxDate: NgbxDate) {
   return maxDate && calendar.getNext(date, 'm').after(maxDate);
 }
 
-export function prevMonthDisabled(calendar: NgbCalendar, date: NgbDate, minDate: NgbDate) {
+export function prevMonthDisabled(calendar: NgbxCalendar, date: NgbxDate, minDate: NgbxDate) {
   const prevDate = calendar.getPrev(date, 'm');
   return minDate && (prevDate.year === minDate.year && prevDate.month < minDate.month ||
                      prevDate.year < minDate.year && minDate.month === 1);
 }
 
 export function buildMonths(
-    calendar: NgbCalendar, date: NgbDate, state: DatepickerViewModel, i18n: NgbDatepickerI18n,
+    calendar: NgbxCalendar, date: NgbxDate, state: DatepickerViewModel, i18n: NgbxDatepickerI18n,
     force: boolean): MonthViewModel[] {
   const {displayMonths, months} = state;
   // move old months to a temporary array
@@ -117,7 +117,7 @@ export function buildMonths(
 }
 
 export function buildMonth(
-    calendar: NgbCalendar, date: NgbDate, state: DatepickerViewModel, i18n: NgbDatepickerI18n,
+    calendar: NgbxCalendar, date: NgbxDate, state: DatepickerViewModel, i18n: NgbxDatepickerI18n,
     month: MonthViewModel = {} as MonthViewModel): MonthViewModel {
   const {dayTemplateData, minDate, maxDate, firstDayOfWeek, markDisabled, outsideDays} = state;
   const calendarToday = calendar.getToday();
@@ -145,7 +145,7 @@ export function buildMonth(
         month.weekdays[day] = calendar.getWeekday(date);
       }
 
-      const newDate = new NgbDate(date.year, date.month, date.day);
+      const newDate = new NgbxDate(date.year, date.month, date.day);
       const nextDate = calendar.getNext(newDate);
 
       const ariaLabel = i18n.getDayAriaLabel(newDate);
@@ -203,9 +203,9 @@ export function buildMonth(
   return month;
 }
 
-export function getFirstViewDate(calendar: NgbCalendar, date: NgbDate, firstDayOfWeek: number): NgbDate {
+export function getFirstViewDate(calendar: NgbxCalendar, date: NgbxDate, firstDayOfWeek: number): NgbxDate {
   const daysPerWeek = calendar.getDaysPerWeek();
-  const firstMonthDate = new NgbDate(date.year, date.month, 1);
+  const firstMonthDate = new NgbxDate(date.year, date.month, 1);
   const dayOfWeek = calendar.getWeekday(firstMonthDate) % daysPerWeek;
   return calendar.getPrev(firstMonthDate, 'd', (daysPerWeek + dayOfWeek - firstDayOfWeek) % daysPerWeek);
 }

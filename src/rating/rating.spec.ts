@@ -5,9 +5,9 @@ import {Key} from '../util/key';
 import {Component, DebugElement} from '@angular/core';
 import {FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators} from '@angular/forms';
 
-import {NgbRatingModule} from './rating.module';
-import {NgbRating} from './rating';
-import {NgbRatingConfig} from './rating-config';
+import {NgbxRatingModule} from './rating.module';
+import {NgbxRating} from './rating';
+import {NgbxRatingConfig} from './rating-config';
 import {By} from '@angular/platform-browser';
 
 const createTestComponent = (html: string) =>
@@ -46,31 +46,31 @@ function getStateText(compiled) {
   return stars.map(star => star.textContent.trim());
 }
 
-describe('ngb-rating', () => {
+describe('ngbx-rating', () => {
   beforeEach(() => {
     TestBed.configureTestingModule(
-        {declarations: [TestComponent], imports: [NgbRatingModule, FormsModule, ReactiveFormsModule]});
+        {declarations: [TestComponent], imports: [NgbxRatingModule, FormsModule, ReactiveFormsModule]});
   });
 
   it('should initialize inputs with default values', () => {
-    const defaultConfig = new NgbRatingConfig();
-    const rating = new NgbRating(new NgbRatingConfig(), null);
+    const defaultConfig = new NgbxRatingConfig();
+    const rating = new NgbxRating(new NgbxRatingConfig(), null);
     expect(rating.max).toBe(defaultConfig.max);
     expect(rating.readonly).toBe(defaultConfig.readonly);
   });
 
   it('should show as many stars as the configured max by default', () => {
-    const fixture = TestBed.createComponent(NgbRating);
+    const fixture = TestBed.createComponent(NgbxRating);
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement;
 
     const stars = getStars(compiled);
-    expect(stars.length).toBe(new NgbRatingConfig().max);
+    expect(stars.length).toBe(new NgbxRatingConfig().max);
   });
 
   it('should change the num of stars with `max`', () => {
-    const fixture = createTestComponent('<ngb-rating max="3"></ngb-rating>');
+    const fixture = createTestComponent('<ngbx-rating max="3"></ngbx-rating>');
 
     const compiled = fixture.nativeElement;
     const stars = getStars(compiled);
@@ -78,14 +78,14 @@ describe('ngb-rating', () => {
   });
 
   it('initializes the default star icons as selected', () => {
-    const fixture = createTestComponent('<ngb-rating rate="3" max="5"></ngb-rating>');
+    const fixture = createTestComponent('<ngbx-rating rate="3" max="5"></ngbx-rating>');
 
     const compiled = fixture.nativeElement;
     expect(getState(compiled)).toEqual([true, true, true, false, false]);
   });
 
   it('sets stars within 0..max limits', () => {
-    const fixture = createTestComponent('<ngb-rating [rate]="rate" max="5"></ngb-rating>');
+    const fixture = createTestComponent('<ngbx-rating [rate]="rate" max="5"></ngbx-rating>');
 
     const compiled = fixture.nativeElement;
     expect(getState(compiled)).toEqual([true, true, true, false, false]);
@@ -104,15 +104,15 @@ describe('ngb-rating', () => {
   });
 
   it('should now fire change event initially', fakeAsync(() => {
-       const fixture = createTestComponent('<ngb-rating [rate]="3" (rateChange)="changed = true"></ngb-rating>');
+       const fixture = createTestComponent('<ngbx-rating [rate]="3" (rateChange)="changed = true"></ngbx-rating>');
        tick();
        expect(fixture.componentInstance.changed).toBeFalsy();
      }));
 
   it('handles correctly the click event', fakeAsync(() => {
-       const fixture = createTestComponent('<ngb-rating [(rate)]="rate" max="5"></ngb-rating>');
+       const fixture = createTestComponent('<ngbx-rating [(rate)]="rate" max="5"></ngbx-rating>');
        const el = fixture.debugElement;
-       const rating = el.query(By.directive(NgbRating)).children[0];
+       const rating = el.query(By.directive(NgbxRating)).children[0];
 
        // 3/5
        expect(getState(el)).toEqual([true, true, true, false, false]);
@@ -138,9 +138,9 @@ describe('ngb-rating', () => {
      }));
 
   it('ignores the click event on a readonly rating', () => {
-    const fixture = createTestComponent('<ngb-rating [(rate)]="rate" max="5" [readonly]="true"></ngb-rating>');
+    const fixture = createTestComponent('<ngbx-rating [(rate)]="rate" max="5" [readonly]="true"></ngbx-rating>');
     const el = fixture.debugElement;
-    const rating = el.query(By.directive(NgbRating)).children[0];
+    const rating = el.query(By.directive(NgbxRating)).children[0];
 
     // 3/5
     expect(getState(el)).toEqual([true, true, true, false, false]);
@@ -165,7 +165,7 @@ describe('ngb-rating', () => {
   });
 
   it('should not reset rating to 0 by default', fakeAsync(() => {
-       const fixture = createTestComponent('<ngb-rating [(rate)]="rate" max="5"></ngb-rating>');
+       const fixture = createTestComponent('<ngbx-rating [(rate)]="rate" max="5"></ngbx-rating>');
        const el = fixture.debugElement;
 
        // 3/5 initially
@@ -180,7 +180,7 @@ describe('ngb-rating', () => {
      }));
 
   it('should set `resettable` rating to 0', fakeAsync(() => {
-       const fixture = createTestComponent('<ngb-rating [(rate)]="rate" max="5" [resettable]="true"></ngb-rating>');
+       const fixture = createTestComponent('<ngbx-rating [(rate)]="rate" max="5" [resettable]="true"></ngbx-rating>');
        const el = fixture.debugElement;
 
        // 3/5 initially
@@ -203,9 +203,9 @@ describe('ngb-rating', () => {
      }));
 
   it('handles correctly the mouse enter/leave', () => {
-    const fixture = createTestComponent('<ngb-rating [(rate)]="rate" max="5"></ngb-rating>');
+    const fixture = createTestComponent('<ngbx-rating [(rate)]="rate" max="5"></ngbx-rating>');
     const el = fixture.debugElement;
-    const rating = el.query(By.directive(NgbRating));
+    const rating = el.query(By.directive(NgbxRating));
 
     // 3/5
     expect(getState(el)).toEqual([true, true, true, false, false]);
@@ -236,9 +236,9 @@ describe('ngb-rating', () => {
   });
 
   it('handles correctly the mouse enter/leave on readonly rating', () => {
-    const fixture = createTestComponent('<ngb-rating [(rate)]="rate" max="5" [readonly]="true"></ngb-rating>');
+    const fixture = createTestComponent('<ngbx-rating [(rate)]="rate" max="5" [readonly]="true"></ngbx-rating>');
     const el = fixture.debugElement;
-    const rating = el.query(By.directive(NgbRating)).children[0];
+    const rating = el.query(By.directive(NgbxRating)).children[0];
 
     // 3/5
     expect(getState(el)).toEqual([true, true, true, false, false]);
@@ -269,7 +269,7 @@ describe('ngb-rating', () => {
   });
 
   it('should set pointer cursor on stars when not readonly', () => {
-    const fixture = TestBed.createComponent(NgbRating);
+    const fixture = TestBed.createComponent(NgbxRating);
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement;
@@ -278,7 +278,7 @@ describe('ngb-rating', () => {
   });
 
   it('should set default cursor on stars when readonly', () => {
-    const fixture = createTestComponent('<ngb-rating [readonly]="true"></ngb-rating>');
+    const fixture = createTestComponent('<ngbx-rating [readonly]="true"></ngbx-rating>');
 
     const compiled = fixture.nativeElement;
 
@@ -288,7 +288,7 @@ describe('ngb-rating', () => {
   it('should allow custom star template', () => {
     const fixture = createTestComponent(`
       <ng-template #t let-fill="fill">{{ fill === 100 ? 'x' : 'o' }}</ng-template>
-      <ngb-rating [starTemplate]="t" rate="2" max="4"></ngb-rating>`);
+      <ngbx-rating [starTemplate]="t" rate="2" max="4"></ngbx-rating>`);
 
     const compiled = fixture.nativeElement;
     expect(getStateText(compiled)).toEqual(['x', 'x', 'o', 'o']);
@@ -296,9 +296,9 @@ describe('ngb-rating', () => {
 
   it('should allow custom template as a child element', () => {
     const fixture = createTestComponent(`
-      <ngb-rating rate="2" max="4">
+      <ngbx-rating rate="2" max="4">
         <ng-template let-fill="fill">{{ fill === 100 ? 'x' : 'o' }}</ng-template>
-      </ngb-rating>`);
+      </ngbx-rating>`);
 
     const compiled = fixture.nativeElement;
     expect(getStateText(compiled)).toEqual(['x', 'x', 'o', 'o']);
@@ -307,9 +307,9 @@ describe('ngb-rating', () => {
   it('should prefer explicitly set custom template to a child one', () => {
     const fixture = createTestComponent(`
       <ng-template #t let-fill="fill">{{ fill === 100 ? 'a' : 'b' }}</ng-template>
-      <ngb-rating [starTemplate]="t" rate="2" max="4">
+      <ngbx-rating [starTemplate]="t" rate="2" max="4">
         <ng-template let-fill="fill">{{ fill === 100 ? 'c' : 'd' }}</ng-template>
-      </ngb-rating>`);
+      </ngbx-rating>`);
 
     const compiled = fixture.nativeElement;
     expect(getStateText(compiled)).toEqual(['a', 'a', 'b', 'b']);
@@ -318,7 +318,7 @@ describe('ngb-rating', () => {
   it('should calculate fill percentage correctly', () => {
     const fixture = createTestComponent(`
       <ng-template #t let-fill="fill">{{fill}}</ng-template>
-      <ngb-rating [starTemplate]="t" [rate]="rate" max="4"></ngb-rating>`);
+      <ngbx-rating [starTemplate]="t" [rate]="rate" max="4"></ngbx-rating>`);
 
     const compiled = fixture.nativeElement;
     expect(getStateText(compiled)).toEqual(['100', '100', '100', '0']);
@@ -347,7 +347,7 @@ describe('ngb-rating', () => {
   it('should allow custom star template based on index', () => {
     const fixture = createTestComponent(`
       <ng-template #t let-index="index">{{ index === 1 ? 'x' : 'o' }}</ng-template>
-      <ngb-rating [starTemplate]="t" rate="2" max="4"></ngb-rating>`);
+      <ngbx-rating [starTemplate]="t" rate="2" max="4"></ngbx-rating>`);
 
     const compiled = fixture.nativeElement;
     expect(getStateText(compiled)).toEqual(['o', 'x', 'o', 'o']);
@@ -355,9 +355,9 @@ describe('ngb-rating', () => {
 
   it('should allow custom template based on index as a child element', () => {
     const fixture = createTestComponent(`
-      <ngb-rating rate="2" max="4">
+      <ngbx-rating rate="2" max="4">
         <ng-template let-index="index">{{ index === 1 ? 'x' : 'o' }}</ng-template>
-      </ngb-rating>`);
+      </ngbx-rating>`);
 
     const compiled = fixture.nativeElement;
     expect(getStateText(compiled)).toEqual(['o', 'x', 'o', 'o']);
@@ -366,9 +366,9 @@ describe('ngb-rating', () => {
   it('should prefer explicitly set custom template based on index to a child one', () => {
     const fixture = createTestComponent(`
       <ng-template #t let-index="index">{{ index === 1 ? 'a' : 'b' }}</ng-template>
-      <ngb-rating [starTemplate]="t" rate="2" max="4">
+      <ngbx-rating [starTemplate]="t" rate="2" max="4">
         <ng-template let-index="index">{{ index === 1 ? 'c' : 'd' }}</ng-template>
-      </ngb-rating>`);
+      </ngbx-rating>`);
 
     const compiled = fixture.nativeElement;
     expect(getStateText(compiled)).toEqual(['b', 'a', 'b', 'b']);
@@ -376,23 +376,23 @@ describe('ngb-rating', () => {
 
   describe('aria support', () => {
     it('contains aria-valuemax with the number of stars', () => {
-      const fixture = createTestComponent('<ngb-rating [max]="max"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating [max]="max"></ngbx-rating>');
 
-      const rating = fixture.debugElement.query(By.directive(NgbRating));
+      const rating = fixture.debugElement.query(By.directive(NgbxRating));
 
       expect(rating.attributes['aria-valuemax']).toBe('10');
     });
 
     it('contains aria-valuemin', () => {
-      const fixture = createTestComponent('<ngb-rating [max]="max"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating [max]="max"></ngbx-rating>');
 
-      const rating = fixture.debugElement.query(By.directive(NgbRating));
+      const rating = fixture.debugElement.query(By.directive(NgbxRating));
 
       expect(rating.attributes['aria-valuemin']).toBe('0');
     });
 
     it('contains a hidden span for each star for screenreaders', () => {
-      const fixture = createTestComponent('<ngb-rating max="5"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating max="5"></ngbx-rating>');
 
       const compiled = fixture.nativeElement;
       const hiddenStars = getStars(compiled, '.sr-only');
@@ -401,24 +401,24 @@ describe('ngb-rating', () => {
     });
 
     it('initializes populates the current rate for screenreaders', () => {
-      const fixture = createTestComponent('<ngb-rating rate="3" max="5"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating rate="3" max="5"></ngbx-rating>');
 
       const compiled = fixture.nativeElement;
       expect(getAriaState(compiled)).toEqual([true, true, true, false, false]);
     });
 
     it('contains aria-valuenow with the current rate', () => {
-      const fixture = createTestComponent('<ngb-rating [max]="max" rate="3"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating [max]="max" rate="3"></ngbx-rating>');
 
-      const rating = fixture.debugElement.query(By.directive(NgbRating));
+      const rating = fixture.debugElement.query(By.directive(NgbxRating));
 
       expect(rating.attributes['aria-valuenow']).toBe('3');
     });
 
     it('updates aria-valuenow when the rate changes', () => {
-      const fixture = createTestComponent('<ngb-rating [max]="max" rate="3"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating [max]="max" rate="3"></ngbx-rating>');
 
-      const rating = fixture.debugElement.query(By.directive(NgbRating));
+      const rating = fixture.debugElement.query(By.directive(NgbxRating));
 
       getStar(rating.nativeElement, 7).click();
       fixture.detectChanges();
@@ -427,9 +427,9 @@ describe('ngb-rating', () => {
     });
 
     it('updates aria-valuetext when the rate changes', () => {
-      const fixture = createTestComponent('<ngb-rating [max]="max" rate="3"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating [max]="max" rate="3"></ngbx-rating>');
 
-      const rating = fixture.debugElement.query(By.directive(NgbRating));
+      const rating = fixture.debugElement.query(By.directive(NgbxRating));
 
       getStar(rating.nativeElement, 7).click();
       fixture.detectChanges();
@@ -438,12 +438,12 @@ describe('ngb-rating', () => {
     });
 
     it('updates aria-disabled when readonly', () => {
-      const fixture = createTestComponent('<ngb-rating></ngb-rating>');
-      let ratingEl = fixture.debugElement.query(By.directive(NgbRating));
+      const fixture = createTestComponent('<ngbx-rating></ngbx-rating>');
+      let ratingEl = fixture.debugElement.query(By.directive(NgbxRating));
       fixture.detectChanges();
       expect(ratingEl.attributes['aria-disabled']).toBeNull();
 
-      let ratingComp = <NgbRating>ratingEl.componentInstance;
+      let ratingComp = <NgbxRating>ratingEl.componentInstance;
       ratingComp.readonly = true;
       fixture.detectChanges();
       expect(ratingEl.attributes['aria-disabled']).toBe('true');
@@ -453,9 +453,9 @@ describe('ngb-rating', () => {
   describe('keyboard support', () => {
 
     it('should handle arrow keys', () => {
-      const fixture = createTestComponent('<ngb-rating [rate]="3" [max]="5"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating [rate]="3" [max]="5"></ngbx-rating>');
 
-      const element = fixture.debugElement.query(By.directive(NgbRating));
+      const element = fixture.debugElement.query(By.directive(NgbxRating));
 
       // right -> +1
       let event = createKeyDownEvent(Key.ArrowRight);
@@ -487,9 +487,9 @@ describe('ngb-rating', () => {
     });
 
     it('should handle home/end keys', () => {
-      const fixture = createTestComponent('<ngb-rating [rate]="3" [max]="5"></ngb-rating>');
+      const fixture = createTestComponent('<ngbx-rating [rate]="3" [max]="5"></ngbx-rating>');
 
-      const element = fixture.debugElement.query(By.directive(NgbRating));
+      const element = fixture.debugElement.query(By.directive(NgbxRating));
 
       // home -> 0
       let event = createKeyDownEvent(Key.Home);
@@ -512,11 +512,11 @@ describe('ngb-rating', () => {
     it('should work with template-driven form validation', async(() => {
          const html = `
         <form>
-          <ngb-rating [(ngModel)]="model" name="control" max="5" required></ngb-rating>
+          <ngbx-rating [(ngModel)]="model" name="control" max="5" required></ngbx-rating>
         </form>`;
 
          const fixture = createTestComponent(html);
-         const element = fixture.debugElement.query(By.directive(NgbRating));
+         const element = fixture.debugElement.query(By.directive(NgbxRating));
 
          fixture.detectChanges();
          fixture.whenStable()
@@ -551,11 +551,11 @@ describe('ngb-rating', () => {
     it('should work with reactive form validation', () => {
       const html = `
         <form [formGroup]="form">
-          <ngb-rating formControlName="rating" max="5"></ngb-rating>
+          <ngbx-rating formControlName="rating" max="5"></ngbx-rating>
         </form>`;
 
       const fixture = createTestComponent(html);
-      const element = fixture.debugElement.query(By.directive(NgbRating));
+      const element = fixture.debugElement.query(By.directive(NgbxRating));
 
       expect(getState(element.nativeElement)).toEqual([false, false, false, false, false]);
       expect(element.nativeElement).toHaveCssClass('ng-invalid');
@@ -577,11 +577,11 @@ describe('ngb-rating', () => {
     it('should handle clicks and update form control', () => {
       const html = `
         <form [formGroup]="form">
-          <ngb-rating formControlName="rating" max="5"></ngb-rating>
+          <ngbx-rating formControlName="rating" max="5"></ngbx-rating>
         </form>`;
 
       const fixture = createTestComponent(html);
-      const element = fixture.debugElement.query(By.directive(NgbRating));
+      const element = fixture.debugElement.query(By.directive(NgbxRating));
 
       expect(getState(element.nativeElement)).toEqual([false, false, false, false, false]);
       expect(element.nativeElement).toHaveCssClass('ng-invalid');
@@ -597,11 +597,11 @@ describe('ngb-rating', () => {
     it('should work with both rate input and form control', fakeAsync(() => {
          const html = `
         <form [formGroup]="form">
-          <ngb-rating [(rate)]="rate" formControlName="rating" max="5"></ngb-rating>
+          <ngbx-rating [(rate)]="rate" formControlName="rating" max="5"></ngbx-rating>
         </form>`;
 
          const fixture = createTestComponent(html);
-         const element = fixture.debugElement.query(By.directive(NgbRating));
+         const element = fixture.debugElement.query(By.directive(NgbxRating));
 
          expect(getState(element.nativeElement)).toEqual([false, false, false, false, false]);
          expect(element.nativeElement).toHaveCssClass('ng-invalid');
@@ -624,11 +624,11 @@ describe('ngb-rating', () => {
     it('should disable widget when a control is disabled', fakeAsync(() => {
          const html = `
         <form [formGroup]="form">
-          <ngb-rating formControlName="rating" max="5"></ngb-rating>
+          <ngbx-rating formControlName="rating" max="5"></ngbx-rating>
         </form>`;
 
          const fixture = createTestComponent(html);
-         const element = fixture.debugElement.query(By.directive(NgbRating));
+         const element = fixture.debugElement.query(By.directive(NgbxRating));
 
          expect(getState(element.nativeElement)).toEqual([false, false, false, false, false]);
          expect(fixture.componentInstance.form.get('rating').disabled).toBeFalsy();
@@ -645,11 +645,11 @@ describe('ngb-rating', () => {
     it('should mark control as touched on blur', fakeAsync(() => {
          const html = `
         <form [formGroup]="form">
-          <ngb-rating formControlName="rating" max="5"></ngb-rating>
+          <ngbx-rating formControlName="rating" max="5"></ngbx-rating>
         </form>`;
 
          const fixture = createTestComponent(html);
-         const element = fixture.debugElement.query(By.directive(NgbRating));
+         const element = fixture.debugElement.query(By.directive(NgbxRating));
 
          expect(getState(element.nativeElement)).toEqual([false, false, false, false, false]);
          expect(element.nativeElement).toHaveCssClass('ng-untouched');
@@ -662,18 +662,18 @@ describe('ngb-rating', () => {
   });
 
   describe('Custom config', () => {
-    let config: NgbRatingConfig;
+    let config: NgbxRatingConfig;
 
-    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbRatingModule]}); });
+    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbxRatingModule]}); });
 
-    beforeEach(inject([NgbRatingConfig], (c: NgbRatingConfig) => {
+    beforeEach(inject([NgbxRatingConfig], (c: NgbxRatingConfig) => {
       config = c;
       config.max = 5;
       config.readonly = true;
     }));
 
     it('should initialize inputs with provided config', () => {
-      const fixture = TestBed.createComponent(NgbRating);
+      const fixture = TestBed.createComponent(NgbxRating);
       fixture.detectChanges();
 
       let rating = fixture.componentInstance;
@@ -683,17 +683,17 @@ describe('ngb-rating', () => {
   });
 
   describe('Custom config as provider', () => {
-    let config = new NgbRatingConfig();
+    let config = new NgbxRatingConfig();
     config.max = 5;
     config.readonly = true;
 
     beforeEach(() => {
       TestBed.configureTestingModule(
-          {imports: [NgbRatingModule], providers: [{provide: NgbRatingConfig, useValue: config}]});
+          {imports: [NgbxRatingModule], providers: [{provide: NgbxRatingConfig, useValue: config}]});
     });
 
     it('should initialize inputs with provided config as provider', () => {
-      const fixture = TestBed.createComponent(NgbRating);
+      const fixture = TestBed.createComponent(NgbxRating);
       fixture.detectChanges();
 
       let rating = fixture.componentInstance;

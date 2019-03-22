@@ -1,11 +1,11 @@
 import {ChangeDetectorRef, Directive, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-import {NgbButtonLabel} from './label';
+import {NgbxButtonLabel} from './label';
 
 const NGB_CHECKBOX_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbCheckBox),
+  useExisting: forwardRef(() => NgbxCheckBox),
   multi: true
 };
 
@@ -15,7 +15,7 @@ const NGB_CHECKBOX_VALUE_ACCESSOR = {
  * specified via ngModel.
  */
 @Directive({
-  selector: '[ngbButton][type=checkbox]',
+  selector: '[ngbxButton][type=checkbox]',
   host: {
     'autocomplete': 'off',
     '[checked]': 'checked',
@@ -26,7 +26,7 @@ const NGB_CHECKBOX_VALUE_ACCESSOR = {
   },
   providers: [NGB_CHECKBOX_VALUE_ACCESSOR]
 })
-export class NgbCheckBox implements ControlValueAccessor {
+export class NgbxCheckBox implements ControlValueAccessor {
   checked;
 
   /**
@@ -54,7 +54,7 @@ export class NgbCheckBox implements ControlValueAccessor {
     }
   }
 
-  constructor(private _label: NgbButtonLabel, private _cd: ChangeDetectorRef) {}
+  constructor(private _label: NgbxButtonLabel, private _cd: ChangeDetectorRef) {}
 
   onInputChange($event) {
     const modelToPropagate = $event.target.checked ? this.valueChecked : this.valueUnChecked;

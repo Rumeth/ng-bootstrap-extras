@@ -1,12 +1,12 @@
-import {NgbDate} from './ngb-date';
-import {NgbDateStruct} from './ngb-date-struct';
+import {NgbxDate} from './ngbx-date';
+import {NgbxDateStruct} from './ngbx-date-struct';
 import {DayTemplateContext} from './datepicker-day-template-context';
 
-export type NgbMarkDisabled = (date: NgbDateStruct, current: {year: number, month: number}) => boolean;
-export type NgbDayTemplateData = (date: NgbDateStruct, current: {year: number, month: number}) => any;
+export type NgbxMarkDisabled = (date: NgbxDateStruct, current: {year: number, month: number}) => boolean;
+export type NgbxDayTemplateData = (date: NgbxDateStruct, current: {year: number, month: number}) => any;
 
 export type DayViewModel = {
-  date: NgbDate,
+  date: NgbxDate,
   context: DayTemplateContext,
   tabindex: number,
   ariaLabel: string,
@@ -20,8 +20,8 @@ export type WeekViewModel = {
 };
 
 export type MonthViewModel = {
-  firstDate: NgbDate,
-  lastDate: NgbDate,
+  firstDate: NgbxDate,
+  lastDate: NgbxDate,
   number: number,
   year: number,
   weeks: WeekViewModel[],
@@ -30,17 +30,17 @@ export type MonthViewModel = {
 
 // clang-format off
 export type DatepickerViewModel = {
-  dayTemplateData?: NgbDayTemplateData,
+  dayTemplateData?: NgbxDayTemplateData,
   disabled: boolean,
   displayMonths: number,
-  firstDate?: NgbDate,
+  firstDate?: NgbxDate,
   firstDayOfWeek: number,
-  focusDate?: NgbDate,
+  focusDate?: NgbxDate,
   focusVisible: boolean,
-  lastDate?: NgbDate,
-  markDisabled?: NgbMarkDisabled,
-  maxDate?: NgbDate,
-  minDate?: NgbDate,
+  lastDate?: NgbxDate,
+  markDisabled?: NgbxMarkDisabled,
+  maxDate?: NgbxDate,
+  minDate?: NgbxDate,
   months: MonthViewModel[],
   navigation: 'select' | 'arrows' | 'none',
   outsideDays: 'visible' | 'collapsed' | 'hidden',
@@ -50,7 +50,7 @@ export type DatepickerViewModel = {
     years: number[],
     months: number[]
   },
-  selectedDate: NgbDate
+  selectedDate: NgbxDate
 };
 // clang-format on
 

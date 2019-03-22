@@ -4,9 +4,9 @@ import {createGenericTestComponent} from '../test/common';
 import {By} from '@angular/platform-browser';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
-import {NgbCarouselModule} from './carousel.module';
-import {NgbCarousel, NgbSlideEvent, NgbSlideEventDirection} from './carousel';
-import {NgbCarouselConfig} from './carousel-config';
+import {NgbxCarouselModule} from './carousel.module';
+import {NgbxCarousel, NgbxSlideEvent, NgbxSlideEventDirection} from './carousel';
+import {NgbxCarouselConfig} from './carousel-config';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -29,14 +29,14 @@ function expectActiveSlides(nativeEl: HTMLDivElement, active: boolean[]) {
   }
 }
 
-describe('ngb-carousel', () => {
+describe('ngbx-carousel', () => {
   beforeEach(() => {
-    TestBed.configureTestingModule({declarations: [TestComponent, TestComponentOnPush], imports: [NgbCarouselModule]});
+    TestBed.configureTestingModule({declarations: [TestComponent, TestComponentOnPush], imports: [NgbxCarouselModule]});
   });
 
   it('should initialize inputs with default values', () => {
-    const defaultConfig = new NgbCarouselConfig();
-    const carousel = new NgbCarousel(new NgbCarouselConfig(), null, null, null);
+    const defaultConfig = new NgbxCarouselConfig();
+    const carousel = new NgbxCarousel(new NgbxCarouselConfig(), null, null, null);
 
     expect(carousel.interval).toBe(defaultConfig.interval);
     expect(carousel.wrap).toBe(defaultConfig.wrap);
@@ -48,10 +48,10 @@ describe('ngb-carousel', () => {
 
   it('should render slides and navigation indicators', fakeAsync(() => {
        const html = `
-      <ngb-carousel>
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel>
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
        const fixture = createTestComponent(html);
 
@@ -69,10 +69,10 @@ describe('ngb-carousel', () => {
 
   it('should mark the first slide as active by default', fakeAsync(() => {
        const html = `
-      <ngb-carousel>
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel>
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -82,12 +82,12 @@ describe('ngb-carousel', () => {
      }));
 
   it('should work without any slides', fakeAsync(() => {
-       const fixture = createTestComponent(`<ngb-carousel [interval]="1000"></ngb-carousel>`);
+       const fixture = createTestComponent(`<ngbx-carousel [interval]="1000"></ngbx-carousel>`);
 
        tick(1001);
        fixture.detectChanges();
 
-       const carousel = fixture.nativeElement.querySelector('ngb-carousel');
+       const carousel = fixture.nativeElement.querySelector('ngbx-carousel');
        const slides = fixture.nativeElement.querySelectorAll('.carousel-item');
 
        expect(carousel).toBeTruthy();
@@ -99,10 +99,10 @@ describe('ngb-carousel', () => {
 
   it('should mark the requested slide as active', fakeAsync(() => {
        const html = `
-       <ngb-carousel [activeId]="activeSlideId">
-         <ng-template ngbSlide id="1">foo</ng-template>
-         <ng-template ngbSlide id="2">bar</ng-template>
-       </ngb-carousel>
+       <ngbx-carousel [activeId]="activeSlideId">
+         <ng-template ngbxSlide id="1">foo</ng-template>
+         <ng-template ngbxSlide id="2">bar</ng-template>
+       </ngbx-carousel>
      `;
 
        const fixture = createTestComponent(html);
@@ -116,10 +116,10 @@ describe('ngb-carousel', () => {
 
   it('should auto-correct when slide index is undefined', fakeAsync(() => {
        const html = `
-            <ngb-carousel [activeId]="doesntExist">
-              <ng-template ngbSlide>foo</ng-template>
-              <ng-template ngbSlide>bar</ng-template>
-            </ngb-carousel>
+            <ngbx-carousel [activeId]="doesntExist">
+              <ng-template ngbxSlide>foo</ng-template>
+              <ng-template ngbxSlide>bar</ng-template>
+            </ngbx-carousel>
           `;
 
        const fixture = createTestComponent(html);
@@ -130,11 +130,11 @@ describe('ngb-carousel', () => {
 
   it('should change slide on prev/next API calls', fakeAsync(() => {
        const html = `
-      <ngb-carousel #c [interval]="0">
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-        <ng-template ngbSlide id="s3">baz</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel #c [interval]="0">
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+        <ng-template ngbxSlide id="s3">baz</ng-template>
+      </ngbx-carousel>
       <button id="next" (click)="c.next()">Next</button>
       <button id="prev" (click)="c.prev()">Prev</button>
       <button id="select" (click)="c.select('s3')">Select 3</button>
@@ -162,10 +162,10 @@ describe('ngb-carousel', () => {
 
   it('should pause/resume slide change on API calls', fakeAsync(() => {
        const html = `
-     <ngb-carousel #c [interval]="1000">
-       <ng-template ngbSlide>foo</ng-template>
-       <ng-template ngbSlide>bar</ng-template>
-     </ngb-carousel>
+     <ngbx-carousel #c [interval]="1000">
+       <ng-template ngbxSlide>foo</ng-template>
+       <ng-template ngbxSlide>bar</ng-template>
+     </ngbx-carousel>
      <button id="pause" (click)="c.pause()">Next</button>
      <button id="cycle" (click)="c.cycle()">Prev</button>
    `;
@@ -195,11 +195,11 @@ describe('ngb-carousel', () => {
 
   it('should mark component for check for API calls', () => {
     const html = `
-      <ngb-carousel #c [interval]="0">
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-        <ng-template ngbSlide *ngIf="addNewSlide">baz</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel #c [interval]="0">
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+        <ng-template ngbxSlide *ngIf="addNewSlide">baz</ng-template>
+      </ngbx-carousel>
       <button id="next" (click)="c.next(); addNewSlide = true">Next</button>
     `;
 
@@ -215,11 +215,11 @@ describe('ngb-carousel', () => {
 
   it('should mark component for check when slides change', () => {
     const html = `
-      <ngb-carousel #c [interval]="0">
-        <ng-template ngbSlide *ngFor="let s of slides">
+      <ngbx-carousel #c [interval]="0">
+        <ng-template ngbxSlide *ngFor="let s of slides">
           <div class="slide">{{ s }}</div>
         </ng-template>
-      </ngb-carousel>
+      </ngbx-carousel>
     `;
 
     function getSlidesText(element: HTMLElement): string[] {
@@ -236,10 +236,10 @@ describe('ngb-carousel', () => {
 
   it('should change slide on indicator click', fakeAsync(() => {
        const html = `
-     <ngb-carousel>
-       <ng-template ngbSlide>foo</ng-template>
-       <ng-template ngbSlide>bar</ng-template>
-     </ngb-carousel>
+     <ngbx-carousel>
+       <ng-template ngbxSlide>foo</ng-template>
+       <ng-template ngbxSlide>bar</ng-template>
+     </ngbx-carousel>
    `;
 
        const fixture = createTestComponent(html);
@@ -256,11 +256,11 @@ describe('ngb-carousel', () => {
 
   it('should fire a slide event with correct direction on indicator click', fakeAsync(() => {
        const html = `
-      <ngb-carousel (slide)="carouselSlideCallBack($event)">
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-        <ng-template ngbSlide>pluto</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel (slide)="carouselSlideCallBack($event)">
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+        <ng-template ngbxSlide>pluto</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -270,21 +270,21 @@ describe('ngb-carousel', () => {
        indicatorElms[1].click();
        fixture.detectChanges();
        expect(fixture.componentInstance.carouselSlideCallBack).toHaveBeenCalledWith(jasmine.objectContaining({
-         direction: NgbSlideEventDirection.LEFT
+         direction: NgbxSlideEventDirection.LEFT
        }));
 
        spyCallBack.calls.reset();
        indicatorElms[0].click();
        fixture.detectChanges();
        expect(fixture.componentInstance.carouselSlideCallBack).toHaveBeenCalledWith(jasmine.objectContaining({
-         direction: NgbSlideEventDirection.RIGHT
+         direction: NgbxSlideEventDirection.RIGHT
        }));
 
        spyCallBack.calls.reset();
        indicatorElms[2].click();
        fixture.detectChanges();
        expect(fixture.componentInstance.carouselSlideCallBack).toHaveBeenCalledWith(jasmine.objectContaining({
-         direction: NgbSlideEventDirection.LEFT
+         direction: NgbxSlideEventDirection.LEFT
        }));
 
        discardPeriodicTasks();
@@ -292,10 +292,10 @@ describe('ngb-carousel', () => {
 
   it('should change slide on carousel control click', fakeAsync(() => {
        const html = `
-      <ngb-carousel>
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel>
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -318,10 +318,10 @@ describe('ngb-carousel', () => {
 
   it('should fire a slide event with correct direction on carousel control click', fakeAsync(() => {
        const html = `
-      <ngb-carousel (slide)="carouselSlideCallBack($event)">
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel (slide)="carouselSlideCallBack($event)">
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -332,20 +332,20 @@ describe('ngb-carousel', () => {
        prevControlElm.click();
        fixture.detectChanges();
        expect(fixture.componentInstance.carouselSlideCallBack).toHaveBeenCalledWith(jasmine.objectContaining({
-         direction: NgbSlideEventDirection.RIGHT
+         direction: NgbxSlideEventDirection.RIGHT
        }));
        spyCallBack.calls.reset();
        nextControlElm.click();
        fixture.detectChanges();
        expect(fixture.componentInstance.carouselSlideCallBack).toHaveBeenCalledWith(jasmine.objectContaining({
-         direction: NgbSlideEventDirection.LEFT
+         direction: NgbxSlideEventDirection.LEFT
        }));
 
        spyCallBack.calls.reset();
        prevControlElm.click();
        fixture.detectChanges();
        expect(fixture.componentInstance.carouselSlideCallBack).toHaveBeenCalledWith(jasmine.objectContaining({
-         direction: NgbSlideEventDirection.RIGHT
+         direction: NgbxSlideEventDirection.RIGHT
        }));
 
        discardPeriodicTasks();
@@ -353,10 +353,10 @@ describe('ngb-carousel', () => {
 
   it('should change slide on time passage (default interval value)', fakeAsync(() => {
        const html = `
-      <ngb-carousel>
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel>
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -384,10 +384,10 @@ describe('ngb-carousel', () => {
 
   it('should change slide on time passage (custom interval value)', fakeAsync(() => {
        const html = `
-      <ngb-carousel [interval]="2000">
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel [interval]="2000">
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -407,10 +407,10 @@ describe('ngb-carousel', () => {
 
   it('should not change slide on time passage (custom interval value is zero)', fakeAsync(() => {
        const html = `
-      <ngb-carousel [interval]="0">
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel [interval]="0">
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -430,11 +430,11 @@ describe('ngb-carousel', () => {
 
   it('should change slide with different rate when interval value changed', fakeAsync(() => {
        const html = `
-      <ngb-carousel [interval]="interval">
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-        <ng-template ngbSlide>zoo</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel [interval]="interval">
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+        <ng-template ngbxSlide>zoo</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -460,15 +460,15 @@ describe('ngb-carousel', () => {
   it('should listen to mouse events based on pauseOnHover attribute', fakeAsync(() => {
 
        const html = `
-    <ngb-carousel [pauseOnHover]="pauseOnHover">
-      <ng-template ngbSlide>foo</ng-template>
-      <ng-template ngbSlide>bar</ng-template>
-    </ngb-carousel>
+    <ngbx-carousel [pauseOnHover]="pauseOnHover">
+      <ng-template ngbxSlide>foo</ng-template>
+      <ng-template ngbxSlide>bar</ng-template>
+    </ngbx-carousel>
   `;
 
        const fixture = createTestComponent(html);
 
-       const carouselDebugEl = fixture.debugElement.query(By.directive(NgbCarousel));
+       const carouselDebugEl = fixture.debugElement.query(By.directive(NgbxCarousel));
 
        expectActiveSlides(fixture.nativeElement, [true, false]);
 
@@ -503,15 +503,15 @@ describe('ngb-carousel', () => {
 
   it('should pause / resume slide change with time passage on mouse enter / leave', fakeAsync(() => {
        const html = `
-      <ngb-carousel>
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel>
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
 
-       const carouselDebugEl = fixture.debugElement.query(By.directive(NgbCarousel));
+       const carouselDebugEl = fixture.debugElement.query(By.directive(NgbxCarousel));
 
        expectActiveSlides(fixture.nativeElement, [true, false]);
 
@@ -536,10 +536,10 @@ describe('ngb-carousel', () => {
 
   it('should wrap slide changes by default', fakeAsync(() => {
        const html = `
-      <ngb-carousel>
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel>
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -566,10 +566,10 @@ describe('ngb-carousel', () => {
 
   it('should not wrap slide changes by when requested', fakeAsync(() => {
        const html = `
-      <ngb-carousel [wrap]="false">
-        <ng-template ngbSlide>foo</ng-template>
-        <ng-template ngbSlide>bar</ng-template>
-      </ngb-carousel>
+      <ngbx-carousel [wrap]="false">
+        <ng-template ngbxSlide>foo</ng-template>
+        <ng-template ngbxSlide>bar</ng-template>
+      </ngbx-carousel>
     `;
 
        const fixture = createTestComponent(html);
@@ -596,26 +596,26 @@ describe('ngb-carousel', () => {
 
   it('should change on key arrowRight and arrowLeft', fakeAsync(() => {
        const html = `
-            <ngb-carousel [keyboard]="keyboard" [wrap]="false">
-              <ng-template ngbSlide>foo</ng-template>
-              <ng-template ngbSlide>bar</ng-template>
-            </ngb-carousel>
+            <ngbx-carousel [keyboard]="keyboard" [wrap]="false">
+              <ng-template ngbxSlide>foo</ng-template>
+              <ng-template ngbxSlide>bar</ng-template>
+            </ngbx-carousel>
           `;
 
        const fixture = createTestComponent(html);
        expectActiveSlides(fixture.nativeElement, [true, false]);
 
-       fixture.debugElement.query(By.directive(NgbCarousel)).triggerEventHandler('keydown.arrowRight', {});  // next()
+       fixture.debugElement.query(By.directive(NgbxCarousel)).triggerEventHandler('keydown.arrowRight', {});  // next()
        fixture.detectChanges();
        expectActiveSlides(fixture.nativeElement, [false, true]);
 
-       fixture.debugElement.query(By.directive(NgbCarousel)).triggerEventHandler('keydown.arrowLeft', {});  // prev()
+       fixture.debugElement.query(By.directive(NgbxCarousel)).triggerEventHandler('keydown.arrowLeft', {});  // prev()
        fixture.detectChanges();
        expectActiveSlides(fixture.nativeElement, [true, false]);
 
        fixture.componentInstance.keyboard = false;
        fixture.detectChanges();
-       fixture.debugElement.query(By.directive(NgbCarousel)).triggerEventHandler('keydown.arrowRight', {});  // prev()
+       fixture.debugElement.query(By.directive(NgbxCarousel)).triggerEventHandler('keydown.arrowRight', {});  // prev()
        fixture.detectChanges();
        expectActiveSlides(fixture.nativeElement, [true, false]);
 
@@ -626,10 +626,10 @@ describe('ngb-carousel', () => {
 
   it('should listen to keyevents based on keyboard attribute', fakeAsync(() => {
        const html = `
-               <ngb-carousel [keyboard]="keyboard" >
-                 <ng-template ngbSlide>foo</ng-template>
-                 <ng-template ngbSlide>bar</ng-template>
-               </ngb-carousel>
+               <ngbx-carousel [keyboard]="keyboard" >
+                 <ng-template ngbxSlide>foo</ng-template>
+                 <ng-template ngbxSlide>bar</ng-template>
+               </ngbx-carousel>
              `;
 
        const fixture = createTestComponent(html);
@@ -637,13 +637,13 @@ describe('ngb-carousel', () => {
 
        fixture.componentInstance.keyboard = false;
        fixture.detectChanges();
-       fixture.debugElement.query(By.directive(NgbCarousel)).triggerEventHandler('keydown.arrowRight', {});  // prev()
+       fixture.debugElement.query(By.directive(NgbxCarousel)).triggerEventHandler('keydown.arrowRight', {});  // prev()
        fixture.detectChanges();
        expectActiveSlides(fixture.nativeElement, [true, false]);
 
        fixture.componentInstance.keyboard = true;
        fixture.detectChanges();
-       fixture.debugElement.query(By.directive(NgbCarousel)).triggerEventHandler('keydown.arrowRight', {});  // next()
+       fixture.debugElement.query(By.directive(NgbxCarousel)).triggerEventHandler('keydown.arrowRight', {});  // next()
        fixture.detectChanges();
        expectActiveSlides(fixture.nativeElement, [false, true]);
 
@@ -653,9 +653,9 @@ describe('ngb-carousel', () => {
 
   it('should render navigation indicators according to the flags', fakeAsync(() => {
        const html = `
-    <ngb-carousel [showNavigationIndicators]="showNavigationIndicators">
-      <ng-template ngbSlide>foo</ng-template>
-    </ngb-carousel>
+    <ngbx-carousel [showNavigationIndicators]="showNavigationIndicators">
+      <ng-template ngbxSlide>foo</ng-template>
+    </ngbx-carousel>
   `;
        const fixture = createTestComponent(html);
 
@@ -673,9 +673,9 @@ describe('ngb-carousel', () => {
 
   it('should render navigation buttons according to the flags', fakeAsync(() => {
        const html = `
-    <ngb-carousel [showNavigationArrows]="showNavigationArrows">
-      <ng-template ngbSlide>foo</ng-template>
-    </ngb-carousel>
+    <ngbx-carousel [showNavigationArrows]="showNavigationArrows">
+      <ng-template ngbxSlide>foo</ng-template>
+    </ngbx-carousel>
   `;
        const fixture = createTestComponent(html);
 
@@ -691,11 +691,11 @@ describe('ngb-carousel', () => {
      }));
 
   describe('Custom config', () => {
-    let config: NgbCarouselConfig;
+    let config: NgbxCarouselConfig;
 
-    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbCarouselModule]}); });
+    beforeEach(() => { TestBed.configureTestingModule({imports: [NgbxCarouselModule]}); });
 
-    beforeEach(inject([NgbCarouselConfig], (c: NgbCarouselConfig) => {
+    beforeEach(inject([NgbxCarouselConfig], (c: NgbxCarouselConfig) => {
       config = c;
       config.interval = 1000;
       config.wrap = false;
@@ -706,7 +706,7 @@ describe('ngb-carousel', () => {
     }));
 
     it('should initialize inputs with provided config', () => {
-      const fixture = TestBed.createComponent(NgbCarousel);
+      const fixture = TestBed.createComponent(NgbxCarousel);
       fixture.detectChanges();
 
       const carousel = fixture.componentInstance;
@@ -720,7 +720,7 @@ describe('ngb-carousel', () => {
   });
 
   describe('Custom config as provider', () => {
-    const config = new NgbCarouselConfig();
+    const config = new NgbxCarouselConfig();
     config.interval = 1000;
     config.wrap = false;
     config.keyboard = false;
@@ -730,11 +730,11 @@ describe('ngb-carousel', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule(
-          {imports: [NgbCarouselModule], providers: [{provide: NgbCarouselConfig, useValue: config}]});
+          {imports: [NgbxCarouselModule], providers: [{provide: NgbxCarouselConfig, useValue: config}]});
     });
 
     it('should initialize inputs with provided config as provider', () => {
-      const fixture = TestBed.createComponent(NgbCarousel);
+      const fixture = TestBed.createComponent(NgbxCarousel);
       fixture.detectChanges();
 
       const carousel = fixture.componentInstance;
@@ -759,17 +759,17 @@ class TestComponent {
   showNavigationArrows = true;
   showNavigationIndicators = true;
   slides = ['a', 'b'];
-  carouselSlideCallBack = (event: NgbSlideEvent) => {};
+  carouselSlideCallBack = (event: NgbxSlideEvent) => {};
 }
 
 @Component({
   selector: 'test-cmp-on-push',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ngb-carousel>
-      <ng-template ngbSlide>foo</ng-template>
-      <ng-template ngbSlide>bar</ng-template>
-    </ngb-carousel>
+    <ngbx-carousel>
+      <ng-template ngbxSlide>foo</ng-template>
+      <ng-template ngbxSlide>bar</ng-template>
+    </ngbx-carousel>
   `
 })
 class TestComponentOnPush {

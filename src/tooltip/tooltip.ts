@@ -22,23 +22,23 @@ import {
 import {DOCUMENT} from '@angular/common';
 
 import {listenToTriggers} from '../util/triggers';
-import {ngbAutoClose} from '../util/autoclose';
+import {ngbxAutoClose} from '../util/autoclose';
 import {positionElements, PlacementArray} from '../util/positioning';
 import {PopupService} from '../util/popup';
 
-import {NgbTooltipConfig} from './tooltip-config';
+import {NgbxTooltipConfig} from './tooltip-config';
 
 let nextId = 0;
 
 @Component({
-  selector: 'ngb-tooltip-window',
+  selector: 'ngbx-tooltip-window',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {'[class]': '"tooltip show" + (tooltipClass ? " " + tooltipClass : "")', 'role': 'tooltip', '[id]': 'id'},
   template: `<div class="arrow"></div><div class="tooltip-inner"><ng-content></ng-content></div>`,
   styleUrls: ['./tooltip.scss']
 })
-export class NgbTooltipWindow {
+export class NgbxTooltipWindow {
   @Input() id: string;
   @Input() tooltipClass: string;
 }
@@ -46,8 +46,8 @@ export class NgbTooltipWindow {
 /**
  * A lightweight, extensible directive for fancy tooltip creation.
  */
-@Directive({selector: '[ngbTooltip]', exportAs: 'ngbTooltip'})
-export class NgbTooltip implements OnInit, OnDestroy {
+@Directive({selector: '[ngbxTooltip]', exportAs: 'ngbxTooltip'})
+export class NgbxTooltip implements OnInit, OnDestroy {
   /**
    * Indicates whether the tooltip should be closed on Escape key and inside/outside clicks.
    *
@@ -83,7 +83,7 @@ export class NgbTooltip implements OnInit, OnDestroy {
    */
   @Input() disableTooltip: boolean;
   /**
-   * An optional class applied to ngb-tooltip-window
+   * An optional class applied to ngbx-tooltip-window
    *
    * @since 3.2.0
    */
@@ -109,16 +109,16 @@ export class NgbTooltip implements OnInit, OnDestroy {
    */
   @Output() hidden = new EventEmitter();
 
-  private _ngbTooltip: string | TemplateRef<any>;
-  private _ngbTooltipWindowId = `ngb-tooltip-${nextId++}`;
-  private _popupService: PopupService<NgbTooltipWindow>;
-  private _windowRef: ComponentRef<NgbTooltipWindow>;
+  private _ngbxTooltip: string | TemplateRef<any>;
+  private _ngbxTooltipWindowId = `ngbx-tooltip-${nextId++}`;
+  private _popupService: PopupService<NgbxTooltipWindow>;
+  private _windowRef: ComponentRef<NgbxTooltipWindow>;
   private _unregisterListenersFn;
   private _zoneSubscription: any;
 
   constructor(
       private _elementRef: ElementRef<HTMLElement>, private _renderer: Renderer2, injector: Injector,
-      componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, config: NgbTooltipConfig,
+      componentFactoryResolver: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, config: NgbxTooltipConfig,
       private _ngZone: NgZone, @Inject(DOCUMENT) private _document: any, private _changeDetector: ChangeDetectorRef) {
     this.autoClose = config.autoClose;
     this.placement = config.placement;
@@ -128,8 +128,8 @@ export class NgbTooltip implements OnInit, OnDestroy {
     this.tooltipClass = config.tooltipClass;
     this.openDelay = config.openDelay;
     this.closeDelay = config.closeDelay;
-    this._popupService = new PopupService<NgbTooltipWindow>(
-        NgbTooltipWindow, injector, viewContainerRef, _renderer, componentFactoryResolver);
+    this._popupService = new PopupService<NgbxTooltipWindow>(
+        NgbxTooltipWindow, injector, viewContainerRef, _renderer, componentFactoryResolver);
 
     this._zoneSubscription = _ngZone.onStable.subscribe(() => {
       if (this._windowRef) {
@@ -144,26 +144,26 @@ export class NgbTooltip implements OnInit, OnDestroy {
    * Content to be displayed as tooltip. If falsy, the tooltip won't open.
    */
   @Input()
-  set ngbTooltip(value: string | TemplateRef<any>) {
-    this._ngbTooltip = value;
+  set ngbxTooltip(value: string | TemplateRef<any>) {
+    this._ngbxTooltip = value;
     if (!value && this._windowRef) {
       this.close();
     }
   }
 
-  get ngbTooltip() { return this._ngbTooltip; }
+  get ngbxTooltip() { return this._ngbxTooltip; }
 
   /**
    * Opens an element’s tooltip. This is considered a “manual” triggering of the tooltip.
    * The context is an optional value to be injected into the tooltip template when it is created.
    */
   open(context?: any) {
-    if (!this._windowRef && this._ngbTooltip && !this.disableTooltip) {
-      this._windowRef = this._popupService.open(this._ngbTooltip, context);
+    if (!this._windowRef && this._ngbxTooltip && !this.disableTooltip) {
+      this._windowRef = this._popupService.open(this._ngbxTooltip, context);
       this._windowRef.instance.tooltipClass = this.tooltipClass;
-      this._windowRef.instance.id = this._ngbTooltipWindowId;
+      this._windowRef.instance.id = this._ngbxTooltipWindowId;
 
-      this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._ngbTooltipWindowId);
+      this._renderer.setAttribute(this._elementRef.nativeElement, 'aria-describedby', this._ngbxTooltipWindowId);
 
       if (this.container === 'body') {
         this._document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);
@@ -172,7 +172,7 @@ export class NgbTooltip implements OnInit, OnDestroy {
       // apply styling to set basic css-classes on target element, before going for positioning
       this._windowRef.changeDetectorRef.markForCheck();
 
-      ngbAutoClose(
+      ngbxAutoClose(
           this._ngZone, this._document, this.autoClose, () => this.close(), this.hidden,
           [this._windowRef.location.nativeElement]);
 
@@ -218,7 +218,7 @@ export class NgbTooltip implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.close();
     // This check is needed as it might happen that ngOnDestroy is called before ngOnInit
-    // under certain conditions, see: https://github.com/ng-bootstrap/ng-bootstrap/issues/2199
+    // under certain conditions, see: https://github.com/rumeth/ng-bootstrap-extras/issues/2199
     if (this._unregisterListenersFn) {
       this._unregisterListenersFn();
     }

@@ -1,8 +1,8 @@
-import {NgbTypeaheadConfig} from './typeahead-config';
+import {NgbxTypeaheadConfig} from './typeahead-config';
 
-describe('ngb-typeahead-config', () => {
+describe('ngbx-typeahead-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbTypeaheadConfig();
+    const config = new NgbxTypeaheadConfig();
 
     expect(config.container).toBeUndefined();
     expect(config.editable).toBeTruthy();

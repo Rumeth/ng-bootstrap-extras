@@ -3,32 +3,32 @@ import {createGenericTestComponent} from '../test/common';
 
 import {Component, ViewChild} from '@angular/core';
 
-import {NgbTypeaheadWindow} from './typeahead-window';
+import {NgbxTypeaheadWindow} from './typeahead-window';
 import {expectResults, getWindowLinks} from '../test/typeahead/common';
-import {NgbTypeaheadModule} from './typeahead.module';
+import {NgbxTypeaheadModule} from './typeahead.module';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
-describe('ngb-typeahead-window', () => {
+describe('ngbx-typeahead-window', () => {
 
   beforeEach(() => {
-    TestBed.overrideModule(NgbTypeaheadModule, {set: {exports: [NgbTypeaheadWindow]}});
-    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbTypeaheadModule]});
+    TestBed.overrideModule(NgbxTypeaheadModule, {set: {exports: [NgbxTypeaheadWindow]}});
+    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxTypeaheadModule]});
   });
 
   describe('display', () => {
 
     it('should display results with the first row active', () => {
       const fixture =
-          createTestComponent('<ngb-typeahead-window [results]="results" [term]="term"></ngb-typeahead-window>');
+          createTestComponent('<ngbx-typeahead-window [results]="results" [term]="term"></ngbx-typeahead-window>');
 
       expectResults(fixture.nativeElement, ['+bar', 'baz']);
     });
 
     it('should use a formatting function to display results', () => {
       const fixture = createTestComponent(
-          '<ngb-typeahead-window [results]="results" [term]="term" [formatter]="formatterFn"></ngb-typeahead-window>');
+          '<ngbx-typeahead-window [results]="results" [term]="term" [formatter]="formatterFn"></ngbx-typeahead-window>');
 
       expectResults(fixture.nativeElement, ['+BAR', 'BAZ']);
     });
@@ -36,7 +36,7 @@ describe('ngb-typeahead-window', () => {
     it('should use a custom template if provided', () => {
       const fixture = createTestComponent(`
            <ng-template #rt let-r="result" let-t="term">{{r.toUpperCase()}}-{{t}}</ng-template>
-           <ngb-typeahead-window [results]="results" [term]="term" [resultTemplate]="rt"></ngb-typeahead-window>`);
+           <ngbx-typeahead-window [results]="results" [term]="term" [resultTemplate]="rt"></ngbx-typeahead-window>`);
 
       expectResults(fixture.nativeElement, ['+BAR-ba', 'BAZ-ba']);
     });
@@ -48,7 +48,7 @@ describe('ngb-typeahead-window', () => {
       const html = `
            <button (click)="w.next()">+</button>
            <button (click)="w.prev()">-</button>
-           <ngb-typeahead-window [results]="results" [term]="term" #w="ngbTypeaheadWindow"></ngb-typeahead-window>`;
+           <ngbx-typeahead-window [results]="results" [term]="term" #w="ngbxTypeaheadWindow"></ngbx-typeahead-window>`;
       const fixture = createTestComponent(html);
       const buttons = fixture.nativeElement.querySelectorAll('button');
 
@@ -67,7 +67,7 @@ describe('ngb-typeahead-window', () => {
       const html = `
            <button (click)="w.next()">+</button>
            <button (click)="w.prev()">-</button>
-           <ngb-typeahead-window [results]="results" [term]="term" #w="ngbTypeaheadWindow"></ngb-typeahead-window>`;
+           <ngbx-typeahead-window [results]="results" [term]="term" #w="ngbxTypeaheadWindow"></ngbx-typeahead-window>`;
       const fixture = createTestComponent(html);
       const buttons = fixture.nativeElement.querySelectorAll('button');
 
@@ -86,7 +86,7 @@ describe('ngb-typeahead-window', () => {
       const html = `
            <button (click)="w.next()">+</button>
            <button (click)="w.prev()">-</button>
-           <ngb-typeahead-window [results]="results" [term]="term" #w="ngbTypeaheadWindow" [focusFirst]="false"></ngb-typeahead-window>`;
+           <ngbx-typeahead-window [results]="results" [term]="term" #w="ngbxTypeaheadWindow" [focusFirst]="false"></ngbx-typeahead-window>`;
       const fixture = createTestComponent(html);
       const buttons = fixture.nativeElement.querySelectorAll('button');
 
@@ -119,7 +119,7 @@ describe('ngb-typeahead-window', () => {
 
     it('should change active row on mouseenter', () => {
       const fixture =
-          createTestComponent(`<ngb-typeahead-window [results]="results" [term]="term"></ngb-typeahead-window>`);
+          createTestComponent(`<ngbx-typeahead-window [results]="results" [term]="term"></ngbx-typeahead-window>`);
       const links = getWindowLinks(fixture.debugElement);
 
       expectResults(fixture.nativeElement, ['+bar', 'baz']);
@@ -133,7 +133,7 @@ describe('ngb-typeahead-window', () => {
   describe('result selection', () => {
     it('should select a given row on click', () => {
       const fixture = createTestComponent(
-          '<ngb-typeahead-window [results]="results" [term]="term" (select)="selected = $event"></ngb-typeahead-window>');
+          '<ngbx-typeahead-window [results]="results" [term]="term" (select)="selected = $event"></ngbx-typeahead-window>');
       const links = getWindowLinks(fixture.debugElement);
 
       expectResults(fixture.nativeElement, ['+bar', 'baz']);
@@ -147,7 +147,7 @@ describe('ngb-typeahead-window', () => {
       const html = `
            <button (click)="active = w.getActive()">getActive</button>
            <button (click)="w.next()">+</button>
-           <ngb-typeahead-window [results]="results" [term]="term" #w="ngbTypeaheadWindow"></ngb-typeahead-window>`;
+           <ngbx-typeahead-window [results]="results" [term]="term" #w="ngbxTypeaheadWindow"></ngbx-typeahead-window>`;
       const fixture = createTestComponent(html);
 
       const buttons = fixture.nativeElement.querySelectorAll('button');
@@ -167,7 +167,7 @@ describe('ngb-typeahead-window', () => {
 
     it('should have buttons of type button', () => {
       const html = `
-           <ngb-typeahead-window [results]="results" [term]="term"></ngb-typeahead-window>`;
+           <ngbx-typeahead-window [results]="results" [term]="term"></ngbx-typeahead-window>`;
       const fixture = createTestComponent(html);
       const buttons = fixture.nativeElement.querySelectorAll('button');
       expect(buttons.length).toBeGreaterThan(0);
@@ -180,13 +180,13 @@ describe('ngb-typeahead-window', () => {
   describe('accessibility', () => {
 
     function getWindow(element): HTMLDivElement {
-      return <HTMLDivElement>element.querySelector('ngb-typeahead-window.dropdown-menu');
+      return <HTMLDivElement>element.querySelector('ngbx-typeahead-window.dropdown-menu');
     }
 
     it('should add correct ARIA attributes', () => {
       const fixture = createTestComponent(
-          '<ngb-typeahead-window id="test-typeahead" [results]="results" [term]="term"></ngb-typeahead-window>');
-      const compiled = fixture.nativeElement.querySelector('ngb-typeahead-window.dropdown-menu');
+          '<ngbx-typeahead-window id="test-typeahead" [results]="results" [term]="term"></ngbx-typeahead-window>');
+      const compiled = fixture.nativeElement.querySelector('ngbx-typeahead-window.dropdown-menu');
 
       expect(compiled.getAttribute('role')).toBe('listbox');
       expect(compiled.getAttribute('id')).toBe('test-typeahead');
@@ -210,7 +210,7 @@ class TestComponent {
   term = 'ba';
   selected: string;
 
-  @ViewChild(NgbTypeaheadWindow) popup: NgbTypeaheadWindow;
+  @ViewChild(NgbxTypeaheadWindow) popup: NgbxTypeaheadWindow;
 
   formatterFn = (result) => { return result.toUpperCase(); };
 }

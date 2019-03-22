@@ -19,7 +19,7 @@ import {
 } from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
 
-import {NgbCarouselConfig} from './carousel-config';
+import {NgbxCarouselConfig} from './carousel-config';
 
 import {merge, Subject, timer} from 'rxjs';
 import {filter, map, switchMap, takeUntil} from 'rxjs/operators';
@@ -29,13 +29,13 @@ let nextId = 0;
 /**
  * Represents an individual slide to be used within a carousel.
  */
-@Directive({selector: 'ng-template[ngbSlide]'})
-export class NgbSlide {
+@Directive({selector: 'ng-template[ngbxSlide]'})
+export class NgbxSlide {
   /**
    * Unique slide identifier. Must be unique for the entire document for proper accessibility support.
    * Will be auto-generated if not provided.
    */
-  @Input() id = `ngb-slide-${nextId++}`;
+  @Input() id = `ngbx-slide-${nextId++}`;
   constructor(public tplRef: TemplateRef<any>) {}
 }
 
@@ -43,8 +43,8 @@ export class NgbSlide {
  * Directive to easily create carousels based on Bootstrap's markup.
  */
 @Component({
-  selector: 'ngb-carousel',
-  exportAs: 'ngbCarousel',
+  selector: 'ngbx-carousel',
+  exportAs: 'ngbxCarousel',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'class': 'carousel slide',
@@ -67,17 +67,17 @@ export class NgbSlide {
     </div>
     <a class="carousel-control-prev" role="button" (click)="prev()" *ngIf="showNavigationArrows">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only" i18n="@@ngb.carousel.previous">Previous</span>
+      <span class="sr-only" i18n="@@ngbx.carousel.previous">Previous</span>
     </a>
     <a class="carousel-control-next" role="button" (click)="next()" *ngIf="showNavigationArrows">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only" i18n="@@ngb.carousel.next">Next</span>
+      <span class="sr-only" i18n="@@ngbx.carousel.next">Next</span>
     </a>
   `
 })
-export class NgbCarousel implements AfterContentChecked,
+export class NgbxCarousel implements AfterContentChecked,
     AfterContentInit, OnChanges, OnDestroy {
-  @ContentChildren(NgbSlide) slides: QueryList<NgbSlide>;
+  @ContentChildren(NgbxSlide) slides: QueryList<NgbxSlide>;
 
   private _destroy$ = new Subject<void>();
   private _start$ = new Subject<void>();
@@ -124,12 +124,12 @@ export class NgbCarousel implements AfterContentChecked,
 
   /**
    * A carousel slide event fired when the slide transition is completed.
-   * See NgbSlideEvent for payload details
+   * See NgbxSlideEvent for payload details
    */
-  @Output() slide = new EventEmitter<NgbSlideEvent>();
+  @Output() slide = new EventEmitter<NgbxSlideEvent>();
 
   constructor(
-      config: NgbCarouselConfig, @Inject(PLATFORM_ID) private _platformId, private _ngZone: NgZone,
+      config: NgbxCarouselConfig, @Inject(PLATFORM_ID) private _platformId, private _ngZone: NgZone,
       private _cd: ChangeDetectorRef) {
     this.interval = config.interval;
     this.wrap = config.wrap;
@@ -178,12 +178,12 @@ export class NgbCarousel implements AfterContentChecked,
   /**
    * Navigate to the next slide.
    */
-  prev() { this._cycleToSelected(this._getPrevSlide(this.activeId), NgbSlideEventDirection.RIGHT); }
+  prev() { this._cycleToSelected(this._getPrevSlide(this.activeId), NgbxSlideEventDirection.RIGHT); }
 
   /**
    * Navigate to the next slide.
    */
-  next() { this._cycleToSelected(this._getNextSlide(this.activeId), NgbSlideEventDirection.LEFT); }
+  next() { this._cycleToSelected(this._getNextSlide(this.activeId), NgbxSlideEventDirection.LEFT); }
 
   /**
    * Stops the carousel from cycling through items.
@@ -195,7 +195,7 @@ export class NgbCarousel implements AfterContentChecked,
    */
   cycle() { this._start$.next(); }
 
-  private _cycleToSelected(slideIdx: string, direction: NgbSlideEventDirection) {
+  private _cycleToSelected(slideIdx: string, direction: NgbxSlideEventDirection) {
     let selectedSlide = this._getSlideById(slideIdx);
     if (selectedSlide && selectedSlide.id !== this.activeId) {
       this.slide.emit({prev: this.activeId, current: selectedSlide.id, direction: direction});
@@ -207,14 +207,14 @@ export class NgbCarousel implements AfterContentChecked,
     this._cd.markForCheck();
   }
 
-  private _getSlideEventDirection(currentActiveSlideId: string, nextActiveSlideId: string): NgbSlideEventDirection {
+  private _getSlideEventDirection(currentActiveSlideId: string, nextActiveSlideId: string): NgbxSlideEventDirection {
     const currentActiveSlideIdx = this._getSlideIdxById(currentActiveSlideId);
     const nextActiveSlideIdx = this._getSlideIdxById(nextActiveSlideId);
 
-    return currentActiveSlideIdx > nextActiveSlideIdx ? NgbSlideEventDirection.RIGHT : NgbSlideEventDirection.LEFT;
+    return currentActiveSlideIdx > nextActiveSlideIdx ? NgbxSlideEventDirection.RIGHT : NgbxSlideEventDirection.LEFT;
   }
 
-  private _getSlideById(slideId: string): NgbSlide { return this.slides.find(slide => slide.id === slideId); }
+  private _getSlideById(slideId: string): NgbxSlide { return this.slides.find(slide => slide.id === slideId); }
 
   private _getSlideIdxById(slideId: string): number {
     return this.slides.toArray().indexOf(this._getSlideById(slideId));
@@ -242,7 +242,7 @@ export class NgbCarousel implements AfterContentChecked,
 /**
  * The payload of the slide event fired when the slide transition is completed
  */
-export interface NgbSlideEvent {
+export interface NgbxSlideEvent {
   /**
    * Previous slide id
    */
@@ -256,15 +256,15 @@ export interface NgbSlideEvent {
   /**
    * Slide event direction
    */
-  direction: NgbSlideEventDirection;
+  direction: NgbxSlideEventDirection;
 }
 
 /**
  * Enum to define the carousel slide event direction
  */
-export enum NgbSlideEventDirection {
+export enum NgbxSlideEventDirection {
   LEFT = <any>'left',
   RIGHT = <any>'right'
 }
 
-export const NGB_CAROUSEL_DIRECTIVES = [NgbCarousel, NgbSlide];
+export const NGB_CAROUSEL_DIRECTIVES = [NgbxCarousel, NgbxSlide];

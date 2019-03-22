@@ -1,20 +1,20 @@
 import {TestBed} from '@angular/core/testing';
 
 import {Component} from '@angular/core';
-import {NgbDatepickerDayView} from './datepicker-day-view';
-import {NgbDate} from './ngb-date';
-import {NgbDatepickerI18n, NgbDatepickerI18nDefault} from './datepicker-i18n';
+import {NgbxDatepickerDayView} from './datepicker-day-view';
+import {NgbxDate} from './ngbx-date';
+import {NgbxDatepickerI18n, NgbxDatepickerI18nDefault} from './datepicker-i18n';
 
 function getElement(element: HTMLElement): HTMLElement {
-  return <HTMLElement>element.querySelector('[ngbDatepickerDayView]');
+  return <HTMLElement>element.querySelector('[ngbxDatepickerDayView]');
 }
 
-describe('ngbDatepickerDayView', () => {
+describe('ngbxDatepickerDayView', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, NgbDatepickerDayView],
-      providers: [{provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nDefault}]
+      declarations: [TestComponent, NgbxDatepickerDayView],
+      providers: [{provide: NgbxDatepickerI18n, useClass: NgbxDatepickerI18nDefault}]
     });
   });
 
@@ -25,7 +25,7 @@ describe('ngbDatepickerDayView', () => {
     const el = getElement(fixture.nativeElement);
     expect(el.innerText).toBe('22');
 
-    fixture.componentInstance.date = new NgbDate(2016, 7, 25);
+    fixture.componentInstance.date = new NgbxDate(2016, 7, 25);
     fixture.detectChanges();
     expect(el.innerText).toBe('25');
   });
@@ -50,7 +50,7 @@ describe('ngbDatepickerDayView', () => {
     expect(el).not.toHaveCssClass('text-muted');
     expect(el).not.toHaveCssClass('outside');
 
-    fixture.componentInstance.date = new NgbDate(2016, 8, 22);
+    fixture.componentInstance.date = new NgbxDate(2016, 8, 22);
     fixture.detectChanges();
     expect(el).toHaveCssClass('text-muted');
     expect(el).toHaveCssClass('outside');
@@ -85,11 +85,11 @@ describe('ngbDatepickerDayView', () => {
 @Component({
   selector: 'test-cmp',
   template:
-      '<div ngbDatepickerDayView [date]="date" [currentMonth]="currentMonth" [selected]="selected" [disabled]="disabled"></div>'
+      '<div ngbxDatepickerDayView [date]="date" [currentMonth]="currentMonth" [selected]="selected" [disabled]="disabled"></div>'
 })
 class TestComponent {
   currentMonth = 7;
-  date: NgbDate = new NgbDate(2016, 7, 22);
+  date: NgbxDate = new NgbxDate(2016, 7, 22);
   disabled = false;
   selected = false;
 }

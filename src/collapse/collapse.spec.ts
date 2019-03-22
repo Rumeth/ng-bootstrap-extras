@@ -3,7 +3,7 @@ import {createGenericTestComponent} from '../test/common';
 
 import {Component} from '@angular/core';
 
-import {NgbCollapseModule} from './collapse.module';
+import {NgbxCollapseModule} from './collapse.module';
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -12,11 +12,11 @@ function getCollapsibleContent(element: HTMLElement): HTMLDivElement {
   return <HTMLDivElement>element.querySelector('.collapse');
 }
 
-describe('ngb-collapse', () => {
-  let html = `<div [ngbCollapse]="collapsed">Some content</div>`;
+describe('ngbx-collapse', () => {
+  let html = `<div [ngbxCollapse]="collapsed">Some content</div>`;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbCollapseModule]});
+    TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxCollapseModule]});
     TestBed.overrideComponent(TestComponent, {set: {template: html}});
   });
 
@@ -60,7 +60,7 @@ describe('ngb-collapse', () => {
   it('should allow toggling collapse from outside', () => {
     html = `
       <button (click)="collapse.collapsed = !collapse.collapsed">Collapse</button>
-      <div [ngbCollapse] #collapse="ngbCollapse"></div>`;
+      <div [ngbxCollapse] #collapse="ngbxCollapse"></div>`;
 
     const fixture = createTestComponent(html);
 

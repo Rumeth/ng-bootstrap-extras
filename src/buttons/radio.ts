@@ -1,11 +1,11 @@
 import {ChangeDetectorRef, Directive, ElementRef, forwardRef, Input, OnDestroy, Renderer2} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
-import {NgbButtonLabel} from './label';
+import {NgbxButtonLabel} from './label';
 
 const NGB_RADIO_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => NgbRadioGroup),
+  useExisting: forwardRef(() => NgbxRadioGroup),
   multi: true
 };
 
@@ -15,9 +15,9 @@ let nextId = 0;
  * Easily create Bootstrap-style radio buttons. A value of a selected button is bound to a variable
  * specified via ngModel.
  */
-@Directive({selector: '[ngbRadioGroup]', host: {'role': 'group'}, providers: [NGB_RADIO_VALUE_ACCESSOR]})
-export class NgbRadioGroup implements ControlValueAccessor {
-  private _radios: Set<NgbRadio> = new Set<NgbRadio>();
+@Directive({selector: '[ngbxRadioGroup]', host: {'role': 'group'}, providers: [NGB_RADIO_VALUE_ACCESSOR]})
+export class NgbxRadioGroup implements ControlValueAccessor {
+  private _radios: Set<NgbxRadio> = new Set<NgbxRadio>();
   private _value = null;
   private _disabled: boolean;
 
@@ -28,19 +28,19 @@ export class NgbRadioGroup implements ControlValueAccessor {
    * The name of the group. Unless enclosed inputs specify a name, this name is used as the name of the
    * enclosed inputs. If not specified, a name is generated automatically.
    */
-  @Input() name = `ngb-radio-${nextId++}`;
+  @Input() name = `ngbx-radio-${nextId++}`;
 
   onChange = (_: any) => {};
   onTouched = () => {};
 
-  onRadioChange(radio: NgbRadio) {
+  onRadioChange(radio: NgbxRadio) {
     this.writeValue(radio.value);
     this.onChange(radio.value);
   }
 
   onRadioValueUpdate() { this._updateRadiosValue(); }
 
-  register(radio: NgbRadio) { this._radios.add(radio); }
+  register(radio: NgbxRadio) { this._radios.add(radio); }
 
   registerOnChange(fn: (value: any) => any): void { this.onChange = fn; }
 
@@ -51,7 +51,7 @@ export class NgbRadioGroup implements ControlValueAccessor {
     this._updateRadiosDisabled();
   }
 
-  unregister(radio: NgbRadio) { this._radios.delete(radio); }
+  unregister(radio: NgbxRadio) { this._radios.delete(radio); }
 
   writeValue(value) {
     this._value = value;
@@ -64,10 +64,10 @@ export class NgbRadioGroup implements ControlValueAccessor {
 
 
 /**
- * Marks an input of type "radio" as part of the NgbRadioGroup.
+ * Marks an input of type "radio" as part of the NgbxRadioGroup.
  */
 @Directive({
-  selector: '[ngbButton][type=radio]',
+  selector: '[ngbxButton][type=radio]',
   host: {
     '[checked]': 'checked',
     '[disabled]': 'disabled',
@@ -77,7 +77,7 @@ export class NgbRadioGroup implements ControlValueAccessor {
     '(blur)': 'focused = false'
   }
 })
-export class NgbRadio implements OnDestroy {
+export class NgbxRadio implements OnDestroy {
   private _checked: boolean;
   private _disabled: boolean;
   private _value: any = null;
@@ -126,7 +126,7 @@ export class NgbRadio implements OnDestroy {
   get nameAttr() { return this.name || this._group.name; }
 
   constructor(
-      private _group: NgbRadioGroup, private _label: NgbButtonLabel, private _renderer: Renderer2,
+      private _group: NgbxRadioGroup, private _label: NgbxButtonLabel, private _renderer: Renderer2,
       private _element: ElementRef<HTMLInputElement>, private _cd: ChangeDetectorRef) {
     this._group.register(this);
     this.updateDisabled();

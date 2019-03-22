@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 
 /**
- * Configuration service for the NgbPagination component.
+ * Configuration service for the NgbxPagination component.
  * You can inject this service, typically in your root component, and customize the values of its properties in
  * order to provide default values for all the paginations used in the application.
  */
 @Injectable({providedIn: 'root'})
-export class NgbPaginationConfig {
+export class NgbxPaginationConfig {
   disabled = false;
   boundaryLinks = false;
   directionLinks = true;

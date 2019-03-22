@@ -1,14 +1,14 @@
 import {TestBed} from '@angular/core/testing';
-import {NgbDate} from '../ngb-date';
-import {NgbDatepickerI18nHebrew} from './datepicker-i18n-hebrew';
+import {NgbxDate} from '../ngbx-date';
+import {NgbxDatepickerI18nHebrew} from './datepicker-i18n-hebrew';
 
 describe('datepicker-i18n-hebrew', () => {
 
-  let i18n: NgbDatepickerI18nHebrew;
+  let i18n: NgbxDatepickerI18nHebrew;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({providers: [NgbDatepickerI18nHebrew]});
-    i18n = TestBed.get(NgbDatepickerI18nHebrew);
+    TestBed.configureTestingModule({providers: [NgbxDatepickerI18nHebrew]});
+    i18n = TestBed.get(NgbxDatepickerI18nHebrew);
   });
 
   it('should return abbreviated month name', () => {
@@ -57,7 +57,7 @@ describe('datepicker-i18n-hebrew', () => {
   });
 
   it('should generate aria label for a date',
-     () => { expect(i18n.getDayAriaLabel(new NgbDate(5778, 10, 8))).toBe('ח׳ תמוז תשע״ח'); });
+     () => { expect(i18n.getDayAriaLabel(new NgbxDate(5778, 10, 8))).toBe('ח׳ תמוז תשע״ח'); });
 
   it('should generate week number numerals', () => {
     expect(i18n.getWeekNumerals(1)).toBe('א׳');
@@ -65,8 +65,8 @@ describe('datepicker-i18n-hebrew', () => {
   });
 
   it('should generate day numerals', () => {
-    expect(i18n.getDayNumerals(new NgbDate(5778, 10, 1))).toBe('א׳');
-    expect(i18n.getDayNumerals(new NgbDate(5778, 10, 29))).toBe('כ״ט');
+    expect(i18n.getDayNumerals(new NgbxDate(5778, 10, 1))).toBe('א׳');
+    expect(i18n.getDayNumerals(new NgbxDate(5778, 10, 29))).toBe('כ״ט');
   });
 
   it('should generate year numerals', () => {

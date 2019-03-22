@@ -1,8 +1,8 @@
-import {NgbAlertConfig} from './alert-config';
+import {NgbxAlertConfig} from './alert-config';
 
-describe('ngb-alert-config', () => {
+describe('ngbx-alert-config', () => {
   it('should have sensible default values', () => {
-    const config = new NgbAlertConfig();
+    const config = new NgbxAlertConfig();
 
     expect(config.dismissible).toBe(true);
     expect(config.type).toBe('warning');

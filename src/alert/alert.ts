@@ -12,18 +12,18 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
-import {NgbAlertConfig} from './alert-config';
+import {NgbxAlertConfig} from './alert-config';
 
 /**
  * Alerts can be used to provide feedback messages.
  */
 @Component({
-  selector: 'ngb-alert',
+  selector: 'ngbx-alert',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   host: {'role': 'alert', 'class': 'alert', '[class.alert-dismissible]': 'dismissible'},
   template: `
-    <button *ngIf="dismissible" type="button" class="close" aria-label="Close" i18n-aria-label="@@ngb.alert.close"
+    <button *ngIf="dismissible" type="button" class="close" aria-label="Close" i18n-aria-label="@@ngbx.alert.close"
       (click)="closeHandler()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -31,7 +31,7 @@ import {NgbAlertConfig} from './alert-config';
     `,
   styleUrls: ['./alert.scss']
 })
-export class NgbAlert implements OnInit,
+export class NgbxAlert implements OnInit,
     OnChanges {
   /**
    * A flag indicating if a given alert can be dismissed (closed) by a user. If this flag is set, a close button (in a
@@ -48,7 +48,7 @@ export class NgbAlert implements OnInit,
    */
   @Output() close = new EventEmitter<void>();
 
-  constructor(config: NgbAlertConfig, private _renderer: Renderer2, private _element: ElementRef) {
+  constructor(config: NgbxAlertConfig, private _renderer: Renderer2, private _element: ElementRef) {
     this.dismissible = config.dismissible;
     this.type = config.type;
   }
