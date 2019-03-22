@@ -346,7 +346,7 @@ describe('ngbx-datepicker-service', () => {
 
     it(`should not emit the same 'disabled' value twice`, () => {
       service.focus(new NgbxDate(2017, 5, 1));  // 1
-      service.disabled = true;                 // 2
+      service.disabled = true;                  // 2
 
       service.disabled = true;  // ignored
 
@@ -387,7 +387,7 @@ describe('ngbx-datepicker-service', () => {
 
     it(`should not allow opening when disabled`, () => {
       service.focus(new NgbxDate(2017, 5, 2));  // 1
-      service.disabled = true;                 // 2
+      service.disabled = true;                  // 2
 
       // open
       service.open(new NgbxDate(2016, 5, 1));  // nope

@@ -31,8 +31,8 @@ export {NgbxDateParserFormatter} from './ngbx-date-parser-formatter';
 
 @NgModule({
   declarations: [
-    NgbxDatepicker, NgbxDatepickerMonthView, NgbxDatepickerNavigation, NgbxDatepickerNavigationSelect, NgbxDatepickerDayView,
-    NgbxInputDatepicker
+    NgbxDatepicker, NgbxDatepickerMonthView, NgbxDatepickerNavigation, NgbxDatepickerNavigationSelect,
+    NgbxDatepickerDayView, NgbxInputDatepicker
   ],
   exports: [NgbxDatepicker, NgbxInputDatepicker],
   imports: [CommonModule, FormsModule],

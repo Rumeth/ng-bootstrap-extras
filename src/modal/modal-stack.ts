@@ -65,7 +65,8 @@ export class NgbxModalStack {
     let backdropCmptRef: ComponentRef<NgbxModalBackdrop> =
         options.backdrop !== false ? this._attachBackdrop(moduleCFR, containerEl) : null;
     let windowCmptRef: ComponentRef<NgbxModalWindow> = this._attachWindowComponent(moduleCFR, containerEl, contentRef);
-    let ngbxModalRef: NgbxModalRef = new NgbxModalRef(windowCmptRef, contentRef, backdropCmptRef, options.beforeDismiss);
+    let ngbxModalRef: NgbxModalRef =
+        new NgbxModalRef(windowCmptRef, contentRef, backdropCmptRef, options.beforeDismiss);
 
     this._registerModalRef(ngbxModalRef);
     this._registerWindowCmpt(windowCmptRef);

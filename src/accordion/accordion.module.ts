@@ -1,7 +1,14 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {NgbxAccordion, NgbxPanel, NgbxPanelTitle, NgbxPanelContent, NgbxPanelHeader, NgbxPanelToggle} from './accordion';
+import {
+  NgbxAccordion,
+  NgbxPanel,
+  NgbxPanelTitle,
+  NgbxPanelContent,
+  NgbxPanelHeader,
+  NgbxPanelToggle
+} from './accordion';
 
 export {
   NgbxAccordion,

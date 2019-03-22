@@ -119,7 +119,8 @@ describe('ngbx-highlight', () => {
   });
 
   it('should support custom highlight class', () => {
-    const fixture = createTestComponent('<ngbx-highlight result="123" [term]="2" highlightClass="my"></ngbx-highlight>');
+    const fixture =
+        createTestComponent('<ngbx-highlight result="123" [term]="2" highlightClass="my"></ngbx-highlight>');
 
     expect(highlightHtml(fixture)).toBe('1<span class="my">2</span>3');
   });

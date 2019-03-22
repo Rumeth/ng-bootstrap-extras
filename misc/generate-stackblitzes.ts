@@ -151,8 +151,7 @@ function getVersions() {
     angular: getVersion('@angular/core'),
     typescript: getVersion('typescript'),
     rxjs: getVersion('rxjs'),
-    ngBootstrap: getVersion('@ng-bootstrap/ng-bootstrap'),
-    ngBootstrapExtras,
+    ngBootstrap: getVersion('@ng-bootstrap/ng-bootstrap'), ngBootstrapExtras,
     zoneJs: getVersion('zone.js'),
     coreJs: getVersion('core-js'),
     reflectMetadata: getVersion(

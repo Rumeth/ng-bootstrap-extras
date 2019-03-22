@@ -1133,7 +1133,8 @@ describe('ngbx-timepicker', () => {
        }));
 
     it('should not change value on input change, when it is readonly', () => {
-      const html = `<ngbx-timepicker [(ngModel)]="model" [seconds]="true" [readonlyInputs]="readonly"></ngbx-timepicker>`;
+      const html =
+          `<ngbx-timepicker [(ngModel)]="model" [seconds]="true" [readonlyInputs]="readonly"></ngbx-timepicker>`;
 
       const fixture = createTestComponent(html);
       fixture.detectChanges();

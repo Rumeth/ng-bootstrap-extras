@@ -9,8 +9,10 @@ describe('ngbx-date', () => {
 
     it('should work with non-numeric values', () => {
       expect(NgbxDate.from({year: null, month: null, day: null})).toEqual(new NgbxDate(null, null, null));
-      expect(NgbxDate.from({year: undefined, month: undefined, day: undefined})).toEqual(new NgbxDate(null, null, null));
-      expect(NgbxDate.from({year: <any>'2010', month: <any>'10', day: <any>'2'})).toEqual(new NgbxDate(null, null, null));
+      expect(NgbxDate.from({year: undefined, month: undefined, day: undefined}))
+          .toEqual(new NgbxDate(null, null, null));
+      expect(NgbxDate.from({year: <any>'2010', month: <any>'10', day: <any>'2'}))
+          .toEqual(new NgbxDate(null, null, null));
     });
 
     it('should return the same NgbxDate object', () => {

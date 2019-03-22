@@ -23,8 +23,8 @@ export {
 export {NgbxPaginationConfig} from './pagination-config';
 
 const DIRECTIVES = [
-  NgbxPagination, NgbxPaginationEllipsis, NgbxPaginationFirst, NgbxPaginationLast, NgbxPaginationNext, NgbxPaginationNumber,
-  NgbxPaginationPrevious
+  NgbxPagination, NgbxPaginationEllipsis, NgbxPaginationFirst, NgbxPaginationLast, NgbxPaginationNext,
+  NgbxPaginationNumber, NgbxPaginationPrevious
 ];
 
 @NgModule({declarations: DIRECTIVES, exports: DIRECTIVES, imports: [CommonModule]})

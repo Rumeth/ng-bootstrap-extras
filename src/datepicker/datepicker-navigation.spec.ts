@@ -90,8 +90,8 @@ describe('ngbx-datepicker-navigation', () => {
   });
 
   it('should send navigation events', () => {
-    const fixture =
-        createTestComponent(`<ngbx-datepicker-navigation (navigate)="onNavigate($event)"></ngbx-datepicker-navigation>`);
+    const fixture = createTestComponent(
+        `<ngbx-datepicker-navigation (navigate)="onNavigate($event)"></ngbx-datepicker-navigation>`);
 
     const links = getNavigationLinks(fixture.nativeElement);
     spyOn(fixture.componentInstance, 'onNavigate');

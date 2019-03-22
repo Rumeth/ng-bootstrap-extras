@@ -528,7 +528,8 @@ describe('ngbx-popover', () => {
   });
 
   describe('triggers', () => {
-    beforeEach(() => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxPopoverModule]}); });
+    beforeEach(
+        () => { TestBed.configureTestingModule({declarations: [TestComponent], imports: [NgbxPopoverModule]}); });
 
     it('should support toggle triggers', () => {
       const fixture = createTestComponent(`<div ngbxPopover="Great tip!" triggers="click"></div>`);
@@ -557,7 +558,8 @@ describe('ngbx-popover', () => {
     });
 
     it('should support multiple triggers', () => {
-      const fixture = createTestComponent(`<div ngbxPopover="Great tip!" triggers="mouseenter:mouseleave click"></div>`);
+      const fixture =
+          createTestComponent(`<div ngbxPopover="Great tip!" triggers="mouseenter:mouseleave click"></div>`);
       const directive = fixture.debugElement.query(By.directive(NgbxPopover));
 
       directive.triggerEventHandler('mouseenter', {});

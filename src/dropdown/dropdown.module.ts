@@ -4,7 +4,8 @@ import {NgbxDropdown, NgbxDropdownAnchor, NgbxDropdownToggle, NgbxDropdownMenu, 
 export {NgbxDropdown, NgbxDropdownAnchor, NgbxDropdownToggle, NgbxDropdownMenu, NgbxDropdownItem} from './dropdown';
 export {NgbxDropdownConfig} from './dropdown-config';
 
-const NGB_DROPDOWN_DIRECTIVES = [NgbxDropdown, NgbxDropdownAnchor, NgbxDropdownToggle, NgbxDropdownMenu, NgbxDropdownItem];
+const NGB_DROPDOWN_DIRECTIVES =
+    [NgbxDropdown, NgbxDropdownAnchor, NgbxDropdownToggle, NgbxDropdownMenu, NgbxDropdownItem];
 
 @NgModule({declarations: NGB_DROPDOWN_DIRECTIVES, exports: NGB_DROPDOWN_DIRECTIVES})
 export class NgbxDropdownModule {

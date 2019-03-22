@@ -6,7 +6,8 @@ export {NgbxTooltipConfig} from './tooltip-config';
 export {NgbxTooltip} from './tooltip';
 export {Placement} from '../util/positioning';
 
-@NgModule({declarations: [NgbxTooltip, NgbxTooltipWindow], exports: [NgbxTooltip], entryComponents: [NgbxTooltipWindow]})
+@NgModule(
+    {declarations: [NgbxTooltip, NgbxTooltipWindow], exports: [NgbxTooltip], entryComponents: [NgbxTooltipWindow]})
 export class NgbxTooltipModule {
   /**
    * No need in forRoot anymore with tree-shakeable services

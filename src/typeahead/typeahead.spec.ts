@@ -129,7 +129,8 @@ describe('ngbx-typeahead', () => {
        }));
 
     it('should use custom input formatter with falsy values', async(() => {
-         const html = '<input [(ngModel)]="model" [ngbxTypeahead]="findNothing" [inputFormatter]="uppercaseFormatter"/>';
+         const html =
+             '<input [(ngModel)]="model" [ngbxTypeahead]="findNothing" [inputFormatter]="uppercaseFormatter"/>';
          const fixture = createTestComponent(html);
          const el = fixture.nativeElement;
          const comp = fixture.componentInstance;
@@ -887,7 +888,8 @@ describe('ngbx-typeahead', () => {
     describe('Custom config', () => {
       beforeEach(() => {
         TestBed.overrideComponent(
-            TestComponent, {set: {template: '<input type="text" [(ngModel)]="model" [ngbxTypeahead]="findAnywhere"/>'}});
+            TestComponent,
+            {set: {template: '<input type="text" [(ngModel)]="model" [ngbxTypeahead]="findAnywhere"/>'}});
       });
 
       beforeEach(inject([NgbxTypeaheadConfig], (c: NgbxTypeaheadConfig) => { c.showHint = true; }));
@@ -908,7 +910,8 @@ describe('ngbx-typeahead', () => {
         TestBed.configureTestingModule({providers: [{provide: NgbxTypeaheadConfig, useValue: config}]});
 
         TestBed.overrideComponent(
-            TestComponent, {set: {template: '<input type="text" [(ngModel)]="model" [ngbxTypeahead]="findAnywhere"/>'}});
+            TestComponent,
+            {set: {template: '<input type="text" [(ngModel)]="model" [ngbxTypeahead]="findAnywhere"/>'}});
       });
 
       it('should initialize inputs with provided config as provider', () => {

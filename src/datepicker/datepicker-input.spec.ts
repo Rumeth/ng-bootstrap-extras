@@ -311,7 +311,8 @@ describe('NgbxInputDatepicker', () => {
              [ngModelOptions]="{updateOn: 'blur'}">`);
 
          const inputDebugEl = fixture.debugElement.query(By.css('input'));
-         const dpInput = fixture.debugElement.query(By.directive(NgbxInputDatepicker)).injector.get(NgbxInputDatepicker);
+         const dpInput =
+             fixture.debugElement.query(By.directive(NgbxInputDatepicker)).injector.get(NgbxInputDatepicker);
 
          // open
          dpInput.open();
@@ -642,7 +643,8 @@ describe('NgbxInputDatepicker', () => {
 
     it('should propagate model as "startDate" option when "startDate" not provided', fakeAsync(() => {
          const fixture = createTestCmpt(`<input ngbxDatepicker [ngModel]="{year: 2016, month: 9, day: 13}">`);
-         const dpInput = fixture.debugElement.query(By.directive(NgbxInputDatepicker)).injector.get(NgbxInputDatepicker);
+         const dpInput =
+             fixture.debugElement.query(By.directive(NgbxInputDatepicker)).injector.get(NgbxInputDatepicker);
 
          tick();
          fixture.detectChanges();

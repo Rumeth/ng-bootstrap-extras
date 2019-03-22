@@ -349,8 +349,8 @@ describe('ngbx-accordion', () => {
   });
 
   it('should not crash for panels without content', () => {
-    const fixture =
-        createTestComponent('<ngbx-accordion activeIds="open_me"><ngbx-panel id="open_me"></ngbx-panel></ngbx-accordion>');
+    const fixture = createTestComponent(
+        '<ngbx-accordion activeIds="open_me"><ngbx-panel id="open_me"></ngbx-panel></ngbx-accordion>');
     const panelsContent = getPanelsContent(fixture.nativeElement);
 
     expect(panelsContent.length).toBe(1);
