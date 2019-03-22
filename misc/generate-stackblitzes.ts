@@ -14,9 +14,9 @@ function capitalize(string) {
 }
 
 const ENTRY_CMPTS = {
-  'modal-component': ['NgbdModalContent'],
-  'modal-stacked': ['NgbdModal1Content', 'NgbdModal2Content'],
-  'modal-focus': ['NgbdModalConfirm', 'NgbdModalConfirmAutofocus']
+  'modal-component': ['NgbxdModalContent'],
+  'modal-stacked': ['NgbxdModal1Content', 'NgbxdModal2Content'],
+  'modal-focus': ['NgbxdModalConfirm', 'NgbxdModalConfirmAutofocus']
 };
 
 function generateDemosCSS() {
@@ -77,7 +77,7 @@ function generateIndexHtml() {
 }
 
 function generateAppComponentHtmlContent(componentName, demoName) {
-  const demoSelector = `ngbd-${componentName}-${demoName}`;
+  const demoSelector = `ngbxd-${componentName}-${demoName}`;
 
   return `
 <div class="container-fluid">
@@ -97,7 +97,7 @@ function generateAppComponentHtmlContent(componentName, demoName) {
 }
 
 function generateAppModuleTsContent(componentName, demoName, filePath) {
-  const demoClassName = `Ngbd${capitalize(componentName)}${capitalize(demoName)}`;
+  const demoClassName = `Ngbxd${capitalize(componentName)}${capitalize(demoName)}`;
   const demoImport = `./${componentName}-${demoName}`;
   const entryCmptClasses = (ENTRY_CMPTS[`${componentName}-${demoName}`] || []).join(', ');
   const demoImports = entryCmptClasses ? `${demoClassName}, ${entryCmptClasses}` : demoClassName;

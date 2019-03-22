@@ -28,11 +28,11 @@ describe('APIDocVisitor', () => {
 
     expect(Object.keys(docs).length).toBe(5);
 
-    expect(docs.NgbDirective.type).toBe('Directive');
-    expect(docs.NgbComponent.type).toBe('Component');
-    expect(docs.NgbService.type).toBe('Service');
-    expect(docs.NgbClass.type).toBe('Class');
-    expect(docs.NgbInterface.type).toBe('Interface');
+    expect(docs.NgbxDirective.type).toBe('Directive');
+    expect(docs.NgbxComponent.type).toBe('Component');
+    expect(docs.NgbxService.type).toBe('Service');
+    expect(docs.NgbxClass.type).toBe('Class');
+    expect(docs.NgbxInterface.type).toBe('Interface');
   });
 
   it('should extract inputs info', () => {
@@ -162,9 +162,9 @@ describe('APIDocVisitor', () => {
   });
 
   it('should extract documentation from interfaces', () => {
-    const interfaceDocs = apiDoc(['./misc/api-doc-test-cases/interface-with-properties.ts']).NgbModalOptions;
+    const interfaceDocs = apiDoc(['./misc/api-doc-test-cases/interface-with-properties.ts']).NgbxModalOptions;
 
-    expect(interfaceDocs.className).toBe('NgbModalOptions');
+    expect(interfaceDocs.className).toBe('NgbxModalOptions');
     expect(interfaceDocs.description).toBe('Represent options available when opening new modal windows.');
     expect(interfaceDocs.properties.length).toBe(3);
 
@@ -226,31 +226,31 @@ describe('APIDocVisitor', () => {
   it('should extract deprecation information', () => {
     const docs = apiDoc(['misc/api-doc-test-cases/release-deprecation.ts']);
 
-    expect(docs.NgbDirective.deprecated).toEqual({version: '2.0.0', description: 'description'});
-    expect(docs.NgbComponent.deprecated).toEqual({version: '2.0.0', description: 'description'});
-    expect(docs.NgbService.deprecated).toEqual({version: '2.0.0', description: 'description'});
-    expect(docs.NgbClass.deprecated).toEqual({version: '2.0.0', description: 'description'});
-    expect(docs.NgbInterface.deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxDirective.deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxComponent.deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxService.deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxClass.deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxInterface.deprecated).toEqual({version: '2.0.0', description: 'description'});
 
-    expect(docs.NgbDirective.inputs[0].deprecated).toEqual({version: '2.0.0', description: 'description'});
-    expect(docs.NgbDirective.outputs[0].deprecated).toEqual({version: '2.0.0', description: 'description'});
-    expect(docs.NgbDirective.properties[0].deprecated).toEqual({version: '2.0.0', description: 'description'});
-    expect(docs.NgbDirective.methods[0].deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxDirective.inputs[0].deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxDirective.outputs[0].deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxDirective.properties[0].deprecated).toEqual({version: '2.0.0', description: 'description'});
+    expect(docs.NgbxDirective.methods[0].deprecated).toEqual({version: '2.0.0', description: 'description'});
   });
 
   it('should extract feature introduction information', () => {
     const docs = apiDoc(['misc/api-doc-test-cases/release-features.ts']);
 
-    expect(docs.NgbDirective.since).toEqual({version: '2.0.0', description: ''});
-    expect(docs.NgbComponent.since).toEqual({version: '2.0.0', description: ''});
-    expect(docs.NgbService.since).toEqual({version: '2.0.0', description: ''});
-    expect(docs.NgbClass.since).toEqual({version: '2.0.0', description: ''});
-    expect(docs.NgbInterface.since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxDirective.since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxComponent.since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxService.since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxClass.since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxInterface.since).toEqual({version: '2.0.0', description: ''});
 
-    expect(docs.NgbDirective.inputs[0].since).toEqual({version: '2.0.0', description: ''});
-    expect(docs.NgbDirective.outputs[0].since).toEqual({version: '2.0.0', description: ''});
-    expect(docs.NgbDirective.properties[0].since).toEqual({version: '2.0.0', description: ''});
-    expect(docs.NgbDirective.methods[0].since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxDirective.inputs[0].since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxDirective.outputs[0].since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxDirective.properties[0].since).toEqual({version: '2.0.0', description: ''});
+    expect(docs.NgbxDirective.methods[0].since).toEqual({version: '2.0.0', description: ''});
   });
 
   it('should extract class and interface type parameters', () => {

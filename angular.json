@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "ng-bootstrap": {
+    "ng-bootstrap-extras": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "library",
@@ -49,7 +49,7 @@
       "root": "demo",
       "sourceRoot": "demo/src",
       "projectType": "application",
-      "prefix": "ngbd",
+      "prefix": "ngbxd",
       "schematics": {},
       "architect": {
         "build": {

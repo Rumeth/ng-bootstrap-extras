@@ -1,16 +1,8 @@
-# NG Bootstrap - Angular powered Bootstrap widgets
+# NG Bootstrap Extras - Angular powered Bootstrap widgets
 
-[![npm version](https://badge.fury.io/js/%40ng-bootstrap%2Fng-bootstrap.svg)](https://badge.fury.io/js/%40ng-bootstrap%2Fng-bootstrap)
-[![Build Status](https://travis-ci.org/ng-bootstrap/ng-bootstrap.svg?branch=master)](https://travis-ci.org/ng-bootstrap/ng-bootstrap)
-[![codecov](https://codecov.io/gh/ng-bootstrap/ng-bootstrap/branch/master/graph/badge.svg)](https://codecov.io/gh/ng-bootstrap/ng-bootstrap)
-[![devDependency Status](https://david-dm.org/ng-bootstrap/ng-bootstrap/dev-status.svg?branch=master)](https://david-dm.org/ng-bootstrap/ng-bootstrap#info=devDependencies)
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/pkozlowski.svg)](https://saucelabs.com/u/pkozlowski)
+[Angular](https://angular.io/) widgets built using [NG Bootstrap](https://ng-bootstrap.github.io) and [Bootstrap 4](https://getbootstrap.com/) CSS with APIs designed for the Angular ecosystem.
 
-[Angular](https://angular.io/) widgets built from the ground up using only [Bootstrap 4](https://getbootstrap.com/) CSS with APIs designed for the Angular ecosystem.
-No dependencies on 3rd party JavaScript.
-
-Please check our [demo site](https://ng-bootstrap.github.io) and the list of
-[issues](https://github.com/ng-bootstrap/ng-bootstrap/issues) to see all the things we are working on. Feel free to make comments there.
+Please check the list of [issues](https://github.com/rumeth/ng-bootstrap-extras/issues) to see all the things we are working on. Feel free to make comments there.
  
 
 ## Table of Contents
@@ -21,24 +13,19 @@ Please check our [demo site](https://ng-bootstrap.github.io) and the list of
 - [Supported browsers](#supported-browsers)
 - [Getting help](#getting-help)
 - [You think you've found a bug?](#you-think-youve-found-a-bug)
-- [Contributing to the project](#contributing-to-the-project)
-- [Code of conduct](#code-of-conduct)
 
 ## Demo
 
-Please check all components we have in action at https://ng-bootstrap.github.io
+Working on it.
 
 ## Dependencies
 
-The only two dependencies are [Angular](https://angular.io) and [Bootstrap 4](https://getbootstrap.com) CSS. 
+The only dependencies are [Angular](https://angular.io), [Bootstrap 4](https://getbootstrap.com) CSS, [Font Awesome](https://fontawesome.com) and [NG Bootstrap](https://ng-bootstrap.github.io). 
 Here is the list of minimal required versions:
 
-| ng-bootstrap | Angular | Bootstrap CSS |
-| ------------ | ------- | ------------- |
-| 1.x.x        | 5.0.2   | 4.0.0         |
-| 2.x.x        | 6.0.0   | 4.0.0         |
-| 3.x.x        | 6.1.0   | 4.0.0         |
-| 4.x.x        | 7.0.0   | 4.0.0         |
+| ng-bootstrap-extras | ng-bootstrap | Angular | Bootstrap CSS | Font Awesome  |
+| ------------------- | ------------ | ------- | ------------- | ------------- |
+| 0.1.0               | 4.0.0        | 7.0.0   | 4.0.0         | 5.0.0         |
 
 
 ## Installation
@@ -55,32 +42,34 @@ You also need to add Bootstrap 4 CSS to your application by using your preferred
 
 Please note that you need only CSS and **should not** add other JavaScript dependencies like `bootstrap.js`, `jQuery` or `popper.js` as ng-bootstrap's goal is to completely replace them.
 
-After installing the above dependencies, install `ng-bootstrap` via:
+You also need to add Ng Bootsrap to your application by using your preferred way (it really depends on the setup you're using). Ex. for Angular CLI you can [get NG Bootstrap from npm](https://www.npmjs.com/package/@ng-bootstrap/ng-bootstrap).
+
+After installing the above dependencies, install `ng-bootstrap-extras` via:
 ```shell
-npm install --save @ng-bootstrap/ng-bootstrap
+npm install --save ng-bootstrap-extras
 ```
 Once installed you need to import our main module:
 ```js
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxModule} from 'ng-bootstrap-extras';
 
 @NgModule({
   ...
-  imports: [NgbModule, ...],
+  imports: [NgbxModule, ...],
   ...
 })
 export class YourAppModule {
 }
 ```
 
-Alternatively you could only import modules with components you need, ex. pagination and alert. 
+Alternatively you could only import modules with components you need, ex. confirmation. 
 The resulting bundle will be smaller in this case.
 
 ```js
-import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbxConfirmationModule} from 'ng-bootstrap-extras';
 
 @NgModule({
   ...
-  imports: [NgbPaginationModule, NgbAlertModule, ...],
+  imports: [NgbxConfirmationModule, ...],
   ...
 })
 export class YourAppModule {
@@ -101,7 +90,7 @@ We support the same browsers and versions supported by both Bootstrap 4 and Angu
 
 ## Getting help
 
-Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on [StackOverflow](http://stackoverflow.com/questions/tagged/ng-bootstrap) where maintainers are looking at questions tagged with `ng-bootstrap`.
+Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on [StackOverflow](http://stackoverflow.com/questions/tagged/ng-bootstrap-extras).
 
 StackOverflow is a much better place to ask questions since:
 * there are hundreds of people willing to help on StackOverflow
@@ -117,20 +106,10 @@ We want to fix it ASAP! But before fixing a bug we need to reproduce and confirm
 
 We ask you to respect two things:
 * fill the GitHub issue template by providing the bug description and appropriate versions of Angular, ng-bootstrap and TypeScript
-* provide a use-case that fails with a **minimal reproduction scenario** using [StackBlitz](https://stackblitz) (you can start by forking one from our [demo page](https://ng-bootstrap.github.io/#/components))
+* provide a use-case that fails with a **minimal reproduction scenario** using [StackBlitz](https://stackblitz)
 
 A minimal reproduction scenario allows us to quickly confirm a bug (or point out a coding problem) as well as confirm that we are fixing the right problem.
 
-Please not that **we will be insisting on a minimal reproduce scenario** in order to save maintainers time and ultimately be able to fix more bugs. We'll mark the issue as non-actionable without it and close if not heard from the reporter. 
+Please note that **we will be insisting on a minimal reproduce scenario** in order to save maintainers time and ultimately be able to fix more bugs. We'll mark the issue as non-actionable without it and close if not heard from the reporter. 
 
 Interestingly, from our experience users often find coding problems themselves while preparing a minimal StackBlitz. We understand that sometimes it might be hard to extract essentials bits of code from a larger code-base but we really need to isolate the problem before we can fix it.
-
-
-## Contributing to the project
-
-Please check the [DEVELOPER.md](DEVELOPER.md) for documentation on running the project locally and [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
-
-
-## Code of conduct
-
-Please take a moment and read our [Code of Conduct](CODE_OF_CONDUCT.md)

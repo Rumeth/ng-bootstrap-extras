@@ -6,9 +6,9 @@ import {Component, Directive, Injectable, Input, Output} from '@angular/core';
  * @deprecated 2.0.0 description
  */
 @Directive({
-  selector: '[ngbDirective]'
+  selector: '[ngbxDirective]'
 })
-export class NgbDirective {
+export class NgbxDirective {
   /**
    * Description
    *
@@ -44,9 +44,9 @@ export class NgbDirective {
  * @deprecated 2.0.0 description
  */
 @Component({
-  selector: 'ngb-component'
+  selector: 'ngbx-component'
 })
-export class NgbComponent {}
+export class NgbxComponent {}
 
 
 /**
@@ -55,19 +55,19 @@ export class NgbComponent {}
  * @deprecated 2.0.0 description
  */
 @Injectable()
-export class NgbService {}
+export class NgbxService {}
 
 /**
  * Description
  *
  * @deprecated 2.0.0 description
  */
-export class NgbClass {}
+export class NgbxClass {}
 
 /**
  * Description
  *
  * @deprecated 2.0.0 description
  */
-export interface NgbInterface {
+export interface NgbxInterface {
 }
