@@ -9,12 +9,13 @@
 
   <p>
     Here is a list of minimal required versions of <a href="https://angular.io" target="_blank">Angular</a>
-    and <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> CSS for ng-bootstrap:
+    and <a href="https://getbootstrap.com" target="_blank">Bootstrap</a> CSS for ng-bootstrap-extras:
   </p>
 
   <table class="table" style="width: auto">
     <thead>
       <tr>
+        <th scope="col">ng-bootstrap-extras</th>
         <th scope="col">ng-bootstrap</th>
         <th scope="col">Angular</th>
         <th scope="col">Bootstrap CSS</th>
@@ -23,21 +24,7 @@
     <tbody>
       <tr>
         <th scope="row">1.x.x</th>
-        <td>5.0.2</td>
         <td>4.0.0</td>
-      </tr>
-      <tr>
-        <th scope="row">2.x.x</th>
-        <td>6.0.0</td>
-        <td>4.0.0</td>
-      </tr>
-      <tr>
-        <th scope="row">3.x.x</th>
-        <td>6.1.0</td>
-        <td>4.0.0</td>
-      </tr>
-      <tr>
-        <th scope="row">4.x.x</th>
         <td>7.0.0</td>
         <td>4.0.0</td>
       </tr>
@@ -62,7 +49,7 @@
   <h3>
     Installation
   </h3>
-  <p>After installing the above dependencies, install <code>ng-bootstrap</code> via:</p>
+  <p>After installing the above dependencies, install <code>ng-bootstrap-extras</code> via:</p>
 
   <ngbxd-code [code]="codeInstall" lang="bash"></ngbxd-code>
 
@@ -83,7 +70,7 @@
     If you are using SystemJS, you should also adjust your configuration to point to the UMD bundle.
   </p>
   <p>
-    In your SystemJS config file, <code>map</code> needs to tell the System loader where to look for <code>ng-bootstrap</code>:
+    In your SystemJS config file, <code>map</code> needs to tell the System loader where to look for <code>ng-bootstrap-extras</code>:
   </p>
 
   <ngbxd-code [code]="codeSystem" lang="typescript"></ngbxd-code>
@@ -98,13 +85,13 @@
     used for accessibility.
   </p>
   <p>
-    Internationalizing the ng-bootstrap components is done the same way as for any of your components, using the
+    Internationalizing the ng-bootstrap-extras components is done the same way as for any of your components, using the
     <a href="https://angular.io/guide/i18n#template-translations">process described in the Angular documentation</a>.
     The only difference is that we already did the first phase of this process: marking static text messages in the
-    ng-bootstrap component templates for translation.
+    ng-bootstrap-extras component templates for translation.
   </p>
   <p>
-    So, if you execute `ng xi18n` on your project, you will also find the ng-bootstrap messages to translate in the
+    So, if you execute `ng xi18n` on your project, you will also find the ng-bootstrap-extras messages to translate in the
     generated messages file. All our messages are identified by an ID of the form <code>ngbx.[widget].[message]</code>
   </p>
 
@@ -114,8 +101,8 @@
   <p>
     Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports
     and feature requests. You've got much better chances of getting your question answered on
-    <a href="https://stackoverflow.com/questions/tagged/ng-bootstrap" target="_blank">StackOverflow</a> where the community at large are looking
-    at questions tagged with <code>ng-bootstrap</code>.
+    <a href="https://stackoverflow.com/questions/tagged/ng-bootstrap-extras" target="_blank">StackOverflow</a> where the community at large are looking
+    at questions tagged with <code>ng-bootstrap-extras</code>.
   </p>
   <p>
     StackOverflow is a much better place to ask questions since:
@@ -127,21 +114,5 @@
   </ul>
   <p>
     To save your and our time we will be systematically closing all the issues that are requests for general support and redirecting people to StackOverflow.
-  </p>
-  <h3>
-    Contributing
-  </h3>
-  <p>
-    We are always looking for the quality contributions! Please check the
-    <a href="https://github.com/ng-bootstrap/ng-bootstrap/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a> doc
-    for contribution guidelines. Additionally, for local building and testing information, please see our
-    <a href="https://github.com/ng-bootstrap/ng-bootstrap/blob/master/DEVELOPER.md" target="_blank">Developer's Guide</a>.
-  </p>
-  <h3>
-    Code of Conduct
-  </h3>
-  <p>
-    Please take a moment to read our
-    <a href="https://github.com/ng-bootstrap/ng-bootstrap/blob/master/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a>.
   </p>
 </ngbxd-page-wrapper>

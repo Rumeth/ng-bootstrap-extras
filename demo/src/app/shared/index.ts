@@ -3,6 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { NgbxModule } from 'ng-bootstrap-extras';
 
 import { Analytics } from './analytics/analytics';
@@ -15,10 +17,11 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 export {componentsList} from './side-nav/side-nav.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbxModule],
+  imports: [CommonModule, RouterModule, NgbModule, NgbxModule],
   exports: [
     CommonModule,
     RouterModule,
+    NgbModule,
     ComponentWrapper,
     PageWrapper,
     SideNavComponent,
