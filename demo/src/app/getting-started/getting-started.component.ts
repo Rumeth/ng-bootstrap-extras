@@ -20,11 +20,11 @@ export class YourAppModule {
 }`;
 
   codeOther = `
-import {NgbxPaginationModule, NgbxAlertModule} from 'ng-bootstrap-extras';
+import {NgbxConfirmationModule} from 'ng-bootstrap-extras';
 
 @NgModule({
   ...
-  imports: [NgbxPaginationModule, NgbxAlertModule, ...],
+  imports: [NgbxConfirmationModule, ...],
   ...
 })
 export class YourAppModule {
