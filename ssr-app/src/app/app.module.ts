@@ -12,7 +12,7 @@ import { CarouselComponent } from './components/carousel.component';
 import { CollapseComponent } from './components/collapse.component';
 import { DatepickerComponent } from './components/datepicker.component';
 import { DropdownComponent } from './components/dropdown.component';
-import { ModalComponent } from './components/modal.component';
+import { ConfirmationComponent } from './components/confirmation.component';
 import { PaginationComponent } from './components/pagination.component';
 import { PopoverComponent } from './components/popover.component';
 import { ProgressComponent } from './components/progress.component';
@@ -32,7 +32,7 @@ import { TypeaheadComponent } from './components/typeahead.component';
     CollapseComponent,
     DatepickerComponent,
     DropdownComponent,
-    ModalComponent,
+    ConfirmationComponent,
     PaginationComponent,
     PopoverComponent,
     ProgressComponent,
