@@ -11,7 +11,27 @@ import {NgbxConfirmation, NgbxConfirmationConfig} from 'ng-bootstrap-extras';
 export class NgbxdConfirmationConfig {
   constructor(ngbxConfirmationConfig: NgbxConfirmationConfig, private ngbxConfirmation: NgbxConfirmation) {
     // customize default values of confirmation dialog used by this component tree
-    ngbxConfirmationConfig.showDismissButton = false;
+    ngbxConfirmationConfig.type = 'primary';
+
+    ngbxConfirmationConfig.invertStyle = false;
+
+    ngbxConfirmationConfig.title = 'Confirmation Dialog';
+
+    ngbxConfirmationConfig.showDismissButton = true;
+
+    ngbxConfirmationConfig.message = 'Are you sure?';
+
+    ngbxConfirmationConfig.showActionButton = true;
+
+    ngbxConfirmationConfig.actionButtonText = 'Ok';
+
+    ngbxConfirmationConfig.showRejectionButton = true;
+
+    ngbxConfirmationConfig.rejectionButtonText = 'Cancel';
+
+    ngbxConfirmationConfig.backdrop = 'static';
+
+    ngbxConfirmationConfig.keyboard = false;
   }
 
   open() {

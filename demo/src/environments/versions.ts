@@ -3,7 +3,7 @@
 let bootstrap: string = require('../../../package.json').devDependencies['bootstrap'];
 bootstrap = bootstrap.substr(0, bootstrap.lastIndexOf('.'));
 
-let ngBootstrap: string = require('../../../package.json').devDependencies['ng-bootstrap-extras'];
+let ngBootstrap: string = require('../../../package.json').devDependencies['@ng-bootstrap/ng-bootstrap'];
 ngBootstrap = ngBootstrap.substr(0, ngBootstrap.lastIndexOf('.'));
 
 const ngBootstrapExtras = require('../../../src/package.json').version;

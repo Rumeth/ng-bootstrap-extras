@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: DefaultComponent },
   { path: 'getting-started', component: GettingStarted },
-  { path: 'components', pathMatch: 'full', redirectTo: 'components/accordion' },
+  { path: 'components', pathMatch: 'full', redirectTo: 'components/confirmation' },
   {
     path: 'components/confirmation',
     children: CONFIRMATION_ROUTES
