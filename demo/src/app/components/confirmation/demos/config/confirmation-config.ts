@@ -17,8 +17,6 @@ export class NgbxdConfirmationConfig {
 
     ngbxConfirmationConfig.title = 'Confirmation Dialog';
 
-    ngbxConfirmationConfig.showDismissButton = true;
-
     ngbxConfirmationConfig.message = 'Are you sure?';
 
     ngbxConfirmationConfig.showActionButton = true;
