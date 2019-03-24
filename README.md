@@ -16,7 +16,7 @@ Please check the list of [issues](https://github.com/rumeth/ng-bootstrap-extras/
 
 ## Demo
 
-Working on it.
+Please check all components we have in action at https://rumeth.github.io/ng-bootstrap-extras
 
 ## Dependencies
 
