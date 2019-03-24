@@ -6,7 +6,7 @@ import {NgbxConfirmationDialog} from './confirmation-dialog';
 
 /**
  * A service to open confirmation windows. Creating a confirmation window is straightforward:
- * create a NgbxConfirmationOptions object and pass it as an argument to * the "open" method!
+ * create a NgbxConfirmationOptions object and pass it as an argument to the "open" method!
  */
 @Injectable({providedIn: 'root'})
 
