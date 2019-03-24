@@ -1,6 +1,6 @@
-# Building and Testing ng-bootstrap
+# Building and Testing ng-bootstrap-extras
 
-This document describes how to set up your development environment to build and test ng-bootstrap.
+This document describes how to set up your development environment to build and test ng-bootstrap-extras.
 It also explains the basic mechanics of using `git`, `node` and `yarn`.
 
 * [Prerequisite Software](#prerequisite-software)
@@ -10,12 +10,12 @@ It also explains the basic mechanics of using `git`, `node` and `yarn`.
 * [Useful commands](#useful-commands)
 * [Formatting](#clang-format)
 
-See the [contribution guidelines](https://github.com/ng-bootstrap/ng-bootstrap/blob/master/CONTRIBUTING.md)
-if you'd like to contribute to ng-bootstrap.
+See the [contribution guidelines](https://github.com/ng-bootstrap-extras/ng-bootstrap-extras/blob/master/CONTRIBUTING.md)
+if you'd like to contribute to ng-bootstrap-extras.
 
 ## Prerequisite Software
 
-Before you can build and test ng-bootstrap, you must install and configure the
+Before you can build and test ng-bootstrap-extras, you must install and configure the
 following products on your development machine:
 
 * [Git](http://git-scm.com) and/or the **GitHub app** (for [Mac](http://mac.github.com) or
@@ -31,40 +31,40 @@ following products on your development machine:
 
 ## Getting the Sources
 
-Fork and clone the ng-bootstrap repository:
+Fork and clone the ng-bootstrap-extras repository:
 
 1. Login to your GitHub account or create one by following the instructions given
    [here](https://github.com/signup/free).
-2. [Fork](http://help.github.com/forking) the [main ng-bootstrap
-   repository](https://github.com/ng-bootstrap/ng-bootstrap).
-3. Clone your fork of the ng-bootstrap's ng-bootstrap repository and define an `upstream` remote pointing back to
-   the ng-bootstrap's ng-bootstrap repository that you forked in the first place.
+2. [Fork](http://help.github.com/forking) the [main ng-bootstrap-extras
+   repository](https://github.com/rumeth/ng-bootstrap-extras).
+3. Clone your fork of the ng-bootstrap-extras's ng-bootstrap-extras repository and define an `upstream` remote pointing back to
+   the ng-bootstrap-extras's ng-bootstrap-extras repository that you forked in the first place.
 
 ```bash
 # Clone your GitHub repository:
-git clone git@github.com:<github username>/ng-bootstrap.git ng-bootstrap
+git clone git@github.com:<github username>/ng-bootstrap-extras.git ng-bootstrap-extras
 
-# Go to the ng-bootstrap directory:
-cd ng-bootstrap
+# Go to the ng-bootstrap-extras directory:
+cd ng-bootstrap-extras
 
-# Add the main ng-bootstrap repository as an upstream remote to your repository:
-git remote add upstream https://github.com/ng-bootstrap/ng-bootstrap.git
+# Add the main ng-bootstrap-extras repository as an upstream remote to your repository:
+git remote add upstream https://github.com/rumeth/ng-bootstrap-extras.git
 ```
 
 ## Installing Dependencies
 
-Next, install the JavaScript modules needed to build and test ng-bootstrap:
+Next, install the JavaScript modules needed to build and test ng-bootstrap-extras:
 
 ```bash
-# Install ng-bootstrap project dependencies (package.json)
+# Install ng-bootstrap-extras project dependencies (package.json)
 yarn
 ```
 
 ## Project Structure
 
-We use [`@angular/cli`](https://cli.angular.io) to build both ng-bootstrap library and demo site. There are several Angular CLI projects inside the checked out code:
-* `ng-bootstrap` - the ng-bootstrap library itself, sources are located in directly in the `src` folder
-* `demo` - the demo site deployed at [https://ng-bootstrap.github.io](https://ng-bootstrap.github.io), sources are in `demo/src`
+We use [`@angular/cli`](https://cli.angular.io) to build both ng-bootstrap-extras library and demo site. There are several Angular CLI projects inside the checked out code:
+* `ng-bootstrap-extras` - the ng-bootstrap-extras library itself, sources are located in directly in the `src` folder
+* `demo` - the demo site deployed at [https://ng-bootstrap-extras.github.io](https://ng-bootstrap-extras.github.io), sources are in `demo/src`
 * `e2e test app` - an application used to run e2e tests for the library, sources are in `e2e-app/src`
 * `ssr test app` - a simple one-paged application for Server Side Rendering tests, sources are in `ssr-app/src` 
 
@@ -100,7 +100,7 @@ Runs all protractor tests for the library in production mode. We use them to che
 
 #### `yarn ssr`
 
-Builds, runs and e2e tests a simple server-side rendered application with all ng-bootstrap components
+Builds, runs and e2e tests a simple server-side rendered application with all ng-bootstrap-extras components
 
 #### `yarn ci`
 
@@ -141,7 +141,7 @@ to some whitespace difference.
 * `clang-format` also includes a git hook, run `git clang-format` to format all files you
   touched.
 * You can run this as a **git pre-commit hook** to automatically format your delta regions when you
-  commit a change. In the ng-bootstrap repo, run
+  commit a change. In the ng-bootstrap-extras repo, run
 
 ```shell
     $ echo -e '#!/bin/sh\nexec git clang-format' > .git/hooks/pre-commit
