@@ -64,7 +64,7 @@ yarn
 
 We use [`@angular/cli`](https://cli.angular.io) to build both ng-bootstrap-extras library and demo site. There are several Angular CLI projects inside the checked out code:
 * `ng-bootstrap-extras` - the ng-bootstrap-extras library itself, sources are located in directly in the `src` folder
-* `demo` - the demo site deployed at [https://ng-bootstrap-extras.github.io](https://ng-bootstrap-extras.github.io), sources are in `demo/src`
+* `demo` - the demo site deployed at [https://rumeth.github.io/ng-bootstrap-extras](https://rumeth.github.io/ng-bootstrap-extras), sources are in `demo/src`
 * `e2e test app` - an application used to run e2e tests for the library, sources are in `e2e-app/src`
 * `ssr test app` - a simple one-paged application for Server Side Rendering tests, sources are in `ssr-app/src` 
 

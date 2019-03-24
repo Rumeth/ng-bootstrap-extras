@@ -20,12 +20,12 @@ Working on it.
 
 ## Dependencies
 
-The only dependencies are [Angular](https://angular.io), [Bootstrap 4](https://getbootstrap.com) CSS, [Font Awesome](https://fontawesome.com) and [NG Bootstrap](https://ng-bootstrap.github.io). 
+The only dependencies are [Angular](https://angular.io), [Bootstrap 4](https://getbootstrap.com) CSS and [NG Bootstrap](https://ng-bootstrap.github.io). 
 Here is the list of minimal required versions:
 
-| ng-bootstrap-extras | ng-bootstrap | Angular | Bootstrap CSS | Font Awesome  |
-| ------------------- | ------------ | ------- | ------------- | ------------- |
-| 0.1.0               | 4.0.0        | 7.0.0   | 4.0.0         | 5.0.0         |
+| ng-bootstrap-extras | ng-bootstrap | Angular | Bootstrap CSS |
+| ------------------- | ------------ | ------- | ------------- |
+| 0.1.0               | 4.0.0        | 7.0.0   | 4.0.0         |
 
 
 ## Installation
