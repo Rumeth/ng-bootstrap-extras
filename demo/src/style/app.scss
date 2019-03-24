@@ -315,40 +315,6 @@ span.token.tag {
   padding: 0;
 }
 
-// Right-To-Left layout for the Islamic Calendars
-ngbx-datepicker.rtl {
-  direction: rtl;
-}
-
-ngbx-datepicker.rtl ngbx-datepicker-navigation-select select.custom-select {
-  background-position: left 0.25rem center;
-}
-
-ngbx-datepicker.rtl .ngbx-dp-arrow.right .ngbx-dp-navigation-chevron {
-  transform: rotate(-135deg);
-  margin: 0 0 0 0.25rem;
-}
-
-ngbx-datepicker.rtl .ngbx-dp-navigation-chevron {
-  transform: rotate(45deg);
-  margin: 0 0.25rem 0 0;
-}
-
-ngbx-datepicker.hebrew {
-
-  .ngbx-dp-day {
-    width: 2.75rem;
-    height: 2.75rem;
-    line-height: 1rem;
-  }
-
-  .ngbx-dp-weekday {
-    width: 2.75rem;
-  }
-}
-
-ngbx-carousel {
-  .carousel-item img {
-    width: 100%;
-  }
+.github-link {
+  display : none;
 }
