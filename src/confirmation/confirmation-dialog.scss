@@ -1,0 +1,35 @@
+.btn-action,
+.btn-rejection
+{
+    width : 100px;
+}
+
+.btn-close
+{
+    background : none;
+    border     : none;
+    padding    : 0;
+
+    &:hover,
+    &:focus
+    {
+        text-shadow : 0 0 1px black;
+    }
+}
+
+.modal-header,
+.btn-close
+{
+    line-height : 22px;
+}
+
+.modal-header
+{
+    border-top-left-radius  : 0.2rem;
+    border-top-right-radius : 0.2rem;
+}
+
+.modal-body
+{
+    padding : 2rem 1rem;
+}

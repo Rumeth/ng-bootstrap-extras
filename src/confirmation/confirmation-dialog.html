@@ -1,0 +1,40 @@
+<div *ngIf = "ngbxConfirmationOptions.title"
+     [ngClass] = "getModalHeaderClass()">
+    {{ngbxConfirmationOptions.title}}
+    <button #dismissButton
+            (click) = "dismiss()"
+            *ngIf = "ngbxConfirmationOptions.showDismissButton"
+            [ngClass] = "getDismissButtonClass()"
+            aria-label = "Close"
+            ngbAutofocus
+            title = "Close"
+            type = "button">
+        <i class = "fas fa-times fa-lg"></i>
+    </button>
+</div>
+<div *ngIf = "ngbxConfirmationOptions.message"
+     class = "modal-body"
+     [innerHTML] = "ngbxConfirmationOptions.message"></div>
+<div *ngIf = "ngbxConfirmationOptions.showActionButton || ngbxConfirmationOptions.showRejectionButton"
+     [ngClass] = "getModalFooterClass()">
+    <button *ngIf = "ngbxConfirmationOptions.showRejectionButton"
+            #rejectionButton
+            type = "button"
+            ngbAutofocus
+            [title] = "ngbxConfirmationOptions.rejectionButtonText"
+            [attr.aria-label] = "ngbxConfirmationOptions.rejectionButtonText"
+            [ngClass] = "getRejectionButtonClass()"
+            (click) = "reject()">
+        {{ngbxConfirmationOptions.rejectionButtonText}}
+    </button>
+    <button *ngIf = "ngbxConfirmationOptions.showActionButton"
+            #actionButton
+            type = "button"
+            ngbAutofocus
+            [title] = "ngbxConfirmationOptions.actionButtonText"
+            [attr.aria-label] = "ngbxConfirmationOptions.actionButtonText"
+            [ngClass] = "getActionButtonClass()"
+            (click) = "accept()">
+        {{ngbxConfirmationOptions.actionButtonText}}
+    </button>
+</div>
