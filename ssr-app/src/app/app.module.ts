@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbxModule } from 'ng-bootstrap-extras';
 
 import { AccordionComponent } from './components/accordion.component';
 import { AlertComponent } from './components/alert.component';
@@ -45,7 +45,7 @@ import { TypeaheadComponent } from './components/typeahead.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
-    NgbModule
+    NgbxModule
   ],
   bootstrap: [AppComponent]
 })
