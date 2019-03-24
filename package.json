@@ -1,6 +1,6 @@
 {
   "name": "ng-bootstrap-extras",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular powered Bootstrap",
   "author": "https://github.com/rumeth/ng-bootstrap-extras/graphs/contributors",
   "engines": {
@@ -30,6 +30,8 @@
     "ngbx:e2e": "ng e2e e2e-app",
     "ngbx:e2e-noserve": "ng e2e e2e-app -c noserve",
     "ngbx:build": "ng build ng-bootstrap-extras --prod && yarn ngbx:static",
+    "ngbx:pack": "npm pack ./dist/ng-bootstrap-extras",
+    "ngbx:publish": "yarn ngbx:build && yarn ngbx:pack && npm publish ng-bootstrap-extras-0.1.1.tgz",
     "demo:serve": "ng serve demo --host 0.0.0.0",
     "demo:docs": "ts-node --project misc/tsconfig.json misc/generate-docs.ts",
     "demo:stackblitzes": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts",

@@ -1,28 +1,13 @@
 {
   "name": "ng-bootstrap-extras",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular powered Bootstrap",
   "keywords": [
     "angular",
     "bootstrap",
     "components",
-    "accordion",
-    "alert",
-    "buttons",
-    "carousel",
-    "collapse",
-    "datepicker",
-    "dropdown",
-    "modal",
-    "pagination",
-    "popover",
-    "progressbar",
-    "rating",
-    "table",
-    "tabset",
-    "timepicker",
-    "tooltip",
-    "typeahead"
+    "confirmation",
+    "modal"
   ],
   "author": "https://github.com/rumeth/ng-bootstrap-extras/graphs/contributors",
   "repository": {
@@ -38,6 +23,7 @@
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
     "@angular/forms": "^7.0.0",
+    "@ng-bootstrap/ng-bootstrap": "4.0.0",
     "rxjs": "^6.3.0"
   }
 }
