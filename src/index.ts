@@ -11,7 +11,12 @@ export {
   ConfirmationDismissReasons
 } from './confirmation/confirmation.module';
 
-export { NgbxMenuModule,NgbxMenuItem,NgbxMenuList } from './menu/menu.module';
+export {
+  NgbxMenuModule,
+  NgbxMenu,
+  NgbxMenuItem,
+  NgbxMenuList
+} from './menu/menu.module';
 
 const NGBX_MODULES = [NgbxConfirmationModule,NgbxMenuModule];
 

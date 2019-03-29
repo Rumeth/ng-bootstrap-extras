@@ -9,7 +9,7 @@ export { NgbxMenuList, NgbxMenuItem } from './menu-config';
 @NgModule({
   imports: [CommonModule, BrowserModule],
   declarations: [NgbxMenu],
-  entryComponents: [],
+  exports: [NgbxMenu],
   providers: []
 })
 
