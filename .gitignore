@@ -1,6 +1,7 @@
 /node_modules/
 /dist/
 /temp/
+/dump/
 /demo/dist/
 /e2e-app/dist/
 /ssr-app/dist/
